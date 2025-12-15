@@ -5,191 +5,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Studente - PNA</title>
-    <!-- Bootstrap Italia CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.17.0/dist/css/bootstrap-italia.min.css"
-        rel="stylesheet">
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&family=Lora:ital,wght@0,400;1,400&display=swap"
-        rel="stylesheet">
-    <!-- Custom CSS -->
+    <!-- Custom CSS (Includes Carbon) -->
+    <!-- Carbon Design System CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for IBM Plex Sans (Carbon default) -->
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Header -->
-    <div class="it-header-wrapper">
-        <div class="it-header-center-wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="it-header-center-content-wrapper">
-                            <div class="it-brand-wrapper">
-                                <a href="#">
-                                    <div class="it-brand-text">
-                                        <div class="it-brand-title">PNA</div>
-                                        <div class="it-brand-tagline">Area Studente</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="it-right-zone">
-                                <div class="it-user-wrapper">
-                                    <span class="d-none d-md-block me-3" id="userNameDisplay">Studente</span>
-                                    <a href="index.html" class="btn btn-primary btn-icon btn-full">
-                                        <span class="rounded-icon">
-                                            <svg class="icon icon-primary">
-                                                <use
-                                                    href="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.17.0/dist/svg/sprites.svg#it-user">
-                                                </use>
-                                            </svg>
-                                        </span>
-                                        <span class="d-none d-lg-block">Esci</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+    <div class="bx--grid">
+        <!-- Header -->
+        <div class="bx--row custom-header">
+            <div class="bx--col-lg-8 bx--col-md-6">
+                <div class="brand-title">PNA</div>
+                <div class="brand-subtitle">Area Studente</div>
+            </div>
+            <div class="bx--col-lg-4 bx--col-md-2" style="text-align: right;">
+                <span class="bx--label" id="userNameDisplay"
+                    style="margin-right: 1rem; font-weight: 600;">Studente</span>
+                <a href="index.html" class="bx--btn bx--btn--secondary bx--btn--sm">Esci</a>
             </div>
         </div>
-    </div>
 
-    <div class="container my-4">
-        <div class="row">
+        <div class="bx--row">
             <!-- Sidebar -->
-            <div class="col-12 col-lg-3">
-                <div class="sidebar-wrapper">
-                    <div class="sidebar-linklist-wrapper">
-                        <div class="link-list-wrapper">
-                            <ul class="link-list">
-                                <li>
-                                    <a class="list-item active" href="#" data-section="candidacies">
-                                        <span>Le tue Candidature</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="list-item" href="#" data-section="profile">
-                                        <span>Dati Personali</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="list-item" href="#" data-section="projects">
-                                        <span>I tuoi Progetti</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <div class="bx--col-lg-3 bx--col-md-2 mb-4">
+                <nav>
+                    <ul class="clean-list">
+                        <li>
+                            <a class="bx--link list-item active" href="#" data-section="candidacies">
+                                Le tue Candidature
+                            </a>
+                        </li>
+                        <li>
+                            <a class="bx--link list-item" href="#" data-section="profile">
+                                Dati Personali
+                            </a>
+                        </li>
+                        <li>
+                            <a class="bx--link list-item" href="#" data-section="projects">
+                                I tuoi Progetti
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
 
             <!-- Main Content -->
-            <div class="col-12 col-lg-9">
+            <div class="bx--col-lg-9 bx--col-md-6">
                 <h1 class="mb-4" id="pageTitle">Le tue Candidature</h1>
 
                 <!-- Section: Candidacies -->
                 <div id="candidacies-section" class="section-content active">
-                    <div class="alert alert-info" role="alert">
-                        Non hai ancora inviato nessuna candidatura per questa edizione.
+                    <div class="bx--inline-notification bx--inline-notification--info mb-4" role="alert"
+                        style="max-width: 100%;">
+                        <div class="bx--inline-notification__details">
+                            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                                xmlns="http://www.w3.org/2000/svg" class="bx--inline-notification__icon" width="20"
+                                height="20" viewBox="0 0 20 20" aria-hidden="true">
+                                <path
+                                    d="M10,1c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S15,1,10,1z M9.2,5h1.5v7H9.2V5z M10,16c-0.6,0-1-0.4-1-1s0.4-1,1-1	s1,0.4,1,1S10.6,16,10,16z">
+                                </path>
+                                <path d="M9.2,5h1.5v7H9.2V5z M10,16c-0.6,0-1-0.4-1-1s0.4-1,1-1s1,0.4,1,1S10.6,16,10,16z"
+                                    data-icon-path="inner-path" opacity="0"></path>
+                            </svg>
+                            <div class="bx--inline-notification__text-wrapper">
+                                <p class="bx--inline-notification__title">Nessuna candidatura</p>
+                                <p class="bx--inline-notification__subtitle">Non hai ancora inviato nessuna candidatura
+                                    per questa edizione.</p>
+                            </div>
+                        </div>
                     </div>
-                    <button id="newCandidacyBtn" class="btn btn-primary">
-                        <svg class="icon icon-white">
-                            <use
-                                href="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.17.0/dist/svg/sprites.svg#it-plus">
-                            </use>
-                        </svg>
+
+                    <a href="candidatura.html" class="bx--btn bx--btn--primary">
                         Nuova Candidatura
-                    </button>
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                            style="will-change: transform; margin-left: 0.5rem;" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true" width="16" height="16" viewBox="0 0 16 16">
+                            <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z" transform="rotate(-90 8 8)"></path>
+                        </svg>
+                    </a>
                 </div>
 
                 <!-- Section: Profile -->
                 <div id="profile-section" class="section-content hidden">
-                    <div class="card-wrapper card-space">
-                        <div class="card card-bg">
-                            <div class="card-body">
-                                <form>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <input type="text" class="form-control" id="profile_nome" disabled>
-                                            <label for="profile_nome" class="active">Nome</label>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <input type="text" class="form-control" id="profile_cognome" disabled>
-                                            <label for="profile_cognome" class="active">Cognome</label>
+                    <div class="bx--tile">
+                        <form>
+                            <div class="bx--row">
+                                <div class="bx--col-lg-6 mb-4">
+                                    <div class="bx--form-item">
+                                        <label for="profile_nome" class="bx--label">Nome</label>
+                                        <div class="bx--text-input__field-wrapper">
+                                            <input id="profile_nome" type="text" class="bx--text-input" disabled>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" id="profile_email" disabled>
-                                        <label for="profile_email" class="active">Email</label>
-                                    </div>
-
-                                    <h6 class="text-uppercase text-muted mt-4 mb-3">Dati Accademici</h6>
-
-                                    <div class="select-wrapper">
-                                        <label for="profile_istituzione">Istituzione</label>
-                                        <select id="profile_istituzione" disabled>
-                                            <option value="">Seleziona Istituzione...</option>
-                                            <option value="1">ISIA</option>
-                                            <option value="2">Accademia di Belle Arti</option>
-                                            <option value="3">Conservatorio</option>
-                                            <option value="4">Accademia Arte Drammatica</option>
-                                            <option value="5">Accademia Nazionale di Danza</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="profile_anno_accademico" disabled>
-                                        <label for="profile_anno_accademico" class="active">Anno Accademico</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="profile_corso_accademico" disabled>
-                                        <label for="profile_corso_accademico" class="active">Corso Accademico</label>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <div class="select-wrapper">
-                                                <label for="profile_corso_tipologia">Tipologia Corso</label>
-                                                <select id="profile_corso_tipologia" disabled>
-                                                    <option value="">Seleziona...</option>
-                                                    <option value="I livello">I livello</option>
-                                                    <option value="II livello">II livello</option>
-                                                    <option value="Ciclo Unico">Ciclo Unico</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <div class="select-wrapper">
-                                                <label for="profile_corso_anno">Anno di Corso</label>
-                                                <select id="profile_corso_anno" disabled>
-                                                    <option value="">Seleziona...</option>
-                                                    <option value="I anno">I anno</option>
-                                                    <option value="II anno">II anno</option>
-                                                    <option value="III anno">III anno</option>
-                                                </select>
-                                            </div>
+                                </div>
+                                <div class="bx--col-lg-6 mb-4">
+                                    <div class="bx--form-item">
+                                        <label for="profile_cognome" class="bx--label">Cognome</label>
+                                        <div class="bx--text-input__field-wrapper">
+                                            <input id="profile_cognome" type="text" class="bx--text-input" disabled>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="bx--form-item mb-4">
+                                <label for="profile_email" class="bx--label">Email</label>
+                                <div class="bx--text-input__field-wrapper">
+                                    <input id="profile_email" type="email" class="bx--text-input" disabled>
+                                </div>
+                            </div>
+
+                            <h4 class="margin-top-lg mb-4">Dati Accademici</h4>
+
+                            <div class="bx--form-item mb-4">
+                                <label for="profile_istituzione" class="bx--label">Istituzione</label>
+                                <div class="bx--select">
+                                    <div class="bx--select-input__wrapper">
+                                        <select id="profile_istituzione" class="bx--select-input" disabled>
+                                            <option class="bx--select-option" value="" disabled selected>Seleziona
+                                                Istituzione...</option>
+                                            <option class="bx--select-option" value="1">ISIA</option>
+                                            <option class="bx--select-option" value="2">Accademia di Belle Arti</option>
+                                            <option class="bx--select-option" value="3">Conservatorio</option>
+                                            <option class="bx--select-option" value="4">Accademia Arte Drammatica
+                                            </option>
+                                            <option class="bx--select-option" value="5">Accademia Nazionale di Danza
+                                            </option>
+                                        </select>
+                                        <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                            style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                            class="bx--select__arrow" width="16" height="16" viewBox="0 0 16 16"
+                                            aria-hidden="true">
+                                            <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bx--form-item mb-4">
+                                <label for="profile_anno_accademico" class="bx--label">Anno Accademico</label>
+                                <div class="bx--text-input__field-wrapper">
+                                    <input id="profile_anno_accademico" type="text" class="bx--text-input" disabled>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
                 <!-- Section: Projects (Placeholder) -->
                 <div id="projects-section" class="section-content hidden">
-                    <div class="alert alert-warning" role="alert">
-                        Sezione Progetti in costruzione.
+                    <div class="bx--inline-notification bx--inline-notification--warning" role="alert">
+                        <div class="bx--inline-notification__details">
+                            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                                xmlns="http://www.w3.org/2000/svg" class="bx--inline-notification__icon" width="20"
+                                height="20" viewBox="0 0 20 20" aria-hidden="true">
+                                <path
+                                    d="M10,1c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S15,1,10,1z M9.2,5h1.5v7H9.2V5z M10,16c-0.6,0-1-0.4-1-1s0.4-1,1-1	s1,0.4,1,1S10.6,16,10,16z">
+                                </path>
+                                <path d="M9.2,5h1.5v7H9.2V5z M10,16c-0.6,0-1-0.4-1-1s0.4-1,1-1s1,0.4,1,1S10.6,16,10,16z"
+                                    data-icon-path="inner-path" opacity="0"></path>
+                            </svg>
+                            <div class="bx--inline-notification__text-wrapper">
+                                <p class="bx--inline-notification__title">In Costruzione</p>
+                                <p class="bx--inline-notification__subtitle">Sezione Progetti in arrivo.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap Italia JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.17.0/dist/js/bootstrap-italia.bundle.min.js"></script>
+    <!-- Script JS -->
+    <!-- Carbon Design System Scripts -->
+    <script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
     <script src="script.js"></script>
 </body>
 

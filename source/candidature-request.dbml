@@ -1,0 +1,274 @@
+// --------------------------------------------------------------------------------
+// SEZIONE DESIGN (ISIA Firenze)
+// --------------------------------------------------------------------------------
+
+Table design_progetto {
+	design_titolo varchar
+	design_immagini_01_path varchar(255) [ note: 'Formato jpg/png/tiﬀ, formato 16:9 o 4:3 o 1:1, lato lungo 2480 pixel, risoluzione 300 dpi con profilo colore RGB' ]
+	design_immagini_02_path varchar(255) [ note: 'Formato jpg/png/tiﬀ, formato 16:9 o 4:3 o 1:1, lato lungo 2480 pixel, risoluzione 300 dpi con profilo colore RGB' ]
+	design_immagini_03_path varchar(255) [ note: 'Formato jpg/png/tiﬀ, formato 16:9 o 4:3 o 1:1, lato lungo 2480 pixel, risoluzione 300 dpi con profilo colore RGB' ]
+	design_immagini_04_path varchar(255) [ note: 'Formato jpg/png/tiﬀ, formato 16:9 o 4:3 o 1:1, lato lungo 2480 pixel, risoluzione 300 dpi con profilo colore RGB' ]
+	
+	design_ambito varchar(255) [ note: (es. Pressione climatica, instabilità politica internazionale, bassa natalità e invecchiamento della popolazione, Intelligenza Artificiale  ) ]
+	design_categoria varchar(255) [ note: 'Design per l\'Abitare (Arredo, complemento, illuminazione domestica, ecc.), Design per l\'Illuminazione (Apparecchi illuminotecnici per uso pubblico/tecnico), Design per la Mobilità (Mezzi di trasporto, sistemi di mobilità individuale o collettiva), Design per il Lavoro (Arredi ufficio, strumenti professionali, macchinari), Design per la Persona (Moda, accessori, occhialeria, medicale, protesi), Food Design (Progetto del cibo, packaging alimentare, strumenti per la preparazione), Design dei Materiali e dei sistemi tecnologici (Nuovi materiali, componenti semilavorati), Design della Comunicazione (Brand identity, wayfinding, editoria, poster), Design dei Servizi (Servizi digitali o fisici, UX/UI, sistemi complessi), Design per il Sociale (Progetti no-profit, per l\'emergenza o l\'inclusione), Allestimento (Mostre, stand fieristici, interior design pubblico), Ricerca teorico, storico, critica (Progetti di ricerca teorica)' ]
+	design_materiali varchar(255) [ note: (es. ABS, acciaio, legno) ]
+	design_dimensioni varchar(100) [ note: 'Altezza x Larghezza x Profondità - Es. 100x500x50 cm' ]
+	design_supporti varchar(255) [ note: (es. Monitor 4K, Computer, Smartphone ) ]
+	design_colore varchar(50) [ note: 'Colore/Bianco e nero' ]
+	design_audio varchar(50) [ note: 'Sonoro/Muto' ]
+	design_durata varchar(50) [ note: 'Minuti e secondi (es. 10/' 33/'/')' ]
+  	design_allegato_b_path varchar [note: "Allegato B firmato dal Direttore"]
+}
+
+// --------------------------------------------------------------------------------
+// SEZIONE ARTI VISIVE (Accademia Catania)
+// --------------------------------------------------------------------------------
+
+Table arti_visive_opera {
+
+	//Arti visive (Arti Figurative, Digitali e Scenografiche)
+
+
+	artivisive_immagini_01_path varchar(255) [ note: 'Formato jpg/png/tiﬀ, formato 16:9 o 4:3 o 1:1, lato lungo 2480 pixel, risoluzione 300 dpi con profilo colore RGB' ]
+	artivisive_immagini_02_path varchar(255) [ note: 'Formato jpg/png/tiﬀ, formato 16:9 o 4:3 o 1:1, lato lungo 2480 pixel, risoluzione 300 dpi con profilo colore RGB' ]
+	artivisive_immagini_03_path varchar(255) [ note: 'Formato jpg/png/tiﬀ, formato 16:9 o 4:3 o 1:1, lato lungo 2480 pixel, risoluzione 300 dpi con profilo colore RGB' ]
+	artivisive_immagini_04_path varchar(255) [ note: 'Formato jpg/png/tiﬀ, formato 16:9 o 4:3 o 1:1, lato lungo 2480 pixel, risoluzione 300 dpi con profilo colore RGB' ]
+	
+	artivisive_tecnica varchar(255) [ note: (es. Olio) ]
+	artivisive_supporti varchar(255) [ note: (es. Tela ) ]
+	artivisive_materiali varchar(255) [ note: (es. Marmo di Carrara e ferro) ]
+	artivisive_dimensioni varchar(100) [ note: 'Altezza x Larghezza x Profondità - Es. 100x500x50 cm' ]
+	artivisive_colore varchar(50) [ note: 'Colore/Bianco e nero' ]
+	artivisive_audio varchar(50) [ note: 'Sonoro/Muto' ]
+	artivisive_durata varchar(50) [ note: 'Minuti e secondi (es. 10/' 33/'/')' ]
+	artivisive_scheda_tecnica_path varchar(255) [ note: 'Per Musica Elettronica, Percussioni, Regia' ]
+	arti_visive_elenco_copyright text [note: "Dettaglio diritti SIAE/Copyright contenuti terzi"]
+
+
+
+  // Specifico per Restauro
+  artivisive_restauro_tesi_pdf varchar [note: "Elaborato di tesi (solo per sottosezione Restauro)"]
+  artivisive_restauro_pannelli_path varchar [note: "File per stampa pannelli 70x100"]
+}
+
+// --------------------------------------------------------------------------------
+// SEZIONE TEATRO (Accademia Silvio d'Amico)
+// --------------------------------------------------------------------------------
+
+// Integra e aggiorna l'esempio utente con le nuove specifiche 2025
+
+
+
+Table teatro_recitazione {
+  // Sezione A - Recitazione
+  teatro_recitazione_titolo varchar
+  teatro_recitazione_tipo varchar [note: "Monologo (max 4 min) o Dialogo (max 5 min)"]
+  teatro_recitazione_testo_titolo varchar [note: "Titolo e autore del testo di provenienza"]
+  teatro_recitazione_cv_path varchar [note: "Breve Curriculum Vitae"]
+  teatro_recitazione_foto1_path varchar [note: "Foto primo piano"]
+  teatro_recitazione_foto2_path varchar [note: "Foto figura intera"]
+  teatro_recitazione_dialogo_spalla_nome varchar [note: "Nome della spalla (se dialogo)"]
+  teatro_recitazione_dialogo_spalla_cognome varchar [note: "Cognome della spalla (se dialogo)"]
+}
+
+Table teatro_regia {
+	// Sezione B - Regia
+	teatro_regia_titolo varchar
+	teatro_regia_cv_path varchar(255) [ note: 'CV in formato PDF' ]
+	teatro_regia_interprete1_nome varchar(255)
+	teatro_regia_interprete1_cognome varchar(255)
+	teatro_regia_interprete2_nome varchar(255)
+	teatro_regia_interprete2_cognome varchar(255)
+	teatro_regia_interprete3_nome varchar(255)
+	teatro_regia_interprete3_cognome varchar(255)
+	teatro_regia_pianoregia_path varchar [note: "Piano di regia max 3 cartelle"]
+	teatro_regia_budget_path varchar [note: "Budget realizzazione scenica"]
+	teatro_regia_videopath varchar [note: "Registrazione della scena in formato digitale"]
+}
+
+
+Table teatro_drammaturgia {
+	// Sezione C - Drammaturgia
+	teatro_drammaturgia_titolo varchar
+	teatro_drammaturgia_cv_path  varchar(255) [ note: 'CV in formato PDF' ]
+	teatro_drammaturgia_sottosezione varchar [note: "Miglior drammaturgia o Testo comico (Premio Anna Marchesini)"]
+	teatro_drammaturgia_sinossi text
+	teatro_drammaturgia_testo_pdf varchar [note: "Testo teatrale inedito in PDF"]
+	teatro_drammaturgia_videoscena_path varchar [note: "Video di una scena estratta (max 5 min)"]
+}
+
+// --------------------------------------------------------------------------------
+// SEZIONE DANZA (Accademia Nazionale di Danza)
+// --------------------------------------------------------------------------------
+// Aggiornato al bando 2024/2025 che include Pas de Deux e nuove specifiche
+
+Table danza_classica {
+  // Variazione 1
+  danza_classica_var1_titolo varchar
+  danza_classica_var1_coreografia varchar
+  danza_classica_var1_musica varchar
+  danza_classica_var1_durata varchar
+  
+  // Variazione 2
+  danza_classica_var2_titolo varchar
+  danza_classica_var2_coreografia varchar
+  danza_classica_var2_musica varchar
+  danza_classica_var2_durata varchar
+  
+  // Pas de Deux (Opzionale/Alternativo)
+  danza_classica_pdd_titolo varchar
+  danza_classica_pdd_coreografia varchar
+  danza_classica_pdd_musica varchar
+  danza_classica_pdd_durata varchar [note: "Max 7 minuti se unico candidato"]
+}
+
+Table danza_contemporanea {
+  // Brano 1
+  danza_contemporanea_brano1_titolo varchar
+  danza_contemporanea_brano1_coreografia varchar
+  danza_contemporanea_brano1_musica varchar
+  danza_contemporanea_brano1_durata varchar [note: "Max 2:30"]
+  danza_contemporanea_brano1_partner_nome varchar [note: "Eventuale partner Nome"]
+  danza_contemporanea_brano1_partner_cognome varchar [note: "Eventuale partner Cognome"]
+  danza_contemporanea_brano1_competizione boolean [note: "Partner in competizione?"]
+
+  // Brano 2
+  danza_contemporanea_brano2_titolo varchar
+  danza_contemporanea_brano2_coreografia varchar
+  danza_contemporanea_brano2_musica varchar
+  danza_contemporanea_brano2_durata varchar [note: "Max 2:30"]
+
+  // Pas de Deux (Opzionale/Alternativo)
+  danza_contemporanea_pdd_titolo varchar
+  danza_contemporanea_pdd_coreografia varchar
+  danza_contemporanea_pdd_musica varchar
+  danza_contemporanea_pdd_durata varchar
+}
+
+Table danza_coreografia {
+  // Coreografia
+  danza_coreografia_titolo varchar
+  danza_coreografia_musica varchar
+  danza_coreografia_durata varchar [note: "Max 5 minuti"]
+  danza_coreografia_num_danzatori int [note: "Max 4 danzatori"]
+  danza_coreografia_oggetti_scena text [note: "Scheda tecnica"]
+  danza_coreografia_sinossi text [note: "Sinossi e note drammaturgiche"]
+  danza_coreografia_video_path varchar [note: "Video formato MP$ codec h264/265"]
+}
+
+
+
+
+// --------------------------------------------------------------------------------
+// SEZIONE INTERPRETAZIONE MUSICALE (Vari Conservatori)
+// --------------------------------------------------------------------------------
+
+Table musica_composizione {
+  // Conservatorio Milano
+  musica_composizione_motto varchar [note: "Motto identificativo (partitura anonima)"]
+  musica_composizione_link_drive varchar [note: "Link a cartella Drive con partitura e parti"]
+  musica_composizione_pianista boolean [note: "Richiesta pianista accompagnatore (SI/NO)"]
+}
+
+Table musica_fisarmonica {
+  // Conservatorio Terni
+  musica_fisarmonica_prog_eliminatoria text [note: "Programma libero max 25 min (incluso clavicembalo/tasto)"]
+  musica_fisarmonica_prog_finale text [note: "Programma 25-35 min (lista obbligatoria + Bach)"]
+}
+
+Table musica_antica {
+  // Conservatorio Vicenza
+  musica_antica_sottosezione varchar [note: "Canto, Strumento solista, Gruppo vocale, Gruppo strumentale"]
+  musica_antica_prog_eliminatoria text [note: "Programma libero 20 min"]
+  musica_antica_prog_finale text [note: "Programma libero 20 min"]
+}
+
+Table musica_organo {
+  // Conservatorio Perugia
+  musica_organo_registrante_richiesto boolean [note: "Richiesta registrante/voltapagine conservatorio?"]
+  musica_organo_prog_eliminatoria text [note: "Programma libero 12-20 min"]
+  musica_organo_prog_finale text [note: "Programma libero 30-40 min"]
+}
+
+Table musica_jazz {
+  // Conservatorio Parma
+  musica_jazz_link_preselezione varchar [note: "Link video max 20 min (originale + standard + post-1970)"]
+  musica_jazz_prog_semifinale text [note: "Programma libero max 30 min"]
+  musica_jazz_prog_finale text [note: "Programma max 40 min (incluso originale)"]
+}
+
+Table musica_da_camera {
+  // Conservatorio Teramo
+  musica_camera_pianista_richiesto boolean [note: "Richiesta pianista accompagnatore?"]
+  musica_camera_link_preselezione varchar [note: "Link video 10-15 min (repertorio cameristico)"]
+  musica_camera_prog_finale text [note: "Programma libero max 30 min"]
+}
+
+Table musica_legni {
+  // Conservatorio L'Aquila (Flauto, Oboe, Clarinetto, Fagotto, Sax)
+  musica_legni_strumento varchar [note: "Flauto, Oboe, Clarinetto, Fagotto o Sassofono"]
+  musica_legni_pianista_richiesto boolean [note: "Richiesta pianista accompagnatore?"]
+  musica_legni_prog_eliminatoria text [note: "Brani d'obbligo specifici per strumento"]
+  musica_legni_prog_finale text [note: "Concerti specifici per strumento"]
+}
+
+Table musica_pianoforte {
+  // Conservatorio Fermo
+  musica_pianoforte_link_eliminatoria varchar [note: "Link video max 10 min (Studio Chopin/Liszt/ecc)"]
+  musica_pianoforte_prog_semifinale text [note: "Programma libero 40 min"]
+  musica_pianoforte_prog_finale varchar [note: "Concerto per pf e orchestra (scelto da lista)"]
+}
+
+Table musica_percussioni {
+  // Conservatorio Palermo
+  musica_percussioni_categoria varchar [note: "Solisti o Ensemble"]
+  musica_percussioni_pianista_richiesto boolean [note: "Richiesta pianista accompagnatore?"]
+  musica_percussioni_supporto_audio boolean [note: "Uso supporto audio-digitale?"]
+  musica_percussioni_prog_eliminatoria text [note: "Programma libero max 20 min"]
+  musica_percussioni_prog_finale text [note: "Programma libero 20-25 min"]
+  musica_percussioni_elenco_strumenti text [note: "Elenco dettagliato strumentazione richiesta"]
+}
+
+Table musica_ottoni {
+  // Conservatorio Ravenna
+  musica_ottoni_strumento varchar [note: "Tromba, Trombone, Corno, Eufonio, Basso Tuba"]
+  musica_ottoni_pianista_richiesto boolean [note: "Richiesta pianista accompagnatore?"]
+  musica_ottoni_link_video varchar [note: "Link YouTube Programma libero max 10 min"]
+  musica_ottoni_prog_semifinale text [note: "Programma libero 15-20 min"]
+  musica_ottoni_prog_finale text [note: "Min 15 max 20 min (incluso brano d'obbligo)"]
+}
+
+Table musica_violino_viola {
+  // Conservatorio Potenza
+  musica_archi_strumento varchar [note: "Violino o Viola"]
+  musica_archi_link_preselezione varchar [note: "Link video (Bach/Paganini o Bach/Suite)"]
+  musica_archi_prog_semifinale text [note: "Violino: 2 composizioni (max 30 min). Viola: Concerto (max 30 min)"]
+  musica_archi_prog_finale text [note: "Violino: Concerto (lista). Viola: Schubert o Brahms"]
+}
+
+Table musica_elettronica {
+  // Conservatorio Sassari
+  musica_elettronica_categoria varchar [note: "A (Acusmatica), B (Mista), C (Audio-video), D (Installazioni)"]
+  musica_elettronica_descrizione text [note: "Durata max 10 min per cat A,B,C"]
+}
+
+Table musica_pop_rock {
+  // Conservatorio Benevento
+  musica_poprock_pianista_richiesto boolean [note: "Richiesta pianista accompagnatore?"]
+  musica_poprock_link_semifinale varchar [note: "Link video cover repertorio pop/rock"]
+  musica_poprock_link_finale varchar [note: "Link video brano originale"]
+}
+
+Table musica_violoncello_contrabbasso {
+  // Conservatorio Trento
+  musica_bassi_strumento varchar [note: "Violoncello o Contrabbasso"]
+  musica_bassi_pianista_richiesto boolean [note: "Richiesta pianista accompagnatore?"]
+  musica_bassi_prog_eliminatoria text [note: "Violoncello: Bach + Studio. Contrabbasso: Mengoli/Fryba/Bottesini"]
+  musica_bassi_prog_finale text [note: "Violoncello: 30 min (inc. XX sec). Contrabbasso: Bottesini + Concerto"]
+}
+
+Table musica_direzione_orchestra {
+  // Conservatorio Cagliari
+  musica_direzione_link_eliminatoria varchar [note: "Link video max 15 min propria direzione"]
+  musica_direzione_repertorio_fasi_succ text [note: "Programma fisso da bando (Beethoven, Mendelssohn, Mozart, ecc)"]
+}

@@ -1,0 +1,13 @@
+Design per l'Abitare (Arredo, complemento, illuminazione domestica, ecc.)
+Design per l'Illuminazione (Apparecchi illuminotecnici per uso pubblico/tecnico)
+Design per la Mobilità (Mezzi di trasporto, sistemi di mobilità individuale o collettiva)
+Design per il Lavoro (Arredi ufficio, strumenti professionali, macchinari)
+Design per la Persona (Moda, accessori, occhialeria, medicale, protesi)
+Food Design (Progetto del cibo, packaging alimentare, strumenti per la preparazione)
+Design dei Materiali e dei sistemi tecnologici (Nuovi materiali, componenti semilavorati)
+Design della Comunicazione (Brand identity, wayfinding, editoria, poster)
+Design dei Servizi (Servizi digitali o fisici, UX/UI, sistemi complessi)
+Design per il Sociale (Progetti no-profit, per l'emergenza o l'inclusione)
+Allestimento (Mostre, stand fieristici, interior design pubblico)
+Ricerca teorico, storico, critica (Progetti di ricerca teorica)
+

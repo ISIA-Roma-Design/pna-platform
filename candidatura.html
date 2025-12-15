@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuova Candidatura - PNA</title>
+    <!-- Custom CSS (Includes Carbon) -->
+    <!-- Carbon Design System CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for IBM Plex Sans (Carbon default) -->
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="bx--grid">
+        <!-- Header -->
+        <div class="bx--row custom-header">
+            <div class="bx--col-lg-8 bx--col-md-6">
+                <div class="brand-title">PNA</div>
+                <div class="brand-subtitle">Premio Nazionale delle Arti</div>
+            </div>
+            <div class="bx--col-lg-4 bx--col-md-2" style="text-align: right;">
+                <span class="bx--label" id="userNameDisplay"
+                    style="margin-right: 1rem; font-weight: 600;">Studente</span>
+                <a href="dashboard.html" class="bx--btn bx--btn--secondary bx--btn--sm">Torna alla Dashboard</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="bx--row">
+            <div class="bx--col-lg-10 bx--offset-lg-1">
+                <div class="bx--tile">
+                    <h2 class="mb-4">Nuova Candidatura</h2>
+
+                    <form id="candidacyForm">
+                        <!-- Sezione 1: Selezione Area -->
+                        <h4 class="mb-4">Seleziona Categoria</h4>
+
+                        <div class="bx--row">
+                            <div class="bx--col-lg-12 mb-4">
+                                <div class="bx--form-item">
+                                    <div class="bx--select">
+                                        <label for="premio" class="bx--label">Premio *</label>
+                                        <div class="bx--select-input__wrapper">
+                                            <select id="premio" name="premio" class="bx--select-input" required>
+                                                <option class="bx--select-option" value="" disabled selected>Seleziona
+                                                    un premio...</option>
+                                                <!-- Populated via JS -->
+                                            </select>
+                                            <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                                style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                                class="bx--select__arrow" width="16" height="16" viewBox="0 0 16 16"
+                                                aria-hidden="true">
+                                                <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bx--row hidden" id="sezione_wrapper">
+                            <div class="bx--col-lg-12 mb-4">
+                                <div class="bx--form-item">
+                                    <div class="bx--select">
+                                        <label for="sezione" class="bx--label">Sezione *</label>
+                                        <div class="bx--select-input__wrapper">
+                                            <select id="sezione" name="sezione" class="bx--select-input">
+                                                <option class="bx--select-option" value="" disabled selected>Seleziona
+                                                    una sezione...</option>
+                                                <!-- Populated via JS -->
+                                            </select>
+                                            <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                                style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                                class="bx--select__arrow" width="16" height="16" viewBox="0 0 16 16"
+                                                aria-hidden="true">
+                                                <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bx--row hidden" id="sottosezione_wrapper">
+                            <div class="bx--col-lg-12 mb-4">
+                                <div class="bx--form-item">
+                                    <div class="bx--select">
+                                        <label for="sottosezione" class="bx--label">Sottosezione (Categoria)</label>
+                                        <div class="bx--select-input__wrapper">
+                                            <select id="sottosezione" name="sottosezione" class="bx--select-input">
+                                                <option class="bx--select-option" value="" disabled selected>Seleziona
+                                                    una sottosezione...</option>
+                                                <!-- Populated via JS -->
+                                            </select>
+                                            <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                                style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                                class="bx--select__arrow" width="16" height="16" viewBox="0 0 16 16"
+                                                aria-hidden="true">
+                                                <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- =========================
+                             DATI ACCADEMICI (Tutors)
+                             ========================= -->
+                        <div class="margin-top-lg">
+                            <h4 class="mb-4">Dati Accademici (Docenti/Tutor)</h4>
+                            <div class="bx--inline-notification bx--inline-notification--info mb-4" role="alert">
+                                <div class="bx--inline-notification__details">
+                                    <p class="bx--inline-notification__title">Docenti Referenti</p>
+                                    <p class="bx--inline-notification__subtitle">Indica uno o più docenti che hanno
+                                        seguito il progetto.</p>
+                                </div>
+                            </div>
+                            <div id="tutor_container">
+                                <!-- Dynamic rows will be added here via JS -->
+                            </div>
+                            <button type="button" id="add_tutor_btn" class="bx--btn bx--btn--ghost bx--btn--sm mt-2">
+                                + Aggiungi Docente
+                            </button>
+                        </div>
+
+                        <!-- =========================
+                             STUDENTI COLLABORATORI (Group)
+                             ========================= -->
+                        <div class="margin-top-lg">
+                            <h4 class="mb-4">Studenti Collaboratori (Gruppo)</h4>
+                            <div class="bx--inline-notification bx--inline-notification--info mb-4" role="alert">
+                                <div class="bx--inline-notification__details">
+                                    <p class="bx--inline-notification__title">Lavoro di Gruppo?</p>
+                                    <p class="bx--inline-notification__subtitle">Se il progetto è stato realizzato in
+                                        gruppo, aggiungi qui i nominativi degli altri studenti.</p>
+                                </div>
+                            </div>
+                            <div id="student_container">
+                                <!-- Dynamic rows will be added here via JS -->
+                            </div>
+                            <button type="button" id="add_student_btn" class="bx--btn bx--btn--ghost bx--btn--sm mt-2">
+                                + Aggiungi Studente
+                            </button>
+                        </div>
+
+                        <hr class="margin-top-lg margin-bottom-lg">
+                        <!-- =========================
+                             DESIGN
+                             ========================= -->
+                        <div id="specific_fields_design" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Dettagli Progetto Design</h4>
+
+                            <!-- Titolo -->
+                            <div class="bx--form-item mb-4">
+                                <label for="design_titolo" class="bx--label">Titolo del Progetto *</label>
+                                <div class="bx--text-input__field-wrapper">
+                                    <input id="design_titolo" name="design_titolo" type="text" class="bx--text-input">
+                                </div>
+                            </div>
+
+                            <!-- Categoria -->
+                            <div class="bx--form-item mb-4">
+                                <div class="bx--select">
+                                    <label for="design_categoria" class="bx--label">Categoria Design *</label>
+                                    <div class="bx--select-input__wrapper">
+                                        <select id="design_categoria" name="design_categoria" class="bx--select-input">
+                                            <option class="bx--select-option" value="" disabled selected>Seleziona
+                                                Categoria...</option>
+                                            <option class="bx--select-option" value="Abitare">Design per l'Abitare
+                                            </option>
+                                            <option class="bx--select-option" value="Illuminazione">Design per
+                                                l'Illuminazione</option>
+                                            <option class="bx--select-option" value="Mobilita">Design per la Mobilità
+                                            </option>
+                                            <option class="bx--select-option" value="Lavoro">Design per il Lavoro
+                                            </option>
+                                            <option class="bx--select-option" value="Persona">Design per la Persona
+                                            </option>
+                                            <option class="bx--select-option" value="Food">Food Design</option>
+                                            <option class="bx--select-option" value="Materiali">Design dei Materiali e
+                                                dei sistemi tecnologici</option>
+                                            <option class="bx--select-option" value="Comunicazione">Design della
+                                                Comunicazione</option>
+                                            <option class="bx--select-option" value="Servizi">Design dei Servizi
+                                            </option>
+                                            <option class="bx--select-option" value="Sociale">Design per il Sociale
+                                            </option>
+                                            <option class="bx--select-option" value="Allestimento">Allestimento</option>
+                                            <option class="bx--select-option" value="Ricerca">Ricerca teorico, storico,
+                                                critica</option>
+                                        </select>
+                                        <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                            style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                            class="bx--select__arrow" width="16" height="16" viewBox="0 0 16 16"
+                                            aria-hidden="true">
+                                            <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ambito -->
+                            <div class="bx--form-item mb-4">
+                                <label for="design_ambito" class="bx--label">Ambito</label>
+                                <div class="bx--text-input__field-wrapper">
+                                    <input id="design_ambito" name="design_ambito" type="text" class="bx--text-input">
+                                </div>
+                            </div>
+
+                            <div class="bx--row">
+                                <div class="bx--col-lg-6 mb-4">
+                                    <div class="bx--form-item">
+                                        <label for="design_materiali" class="bx--label">Materiali</label>
+                                        <div class="bx--text-input__field-wrapper">
+                                            <input id="design_materiali" name="design_materiali" type="text"
+                                                class="bx--text-input">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bx--col-lg-6 mb-4">
+                                    <div class="bx--form-item">
+                                        <label for="design_dimensioni" class="bx--label">Dimensioni</label>
+                                        <div class="bx--text-input__field-wrapper">
+                                            <input id="design_dimensioni" name="design_dimensioni" type="text"
+                                                class="bx--text-input" placeholder="Altezza x Larghezza x Profondità">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bx--row">
+                                <div class="bx--col-lg-6 mb-4">
+                                    <div class="bx--form-item">
+                                        <label for="design_supporti" class="bx--label">Supporti</label>
+                                        <div class="bx--text-input__field-wrapper">
+                                            <input id="design_supporti" name="design_supporti" type="text"
+                                                class="bx--text-input">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bx--col-lg-6 mb-4">
+                                    <div class="bx--form-item">
+                                        <label for="design_durata" class="bx--label">Durata</label>
+                                        <div class="bx--text-input__field-wrapper">
+                                            <input id="design_durata" name="design_durata" type="text"
+                                                class="bx--text-input" placeholder="Es. 10' 33''">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bx--row">
+                                <div class="bx--col-lg-6 mb-4">
+                                    <div class="bx--form-item">
+                                        <div class="bx--select">
+                                            <label for="design_colore" class="bx--label">Colore</label>
+                                            <div class="bx--select-input__wrapper">
+                                                <select id="design_colore" name="design_colore"
+                                                    class="bx--select-input">
+                                                    <option class="bx--select-option" value="Colore" selected>Colore
+                                                    </option>
+                                                    <option class="bx--select-option" value="Bianco e nero">Bianco e
+                                                        nero</option>
+                                                </select>
+                                                <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                                    style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                                    class="bx--select__arrow" width="16" height="16" viewBox="0 0 16 16"
+                                                    aria-hidden="true">
+                                                    <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bx--col-lg-6 mb-4">
+                                    <div class="bx--form-item">
+                                        <div class="bx--select">
+                                            <label for="design_audio" class="bx--label">Audio</label>
+                                            <div class="bx--select-input__wrapper">
+                                                <select id="design_audio" name="design_audio" class="bx--select-input">
+                                                    <option class="bx--select-option" value="Muto" selected>Muto
+                                                    </option>
+                                                    <option class="bx--select-option" value="Sonoro">Sonoro</option>
+                                                </select>
+                                                <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                                    style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                                    class="bx--select__arrow" width="16" height="16" viewBox="0 0 16 16"
+                                                    aria-hidden="true">
+                                                    <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- =========================
+                             ARTI VISIVE
+                             ========================= -->
+                        <div id="specific_fields_arti_visive" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Dettagli Opera Arti Visive</h4>
+
+                            <div class="bx--form-item mb-4">
+                                <label for="artivisive_tecnica" class="bx--label">Tecnica *</label>
+                                <div class="bx--text-input__field-wrapper">
+                                    <input id="artivisive_tecnica" name="artivisive_tecnica" type="text"
+                                        class="bx--text-input" placeholder="Es. Olio">
+                                </div>
+                            </div>
+
+                            <div class="bx--row">
+                                <div class="bx--col-lg-6 mb-4">
+                                    <div class="bx--form-item">
+                                        <label for="artivisive_supporti" class="bx--label">Supporti</label>
+                                        <div class="bx--text-input__field-wrapper">
+                                            <input id="artivisive_supporti" name="artivisive_supporti" type="text"
+                                                class="bx--text-input" placeholder="Es. Tela">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bx--col-lg-6 mb-4">
+                                    <div class="bx--form-item">
+                                        <label for="artivisive_materiali" class="bx--label">Materiali</label>
+                                        <div class="bx--text-input__field-wrapper">
+                                            <input id="artivisive_materiali" name="artivisive_materiali" type="text"
+                                                class="bx--text-input" placeholder="Es. Marmo">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bx--row">
+                                <div class="bx--col-lg-6 mb-4">
+                                    <div class="bx--form-item">
+                                        <label for="artivisive_dimensioni" class="bx--label">Dimensioni</label>
+                                        <div class="bx--text-input__field-wrapper">
+                                            <input id="artivisive_dimensioni" name="artivisive_dimensioni" type="text"
+                                                class="bx--text-input" placeholder="HxLxP">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bx--col-lg-6 mb-4">
+                                    <div class="bx--form-item">
+                                        <label for="artivisive_durata" class="bx--label">Durata</label>
+                                        <div class="bx--text-input__field-wrapper">
+                                            <input id="artivisive_durata" name="artivisive_durata" type="text"
+                                                class="bx--text-input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fields for Restauro, unique to subsection, handled by JS normally but we can put here -->
+                        </div>
+
+                        <!-- =========================
+                             TEATRO - RECITAZIONE
+                             ========================= -->
+                        <div id="specific_fields_teatro_recitazione" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Teatro - Recitazione</h4>
+                            <div class="bx--form-item mb-4">
+                                <label for="teatro_recitazione_titolo" class="bx--label">Titolo *</label>
+                                <div class="bx--text-input__field-wrapper">
+                                    <input id="teatro_recitazione_titolo" name="teatro_recitazione_titolo" type="text"
+                                        class="bx--text-input">
+                                </div>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <div class="bx--select">
+                                    <label for="teatro_recitazione_tipo" class="bx--label">Tipo *</label>
+                                    <div class="bx--select-input__wrapper">
+                                        <select id="teatro_recitazione_tipo" name="teatro_recitazione_tipo"
+                                            class="bx--select-input">
+                                            <option value="Monologo">Monologo (max 4 min)</option>
+                                            <option value="Dialogo">Dialogo (max 5 min)</option>
+                                        </select>
+                                        <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                            style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                            class="bx--select__arrow" width="16" height="16" viewBox="0 0 16 16"
+                                            aria-hidden="true">
+                                            <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label for="teatro_recitazione_testo_titolo" class="bx--label">Titolo e autore del testo
+                                    di provenienza</label>
+                                <div class="bx--text-input__field-wrapper">
+                                    <input id="teatro_recitazione_testo_titolo" name="teatro_recitazione_testo_titolo"
+                                        type="text" class="bx--text-input">
+                                </div>
+                            </div>
+                            <div class="bx--row">
+                                <div class="bx--col-lg-6 mb-4">
+                                    <div class="bx--form-item">
+                                        <label for="teatro_recitazione_dialogo_spalla_nome" class="bx--label">Nome
+                                            Spalla (se dialogo)</label>
+                                        <div class="bx--text-input__field-wrapper">
+                                            <input id="teatro_recitazione_dialogo_spalla_nome"
+                                                name="teatro_recitazione_dialogo_spalla_nome" type="text"
+                                                class="bx--text-input">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bx--col-lg-6 mb-4">
+                                    <div class="bx--form-item">
+                                        <label for="teatro_recitazione_dialogo_spalla_cognome" class="bx--label">Cognome
+                                            Spalla</label>
+                                        <div class="bx--text-input__field-wrapper">
+                                            <input id="teatro_recitazione_dialogo_spalla_cognome"
+                                                name="teatro_recitazione_dialogo_spalla_cognome" type="text"
+                                                class="bx--text-input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- =========================
+                             TEATRO - REGIA
+                             ========================= -->
+                        <div id="specific_fields_teatro_regia" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Teatro - Regia</h4>
+                            <div class="bx--form-item mb-4">
+                                <label for="teatro_regia_titolo" class="bx--label">Titolo *</label>
+                                <div class="bx--text-input__field-wrapper">
+                                    <input id="teatro_regia_titolo" name="teatro_regia_titolo" type="text"
+                                        class="bx--text-input">
+                                </div>
+                            </div>
+                            <div class="bx--label mb-2">Interpreti (Nome Cognome)</div>
+                            <div class="bx--row">
+                                <div class="bx--col-lg-4 mb-3"><input name="teatro_regia_interprete1_nome"
+                                        placeholder="Int. 1 Nome" class="bx--text-input"></div>
+                                <div class="bx--col-lg-4 mb-3"><input name="teatro_regia_interprete1_cognome"
+                                        placeholder="Int. 1 Cognome" class="bx--text-input"></div>
+                            </div>
+                            <div class="bx--row">
+                                <div class="bx--col-lg-4 mb-3"><input name="teatro_regia_interprete2_nome"
+                                        placeholder="Int. 2 Nome" class="bx--text-input"></div>
+                                <div class="bx--col-lg-4 mb-3"><input name="teatro_regia_interprete2_cognome"
+                                        placeholder="Int. 2 Cognome" class="bx--text-input"></div>
+                            </div>
+                            <div class="bx--row">
+                                <div class="bx--col-lg-4 mb-3"><input name="teatro_regia_interprete3_nome"
+                                        placeholder="Int. 3 Nome" class="bx--text-input"></div>
+                                <div class="bx--col-lg-4 mb-3"><input name="teatro_regia_interprete3_cognome"
+                                        placeholder="Int. 3 Cognome" class="bx--text-input"></div>
+                            </div>
+                        </div>
+
+                        <!-- =========================
+                             TEATRO - DRAMMATURGIA
+                             ========================= -->
+                        <div id="specific_fields_teatro_drammaturgia" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Teatro - Drammaturgia</h4>
+                            <div class="bx--form-item mb-4">
+                                <label for="teatro_drammaturgia_titolo" class="bx--label">Titolo *</label>
+                                <div class="bx--text-input__field-wrapper">
+                                    <input id="teatro_drammaturgia_titolo" name="teatro_drammaturgia_titolo" type="text"
+                                        class="bx--text-input">
+                                </div>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <div class="bx--select">
+                                    <label for="teatro_drammaturgia_sottosezione" class="bx--label">Categoria
+                                        Premio</label>
+                                    <div class="bx--select-input__wrapper">
+                                        <select id="teatro_drammaturgia_sottosezione"
+                                            name="teatro_drammaturgia_sottosezione" class="bx--select-input">
+                                            <option value="Miglior drammaturgia">Miglior drammaturgia</option>
+                                            <option value="Testo comico">Testo comico (Premio Anna Marchesini)</option>
+                                        </select>
+                                        <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                            style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                            class="bx--select__arrow" width="16" height="16" viewBox="0 0 16 16"
+                                            aria-hidden="true">
+                                            <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label for="teatro_drammaturgia_sinossi" class="bx--label">Sinossi</label>
+                                <div class="bx--text-area__wrapper">
+                                    <textarea id="teatro_drammaturgia_sinossi" name="teatro_drammaturgia_sinossi"
+                                        class="bx--text-area" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- =========================
+                             DANZA (Classica, Contemporanea, Coreografia)
+                             ========================= -->
+                        <!-- CLASSICA -->
+                        <div id="specific_fields_danza_classica" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Danza Classica</h4>
+                            <!-- Variazione 1 -->
+                            <h5 class="mb-2">Variazione 1</h5>
+                            <div class="bx--row mb-2">
+                                <div class="bx--col-lg-4"><input name="danza_classica_var1_titolo" placeholder="Titolo"
+                                        class="bx--text-input"></div>
+                                <div class="bx--col-lg-4"><input name="danza_classica_var1_coreografia"
+                                        placeholder="Coreografia" class="bx--text-input"></div>
+                                <div class="bx--col-lg-4"><input name="danza_classica_var1_musica" placeholder="Musica"
+                                        class="bx--text-input"></div>
+                                <div class="bx--col-lg-2"><input name="danza_classica_var1_durata" placeholder="Durata"
+                                        class="bx--text-input"></div>
+                            </div>
+                            <!-- Variazione 2 -->
+                            <h5 class="mb-2 mt-4">Variazione 2</h5>
+                            <div class="bx--row mb-2">
+                                <div class="bx--col-lg-4"><input name="danza_classica_var2_titolo" placeholder="Titolo"
+                                        class="bx--text-input"></div>
+                                <div class="bx--col-lg-4"><input name="danza_classica_var2_coreografia"
+                                        placeholder="Coreografia" class="bx--text-input"></div>
+                                <div class="bx--col-lg-4"><input name="danza_classica_var2_musica" placeholder="Musica"
+                                        class="bx--text-input"></div>
+                                <div class="bx--col-lg-2"><input name="danza_classica_var2_durata" placeholder="Durata"
+                                        class="bx--text-input"></div>
+                            </div>
+                            <!-- Pas de deux -->
+                            <h5 class="mb-2 mt-4">Pas de Deux (se previsto)</h5>
+                            <div class="bx--row mb-2">
+                                <div class="bx--col-lg-4"><input name="danza_classica_pdd_titolo" placeholder="Titolo"
+                                        class="bx--text-input"></div>
+                                <div class="bx--col-lg-4"><input name="danza_classica_pdd_coreografia"
+                                        placeholder="Coreografia" class="bx--text-input"></div>
+                                <div class="bx--col-lg-4"><input name="danza_classica_pdd_musica" placeholder="Musica"
+                                        class="bx--text-input"></div>
+                                <div class="bx--col-lg-2"><input name="danza_classica_pdd_durata" placeholder="Durata"
+                                        class="bx--text-input"></div>
+                            </div>
+                        </div>
+
+                        <!-- CONTEMPORANEA -->
+                        <div id="specific_fields_danza_contemporanea" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Danza Contemporanea</h4>
+                            <!-- Brano 1 -->
+                            <h5 class="mb-2">Brano 1 (Max 2:30)</h5>
+                            <div class="bx--row mb-2">
+                                <div class="bx--col-lg-4"><input name="danza_contemporanea_brano1_titolo"
+                                        placeholder="Titolo" class="bx--text-input"></div>
+                                <div class="bx--col-lg-4"><input name="danza_contemporanea_brano1_coreografia"
+                                        placeholder="Coreografia" class="bx--text-input"></div>
+                                <div class="bx--col-lg-4"><input name="danza_contemporanea_brano1_musica"
+                                        placeholder="Musica" class="bx--text-input"></div>
+                                <div class="bx--col-lg-2"><input name="danza_contemporanea_brano1_durata"
+                                        placeholder="Durata" class="bx--text-input"></div>
+                            </div>
+                            <!-- Partner -->
+                            <div class="bx--row mb-2">
+                                <div class="bx--col-lg-4"><input name="danza_contemporanea_brano1_partner_nome"
+                                        placeholder="Partner Nome" class="bx--text-input"></div>
+                                <div class="bx--col-lg-4"><input name="danza_contemporanea_brano1_partner_cognome"
+                                        placeholder="Partner Cognome" class="bx--text-input"></div>
+                                <div class="bx--col-lg-4">
+                                    <div class="bx--checkbox-wrapper">
+                                        <input id="danza_contemporanea_brano1_competizione"
+                                            name="danza_contemporanea_brano1_competizione" type="checkbox"
+                                            class="bx--checkbox">
+                                        <label for="danza_contemporanea_brano1_competizione"
+                                            class="bx--checkbox-label">Partner in gara?</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Brano 2 -->
+                            <h5 class="mb-2 mt-4">Brano 2 (Facoltativo, Max 2:30)</h5>
+                            <div class="bx--row mb-2">
+                                <div class="bx--col-lg-4"><input name="danza_contemporanea_brano2_titolo"
+                                        placeholder="Titolo" class="bx--text-input"></div>
+                                <div class="bx--col-lg-4"><input name="danza_contemporanea_brano2_coreografia"
+                                        placeholder="Coreografia" class="bx--text-input"></div>
+                                <div class="bx--col-lg-4"><input name="danza_contemporanea_brano2_musica"
+                                        placeholder="Musica" class="bx--text-input"></div>
+                                <div class="bx--col-lg-2"><input name="danza_contemporanea_brano2_durata"
+                                        placeholder="Durata" class="bx--text-input"></div>
+                            </div>
+                        </div>
+
+                        <!-- COREOGRAFIA -->
+                        <div id="specific_fields_danza_coreografia" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Danza - Coreografia</h4>
+                            <div class="bx--row mb-4">
+                                <div class="bx--col-lg-12 mb-3"><input name="danza_coreografia_titolo"
+                                        placeholder="Titolo" class="bx--text-input"></div>
+                                <div class="bx--col-lg-12 mb-3"><input name="danza_coreografia_musica"
+                                        placeholder="Musica" class="bx--text-input"></div>
+                                <div class="bx--col-lg-6 mb-3"><input name="danza_coreografia_durata"
+                                        placeholder="Durata (Max 5 min)" class="bx--text-input"></div>
+                                <div class="bx--col-lg-6 mb-3"><input name="danza_coreografia_num_danzatori"
+                                        placeholder="Numero Danzatori (Max 4)" type="number" class="bx--text-input">
+                                </div>
+                            </div>
+                            <div class="bx--row">
+                                <div class="bx--col-lg-12 mb-4">
+                                    <label class="bx--label">Sinossi</label>
+                                    <textarea name="danza_coreografia_sinossi" class="bx--text-area"
+                                        rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="bx--row">
+                                <div class="bx--col-lg-12 mb-4">
+                                    <label class="bx--label">Scheda Tecnica / Oggetti di Scena</label>
+                                    <textarea name="danza_coreografia_oggetti_scena" class="bx--text-area"
+                                        rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- =========================
+                             MUSICA (Various)
+                             ========================= -->
+
+                        <!-- MUSICA - COMPOSIZIONE -->
+                        <div id="specific_fields_musica_composizione" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Musica - Composizione</h4>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Motto Identificativo (Partitura Anonima)</label>
+                                <input name="musica_composizione_motto" class="bx--text-input">
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Link Cartella Drive (Partitura e Parti)</label>
+                                <input name="musica_composizione_link_drive" class="bx--text-input">
+                            </div>
+                            <div class="bx--checkbox-wrapper mb-4">
+                                <input id="musica_composizione_pianista" name="musica_composizione_pianista"
+                                    type="checkbox" class="bx--checkbox">
+                                <label for="musica_composizione_pianista" class="bx--checkbox-label">Richiesta Pianista
+                                    Accompagnatore?</label>
+                            </div>
+                        </div>
+
+                        <!-- MUSICA - FISARMONICA -->
+                        <div id="specific_fields_musica_fisarmonica" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Musica - Fisarmonica</h4>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Eliminatoria (Max 25 min)</label>
+                                <textarea name="musica_fisarmonica_prog_eliminatoria" class="bx--text-area"
+                                    rows="4"></textarea>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Finale (25-30 min)</label>
+                                <textarea name="musica_fisarmonica_prog_finale" class="bx--text-area"
+                                    rows="4"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- MUSICA - ANTICA -->
+                        <div id="specific_fields_musica_antica" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Musica Antica</h4>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Tipo Sottosezione</label>
+                                <select name="musica_antica_sottosezione" class="bx--select-input">
+                                    <option value="" selected disabled>Seleziona...</option>
+                                    <option value="Canto">Canto</option>
+                                    <option value="Strumento solista">Strumento solista</option>
+                                    <option value="Gruppo vocale">Gruppo vocale</option>
+                                    <option value="Gruppo strumentale">Gruppo strumentale</option>
+                                </select>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Eliminatoria (20 min)</label>
+                                <textarea name="musica_antica_prog_eliminatoria" class="bx--text-area"
+                                    rows="3"></textarea>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Finale (20 min)</label>
+                                <textarea name="musica_antica_prog_finale" class="bx--text-area" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- MUSICA - ORGANO -->
+                        <div id="specific_fields_musica_organo" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Musica - Organo</h4>
+                            <div class="bx--checkbox-wrapper mb-4">
+                                <input id="musica_organo_registrante_richiesto"
+                                    name="musica_organo_registrante_richiesto" type="checkbox" class="bx--checkbox">
+                                <label for="musica_organo_registrante_richiesto" class="bx--checkbox-label">Richiesta
+                                    registrante/voltapagine?</label>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Eliminatoria (12-20 min)</label>
+                                <textarea name="musica_organo_prog_eliminatoria" class="bx--text-area"
+                                    rows="3"></textarea>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Finale (30-40 min)</label>
+                                <textarea name="musica_organo_prog_finale" class="bx--text-area" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- MUSICA - JAZZ -->
+                        <div id="specific_fields_musica_jazz" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Musica Jazz</h4>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Link Video Preselezione (Max 20 min)</label>
+                                <input name="musica_jazz_link_preselezione" class="bx--text-input"
+                                    placeholder="YouTube URL">
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Semifinale (Max 30 min)</label>
+                                <textarea name="musica_jazz_prog_semifinale" class="bx--text-area" rows="3"></textarea>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Finale (Max 40 min)</label>
+                                <textarea name="musica_jazz_prog_finale" class="bx--text-area" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- MUSICA - CAMERA -->
+                        <div id="specific_fields_musica_camera" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Musica da Camera</h4>
+                            <div class="bx--checkbox-wrapper mb-4">
+                                <input id="musica_camera_pianista_richiesto" name="musica_camera_pianista_richiesto"
+                                    type="checkbox" class="bx--checkbox">
+                                <label for="musica_camera_pianista_richiesto" class="bx--checkbox-label">Richiesta
+                                    pianista?</label>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Link Video Preselezione (10-15 min)</label>
+                                <input name="musica_camera_link_preselezione" class="bx--text-input" placeholder="URL">
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Finale (Max 30 min)</label>
+                                <textarea name="musica_camera_prog_finale" class="bx--text-area" rows="4"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- MUSICA - LEGNI -->
+                        <div id="specific_fields_musica_legni" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Musica - Strumenti a Fiato (Legni)</h4>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Strumento</label>
+                                <select name="musica_legni_strumento" class="bx--select-input">
+                                    <option value="" disabled selected>Seleziona...</option>
+                                    <option value="Flauto">Flauto</option>
+                                    <option value="Oboe">Oboe</option>
+                                    <option value="Clarinetto">Clarinetto</option>
+                                    <option value="Fagotto">Fagotto</option>
+                                    <option value="Sassofono">Sassofono</option>
+                                </select>
+                            </div>
+                            <div class="bx--checkbox-wrapper mb-4">
+                                <input id="musica_legni_pianista_richiesto" name="musica_legni_pianista_richiesto"
+                                    type="checkbox" class="bx--checkbox">
+                                <label for="musica_legni_pianista_richiesto" class="bx--checkbox-label">Richiesta
+                                    pianista?</label>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Eliminatoria</label>
+                                <textarea name="musica_legni_prog_eliminatoria" class="bx--text-area"
+                                    rows="3"></textarea>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Finale</label>
+                                <textarea name="musica_legni_prog_finale" class="bx--text-area" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- MUSICA - PIANOFORTE -->
+                        <div id="specific_fields_musica_pianoforte" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Musica - Pianoforte</h4>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Link Video Eliminatoria (Max 10 min)</label>
+                                <input name="musica_pianoforte_link_eliminatoria" class="bx--text-input"
+                                    placeholder="YouTube URL">
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Semifinale (40 min)</label>
+                                <textarea name="musica_pianoforte_prog_semifinale" class="bx--text-area"
+                                    rows="3"></textarea>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Concerto Finale</label>
+                                <input name="musica_pianoforte_prog_finale" class="bx--text-input">
+                            </div>
+                        </div>
+
+                        <!-- MUSICA - PERCUSSIONI -->
+                        <div id="specific_fields_musica_percussioni" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Musica - Percussioni</h4>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Categoria</label>
+                                <select name="musica_percussioni_categoria" class="bx--select-input">
+                                    <option value="Solisti">Solisti</option>
+                                    <option value="Ensemble">Ensemble</option>
+                                </select>
+                            </div>
+                            <div class="bx--row mb-4">
+                                <div class="bx--col-lg-6">
+                                    <div class="bx--checkbox-wrapper">
+                                        <input id="musica_percussioni_pianista_richiesto"
+                                            name="musica_percussioni_pianista_richiesto" type="checkbox"
+                                            class="bx--checkbox">
+                                        <label for="musica_percussioni_pianista_richiesto"
+                                            class="bx--checkbox-label">Richiesta pianista?</label>
+                                    </div>
+                                </div>
+                                <div class="bx--col-lg-6">
+                                    <div class="bx--checkbox-wrapper">
+                                        <input id="musica_percussioni_supporto_audio"
+                                            name="musica_percussioni_supporto_audio" type="checkbox"
+                                            class="bx--checkbox">
+                                        <label for="musica_percussioni_supporto_audio"
+                                            class="bx--checkbox-label">Supporto Audio?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Eliminatoria (Max 20 min)</label>
+                                <textarea name="musica_percussioni_prog_eliminatoria" class="bx--text-area"
+                                    rows="3"></textarea>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Finale (20-25 min)</label>
+                                <textarea name="musica_percussioni_prog_finale" class="bx--text-area"
+                                    rows="3"></textarea>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Elenco Strumenti Richiesti</label>
+                                <textarea name="musica_percussioni_elenco_strumenti" class="bx--text-area"
+                                    rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- MUSICA - OTTONI -->
+                        <div id="specific_fields_musica_ottoni" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Musica - Ottoni</h4>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Strumento</label>
+                                <select name="musica_ottoni_strumento" class="bx--select-input">
+                                    <option value="" disabled selected>Seleziona...</option>
+                                    <option value="Tromba">Tromba</option>
+                                    <option value="Trombone">Trombone</option>
+                                    <option value="Corno">Corno</option>
+                                    <option value="Eufonio">Eufonio</option>
+                                    <option value="Basso Tuba">Basso Tuba</option>
+                                </select>
+                            </div>
+                            <div class="bx--checkbox-wrapper mb-4">
+                                <input id="musica_ottoni_pianista_richiesto" name="musica_ottoni_pianista_richiesto"
+                                    type="checkbox" class="bx--checkbox">
+                                <label for="musica_ottoni_pianista_richiesto" class="bx--checkbox-label">Richiesta
+                                    pianista?</label>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Link Video (Max 10 min)</label>
+                                <input name="musica_ottoni_link_video" class="bx--text-input" placeholder="YouTube URL">
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Semifinale (15-20 min)</label>
+                                <textarea name="musica_ottoni_prog_semifinale" class="bx--text-area"
+                                    rows="3"></textarea>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Finale (15-20 min)</label>
+                                <textarea name="musica_ottoni_prog_finale" class="bx--text-area" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- MUSICA - ARCHI (Violino/Viola) -->
+                        <div id="specific_fields_musica_archi" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Musica - Strumenti ad Arco</h4>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Strumento</label>
+                                <select name="musica_archi_strumento" class="bx--select-input">
+                                    <option value="Violino">Violino</option>
+                                    <option value="Viola">Viola</option>
+                                </select>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Link Video Preselezione</label>
+                                <input name="musica_archi_link_preselezione" class="bx--text-input"
+                                    placeholder="YouTube URL">
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Semifinale</label>
+                                <textarea name="musica_archi_prog_semifinale" class="bx--text-area" rows="3"></textarea>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Finale</label>
+                                <textarea name="musica_archi_prog_finale" class="bx--text-area" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- MUSICA - ELETTRONICA -->
+                        <div id="specific_fields_musica_elettronica" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Musica Elettronica</h4>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Categoria</label>
+                                <select name="musica_elettronica_categoria" class="bx--select-input">
+                                    <option value="A">Cat. A (Acusmatica)</option>
+                                    <option value="B">Cat. B (Mista)</option>
+                                    <option value="C">Cat. C (Audio-video)</option>
+                                    <option value="D">Cat. D (Installazioni)</option>
+                                </select>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Descrizione / Link</label>
+                                <textarea name="musica_elettronica_descrizione" class="bx--text-area"
+                                    rows="4"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- MUSICA - POP ROCK -->
+                        <div id="specific_fields_musica_pop_rock" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Musica Pop/Rock</h4>
+                            <div class="bx--checkbox-wrapper mb-4">
+                                <input id="musica_poprock_pianista_richiesto" name="musica_poprock_pianista_richiesto"
+                                    type="checkbox" class="bx--checkbox">
+                                <label for="musica_poprock_pianista_richiesto" class="bx--checkbox-label">Richiesta
+                                    pianista?</label>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Link Semifinale (Cover)</label>
+                                <input name="musica_poprock_link_semifinale" class="bx--text-input">
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Link Finale (Inedito)</label>
+                                <input name="musica_poprock_link_finale" class="bx--text-input">
+                            </div>
+                        </div>
+
+                        <!-- MUSICA - BASSI (Violoncello/Contrabbasso) -->
+                        <div id="specific_fields_musica_bassi" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Violoncello e Contrabbasso</h4>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Strumento</label>
+                                <select name="musica_bassi_strumento" class="bx--select-input">
+                                    <option value="Violoncello">Violoncello</option>
+                                    <option value="Contrabbasso">Contrabbasso</option>
+                                </select>
+                            </div>
+                            <div class="bx--checkbox-wrapper mb-4">
+                                <input id="musica_bassi_pianista_richiesto" name="musica_bassi_pianista_richiesto"
+                                    type="checkbox" class="bx--checkbox">
+                                <label for="musica_bassi_pianista_richiesto" class="bx--checkbox-label">Richiesta
+                                    pianista?</label>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Eliminatoria</label>
+                                <textarea name="musica_bassi_prog_eliminatoria" class="bx--text-area"
+                                    rows="3"></textarea>
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Programma Finale</label>
+                                <textarea name="musica_bassi_prog_finale" class="bx--text-area" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- MUSICA - DIREZIONE -->
+                        <div id="specific_fields_musica_direzione" class="hidden margin-top-lg specific-section">
+                            <h4 class="mb-4">Direzione d'Orchestra</h4>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Link Video Eliminatoria (Max 15 min)</label>
+                                <input name="musica_direzione_link_eliminatoria" class="bx--text-input"
+                                    placeholder="URL">
+                            </div>
+                            <div class="bx--form-item mb-4">
+                                <label class="bx--label">Repertorio Fasi Successive</label>
+                                <textarea name="musica_direzione_repertorio_fasi_succ" class="bx--text-area" rows="3"
+                                    placeholder="Programma fisso da bando..."></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="bx--form-item margin-top-lg">
+                            <button type="submit" class="bx--btn bx--btn--primary"
+                                style="width: 100%; justify-content: center;">Invia Candidatura</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JS -->
+    <!-- Carbon Design System Scripts -->
+    <script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

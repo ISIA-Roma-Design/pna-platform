@@ -5,149 +5,261 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrazione Studente - PNA</title>
-    <!-- Bootstrap Italia CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.17.0/dist/css/bootstrap-italia.min.css"
-        rel="stylesheet">
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&family=Lora:ital,wght@0,400;1,400&display=swap"
-        rel="stylesheet">
+    <!-- Custom CSS (Includes Carbon) -->
+    <!-- Carbon Design System CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for IBM Plex Sans (Carbon default) -->
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Header -->
-    <div class="it-header-wrapper">
-        <div class="it-header-center-wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="it-header-center-content-wrapper">
-                            <div class="it-brand-wrapper">
-                                <a href="#">
-                                    <div class="it-brand-text">
-                                        <div class="it-brand-title">PNA</div>
-                                        <div class="it-brand-tagline">Premio Nazionale delle Arti</div>
+
+    <div class="bx--grid">
+        <!-- Header -->
+        <div class="bx--row custom-header">
+            <div class="bx--col-lg-12">
+                <div class="brand-title">PNA</div>
+                <div class="brand-subtitle">Premio Nazionale delle Arti</div>
+            </div>
+        </div>
+
+        <!-- Main Content (Centered) -->
+        <div class="bx--row centered-container">
+            <div class="bx--col-lg-10 bx--col-md-8 centered-form-card">
+                <div class="bx--tile">
+                    <h2 class="mb-4">Registrazione Studente</h2>
+                    <p class="bx--label-description mb-4">Compila il form per accedere alla piattaforma.</p>
+
+                    <form id="registrationForm">
+                        <!-- Nome & Cognome -->
+                        <div class="bx--row">
+                            <div class="bx--col-lg-8 bx--col-md-4 mb-4">
+                                <div class="bx--form-item">
+                                    <label for="nome" class="bx--label">Nome *</label>
+                                    <div class="bx--text-input__field-wrapper">
+                                        <input id="nome" name="nome" type="text" class="bx--text-input" required>
                                     </div>
-                                </a>
+                                </div>
+                            </div>
+                            <div class="bx--col-lg-8 bx--col-md-4 mb-4">
+                                <div class="bx--form-item">
+                                    <label for="cognome" class="bx--label">Cognome *</label>
+                                    <div class="bx--text-input__field-wrapper">
+                                        <input id="cognome" name="cognome" type="text" class="bx--text-input" required>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Main Content -->
-    <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6">
-                <div class="card-wrapper card-space">
-                    <div class="card card-bg">
-                        <div class="card-body">
-                            <h2 class="card-title h3 mb-4 text-center">Registrazione Studente</h2>
-
-                            <form id="registrationForm" class="needs-validation" novalidate>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <input type="text" class="form-control" id="nome" name="nome" required>
-                                        <label for="nome">Nome *</label>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <input type="text" class="form-control" id="cognome" name="cognome" required>
-                                        <label for="cognome">Cognome *</label>
+                        <!-- Email & Telefono -->
+                        <div class="bx--row">
+                            <div class="bx--col-lg-8 bx--col-md-4 mb-4">
+                                <div class="bx--form-item">
+                                    <label for="email" class="bx--label">Email *</label>
+                                    <div class="bx--text-input__field-wrapper">
+                                        <input id="email" name="email" type="email" class="bx--text-input" required>
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                    <label for="email">Email *</label>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <input type="password" class="form-control" id="password" name="password"
-                                            required>
-                                        <label for="password">Password *</label>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <input type="password" class="form-control" id="confirm_password"
-                                            name="confirm_password" required>
-                                        <label for="confirm_password">Conferma Password *</label>
+                            </div>
+                            <div class="bx--col-lg-8 bx--col-md-4 mb-4">
+                                <div class="bx--form-item">
+                                    <label for="telefono" class="bx--label">Telefono *</label>
+                                    <div class="bx--text-input__field-wrapper">
+                                        <input id="telefono" name="telefono" type="tel" class="bx--text-input" required>
                                     </div>
                                 </div>
-
-                                <h6 class="text-uppercase text-muted mt-4 mb-3">Dati Accademici</h6>
-
-                                <div class="select-wrapper">
-                                    <label for="istituzione">Istituzione *</label>
-                                    <select id="istituzione" name="istituzione" required>
-                                        <option value="">Seleziona Istituzione...</option>
-                                        <option value="1">ISIA</option>
-                                        <option value="2">Accademia di Belle Arti</option>
-                                        <option value="3">Conservatorio</option>
-                                        <option value="4">Accademia Arte Drammatica</option>
-                                        <option value="5">Accademia Nazionale di Danza</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="anno_accademico" name="anno_accademico"
-                                        required>
-                                    <label for="anno_accademico">Anno Accademico (Es. 2024/2025) *</label>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="corso_accademico"
-                                        name="corso_accademico" required>
-                                    <label for="corso_accademico">Corso Accademico *</label>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <div class="select-wrapper">
-                                            <label for="corso_tipologia">Tipologia Corso *</label>
-                                            <select id="corso_tipologia" name="corso_tipologia" required>
-                                                <option value="">Seleziona...</option>
-                                                <option value="I livello">I livello</option>
-                                                <option value="II livello">II livello</option>
-                                                <option value="Ciclo Unico">Ciclo Unico</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <div class="select-wrapper">
-                                            <label for="corso_anno">Anno di Corso *</label>
-                                            <select id="corso_anno" name="corso_anno" required>
-                                                <option value="">Seleziona...</option>
-                                                <option value="I anno">I anno</option>
-                                                <option value="II anno">II anno</option>
-                                                <option value="III anno">III anno</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-4">
-                                    <button type="submit" class="btn btn-primary btn-block">Registrati</button>
-                                </div>
-
-                                <div class="text-center mt-3">
-                                    <p class="small">Hai già un account? <a href="#">Accedi</a></p>
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+
+                        <!-- Password -->
+                        <div class="bx--row">
+                            <div class="bx--col-lg-8 bx--col-md-4 mb-4">
+                                <div class="bx--form-item">
+                                    <label for="password" class="bx--label">Password *</label>
+                                    <div class="bx--text-input__field-wrapper">
+                                        <input id="password" name="password" type="password" class="bx--text-input"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bx--col-lg-8 bx--col-md-4 mb-4">
+                                <div class="bx--form-item">
+                                    <label for="confirm_password" class="bx--label">Conferma Password *</label>
+                                    <div class="bx--text-input__field-wrapper">
+                                        <input id="confirm_password" name="confirm_password" type="password"
+                                            class="bx--text-input" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Matricola & Codice Fiscale -->
+                        <div class="bx--row">
+                            <div class="bx--col-lg-8 bx--col-md-4 mb-4">
+                                <div class="bx--form-item">
+                                    <label for="matricola" class="bx--label">Matricola *</label>
+                                    <div class="bx--text-input__field-wrapper">
+                                        <input id="matricola" name="matricola" type="text" class="bx--text-input"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bx--col-lg-8 bx--col-md-4 mb-4">
+                                <div class="bx--form-item">
+                                    <label for="codice_fiscale" class="bx--label">Codice Fiscale *</label>
+                                    <div class="bx--text-input__field-wrapper">
+                                        <input id="codice_fiscale" name="codice_fiscale" type="text"
+                                            class="bx--text-input" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Anagrafica -->
+                        <div class="bx--row">
+                            <div class="bx--col-lg-8 bx--col-md-4 mb-4">
+                                <div class="bx--form-item">
+                                    <label for="data_nascita" class="bx--label">Data di Nascita *</label>
+                                    <div class="bx--text-input__field-wrapper">
+                                        <input id="data_nascita" name="data_nascita" type="date" class="bx--text-input"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bx--col-lg-8 bx--col-md-4 mb-4">
+                                <div class="bx--form-item">
+                                    <label for="luogo_nascita" class="bx--label">Luogo di Nascita *</label>
+                                    <div class="bx--text-input__field-wrapper">
+                                        <input id="luogo_nascita" name="luogo_nascita" type="text"
+                                            class="bx--text-input" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nazionalità & Residenza -->
+                        <div class="bx--row">
+                            <div class="bx--col-lg-8 bx--col-md-4 mb-4">
+                                <div class="bx--form-item">
+                                    <label for="nazionalita" class="bx--label">Nazionalità *</label>
+                                    <div class="bx--text-input__field-wrapper">
+                                        <input id="nazionalita" name="nazionalita" type="text" class="bx--text-input"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bx--col-lg-8 bx--col-md-4 mb-4">
+                                <div class="bx--form-item">
+                                    <label for="residenza" class="bx--label">Residenza (Città) *</label>
+                                    <div class="bx--text-input__field-wrapper">
+                                        <input id="residenza" name="residenza" type="text" class="bx--text-input"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Indirizzo (Full Width) -->
+                        <div class="bx--row">
+                            <div class="bx--col-lg-16 mb-4">
+                                <div class="bx--form-item">
+                                    <label for="indirizzo" class="bx--label">Indirizzo Completo *</label>
+                                    <div class="bx--text-input__field-wrapper">
+                                        <input id="indirizzo" name="indirizzo" type="text" class="bx--text-input"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="margin-top-lg mb-4">Dati Accademici</h4>
+
+                        <!-- Tipologia Istituzione -->
+                        <div class="bx--row">
+                            <div class="bx--col-lg-16 mb-4">
+                                <div class="bx--form-item">
+                                    <div class="bx--select">
+                                        <label for="tipologia_istituzione" class="bx--label">Tipologia Istituzione
+                                            *</label>
+                                        <div class="bx--select-input__wrapper">
+                                            <select id="tipologia_istituzione" name="tipologia_istituzione"
+                                                class="bx--select-input" required>
+                                                <option class="bx--select-option" value="" disabled selected>Seleziona
+                                                    Tipologia...</option>
+                                                <!-- Populated via JS -->
+                                            </select>
+                                            <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                                style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                                class="bx--select__arrow" width="16" height="16" viewBox="0 0 16 16"
+                                                aria-hidden="true">
+                                                <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Istituzione -->
+                        <div class="bx--row">
+                            <div class="bx--col-lg-16 mb-4">
+                                <div class="bx--form-item">
+                                    <div class="bx--select">
+                                        <label for="istituzione" class="bx--label">Istituzione *</label>
+                                        <div class="bx--select-input__wrapper">
+                                            <select id="istituzione" name="istituzione" class="bx--select-input"
+                                                required disabled>
+                                                <option class="bx--select-option" value="" disabled selected>Seleziona
+                                                    prima la tipologia...</option>
+                                                <!-- Populated via JS -->
+                                            </select>
+                                            <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                                style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                                class="bx--select__arrow" width="16" height="16" viewBox="0 0 16 16"
+                                                aria-hidden="true">
+                                                <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Anno -->
+                        <div class="bx--row">
+                            <div class="bx--col-lg-16 mb-4">
+                                <div class="bx--form-item">
+                                    <label for="anno_accademico" class="bx--label">Anno Accademico (Es. 2024/2025)
+                                        *</label>
+                                    <div class="bx--text-input__field-wrapper">
+                                        <input id="anno_accademico" name="anno_accademico" type="text"
+                                            class="bx--text-input" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="bx--form-item margin-top-lg">
+                            <button class="bx--btn bx--btn--primary" style="width: 100%; justify-content: center;"
+                                type="submit">Registrati</button>
+                        </div>
+
+                        <div class="margin-top-lg" style="text-align: center;">
+                            <p class="bx--label-description">Hai già un account? <a href="#" class="bx--link">Accedi</a>
+                            </p>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap Italia JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.17.0/dist/js/bootstrap-italia.bundle.min.js"></script>
+    <!-- Carbon Design System Scripts -->
+    <script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+    <!-- Custom Script -->
     <script src="script.js"></script>
 </body>
 
