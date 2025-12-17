@@ -3,6 +3,8 @@
         "nome": "Mario",
         "cognome": "Rossi",
         "email": "mario.rossi@example.com",
+        "password": "securepass123",
+        "confirm_password": "securepass123",
         "istituzione": "1",
         "anno_accademico": "2024\/2025",
         "registered_at": "2025-12-12 00:23:43"
@@ -374,22 +376,13 @@
         "record_type": "candidacy"
     },
     {
-        "nome": "Ciro Updated",
-        "cognome": "Blu Updated",
+        "nome": "Ciro",
+        "cognome": "Blu",
         "email": "ciro.blu@test.com",
         "password": "securepass123",
         "confirm_password": "securepass123",
         "istituzione": "1",
         "matricola": "99999",
-        "registered_at": "2025-12-17 01:07:21",
-        "telefono": null,
-        "codice_fiscale": null,
-        "data_nascita": null,
-        "luogo_nascita": null,
-        "nazionalita": null,
-        "residenza": null,
-        "indirizzo": null,
-        "tipologia_istituzione": null,
-        "anno_accademico": null
+        "registered_at": "2025-12-17 01:07:21"
     }
 ]
