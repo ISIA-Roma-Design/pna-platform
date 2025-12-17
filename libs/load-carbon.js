@@ -1,16 +1,23 @@
 /**
  * Carbon Web Components Loader
- * Source: IBM CDN (https://1.www.s81c.com/common/carbon/web-components/tag/latest/)
+ * 
+ * Caricamento da sorgente locale (./carbon/dist) per garantire il funzionamento
+ * sia in locale (offline/localhost) che su GitHub Pages (percorsi relativi).
+ * 
+ * Loading from local source (./carbon/dist) to ensure stability 
+ * both on Localhost and GitHub Pages.
  */
 
-import 'https://1.www.s81c.com/common/carbon/web-components/tag/latest/ui-shell.min.js';
-import 'https://1.www.s81c.com/common/carbon/web-components/tag/latest/button.min.js';
-import 'https://1.www.s81c.com/common/carbon/web-components/tag/latest/text-input.min.js';
-import 'https://1.www.s81c.com/common/carbon/web-components/tag/latest/textarea.min.js';
-import 'https://1.www.s81c.com/common/carbon/web-components/tag/latest/select.min.js';
-import 'https://1.www.s81c.com/common/carbon/web-components/tag/latest/checkbox.min.js';
-import 'https://1.www.s81c.com/common/carbon/web-components/tag/latest/tile.min.js';
-import 'https://1.www.s81c.com/common/carbon/web-components/tag/latest/link.min.js';
-import 'https://1.www.s81c.com/common/carbon/web-components/tag/latest/list.min.js';
-import 'https://1.www.s81c.com/common/carbon/web-components/tag/latest/notification.min.js';
+import './carbon/dist/ui-shell.min.js';
+import './carbon/dist/button.min.js';
+import './carbon/dist/text-input.min.js';
+import './carbon/dist/textarea.min.js';
+import './carbon/dist/select.min.js';
+import './carbon/dist/checkbox.min.js';
+import './carbon/dist/tile.min.js';
+import './carbon/dist/link.min.js';
+import './carbon/dist/list.min.js';
+import './carbon/dist/notification.min.js';
+
+// Aggiungere altri componenti se necessario
 // Add other components as needed

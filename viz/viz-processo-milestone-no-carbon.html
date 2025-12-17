@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processo PNA - Milestones (No Carbon)</title>
+
+    <!-- d3-milestones & d3.js -->
+    <script src="https://unpkg.com/d3@7"></script>
+    <script src="https://unpkg.com/d3-milestones/build/d3-milestones.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/d3-milestones/build/d3-milestones.css">
+
+    <!-- Custom Swiss Theme -->
+    <link rel="stylesheet" href="../prototipo/assets/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .viz-container {
+            padding: 2rem;
+            width: 100%;
+            /* Changed from max-width: 98% to width: 100% and added box-sizing to be safe */
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        /* Custom Swiss styling for d3-milestones */
+        .milestone-label {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+            font-weight: 500 !important;
+        }
+
+        .milestone-year-label {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+            font-weight: 700 !important;
+        }
+
+        /* Force black and white theme on the timeline */
+        svg {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+        }
+
+        /* Simple navigation replacement since Carbon header is gone */
+        .simple-nav {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #ccc;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        .simple-nav a {
+            text-decoration: none;
+            color: #000;
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="simple-nav">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Indice Viz</a>
+    </div>
+
+    <div class="viz-container">
+        <h1 class="page-title">Processo Standard PNA</h1>
+        <p class="page-subtitle">Visualizzazione del ciclo di vita del progetto (Edizione Tipo).</p>
+
+        <div id="timeline" style="width: 100%; height: 600px;"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('../data/processo.json')
+                .then(response => response.json())
+                .then(data => {
+                    const timelineElement = document.getElementById('timeline');
+                    // Ensure it consumes full width
+                    timelineElement.style.width = '100%';
+
+                    // Use setTimeout as suggested to ensure DOM is ready for label optimization
+                    setTimeout(() => {
+                        milestones('#timeline')
+                            .mapping({
+                                'value': 'step',
+                                'text': 'detail'
+                            })
+                            .scaleType('ordinal')
+                            .optimize(true) // Optimize label placement
+                            .render(data);
+                    }, 0);
+                })
+                .catch(error => console.error('Error loading process data:', error));
+        });
+    </script>
+</body>
+
+</html>
