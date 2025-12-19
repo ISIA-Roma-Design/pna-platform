@@ -100,7 +100,13 @@ let allData = [];
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch('../data/pna-istituzioni-afam.json');
+        // Determine path to data based on current location
+        const pathname = window.location.pathname;
+        const subdirectories = ["/viz/", "/prototipo/", "/docs/", "/data/"];
+        const isSubdirectory = subdirectories.some(subdir => pathname.includes(subdir));
+        const basePrefix = isSubdirectory ? "../" : "./";
+
+        const response = await fetch(basePrefix + 'data/pna-istituzioni-afam.json');
         allData = await response.json();
 
         // Init Map

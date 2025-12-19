@@ -19,17 +19,8 @@
 <body>
 
     <!-- Global Header -->
-    <cds-header aria-label="PNA Platform">
-        <cds-header-menu-button button-label-active="Close menu"
-            button-label-inactive="Open menu"></cds-header-menu-button>
-        <cds-header-name href="/index.html" prefix="PNA">Platform</cds-header-name>
-        <cds-header-nav menu-bar-label="PNA Platform">
-            <cds-header-nav-item href="/prototipo/index.html">Prototipo</cds-header-nav-item>
-            <cds-header-nav-item href="/viz/index.html">Infografiche</cds-header-nav-item>
-            <cds-header-nav-item href="/docs/">Docs</cds-header-nav-item>
-            <cds-header-nav-item href="/data/">Data</cds-header-nav-item>
-        </cds-header-nav>
-    </cds-header>
+    <div id="global-header"></div>
+    <script src="../components/header-loader.js"></script>
 
     <div class="main-container" style="max-width: 100%; padding-left: 2rem; padding-right: 2rem;">
         <h1 class="page-title">Timeline Scadenze</h1>
@@ -85,7 +76,7 @@
 
         <div id="tooltip" class="tooltip"></div>
 
-        <script src="assets/viz-script.js"></script>
+        <script src="assets/viz-scadenze.js"></script>
 
 </body>
 

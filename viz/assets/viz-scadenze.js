@@ -25,7 +25,13 @@ const getColor = (cat) => swissColors[cat] || "#999";
 async function initTimelines() {
     try {
         // 1. Fetch Data
-        const jsonPath = '../data/pna-scadenze.json';
+        // Determine path based on location
+        const pathname = window.location.pathname;
+        const subdirectories = ["/viz/", "/prototipo/", "/docs/", "/data/"];
+        const isSubdirectory = subdirectories.some(subdir => pathname.includes(subdir));
+        const basePrefix = isSubdirectory ? "../" : "./";
+
+        const jsonPath = basePrefix + 'data/pna-scadenze.json';
         console.log("Fetching", jsonPath, "...");
         const response = await fetch(jsonPath);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);

@@ -8,3 +8,32 @@
         <cds-header-nav-item href="data/">Data</cds-header-nav-item>
     </cds-header-nav>
 </cds-header>
+
+<cds-side-nav aria-label="Mobile Menu" id="side-nav" collapse-mode="responsive">
+    <cds-side-nav-items>
+        <cds-side-nav-link href="prototipo/index.html">Prototipo</cds-side-nav-link>
+        <cds-side-nav-link href="viz/index.html">Infografiche</cds-side-nav-link>
+        <cds-side-nav-link href="docs/">Docs</cds-side-nav-link>
+        <cds-side-nav-link href="data/">Data</cds-side-nav-link>
+    </cds-side-nav-items>
+</cds-side-nav>
+
+<style>
+    /* Desktop: Hide Side Nav, Show Header Nav */
+    @media (min-width: 1056px) {
+        #side-nav {
+            display: none;
+        }
+
+        cds-header-menu-button {
+            display: none;
+        }
+    }
+
+    /* Mobile: Show Menu Button, Hide Header Nav (Carbon does this usually, but enforcing ensure clarity) */
+    @media (max-width: 1055px) {
+        cds-header-nav {
+            display: none;
+        }
+    }
+</style>

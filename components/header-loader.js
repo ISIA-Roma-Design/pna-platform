@@ -8,62 +8,64 @@ document.addEventListener("DOMContentLoaded", () => {
     const headerContainer = document.getElementById("global-header");
     if (!headerContainer) return;
 
-    // Determine depth
-    // Root: /index.html or /
-    // Subdir: /viz/index.html -> depth 1
-
-    // Simple heuristic: count slashes in relative path from root? 
-    // Or just check if we are in a known subdir.
+    // Determine depth based on known subdirectories
+    // This supports both local (/) and GitHub Pages (/repo-name/) paths
+    // If the path contains specific subfolders, we are 1 level deep.
+    // Otherwise, we assume we are at the root context.
 
     const pathname = window.location.pathname;
-    let prefix = "./";
 
-    // Check if we are in a subdirectory
-    // Assuming the site is hosted at root or a subpath, we need relative nav.
-    // If we are at "viz/" or "prototipo/", we need "../"
+    // List of known first-level directories that contain HTML pages
+    const subdirectories = ["/viz/", "/prototipo/", "/docs/", "/data/"];
 
-    // Better approach: calculate relative path to root based on script src?
-    // Or just check if we are deep.
+    // Check if current path contains any of these
+    const isSubdirectory = subdirectories.some(subdir => pathname.includes(subdir));
 
-    // Let's assume standard structure:
-    // index.html -> depth 0
-    // viz/index.html -> depth 1
-    // docs/file.html -> depth 1
+    // If in subdirectory, we need to go up one level (../) to reach root resources
+    const basePrefix = isSubdirectory ? "../" : "";
 
-    // We can use the fact that this script is loaded as src="..."
-    // But logically, if we are in index.html, paths are "viz/...", if we are in "viz/...", paths are "../viz/..."
-
-    // Detection logic:
-    // If the page url ends with / or /index.html in the root, it's root.
-    // Use document.baseURI or simply check if "../" is needed.
-
-    // Let's determine the prefix by checking if 'components' is accessible via './components' or '../components'
-    // Actually, the loader is loaded WITH the correct path by the HTML file.
-    // So we know where we are relative to the root?
-
-    // Let's deduce depth from arbitrary logic:
-    // If document is in "viz" or "prototipo" folder, prefix is "../"
-
-    const isRoot = !pathname.includes("/viz/") && !pathname.includes("/prototipo/") && !pathname.includes("/docs/") && !pathname.includes("/data/");
-    const basePrefix = isRoot ? "" : "../";
-
+    // Special case: "components" should be reachable from root
+    // But header-loader.js is likely loaded via a relative script tag in the HTML.
+    // The fetch request is relative to the PAGE URL.
     const headerPath = basePrefix + "components/header.html";
 
     fetch(headerPath)
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.text();
+        })
         .then(html => {
             headerContainer.innerHTML = html;
 
             // Fix links
-            const links = headerContainer.querySelectorAll("cds-header-name, cds-header-nav-item");
+            const links = headerContainer.querySelectorAll("cds-header-name, cds-header-nav-item, cds-side-nav-link");
             links.forEach(link => {
                 const originalHref = link.getAttribute("href");
                 if (originalHref) {
                     // Prepend prefix to all relative links
-                    // If link matches "index.html" -> "../index.html"
-                    link.setAttribute("href", basePrefix + originalHref);
+                    // Ensure we don't double-fix absolute links (starts with http or /)
+                    if (!originalHref.startsWith("http") && !originalHref.startsWith("/")) {
+                        link.setAttribute("href", basePrefix + originalHref);
+                    }
                 }
             });
+
+            // Initialize Menu Toggle
+            const menuButton = headerContainer.querySelector("cds-header-menu-button");
+            const sideNav = headerContainer.querySelector("cds-side-nav");
+
+            if (menuButton && sideNav) {
+                // Carbon Web Component emits a custom event when toggled
+                menuButton.addEventListener("cds-header-menu-button-toggled", (event) => {
+                    // event.detail.active contains the new state
+                    const isActive = event.detail.active;
+                    if (isActive) {
+                        sideNav.setAttribute("expanded", "");
+                    } else {
+                        sideNav.removeAttribute("expanded");
+                    }
+                });
+            }
         })
         .catch(err => console.error("Failed to load header:", err));
 });
