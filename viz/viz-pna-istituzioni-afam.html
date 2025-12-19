@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizzazione Istituzioni AFAM</title>
+
+    <!-- Carbon Web Components (Local) -->
+    <script type="module" src="../libs/load-carbon.js"></script>
+
+    <!-- Custom Swiss Theme -->
+    <link rel="stylesheet" href="../prototipo/assets/style.css">
+    <link rel="stylesheet" href="assets/viz-style.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <script src="assets/d3.v7.min.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+
+<body>
+
+    <!-- Global Header -->
+    <cds-header aria-label="PNA Platform">
+        <cds-header-menu-button button-label-active="Close menu"
+            button-label-inactive="Open menu"></cds-header-menu-button>
+        <cds-header-name href="../index.html" prefix="PNA">Platform</cds-header-name>
+        <cds-header-nav menu-bar-label="PNA Platform">
+            <cds-header-nav-item href="../prototipo/index.html">Prototipo</cds-header-nav-item>
+            <cds-header-nav-item href="../viz/index.html">Infografiche</cds-header-nav-item>
+            <cds-header-nav-item href="../docs/">Docs</cds-header-nav-item>
+            <cds-header-nav-item href="../data/">Data</cds-header-nav-item>
+        </cds-header-nav>
+    </cds-header>
+
+    <div class="main-container" style="max-width: 100%; width: 100%; padding: 0 20px;">
+        <h1 class="page-title">Mappa Istituzioni AFAM</h1>
+
+        <div id="view-selector" class="view-selector">
+            <button class="view-btn active" onclick="switchView('map')">Mappa Geografica</button>
+            <button class="view-btn" onclick="switchView('groups')">Gruppi & Tipologie</button>
+        </div>
+
+        <div id="view-map" class="view-container">
+            <p class="subtitle">Distribuzione territoriale delle istituzioni partecipanti.</p>
+            <div id="map-container"></div>
+        </div>
+
+        <div id="view-groups" class="view-container" style="display:none;">
+            <p class="subtitle">Raggruppamento per tipologia di istituto (Bubble Chart).</p>
+            <div id="bubble-chart"></div>
+        </div>
+
+        <div id="tooltip" class="tooltip"></div>
+
+        <script src="assets/viz-afam.js"></script>
+    </div>
+
+</body>
+
+</html>

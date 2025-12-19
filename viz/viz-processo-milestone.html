@@ -96,8 +96,8 @@
             fill: #fff;
         }
 
-        /* Detail Panel */
-        #detail-panel {
+        /* dettagli Panel */
+        #dettagli-panel {
             position: fixed;
             bottom: 0;
             left: 0;
@@ -114,11 +114,11 @@
             overflow-y: auto;
         }
 
-        #detail-panel.visible {
+        #dettagli-panel.visible {
             transform: translateY(0%);
         }
 
-        .detail-step-number {
+        .dettagli-fasi-number {
             font-size: 0.875rem;
             font-weight: 700;
             color: #0f62fe;
@@ -127,7 +127,7 @@
             letter-spacing: 1px;
         }
 
-        .detail-content {
+        .dettagli-content {
             font-size: 1.5rem;
             font-weight: 300;
             max-width: 1200px;
@@ -161,13 +161,14 @@
 
     <!-- Popover Container -->
     <!-- Positioned absolutely. 'open' attribute controls visibility. -->
-    <cds-popover id="detail-popover" high-contrast style="position: absolute; z-index: 9000;">
+    <cds-popover id="dettagli-popover" high-contrast style="position: absolute; z-index: 9000;">
         <cds-popover-content>
             <div style="padding: 12px; max-width: 320px; background-color: #393939; color: white;">
                 <p id="popover-title"
                     style="font-weight: 700; margin-bottom: 0.5rem; color: inherit; font-size: 0.875rem;">
-                    STEP</p>
-                <p id="popover-desc" style="font-size: 1rem; color: inherit; line-height: 1.4; font-weight: 300;">Detail
+                    fasi</p>
+                <p id="popover-desc" style="font-size: 1rem; color: inherit; line-height: 1.4; font-weight: 300;">
+                    dettagli
                 </p>
             </div>
         </cds-popover-content>
@@ -185,22 +186,22 @@
                     const data = rawData.map((d, i) => {
                         return {
                             id: i,
-                            originalStep: d.step + ". " + d.actor,
-                            stepNumber: d.step,
-                            actor: d.actor,
-                            detail: d.detail
+                            originalfasi: d.fasi + ". " + d.attore,
+                            fasiNumber: d.fasi,
+                            attore: d.attore,
+                            dettagli: d.dettagli
                         };
                     });
 
-                    // Unique Actors
-                    const actors = [...new Set(data.map(d => d.actor))];
+                    // Unique attores
+                    const attores = [...new Set(data.map(d => d.attore))];
 
                     // 2. Setup Dimensions
                     const container = document.getElementById('chart-area');
                     const width = container.clientWidth;
                     const laneHeight = 100; // More breathing room
-                    const margin = { top: 50, right: 100, bottom: 50, left: 200 }; // Left margin for actor labels
-                    const height = (actors.length * laneHeight) + margin.top + margin.bottom;
+                    const margin = { top: 50, right: 100, bottom: 50, left: 200 }; // Left margin for attore labels
+                    const height = (attores.length * laneHeight) + margin.top + margin.bottom;
 
                     // 3. Creates SVG
                     const svg = d3.select("#chart-area")
@@ -214,8 +215,8 @@
 
                     // 4. Scales
                     const yScale = d3.scaleBand()
-                        .domain(actors)
-                        .range([0, actors.length * laneHeight]);
+                        .domain(attores)
+                        .range([0, attores.length * laneHeight]);
 
                     const xScale = d3.scaleLinear()
                         .domain([0, data.length - 1])
@@ -223,7 +224,7 @@
 
                     // 5. Draw Lanes (Grid)
                     g.selectAll(".lane-bg")
-                        .data(actors)
+                        .data(attores)
                         .enter()
                         .append("rect")
                         .attr("x", -margin.left) // Full width background
@@ -233,7 +234,7 @@
                         .attr("fill", (d, i) => i % 2 === 0 ? "#fdfdfd" : "#fff"); // Subtle zebra stripe
 
                     g.selectAll(".lane-line")
-                        .data(actors)
+                        .data(attores)
                         .enter()
                         .append("line")
                         .attr("class", "lane-line")
@@ -242,9 +243,9 @@
                         .attr("y1", d => yScale(d) + laneHeight)
                         .attr("y2", d => yScale(d) + laneHeight);
 
-                    // Actor Labels
+                    // attore Labels
                     g.selectAll(".lane-label")
-                        .data(actors)
+                        .data(attores)
                         .enter()
                         .append("text")
                         .attr("class", "lane-label")
@@ -255,7 +256,7 @@
                     // 6. Draw Connections (Path)
                     const lineGenerator = d3.line()
                         .x(d => xScale(d.id))
-                        .y(d => yScale(d.actor) + laneHeight / 2)
+                        .y(d => yScale(d.attore) + laneHeight / 2)
                         .curve(d3.curveMonotoneX);
 
                     g.append("path")
@@ -269,7 +270,7 @@
                         .enter()
                         .append("g")
                         .attr("class", "node-group")
-                        .attr("transform", d => `translate(${xScale(d.id)}, ${yScale(d.actor) + laneHeight / 2})`);
+                        .attr("transform", d => `translate(${xScale(d.id)}, ${yScale(d.attore) + laneHeight / 2})`);
 
                     const circles = nodesGroup.append("circle")
                         .attr("class", "node-circle")
@@ -279,10 +280,10 @@
                     nodesGroup.append("text")
                         .attr("class", "node-label")
                         .attr("dy", 1)
-                        .text(d => d.stepNumber);
+                        .text(d => d.fasiNumber);
 
                     // 8. Interactivity with Popover
-                    const popover = document.getElementById('detail-popover');
+                    const popover = document.getElementById('dettagli-popover');
                     const popoverTitle = document.getElementById('popover-title');
                     const popoverDesc = document.getElementById('popover-desc');
 
@@ -291,8 +292,8 @@
                         d3.select(element).classed('active', true);
 
                         // 1. Update Content First (so we can measure)
-                        popoverTitle.textContent = `STEP ${d.stepNumber} – ${d.actor.toUpperCase()}`;
-                        popoverDesc.textContent = d.detail;
+                        popoverTitle.textContent = `fasi ${d.fasiNumber} – ${d.attore.toUpperCase()}`;
+                        popoverDesc.textContent = d.dettagli;
 
                         // 2. Show initially to measure dimensions (but maybe offscreen or just assume standard flow)
                         popover.open = true;

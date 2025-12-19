@@ -202,3 +202,79 @@ h1 {
 .data-table tr:hover {
     background-color: #f1f1f1;
 }
+
+/* Map Container */
+#map-container {
+    width: 100%;
+    height: 800px;
+    /* SVG controls height */
+    min-height: 800px;
+    background: #fdfdfd;
+    margin-bottom: 40px;
+    border: 1px solid var(--grid-color);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Important for zoom */
+}
+
+/* #map-container svg {
+    width: 100%;
+    height: 100% !important
+} REMOVED for Leaflet */
+
+#markers circle {
+    transition: r 0.2s ease-out;
+    cursor: pointer;
+}
+
+#markers circle:hover {
+    r: 6;
+    stroke-width: 2px;
+    stroke: #000;
+}
+
+/* Bubble Chart */
+#bubble-chart {
+    width: 100%;
+    height: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    overflow: hidden;
+}
+
+.node {
+    cursor: pointer;
+}
+
+.node:hover {
+    stroke: #000;
+    stroke-width: 1.5px;
+}
+
+.node-label {
+    font-size: 10px;
+    font-family: sans-serif;
+    text-anchor: middle;
+    pointer-events: none;
+    fill: #333;
+}
+
+.group-label {
+    font-weight: bold;
+    text-anchor: middle;
+    fill: #666;
+    font-size: 14px;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+.status-label {
+    font-size: 18px;
+    fill: #333;
+    opacity: 0.3;
+}

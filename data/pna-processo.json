@@ -1,0 +1,117 @@
+[
+    {
+        "fase": "1",
+        "attore": "Ministero",
+        "descrizione": "Emanazione del decreto/bando generale con stanziamento fondi e suddivisione in macro-aree (es. Arti Visive/Design vs Arti Performative)."
+    },
+    {
+        "fase": "2",
+        "attore": "Ministero",
+        "descrizione": "Richiesta di candidature alle Istituzioni AFAM per ospitare le singole sezioni."
+    },
+    {
+        "fase": "3",
+        "attore": "Ministero",
+        "descrizione": "Valutazione candidature e pubblicazione decreto di assegnazione delle sedi (Istituzioni Designate)."
+    },
+    {
+        "fase": "4",
+        "attore": "Ministero",
+        "descrizione": "Nomina con decreto delle Giurie Nazionali per ogni sottosezione, composte da esperti esterni."
+    },
+    {
+        "fase": "5",
+        "attore": "Istituzione Designata",
+        "descrizione": "Accettazione incarico e attivazione canali dedicati (PEC, email dedicata, pagina web)."
+    },
+    {
+        "fase": "6",
+        "attore": "Istituzione Designata",
+        "descrizione": "Redazione e pubblicazione del Regolamento specifico (Bando di sezione) con repertori, date e specifiche tecniche."
+    },
+    {
+        "fase": "7",
+        "attore": "Istituzione Designata",
+        "descrizione": "Definizione accordi con partner esterni (Teatri, Orchestre, Fondazioni) per premi accessori e logistica."
+    },
+    {
+        "fase": "8",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Pubblicazione interna del bando e avvio procedure selettive (audizioni/valutazione portfolio)."
+    },
+    {
+        "fase": "9",
+        "attore": "Studente",
+        "descrizione": "Produzione materiali per preselezione (video un-edited, dossier progetti) secondo specifiche."
+    },
+    {
+        "fase": "10",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Verifica regolarità iscrizione e selezione dei rappresentanti (limite numerico per istituzione)."
+    },
+    {
+        "fase": "11",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Invio candidature via PEC all'Istituzione Designata entro scadenza (moduli, link video, partiture)."
+    },
+    {
+        "fase": "12",
+        "attore": "Istituzione Designata",
+        "descrizione": "Verifica ammissibilità formale domande (firme, completezza file) ed eventuale richiesta regolarizzazione."
+    },
+    {
+        "fase": "13",
+        "attore": "Commissione",
+        "descrizione": "Valutazione materiali digitali (Preselezione) e individuazione finalisti."
+    },
+    {
+        "fase": "14",
+        "attore": "Istituzione Designata",
+        "descrizione": "Pubblicazione elenco ammessi e invio convocazioni con calendario dettagliato prove in presenza."
+    },
+    {
+        "fase": "15",
+        "attore": "Istituzione Designata",
+        "descrizione": "Allestimento spazi (aule studio, auditorium, mostre) e coordinamento risorse tecniche (pianisti, orchestra)."
+    },
+    {
+        "fase": "16",
+        "attore": "Studente",
+        "descrizione": "Arrivo in sede (spese viaggio a carico istituzione di provenienza) e registrazione."
+    },
+    {
+        "fase": "17",
+        "attore": "Commissione",
+        "descrizione": "Riunione preliminare e sorteggio pubblico della lettera per ordine esecuzione."
+    },
+    {
+        "fase": "18",
+        "attore": "Studente",
+        "descrizione": "Svolgimento prove in presenza (Semifinali/Finali) o allestimento opere."
+    },
+    {
+        "fase": "19",
+        "attore": "Commissione",
+        "descrizione": "Valutazione performance con facoltà di interruzione."
+    },
+    {
+        "fase": "20",
+        "attore": "Commissione",
+        "descrizione": "Proclamazione vincitore unico per sottosezione (no ex-aequo)."
+    },
+    {
+        "fase": "21",
+        "attore": "Istituzione Designata",
+        "descrizione": "Cerimonia di premiazione, Concerto di Gala o Inaugurazione Mostra."
+    },
+    {
+        "fase": "22",
+        "attore": "Istituzione Designata",
+        "descrizione": "Rendicontazione spese al Ministero entro 60 giorni."
+    },
+    {
+        "fase": "23",
+        "attore": "Studente Vincitore",
+        "descrizione": "Fruizione premi accessori (borse studio, concerti premio, produzioni)."
+    }
+]
