@@ -4,109 +4,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrazione - PNA</title>
+    <title>Indice Prototipo - PNA</title>
 
     <!-- Carbon Web Components (Local) -->
     <script type="module" src="../libs/load-carbon.js"></script>
 
     <!-- Custom Swiss Theme -->
     <link rel="stylesheet" href="assets/style.css">
+
+    <style>
+        .prototype-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        .prototype-list li {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .prototype-list a {
+            display: block;
+            padding: 1.5rem 0;
+            text-decoration: none;
+            color: black;
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .prototype-list a:hover {
+            background-color: #f9f9f9;
+            padding-left: 1rem;
+            /* Slight movement on hover */
+            transition: all 0.2s ease;
+        }
+
+        .prototype-list span.desc {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #666;
+            margin-left: 1rem;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- Global Header -->
-    <div id="global-header"></div>
-    <script src="../components/header-loader.js"></script>
+    <cds-header aria-label="PNA Platform">
+        <cds-header-menu-button button-label-active="Close menu"
+            button-label-inactive="Open menu"></cds-header-menu-button>
+        <cds-header-name href="/index.html" prefix="PNA">Platform</cds-header-name>
+        <cds-header-nav menu-bar-label="PNA Platform">
+            <cds-header-nav-item href="/prototipo/index.html" active>Prototipo</cds-header-nav-item>
+            <cds-header-nav-item href="/viz/index.html">Infografiche</cds-header-nav-item>
+            <cds-header-nav-item href="/docs/">Docs</cds-header-nav-item>
+            <cds-header-nav-item href="/data/">Data</cds-header-nav-item>
+        </cds-header-nav>
+    </cds-header>
 
     <div class="main-container">
 
-        <div class="form-container">
-            <h1 class="page-title">Registrazione Studente</h1>
-            <p class="page-subtitle">Inserisci i tuoi dati per accedere al Premio Nazionale delle Arti.</p>
+        <h1 class="page-title">Indice Prototipo</h1>
+        <p class="page-subtitle">Naviga tra le schermate funzionali del prototipo.</p>
 
-            <form id="registrationForm">
+        <ul class="prototype-list">
+            <li>
+                <a href="registrazione-studente.html">
+                    <span>Registrazione <span class="desc">/ Form studenti</span></span>
+                    <span class="arrow">&rarr;</span>
+                </a>
+            </li>
+            <li>
+                <a href="login.html">
+                    <span>Login <span class="desc">/ Accesso piattaforma</span></span>
+                    <span class="arrow">&rarr;</span>
+                </a>
+            </li>
+            <li>
+                <a href="dashboard.html">
+                    <span>Dashboard <span class="desc">/ Area riservata</span></span>
+                    <span class="arrow">&rarr;</span>
+                </a>
+            </li>
+            <li>
+                <a href="profilo-studente.html">
+                    <span>Profilo <span class="desc">/ Modifica dati</span></span>
+                    <span class="arrow">&rarr;</span>
+                </a>
+            </li>
+            <li>
+                <a href="candidatura-opera.html">
+                    <span>Nuova Candidatura <span class="desc">/ Invio progetto</span></span>
+                    <span class="arrow">&rarr;</span>
+                </a>
+            </li>
+        </ul>
 
-                <!-- Personal Data -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <cds-text-input label-text="Nome" placeholder="Mario" id="nome" name="nome"
-                        required></cds-text-input>
-                    <cds-text-input label-text="Cognome" placeholder="Rossi" id="cognome" name="cognome"
-                        required></cds-text-input>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <cds-text-input label-text="Email" type="email" placeholder="mario.rossi@example.com" id="email"
-                        name="email" required></cds-text-input>
-                    <cds-text-input label-text="Telefono" type="tel" placeholder="+39 333 ..." id="telefono"
-                        name="telefono" required></cds-text-input>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <cds-text-input label-text="Password" type="password" id="password" name="password"
-                        required></cds-text-input>
-                    <cds-text-input label-text="Conferma Password" type="password" id="confirm_password"
-                        name="confirm_password" required></cds-text-input>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <cds-text-input label-text="Matricola" id="matricola" name="matricola" required></cds-text-input>
-                    <cds-text-input label-text="Codice Fiscale" id="codice_fiscale" name="codice_fiscale"
-                        required></cds-text-input>
-                </div>
-
-                <!-- Birth & Location -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <cds-text-input label-text="Data di Nascita" type="date" id="data_nascita" name="data_nascita"
-                        required></cds-text-input>
-                    <cds-text-input label-text="Luogo di Nascita" id="luogo_nascita" name="luogo_nascita"
-                        required></cds-text-input>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <cds-text-input label-text="Nazionalità" id="nazionalita" name="nazionalita"
-                        required></cds-text-input>
-                    <cds-text-input label-text="Residenza (Città)" id="residenza" name="residenza"
-                        required></cds-text-input>
-                </div>
-
-                <cds-text-input label-text="Indirizzo Completo" id="indirizzo" name="indirizzo"
-                    required></cds-text-input>
-
-                <br>
-                <h4 style="margin-bottom: 1rem; font-weight: 700;">Dati Accademici</h4>
-
-                <!-- Academic Data -->
-                <cds-select label-text="Tipologia Istituzione" id="tipologia_istituzione" required>
-                    <cds-select-item value="" disabled selected>Seleziona Tipologia...</cds-select-item>
-                    <!-- JS will populate -->
-                </cds-select>
-
-                <cds-select label-text="Istituzione" id="istituzione" disabled required>
-                    <cds-select-item value="" disabled selected>Prima seleziona la tipologia...</cds-select-item>
-                    <!-- JS will populate -->
-                </cds-select>
-
-                <cds-text-input label-text="Anno Accademico" placeholder="2024/2025" id="anno_accademico"
-                    name="anno_accademico" required></cds-text-input>
-
-                <!-- Actions -->
-                <div style="margin-top: 2rem;">
-                    <cds-button type="submit" style="width: 100%;">Registrati</cds-button>
-                </div>
-
-                <div style="text-align: center; margin-top: 1rem;">
-                    <span style="font-size: 0.875rem;">Hai già un account? <a href="login.html"
-                            style="color: black; font-weight: bold;">Accedi</a></span>
-                </div>
-
-            </form>
+        <div style="margin-top: 4rem; border-top: 1px solid black; padding-top: 2rem;">
+            <p><strong>Database Status:</strong> <span id="db-status">Checking...</span></p>
         </div>
+
     </div>
 
-    <!-- Logic -->
     <script src="assets/script.js"></script>
-
+    <script>
+        // Check API Status
+        fetch('../data/index.php?action=check')
+            .then(r => r.json())
+            .then(data => {
+                const el = document.getElementById('db-status');
+                if (data.status === 'success') {
+                    el.innerText = "Connected (JSON DB)";
+                    el.style.color = "green";
+                } else {
+                    el.innerText = "Error: " + data.message;
+                    el.style.color = "red";
+                }
+            })
+            .catch(e => {
+                document.getElementById('db-status').innerText = "API Offline (PHP not running?)";
+                document.getElementById('db-status').style.color = "red";
+            });
+    </script>
 </body>
 
 </html>

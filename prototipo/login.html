@@ -37,10 +37,15 @@
             <form id="loginForm">
 
                 <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
-                    <cds-text-input label-text="Email" type="email" placeholder="mario.rossi@example.com"
-                        id="login_email" name="email" required></cds-text-input>
-                    <cds-text-input label-text="Password" type="password" id="login_password" name="password"
-                        required></cds-text-input>
+                    <div>
+                        <label for="login_email" class="form-label">Email</label>
+                        <cds-text-input type="email" placeholder="mario.rossi@example.com" id="login_email" name="email"
+                            required></cds-text-input>
+                    </div>
+                    <div>
+                        <label for="login_password" class="form-label">Password</label>
+                        <cds-text-input type="password" id="login_password" name="password" required></cds-text-input>
+                    </div>
                 </div>
 
                 <!-- Actions -->

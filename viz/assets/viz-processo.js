@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const data = rawData.map((d, i) => {
                 return {
                     id: i,
-                    originalfasi: d.fasi + ". " + d.attore,
-                    fasiNumber: d.fasi,
+                    originalfasi: d.fase + ". " + d.attore,
+                    fasiNumber: d.fase,
                     attore: d.attore,
-                    dettagli: d.dettagli
+                    dettagli: d.descrizione
                 };
             });
 

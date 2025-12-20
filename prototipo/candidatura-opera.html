@@ -38,20 +38,29 @@
             <form id="candidaturaForm">
 
                 <!-- Basic Info -->
-                <cds-text-input label-text="Titolo del Progetto" placeholder="Inserisci il titolo..."
-                    id="titolo_progetto" name="titolo_progetto" required></cds-text-input>
+                <div>
+                    <label for="titolo_progetto" class="form-label">Titolo del Progetto</label>
+                    <cds-text-input placeholder="Inserisci il titolo..." id="titolo_progetto" name="titolo_progetto"
+                        required></cds-text-input>
+                </div>
 
-                <cds-textarea label-text="Descrizione Breve" placeholder="Descrivi brevemente il tuo progetto..."
-                    id="descrizione" name="descrizione" rows="4"></cds-textarea>
+                <div style="margin-top: 1rem;">
+                    <label for="descrizione" class="form-label">Descrizione Breve</label>
+                    <cds-textarea placeholder="Descrivi brevemente il tuo progetto..." id="descrizione"
+                        name="descrizione" rows="4"></cds-textarea>
+                </div>
 
                 <br>
-                <cds-select label-text="Categoria" id="categoria" required>
-                    <cds-select-item value="" disabled selected>Seleziona una categoria...</cds-select-item>
-                    <cds-select-item value="musica">Interpretazione Musicale</cds-select-item>
-                    <cds-select-item value="teatro">Arti dello Spettacolo</cds-select-item>
-                    <cds-select-item value="design">Design</cds-select-item>
-                    <cds-select-item value="arti_visive">Arti Visive</cds-select-item>
-                </cds-select>
+                <div>
+                    <label for="categoria" class="form-label">Categoria</label>
+                    <cds-select id="categoria" required>
+                        <cds-select-item value="" disabled selected>Seleziona una categoria...</cds-select-item>
+                        <cds-select-item value="musica">Interpretazione Musicale</cds-select-item>
+                        <cds-select-item value="teatro">Arti dello Spettacolo</cds-select-item>
+                        <cds-select-item value="design">Design</cds-select-item>
+                        <cds-select-item value="arti_visive">Arti Visive</cds-select-item>
+                    </cds-select>
+                </div>
 
                 <!-- Dynamic Fields Container -->
                 <div id="dynamic-fields-container"

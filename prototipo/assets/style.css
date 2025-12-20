@@ -89,6 +89,10 @@ cds-combo-box {
     --cds-field-01: #ffffff;
     --cds-text-01: #000000;
 
+    /* Fix Label Visibility */
+    --cds-text-secondary: #000000;
+    --cds-label-color: #000000;
+
     /* Enforce Carbon Variables for Borders */
     --cds-border-subtle: #000000;
     /* Default Border */
@@ -98,28 +102,73 @@ cds-combo-box {
     --cds-focus: #000000;
 }
 
-/* Text Inputs & Textareas */
+/* Force Label Color directly via parts if possible or generic CSS */
+cds-text-input,
+cds-textarea,
+cds-select,
+cds-dropdown,
+cds-combo-box {
+    margin-bottom: 2rem;
+    --cds-field-01: #ffffff;
+    --cds-text-01: #000000;
+    --cds-text-02: #000000;
+    /* Secondary text / Label */
+    --cds-label-color: #000000;
+}
+
+/* Force Label Visibility via Shadow Parts */
+cds-text-input::part(label),
+cds-textarea::part(label),
+cds-select::part(label),
+cds-dropdown::part(label),
+cds-combo-box::part(label) {
+    color: #000000 !important;
+    display: block !important;
+    opacity: 1 !important;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* Text Inputs & Textareas - Full Box Border */
 cds-text-input::part(input),
 cds-textarea::part(textarea) {
     border: 1px solid #000000 !important;
-    /* Use box-shadow to guarantee visibility if border-collapse/sizing eats it */
-    box-shadow: 0 0 0 1px #000000 inset !important;
+    border-bottom: 1px solid #000000 !important;
+    /* Override Carbon default */
+    box-shadow: none !important;
+    /* Remove Carbon shadow focus effect if needed, or keep for visibility */
+    outline: 1px solid #000000 !important;
+    /* Backup border */
     border-radius: 0px !important;
     background-color: #ffffff !important;
     padding-left: 1rem;
     min-height: 3rem;
-    /* Ensure consistent height */
+    color: #000000 !important;
 }
 
-/* Selects & Dropdowns */
+/* Selects & Dropdowns - Full Box Border */
 cds-select::part(button),
 cds-dropdown::part(button) {
     border: 1px solid #000000 !important;
-    box-shadow: 0 0 0 1px #000000 inset !important;
+    border-bottom: 1px solid #000000 !important;
+    outline: 1px solid #000000 !important;
+    box-shadow: none !important;
     border-radius: 0px !important;
     background-color: #ffffff !important;
     min-height: 3rem;
     color: #000000 !important;
+}
+
+/* Target Labels specifically if they are exposed as parts or slotted (Carbon web components vary) */
+/* Usually labels are inside shadowRoot but inherit color. Setting --cds-text-02 should work. */
+
+
+/* Explicit Label Style */
+.form-label {
+    display: block;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 0.5rem;
 }
 
 /* UTILITIES */
@@ -147,5 +196,6 @@ cds-dropdown::part(button) {
     max-width: 40rem;
     padding: 2rem;
     border: 1px solid #000000;
+    margin: 0 auto;
     /* Wireframe box for form */
 }

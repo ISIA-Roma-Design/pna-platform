@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifica Profilo - PNA</title>
+
+    <!-- Carbon Web Components (Local) -->
+    <script type="module" src="../libs/load-carbon.js"></script>
+
+    <!-- Custom Swiss Theme -->
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+
+    <!-- Global Header -->
+    <cds-header aria-label="PNA Platform">
+        <cds-header-menu-button button-label-active="Close menu"
+            button-label-inactive="Open menu"></cds-header-menu-button>
+        <cds-header-name href="/index.html" prefix="PNA">Platform</cds-header-name>
+        <cds-header-nav menu-bar-label="PNA Platform">
+            <cds-header-nav-item href="/prototipo/index.html">Prototipo</cds-header-nav-item>
+            <cds-header-nav-item href="/viz/index.html">Infografiche</cds-header-nav-item>
+            <cds-header-nav-item href="/docs/">Docs</cds-header-nav-item>
+            <cds-header-nav-item href="/data/">Data</cds-header-nav-item>
+        </cds-header-nav>
+    </cds-header>
+
+    <div class="main-container">
+
+        <div class="form-container">
+            <h1 class="page-title">Modifica Profilo</h1>
+            <p class="page-subtitle">Aggiorna i dati del tuo account.</p>
+
+            <form id="profileForm">
+
+                <!-- Personal Data -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <label for="nome" class="form-label">Nome</label>
+                        <cds-text-input placeholder="Mario" id="nome" name="nome" required></cds-text-input>
+                    </div>
+                    <div>
+                        <label for="cognome" class="form-label">Cognome</label>
+                        <cds-text-input placeholder="Rossi" id="cognome" name="cognome" required></cds-text-input>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <label for="email" class="form-label">Email</label>
+                        <cds-text-input type="email" placeholder="mario.rossi@example.com" id="email" name="email"
+                            readonly helper-text="L'email non può essere modificata."></cds-text-input>
+                    </div>
+                    <div>
+                        <label for="telefono" class="form-label">Telefono</label>
+                        <cds-text-input type="tel" placeholder="+39 333 ..." id="telefono" name="telefono"
+                            required></cds-text-input>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <label for="password" class="form-label">Nuova Password (opzionale)</label>
+                        <cds-text-input type="password" id="password" name="password"
+                            placeholder="Lascia vuoto per mantenere"></cds-text-input>
+                    </div>
+                    <div>
+                        <label for="confirm_password" class="form-label">Conferma Nuova Password</label>
+                        <cds-text-input type="password" id="confirm_password" name="confirm_password"
+                            placeholder="Lascia vuoto per mantenere"></cds-text-input>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <label for="matricola" class="form-label">Matricola</label>
+                        <cds-text-input id="matricola" name="matricola" required></cds-text-input>
+                    </div>
+                    <div>
+                        <label for="codice_fiscale" class="form-label">Codice Fiscale</label>
+                        <cds-text-input id="codice_fiscale" name="codice_fiscale" required></cds-text-input>
+                    </div>
+                </div>
+
+                <!-- Birth & Location -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <label for="data_nascita" class="form-label">Data di Nascita</label>
+                        <cds-text-input type="date" id="data_nascita" name="data_nascita" required></cds-text-input>
+                    </div>
+                    <div>
+                        <label for="luogo_nascita" class="form-label">Luogo di Nascita</label>
+                        <cds-text-input id="luogo_nascita" name="luogo_nascita" required></cds-text-input>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <label for="nazionalita" class="form-label">Nazionalità</label>
+                        <cds-text-input id="nazionalita" name="nazionalita" required></cds-text-input>
+                    </div>
+                    <div>
+                        <label for="residenza" class="form-label">Residenza (Città)</label>
+                        <cds-text-input id="residenza" name="residenza" required></cds-text-input>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="indirizzo" class="form-label">Indirizzo Completo</label>
+                    <cds-text-input id="indirizzo" name="indirizzo" required></cds-text-input>
+                </div>
+
+                <br>
+                <h4 style="margin-bottom: 1rem; font-weight: 700;">Dati Accademici</h4>
+
+                <!-- Academic Data -->
+                <div>
+                    <label for="tipologia_istituzione" class="form-label">Tipologia Istituzione</label>
+                    <cds-select id="tipologia_istituzione" required>
+                        <cds-select-item value="" disabled selected>Seleziona Tipologia...</cds-select-item>
+                        <!-- JS will populate -->
+                    </cds-select>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <label for="istituzione" class="form-label">Istituzione</label>
+                    <cds-select id="istituzione" disabled required>
+                        <cds-select-item value="" disabled selected>Prima seleziona la tipologia...</cds-select-item>
+                        <!-- JS will populate -->
+                    </cds-select>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <label for="anno_accademico" class="form-label">Anno Accademico</label>
+                    <cds-text-input placeholder="2024/2025" id="anno_accademico" name="anno_accademico"
+                        required></cds-text-input>
+                </div>
+
+                <!-- Actions -->
+                <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                    <cds-button type="submit" style="width: 100%;">Salva Modifiche</cds-button>
+                    <cds-button kind="secondary" href="dashboard.html" style="width: 100%;">Annulla</cds-button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Logic -->
+    <script src="assets/script.js"></script>
+
+</body>
+
+</html>

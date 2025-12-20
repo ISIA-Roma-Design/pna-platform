@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processo PNA - Swimlane</title>
+
+    <!-- Carbon Web Components (Local) -->
+    <script type="module" src="../libs/load-carbon.js"></script>
+
+    <!-- D3.js -->
+    <script src="https://unpkg.com/d3@7"></script>
+
+    <!-- Custom Swiss Theme -->
+    <link rel="stylesheet" href="../prototipo/assets/style.css">
+
+    <style>
+        /* Dendrogram Styles */
+        #dendrogram-container {
+            width: 100%;
+            height: 1200px;
+            overflow: auto;
+            background: #fff;
+            border: 1px solid #000;
+        }
+
+        .node circle {
+            fill: #fff;
+            stroke: #000;
+            stroke-width: 1.5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .node circle:hover {
+            fill: #000;
+            r: 6;
+        }
+
+        .node text {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .node text.category-label {
+            font-weight: 400;
+            fill: #333;
+            font-style: italic;
+        }
+
+        .link {
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 1px;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 0;
+            font-size: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Global Header -->
+    <div id="global-header"></div>
+    <script src="../components/header-loader.js"></script>
+
+    <div class="main-container" style="max-width: 100%; width: 100%; padding-left: 2rem; padding-right: 2rem;">
+        <h1 class="page-title">Struttura PNA</h1>
+        <p class="page-subtitle">Visualizzazione gerarchica delle sezioni, sottosezioni e categorie (Dendrogramma).</p>
+
+        <!-- Chart Container -->
+        <div id="dendrogram-container"></div>
+    </div>
+
+    <div id="tooltip" class="tooltip"></div>
+
+    <script src="assets/viz-dendogram.js"></script>
+</body>
+
+</html>
