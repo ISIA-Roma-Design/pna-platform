@@ -110,30 +110,26 @@
         </ul>
 
         <div style="margin-top: 4rem; border-top: 1px solid black; padding-top: 2rem;">
-            <p><strong>Database Status:</strong> <span id="db-status">Checking...</span></p>
+            <cds-tile>
+                <h3 style="margin-top:0;">Gestione Dati Locali</h3>
+                <p style="margin-bottom: 1rem; font-size: 0.875rem;">Esporta o importa i dati del prototipo salvati in
+                    questo browser (LocalStorage).</p>
+                <div style="display: flex; gap: 1rem;">
+                    <cds-button kind="tertiary" id="exportBtn">Esporta Database</cds-button>
+                    <cds-button kind="tertiary" id="importBtn">Importa Database</cds-button>
+                </div>
+                <input type="file" id="importFile" style="display: none;" accept=".json">
+            </cds-tile>
         </div>
-
     </div>
 
     <script src="assets/script.js"></script>
     <script>
-        // Check API Status
-        fetch('../data/index.php?action=check')
-            .then(r => r.json())
-            .then(data => {
-                const el = document.getElementById('db-status');
-                if (data.status === 'success') {
-                    el.innerText = "Connected (JSON DB)";
-                    el.style.color = "green";
-                } else {
-                    el.innerText = "Error: " + data.message;
-                    el.style.color = "red";
-                }
-            })
-            .catch(e => {
-                document.getElementById('db-status').innerText = "API Offline (PHP not running?)";
-                document.getElementById('db-status').style.color = "red";
-            });
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof initDataManagement === 'function') {
+                initDataManagement();
+            }
+        });
     </script>
 </body>
 

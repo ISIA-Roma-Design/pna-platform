@@ -1011,7 +1011,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (userDataContainer) {
         loadUserData();
         loadCandidacies(); // Load submitted candidacies
-        initDataManagement(); // Init export/import
         const logoutBtn = document.getElementById('logoutBtn');
         if (logoutBtn) {
             logoutBtn.addEventListener('click', () => {
@@ -1021,6 +1020,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // 7. Data Management (Export/Import) - Independent of page
+    initDataManagement();
 });
 
 function initDataManagement() {
