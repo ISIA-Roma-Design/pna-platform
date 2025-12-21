@@ -345,9 +345,11 @@ function initDynamicRelations(formId) {
                 }
 
                 try {
-                    const res = await fetch(`../engine/api.php?action=search_users&q=${encodeURIComponent(query)}&type=${type}`);
+                    // const res = await fetch(`../engine/api.php?action=search_users&q=${encodeURIComponent(query)}&type=${type}`);
+                    const res = await MockAPI.searchUsers(query, type); // Use MockAPI
+
                     if (res.ok) {
-                        const users = await res.json(); // Array of users
+                        const users = res.users; // Array of users
 
                         if (users.length > 0) {
                             resultsContainer.innerHTML = '';
@@ -664,6 +666,91 @@ const initTagSystem = (formId) => {
     });
 };
 
+// --- MOCK API (Client-Side Storage) ---
+const MockAPI = {
+    DB_KEY: 'db_prototipo',
+
+    _getDB() {
+        const stored = localStorage.getItem(this.DB_KEY);
+        return stored ? JSON.parse(stored) : [];
+    },
+
+    _saveDB(data) {
+        localStorage.setItem(this.DB_KEY, JSON.stringify(data));
+    },
+
+    async register(userData) {
+        // Simulate network delay
+        await new Promise(r => setTimeout(r, 600));
+
+        const db = this._getDB();
+        if (db.some(u => u.email === userData.email)) {
+            return { ok: false, message: "Email già registrata" };
+        }
+
+        const newUser = { ...userData, registered_at: new Date().toISOString() };
+        db.push(newUser);
+        this._saveDB(db);
+        return { ok: true, user: newUser };
+    },
+
+    async login(email, password) {
+        await new Promise(r => setTimeout(r, 600));
+        const db = this._getDB();
+        const user = db.find(u => u.email === email && u.password === password);
+
+        if (user) return { ok: true, user };
+        return { ok: false, message: "Credenziali non valide" };
+    },
+
+    async searchUsers(query, type) {
+        await new Promise(r => setTimeout(r, 300));
+        const db = this._getDB();
+        const q = query.toLowerCase();
+
+        // Simple search
+        const results = db.filter(u =>
+            (u.nome && u.nome.toLowerCase().includes(q)) ||
+            (u.cognome && u.cognome.toLowerCase().includes(q)) ||
+            (u.email && u.email.toLowerCase().includes(q))
+        ).map(u => ({
+            nome: u.nome,
+            cognome: u.cognome,
+            email: u.email
+        }));
+
+        return { ok: true, users: results }; // consistent with API response structure
+    },
+
+    async updateProfile(email, data) {
+        await new Promise(r => setTimeout(r, 600));
+        const db = this._getDB();
+        const index = db.findIndex(u => u.email === email);
+
+        if (index === -1) return { ok: false, message: "Utente non trovato" };
+
+        // Update fields
+        const updatedUser = { ...db[index], ...data };
+        db[index] = updatedUser;
+        this._saveDB(db);
+
+        return { ok: true, user: updatedUser };
+    },
+
+    async submitCandidacy(data) {
+        await new Promise(r => setTimeout(r, 800));
+        const candidacies = JSON.parse(localStorage.getItem('pna_candidacies') || '[]');
+        const newCandidacy = {
+            ...data,
+            submitted_at: new Date().toISOString(),
+            id: 'cand_' + Date.now()
+        };
+        candidacies.push(newCandidacy);
+        localStorage.setItem('pna_candidacies', JSON.stringify(candidacies));
+        return { ok: true, candidacy: newCandidacy };
+    }
+};
+
 function initRegistrationForm() {
     const registrationForm = document.getElementById('registrationForm');
     if (registrationForm) {
@@ -694,29 +781,23 @@ function initRegistrationForm() {
 
             try {
                 // Determine API path (relative or absolute)
-                // Using relative path assuming html is in /prototipo/ and engine is in /engine/
-                const response = await fetch('../engine/api.php?action=register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(userProfile)
-                });
+                // REPLACED WITH MOCK API for GitHub Pages support
+                // const response = await fetch('../engine/api.php?action=register', { ... });
 
-                const data = await response.json();
+                const response = await MockAPI.register(userProfile);
 
                 if (response.ok) {
                     // Success: save session and redirect
-                    localStorage.setItem('pna_user_profile', JSON.stringify(data.user));
-                    localStorage.setItem('pna_user_name', `${data.user.nome} ${data.user.cognome}`);
+                    localStorage.setItem('pna_user_profile', JSON.stringify(response.user));
+                    localStorage.setItem('pna_user_name', `${response.user.nome} ${response.user.cognome}`);
                     alert('Registrazione completata con successo!');
                     window.location.href = 'studente-dashboard.html';
                 } else {
-                    alert('Errore durante la registrazione: ' + (data.message || 'Errore sconosciuto'));
+                    alert('Errore durante la registrazione: ' + (response.message || 'Errore sconosciuto'));
                 }
             } catch (error) {
                 console.error('Registration Error:', error);
-                alert('Errore di connessione al server. Assicurati di eseguire il progetto su un server PHP.');
+                alert('Errore di connessione o salvataggio dati.');
             }
         };
 
@@ -806,22 +887,17 @@ function initProfileForm() {
             }
 
             try {
-                const response = await fetch('/engine/api.php?action=update_profile', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-
-                const resData = await response.json();
+                // const response = await fetch('/engine/api.php?action=update_profile', { ... });
+                const response = await MockAPI.updateProfile(data.email, data);
 
                 if (response.ok) {
                     alert("Profilo aggiornato con successo!");
                     // Update session
-                    localStorage.setItem('pna_user_profile', JSON.stringify(resData.user));
-                    localStorage.setItem('pna_user_name', `${resData.user.nome} ${resData.user.cognome}`);
+                    localStorage.setItem('pna_user_profile', JSON.stringify(response.user));
+                    localStorage.setItem('pna_user_name', `${response.user.nome} ${response.user.cognome}`);
                     window.location.href = 'studente-dashboard.html';
                 } else {
-                    alert("Errore aggiornamento: " + resData.message);
+                    alert("Errore aggiornamento: " + (response.message || "Errore sconosciuto"));
                 }
             } catch (error) {
                 console.error("Update error:", error);
@@ -837,56 +913,36 @@ function initProfileForm() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Load Hierarchy Data (Async)
+    // 1. Load Hierarchy Data (Async)
     loadHierarchyData().then(() => {
         initTaxonomySelects('candidaturaForm');
     });
 
-    // Init Dynamic Relations (Independent)
-    initDynamicRelations('candidaturaForm');
-
-    // Init Dynamic Fields Logic
-    initDynamicFields('candidaturaForm');
-
-    // Init Tag System
-    initTagSystem('candidaturaForm');
-
-    // Load Institution Data (Async) & Init Registration
+    // 2. Load Institution Data (Async)
     loadInstitutionData().then(() => {
+        // Init Registration Page
         initRegistrationForm();
-        // initProfileForm is global now, but let's call it if needed inside specific checks or here if it needs data
-        // But initProfileForm handles data loading itself? No, it handles data PRE-FILL.
-        // It's safest to call initProfileForm() here too if on profile page?
-        // Actually script structure calls initProfileForm globally? No it's a function.
-        // Let's call it if on profile page.
+
+        // Init Profile Page
+        initInstitutionSelects('profileForm');
         initProfileForm();
     });
 
-    // --- GENERIC INIT ---
-    // ...
+    // 3. Independent Initializations
+    initDynamicRelations('candidaturaForm');
+    initDynamicFields('candidaturaForm');
+    initTagSystem('candidaturaForm');
 
-    // --- LOGIN LOGIC ---
-    // ...
-
-    // --- PROFILE EDIT LOGIC ---
-
-
-    // --- DASHBOARD LOGIC ---
-    // ...
-
-    // --- CANDIDATURA LOGIC ---
+    // 4. Candidatura Form Submission
     const candidaturaForm = document.getElementById('candidaturaForm');
     if (candidaturaForm) {
-        // ... (existing logic) ...
-
-        candidaturaForm.addEventListener('submit', async (e) => { // Async for fetch
+        candidaturaForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const data = {};
             candidaturaForm.querySelectorAll('cds-text-input, cds-textarea, cds-select').forEach(el => {
                 if (el.name) data[el.name] = el.value;
             });
 
-            // Include Relations (from our attached state)
             if (candidaturaForm.relationState) {
                 data.relazioni = {
                     studenti: candidaturaForm.relationState.studenti,
@@ -897,48 +953,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
             console.log("Candidacy Payload:", data);
 
-            // API Submit
             try {
-                const response = await fetch('/engine/api.php?action=submit_candidacy', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-
+                const response = await MockAPI.submitCandidacy(data);
                 if (response.ok) {
                     alert("Candidatura inviata con successo!");
                     window.location.href = 'studente-dashboard.html';
                 } else {
-                    const res = await response.json();
-                    alert("Errore invio: " + (res.message || 'Unknown error'));
+                    alert("Errore invio: " + (response.message || 'Errore sconosciuto'));
                 }
             } catch (error) {
                 console.error("Submission error:", error);
-                alert("Errore di connessione.");
+                alert("Errore di salvataggio candidatura.");
             }
         });
     }
 
-    // Load Institution Data (Async) & Init Registration
-    loadInstitutionData().then(() => {
-        initRegistrationForm();
-        initInstitutionSelects('profileForm');
-        initProfileForm();
-    });
-
-    // --- LOGIN PAGE LOGIC ---
+    // 5. Login Form Handling
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
         const handleLogin = async (e) => {
             if (e) e.preventDefault();
-
             const emailInput = document.getElementById('login_email');
             const passwordInput = document.getElementById('login_password');
 
-            if (!emailInput || !passwordInput) {
-                alert("Errore interno: campi non trovati");
-                return;
-            }
+            if (!emailInput || !passwordInput) return;
 
             const email = emailInput.value;
             const password = passwordInput.value;
@@ -949,48 +987,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                const response = await fetch('/engine/api.php?action=login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email: email, password: password })
-                });
-
-                const data = await response.json();
-
+                const response = await MockAPI.login(email, password);
                 if (response.ok) {
-                    // Save to session
-                    localStorage.setItem('pna_user_profile', JSON.stringify(data.user));
-                    localStorage.setItem('pna_user_name', `${data.user.nome} ${data.user.cognome}`);
+                    localStorage.setItem('pna_user_profile', JSON.stringify(response.user));
+                    localStorage.setItem('pna_user_name', `${response.user.nome} ${response.user.cognome}`);
                     window.location.href = 'studente-dashboard.html';
                 } else {
-                    alert('Login fallito: ' + (data.message || "Credenziali non valide"));
+                    alert('Login fallito: ' + (response.message || "Credenziali non valide"));
                 }
             } catch (error) {
                 console.error("Login error:", error);
-                alert('Errore di connessione al server: ' + error.message);
+                alert('Errore di accesso.');
             }
         };
 
-        // Attach to Form Submit (standard)
         loginForm.addEventListener('submit', handleLogin);
-
-        // Attach to Button Click (Carbon WC specific)
         const loginBtn = loginForm.querySelector('cds-button');
-        if (loginBtn) {
-            loginBtn.addEventListener('click', handleLogin);
-        }
+        if (loginBtn) loginBtn.addEventListener('click', handleLogin);
     }
 
-    // --- PROFILE EDIT LOGIC ---
-
-
-    // --- DASHBOARD LOGIC ---
+    // 6. Dashboard Data Loading
     const userDataContainer = document.getElementById('userDataContainer');
     if (userDataContainer) {
         loadUserData();
-
         const logoutBtn = document.getElementById('logoutBtn');
         if (logoutBtn) {
             logoutBtn.addEventListener('click', () => {
@@ -1000,10 +1019,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-
-    // --- CANDIDATURA LOGIC ---
-
-
 });
 
 function loadUserData() {
