@@ -1010,6 +1010,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const userDataContainer = document.getElementById('userDataContainer');
     if (userDataContainer) {
         loadUserData();
+        loadCandidacies(); // Load submitted candidacies
+        initDataManagement(); // Init export/import
         const logoutBtn = document.getElementById('logoutBtn');
         if (logoutBtn) {
             logoutBtn.addEventListener('click', () => {
@@ -1020,6 +1022,126 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+function initDataManagement() {
+    const exportBtn = document.getElementById('exportBtn');
+    const importBtn = document.getElementById('importBtn');
+    const importFile = document.getElementById('importFile');
+
+    if (exportBtn) {
+        exportBtn.addEventListener('click', () => {
+            const data = {};
+            // Collect all pna_ and db_prototipo keys
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('pna_') || key === 'db_prototipo') {
+                    try {
+                        const val = localStorage.getItem(key);
+                        data[key] = JSON.parse(val);
+                    } catch (e) {
+                        console.warn(`Export: Could not parse key "${key}", exporting as raw string.`, e);
+                        data[key] = localStorage.getItem(key);
+                    }
+                }
+            }
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+            a.href = url;
+            a.download = `pna_database_export_${timestamp}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+    }
+
+    if (importBtn && importFile) {
+        importBtn.addEventListener('click', () => importFile.click());
+
+        importFile.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const data = JSON.parse(event.target.result);
+
+                    // Basic Validation
+                    const keys = Object.keys(data);
+                    if (keys.length === 0) {
+                        throw new Error("Il file è vuoto.");
+                    }
+
+                    const hasRelevantKeys = keys.some(k => k.startsWith('pna_') || k === 'db_prototipo');
+                    if (!hasRelevantKeys) {
+                        throw new Error("Il file non sembra contenere dati del portale PNA validi.");
+                    }
+
+                    if (confirm("Attenzione: l'importazione sovrascriverà i dati correnti nel browser. Procedere?")) {
+                        keys.forEach(key => {
+                            const val = typeof data[key] === 'string' ? data[key] : JSON.stringify(data[key]);
+                            localStorage.setItem(key, val);
+                        });
+                        alert("Database importato con successo! La pagina verrà ricaricata.");
+                        window.location.reload();
+                    }
+                } catch (err) {
+                    alert("Errore durante l'importazione: " + err.message);
+                    console.error("Import error:", err);
+                }
+                // Reset input to allow re-importing same file if needed
+                importFile.value = '';
+            };
+            reader.readAsText(file);
+        });
+    }
+}
+
+function loadCandidacies() {
+    const tableBody = document.getElementById('candidaciesTableBody');
+    const noMsg = document.getElementById('noCandidaciesMsg');
+    const tableEl = document.querySelector('#candidaciesContainer cds-table');
+
+    if (!tableBody) return;
+
+    const userProfileString = localStorage.getItem('pna_user_profile');
+    if (!userProfileString) return;
+    const user = JSON.parse(userProfileString);
+
+    const storedCandidacies = localStorage.getItem('pna_candidacies');
+    const candidacies = storedCandidacies ? JSON.parse(storedCandidacies) : [];
+
+    // Filter by current user email
+    // Note: In our current MockAPI, some data might not have user email if it wasn't captured, 
+    // but typically we should match by student email.
+    // However, for this prototype, if the user is logged in, we show what's in local storage.
+    // Realistically, for multi-user local storage simulation, we filter.
+    const userCandidacies = candidacies.filter(c => c.email === user.email || (c.relazioni && c.relazioni.studenti.some(s => s.email === user.email)));
+
+    if (userCandidacies.length === 0) {
+        if (noMsg) noMsg.style.display = 'block';
+        if (tableEl) tableEl.style.display = 'none';
+        return;
+    }
+
+    if (noMsg) noMsg.style.display = 'none';
+    if (tableEl) tableEl.style.display = 'block';
+
+    tableBody.innerHTML = '';
+    userCandidacies.forEach(c => {
+        const dateStr = c.submitted_at ? new Date(c.submitted_at).toLocaleDateString('it-IT') : '-';
+        const row = document.createElement('cds-table-row');
+        row.innerHTML = `
+            <cds-table-cell>${c.id_premio || 'N/D'}</cds-table-cell>
+            <cds-table-cell>${c.titolo || 'Senza titolo'}</cds-table-cell>
+            <cds-table-cell>${dateStr}</cds-table-cell>
+            <cds-table-cell><cds-tag type="green">Inviata</cds-tag></cds-table-cell>
+        `;
+        tableBody.appendChild(row);
+    });
+}
 
 function loadUserData() {
     const userProfileString = localStorage.getItem('pna_user_profile');
