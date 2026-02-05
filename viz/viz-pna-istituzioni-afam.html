@@ -43,38 +43,47 @@
         </div>
 
         <div id="view-map" class="view-container">
-            <div class="view-header">
-                <div style="display: flex; align-items: center;">
-                    <p class="subtitle">Distribuzione territoriale delle istituzioni partecipanti.</p>
-                    <div class="total-counter">Istituti <span class="count total-institutions-count">0</span></div>
-                </div>
-                <div class="controls-group">
-                    <div class="slider-container">
-                        <label for="cluster-radius">Sensibilità Cluster:</label>
-                        <input type="range" id="cluster-radius" min="0" max="150" value="20" step="5"
-                            oninput="updateClusterRadius(this.value)">
-                        <span id="radius-value">20</span>
-                    </div>
-                    <button class="export-btn" onclick="exportMapToSVG()">Esporta Mappa (SVG)</button>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <p class="subtitle">Distribuzione territoriale delle istituzioni partecipanti.</p>
+                <div class="total-counter">Istituti <span class="count total-institutions-count">0</span></div>
+                <div class="filter-group">
+                    <label class="filter-item">
+                        <input type="checkbox" class="status-filter" value="Pubblico" checked onchange="applyFilters()">
+                        Pubblico
+                    </label>
+                    <label class="filter-item">
+                        <input type="checkbox" class="status-filter" value="Privato" checked onchange="applyFilters()">
+                        Privato
+                    </label>
                 </div>
             </div>
-            <div id="map-container"></div>
-        </div>
-
-        <div id="view-groups" class="view-container" style="display:none;">
-            <div class="view-header">
-                <div style="display: flex; align-items: center;">
-                    <p class="subtitle">Raggruppamento per tipologia di istituto (Bubble Chart).</p>
-                    <div class="total-counter">Istituti <span class="count total-institutions-count">0</span></div>
+            <div class="controls-group">
+                <div class="slider-container">
+                    <label for="cluster-radius">Sensibilità Cluster:</label>
+                    <input type="range" id="cluster-radius" min="0" max="150" value="20" step="5"
+                        oninput="updateClusterRadius(this.value)">
+                    <span id="radius-value">20</span>
                 </div>
-                <button class="export-btn" onclick="exportBubbleChartToSVG()">Esporta Grafico (SVG)</button>
+                <button class="export-btn" onclick="exportMapToSVG()">Esporta Mappa (SVG)</button>
             </div>
-            <div id="bubble-chart"></div>
         </div>
+        <div id="map-container"></div>
+    </div>
 
-        <div id="tooltip" class="tooltip"></div>
+    <div id="view-groups" class="view-container" style="display:none;">
+        <div class="view-header">
+            <div style="display: flex; align-items: center;">
+                <p class="subtitle">Raggruppamento per tipologia di istituto (Bubble Chart).</p>
+                <div class="total-counter">Istituti <span class="count total-institutions-count">0</span></div>
+            </div>
+            <button class="export-btn" onclick="exportBubbleChartToSVG()">Esporta Grafico (SVG)</button>
+        </div>
+        <div id="bubble-chart"></div>
+    </div>
 
-        <script src="assets/viz-afam.js"></script>
+    <div id="tooltip" class="tooltip"></div>
+
+    <script src="assets/viz-afam.js"></script>
     </div>
 
 </body>

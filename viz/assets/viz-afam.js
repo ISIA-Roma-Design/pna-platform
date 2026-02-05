@@ -138,7 +138,8 @@ function switchView(viewName) {
     document.getElementById('view-groups').style.display = viewName === 'groups' ? 'block' : 'none';
 
     if (viewName === 'map') {
-        updateTotalCount(allData.length);
+        const filteredData = getFilteredData();
+        updateTotalCount(filteredData.length);
         if (window.map) {
             // Invalidate size to ensure tiles load correctly if div was hidden
             setTimeout(() => {
@@ -162,6 +163,18 @@ function updateTotalCount(count) {
     document.querySelectorAll('.total-institutions-count').forEach(el => {
         el.textContent = count;
     });
+}
+
+function applyFilters() {
+    const filteredData = getFilteredData();
+    updateTotalCount(filteredData.length);
+    initLeafletMap(filteredData);
+}
+
+function getFilteredData() {
+    const selectedStatuses = Array.from(document.querySelectorAll('.status-filter:checked')).map(cb => cb.value);
+    // Note: status in JSON is "Pubblico" or "Privato"
+    return allData.filter(d => selectedStatuses.includes(d.status));
 }
 
 function initLeafletMap(data) {
@@ -280,7 +293,7 @@ function updateClusterRadius(radius) {
 
     // Re-init clusters
     if (allData.length > 0) {
-        initLeafletMap(allData);
+        initLeafletMap(getFilteredData());
     }
 }
 
@@ -462,16 +475,14 @@ async function exportMapToSVG() {
     });
     svg.appendChild(mapGroup);
 
-    // 3. Identify Visible Markers and Clusters (Exhaustive Search)
-    // 3. Identify Exactly what is visible on the map
+    // 3. Identify Exactly what is visible on the map (rendered as clusters or pins)
     const visibleElements = new Set();
+
     window.map.eachLayer(layer => {
-        // We only want markers or clusters
-        if (layer instanceof L.MarkerCluster || layer instanceof L.CircleMarker || layer instanceof L.Marker) {
-            // Check if it's within the current map container
-            if (layer.getLatLng) {
-                visibleElements.add(layer);
-            }
+        // We only want markers (lone pins) or clusters
+        // lone pins will be CircleMarkers/Markers, clusters will be MarkerClusters
+        if (layer.getLatLng && (typeof layer.getChildCount === 'function' || (layer.options && layer.options.fillColor))) {
+            visibleElements.add(layer);
         }
     });
 
@@ -484,71 +495,28 @@ async function exportMapToSVG() {
         if (!latlng) return;
 
         const pos = project(latlng.lat, latlng.lng);
+        const isCluster = typeof el.getChildCount === 'function';
+        const count = isCluster ? el.getChildCount() : 1;
 
-        // Clusters have getChildCount
-        if (typeof el.getChildCount === 'function') {
-            const count = el.getChildCount();
-
-            if (count === 1) {
-                // Single institution forced into a cluster - Render as PIN
+        if (count === 1) {
+            // -- Render as PIN --
+            let color = "#0f62fe";
+            if (isCluster) {
                 const markers = el.getAllChildMarkers();
-                const color = (markers.length > 0 && markers[0].options.fillColor) || "#0f62fe";
-
-                const glow = document.createElementNS(svgNS, "circle");
-                glow.setAttribute("cx", pos.x);
-                glow.setAttribute("cy", pos.y);
-                glow.setAttribute("r", 9);
-                glow.setAttribute("fill", color);
-                glow.setAttribute("fill-opacity", "0.2");
-                markersGroup.appendChild(glow);
-
-                const pin = document.createElementNS(svgNS, "circle");
-                pin.setAttribute("cx", pos.x);
-                pin.setAttribute("cy", pos.y);
-                pin.setAttribute("r", 6);
-                pin.setAttribute("fill", color);
-                pin.setAttribute("stroke", "#ffffff");
-                pin.setAttribute("stroke-width", "2");
-                pin.setAttribute("fill-opacity", "1.0");
-                markersGroup.appendChild(pin);
-            } else {
-                // Collective cluster - Render as CLUSTER
-                let color = "#0f62fe";
-                if (count >= 10) color = "#8a3ffc";
-                if (count >= 100) color = "#000000";
-
-                const halo = document.createElementNS(svgNS, "circle");
-                halo.setAttribute("cx", pos.x);
-                halo.setAttribute("cy", pos.y);
-                halo.setAttribute("r", 12); // Reduced from 16
-                halo.setAttribute("fill", color);
-                halo.setAttribute("fill-opacity", "0.2");
-                markersGroup.appendChild(halo);
-
-                const circle = document.createElementNS(svgNS, "circle");
-                circle.setAttribute("cx", pos.x);
-                circle.setAttribute("cy", pos.y);
-                circle.setAttribute("r", 9); // Reduced from 13
-                circle.setAttribute("fill", color);
-                circle.setAttribute("fill-opacity", "0.95");
-                circle.setAttribute("stroke", "#ffffff");
-                circle.setAttribute("stroke-width", "2.0");
-                markersGroup.appendChild(circle);
-
-                const text = document.createElementNS(svgNS, "text");
-                text.setAttribute("x", pos.x);
-                text.setAttribute("y", pos.y + 3); // Adjusted from +4
-                text.setAttribute("text-anchor", "middle");
-                text.setAttribute("fill", "#ffffff");
-                text.setAttribute("font-size", "9px"); // Reduced from 11px
-                text.setAttribute("font-weight", "bold");
-                text.setAttribute("font-family", "Arial, sans-serif");
-                text.textContent = count;
-                markersGroup.appendChild(text);
+                if (markers.length > 0 && markers[0].options && markers[0].options.fillColor) {
+                    color = markers[0].options.fillColor;
+                }
+            } else if (el.options && el.options.fillColor) {
+                color = el.options.fillColor;
             }
-        } else if (el.options && el.options.fillColor) {
-            // Individual Pins (CircleMarkers not in a cluster)
-            const color = el.options.fillColor || "#0f62fe";
+
+            const glow = document.createElementNS(svgNS, "circle");
+            glow.setAttribute("cx", pos.x);
+            glow.setAttribute("cy", pos.y);
+            glow.setAttribute("r", 9);
+            glow.setAttribute("fill", color);
+            glow.setAttribute("fill-opacity", "0.2");
+            markersGroup.appendChild(glow);
 
             const pin = document.createElementNS(svgNS, "circle");
             pin.setAttribute("cx", pos.x);
@@ -559,6 +527,41 @@ async function exportMapToSVG() {
             pin.setAttribute("stroke-width", "2");
             pin.setAttribute("fill-opacity", "1.0");
             markersGroup.appendChild(pin);
+
+        } else {
+            // -- Render as CLUSTER --
+            let color = "#0f62fe";
+            if (count >= 10) color = "#8a3ffc";
+            if (count >= 100) color = "#000000";
+
+            const halo = document.createElementNS(svgNS, "circle");
+            halo.setAttribute("cx", pos.x);
+            halo.setAttribute("cy", pos.y);
+            halo.setAttribute("r", 12);
+            halo.setAttribute("fill", color);
+            halo.setAttribute("fill-opacity", "0.2");
+            markersGroup.appendChild(halo);
+
+            const circle = document.createElementNS(svgNS, "circle");
+            circle.setAttribute("cx", pos.x);
+            circle.setAttribute("cy", pos.y);
+            circle.setAttribute("r", 9);
+            circle.setAttribute("fill", color);
+            circle.setAttribute("fill-opacity", "0.95");
+            circle.setAttribute("stroke", "#ffffff");
+            circle.setAttribute("stroke-width", "2.0");
+            markersGroup.appendChild(circle);
+
+            const text = document.createElementNS(svgNS, "text");
+            text.setAttribute("x", pos.x);
+            text.setAttribute("y", pos.y + 3);
+            text.setAttribute("text-anchor", "middle");
+            text.setAttribute("fill", "#ffffff");
+            text.setAttribute("font-size", "9px");
+            text.setAttribute("font-weight", "bold");
+            text.setAttribute("font-family", "Arial, sans-serif");
+            text.textContent = count;
+            markersGroup.appendChild(text);
         }
     });
 

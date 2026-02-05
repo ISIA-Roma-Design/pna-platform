@@ -413,3 +413,22 @@ h1 {
     border-radius: 2px;
     font-size: 12px;
 }
+
+.filter-group {
+    display: flex;
+    gap: 15px;
+    margin-left: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.filter-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.filter-item input {
+    cursor: pointer;
+}
