@@ -1,0 +1,277 @@
+[
+    {
+        "fase": "1",
+        "attore": "Ministero",
+        "descrizione": "Pubblicazione bando per la nuova edizione"
+    },
+    {
+        "fase": "2",
+        "attore": "Ministero",
+        "descrizione": "Assegnazione categorie premi e sezioni alle Istituzioni designate [ISTD]"
+    },
+    {
+        "fase": "3",
+        "attore": "Istituzione Designata",
+        "descrizione": "Pubblicazione regolamento categoria/sezione"
+    },
+    {
+        "fase": "4",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Registrazione e associazione istituto"
+    },
+    {
+        "fase": "5",
+        "attore": "Piattaforma",
+        "descrizione": "Convalida account referente"
+    },
+    {
+        "fase": "6",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Invia richiesta di adesione dell'istituto all'istituto designato"
+    },
+    {
+        "fase": "7",
+        "attore": "Studente",
+        "descrizione": "Effettua la registrazione"
+    },
+    {
+        "fase": "8",
+        "attore": "Piattaforma",
+        "descrizione": "Prima della scadenza del bando invia mail di notifica a [STU]"
+    },
+    {
+        "fase": "9",
+        "attore": "Studente",
+        "descrizione": "Crea nuova candidatura, Compila dati amministrativi e accademici per la candidatura, Associa uno o più studenti (coautori) e uno o più docenti, Seleziona premio/sezione/sottosezione/categoria e compila dei relativi campi, Invia candidatura"
+    },
+    {
+        "fase": "10",
+        "attore": "Studente",
+        "descrizione": "Richiesta pianista accompagnatore (se previsto dal regolamento)"
+    },
+    {
+        "fase": "11",
+        "attore": "Piattaforma",
+        "descrizione": "Invia notifica al REF ad ogni candidatura completata"
+    },
+    {
+        "fase": "12",
+        "attore": "Istituzione Designata",
+        "descrizione": "Pubblicazione e gestione Proroga termini (se necessaria)"
+    },
+    {
+        "fase": "13",
+        "attore": "Piattaforma",
+        "descrizione": "Invia notifica al [REF] per la convalida di candidature pendenti"
+    },
+    {
+        "fase": "14",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Convalida candidatura"
+    },
+    {
+        "fase": "15",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Nomina commissione interna di preselezione (se iscritti > limite bando)"
+    },
+    {
+        "fase": "16",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Svolgimento audizioni interne e caricamento verbale di selezione"
+    },
+    {
+        "fase": "17",
+        "attore": "Piattaforma",
+        "descrizione": "Genera elenco candidature"
+    },
+    {
+        "fase": "18",
+        "attore": "Istituzione Designata",
+        "descrizione": "Propone la giuria"
+    },
+    {
+        "fase": "19",
+        "attore": "Ministero",
+        "descrizione": "Nomina la giuria"
+    },
+    {
+        "fase": "20",
+        "attore": "Istituzione Designata",
+        "descrizione": "Pubblicazione decreto nomina giuria all'Albo Pretorio"
+    },
+    {
+        "fase": "21",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail invito per i membri della giura [GIU]"
+    },
+    {
+        "fase": "22",
+        "attore": "Commissione",
+        "descrizione": "Attiva account e visiona candidature"
+    },
+    {
+        "fase": "23",
+        "attore": "Commissione",
+        "descrizione": "Stabilisce [STU] selezionati"
+    },
+    {
+        "fase": "24",
+        "attore": "Commissione",
+        "descrizione": "Tra [STU] selezionati stabilisce [STU] vincitori (Solo per sottosezioni senza prove live)"
+    },
+    {
+        "fase": "25",
+        "attore": "Piattaforma",
+        "descrizione": "Genera Elenco selezionati"
+    },
+    {
+        "fase": "26",
+        "attore": "Istituzione Designata",
+        "descrizione": "Sorteggio pubblico lettera alfabetica per ordine di esecuzione"
+    },
+    {
+        "fase": "27",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail a [STU] e [REF] per le opere preselezionate/finaliste"
+    },
+    {
+        "fase": "28",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail calendario prove e prova finale"
+    },
+    {
+        "fase": "29",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail calendario semifinale"
+    },
+    {
+        "fase": "30",
+        "attore": "Istituzione Designata",
+        "descrizione": "Sorteggia esecuzione delle prova semifinale"
+    },
+    {
+        "fase": "31",
+        "attore": "Studente",
+        "descrizione": "Esecuzione della prova (programma)"
+    },
+    {
+        "fase": "32",
+        "attore": "Commissione",
+        "descrizione": "Stabilisce [STU] finalisti"
+    },
+    {
+        "fase": "33",
+        "attore": "Piattaforma",
+        "descrizione": "Genera Elenco finalisti"
+    },
+    {
+        "fase": "34",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail a [STU] e [REF] per opere finaliste"
+    },
+    {
+        "fase": "35",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail calendario prova finale"
+    },
+    {
+        "fase": "36",
+        "attore": "Piattaforma",
+        "descrizione": "Invia notifica a [STU] per il caricamento dei brani/tecniche prima delle prove"
+    },
+    {
+        "fase": "37",
+        "attore": "Studente",
+        "descrizione": "Carica brani per la prova (USB o in piattaforma)"
+    },
+    {
+        "fase": "38",
+        "attore": "Studente",
+        "descrizione": "Partecipa prove obbligatorie (con pianista ove richiesto)"
+    },
+    {
+        "fase": "39",
+        "attore": "Istituzione Designata",
+        "descrizione": "Sorteggia esecuzione delle prova finale"
+    },
+    {
+        "fase": "40",
+        "attore": "Studente",
+        "descrizione": "Esecuzione della prova finale"
+    },
+    {
+        "fase": "41",
+        "attore": "Commissione",
+        "descrizione": "Stabilisce [STU] vincitori"
+    },
+    {
+        "fase": "42",
+        "attore": "Piattaforma",
+        "descrizione": "Genera Elenco vincitori"
+    },
+    {
+        "fase": "43",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail a [STU] e [REF] per opere vincitrici"
+    },
+    {
+        "fase": "44",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail calendario cerimonia di premiazione"
+    },
+    {
+        "fase": "45",
+        "attore": "Istituzione Designata",
+        "descrizione": "Organizzazione evento/mostra/concerto finale"
+    },
+    {
+        "fase": "46",
+        "attore": "Studente",
+        "descrizione": "Colleziona materiali fisici per la mostra"
+    },
+    {
+        "fase": "47",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Verifica i materiali e li invia a [ISTD]"
+    },
+    {
+        "fase": "48",
+        "attore": "Istituzione Designata",
+        "descrizione": "Riceve i materiali per la mostra"
+    },
+    {
+        "fase": "49",
+        "attore": "Studente",
+        "descrizione": "Concerto/esibizione pubblica"
+    },
+    {
+        "fase": "50",
+        "attore": "Commissione",
+        "descrizione": "Nomina e proclamazione vincitori"
+    },
+    {
+        "fase": "51",
+        "attore": "Piattaforma",
+        "descrizione": "Pubblica elenco vincitori (Sito e Albo Pretorio)"
+    },
+    {
+        "fase": "52",
+        "attore": "Istituzione Designata",
+        "descrizione": "Cerimonia di premiazione"
+    },
+    {
+        "fase": "53",
+        "attore": "Ministero",
+        "descrizione": "Pubblicazione e promozione risultati"
+    },
+    {
+        "fase": "54",
+        "attore": "Istituzione Designata",
+        "descrizione": "Rendicontazione delle spese sostenute (entro 60gg)"
+    },
+    {
+        "fase": "55",
+        "attore": "Ministero",
+        "descrizione": "Verifica rendiconto e liquidazione fondi/rimborsi"
+    }
+]

@@ -246,8 +246,8 @@
         "address": "Via XXV Luglio, 10, REGGIO DI CALABRIA, RC, 89121, Reggio Calabria, Rc, , Italia",
         "status": "Pubblico",
         "website": "www.abarc.it",
-        "lat": "38.2618287",
-        "lng": "15.8558228"
+        "lat": "382.618.287",
+        "lng": "158.558.228"
     },
     {
         "id": "accademia-di-belle-arti-di-roma",
@@ -258,8 +258,8 @@
         "address": "Via Ripetta, 222, 00186, Roma, Rm, , Italia",
         "status": "Pubblico",
         "website": "www.abaroma.it/",
-        "lat": "41.9985375",
-        "lng": "12.0984639"
+        "lat": "419.985.604",
+        "lng": "120.984.514"
     },
     {
         "id": "accademia-di-belle-arti-di-sanremo",
@@ -270,8 +270,8 @@
         "address": "Via Val del Ponte, 34, 18038, Sanremo, IM, , Italia",
         "status": "Privato",
         "website": "www.accademiabelleartisanremo.it",
-        "lat": "43.8248461",
-        "lng": "7.7812209"
+        "lat": "438.248.461",
+        "lng": "77.812.209"
     },
     {
         "id": "accademia-di-belle-arti-di-sassari",
@@ -282,8 +282,8 @@
         "address": "Via Duca Degli Abruzzi, 4, 07100, Sassari, Ss, , Italia",
         "status": "Pubblico",
         "website": "www.accademiasironi.it",
-        "lat": "40.7176102",
-        "lng": "8.5702339"
+        "lat": "407.176.102",
+        "lng": "85.702.339"
     },
     {
         "id": "accademia-di-belle-arti-di-venezia",
@@ -294,8 +294,8 @@
         "address": "Dorsoduro 423, 30123, Venezia, Ve, , Italia",
         "status": "Pubblico",
         "website": "www.accademiavenezia.it/",
-        "lat": "45.4331323",
-        "lng": "12.3190338"
+        "lat": "454.331.323",
+        "lng": "123.190.338"
     },
     {
         "id": "accademia-di-belle-arti-e-design-poliarte",
@@ -305,8 +305,8 @@
         "sede": "Principale",
         "address": "Via Valle Miano, 41, 60125, Ancona, An, , Italia",
         "status": "Privato",
-        "lat": "43.6076300",
-        "lng": "13.5130870"
+        "lat": "4.360.763",
+        "lng": "13.513.087"
     },
     {
         "id": "accademia-di-belle-arti-leg-ricon-istituto-i-duncan-di-sanremo-im-sede-decentrata-di-milano",
@@ -317,8 +317,8 @@
         "address": "Via Privata Chioggia, 2, 20125, Milano, Mi, , Italia",
         "status": "Privato",
         "website": "www.accademiabelleartisanremo.it/it/",
-        "lat": "45.4998314",
-        "lng": "9.2192945"
+        "lat": "454.998.314",
+        "lng": "92.192.945"
     },
     {
         "id": "accademia-di-belle-arti-leg-ricon-rosario-gagliardi-di-siracusa",
@@ -329,8 +329,8 @@
         "address": "Via Cairoli, 20, 96100, Siracusa, SR, , Italia",
         "status": "Privato",
         "website": "www.madeprogram.it/",
-        "lat": "37.0646531",
-        "lng": "15.2879551"
+        "lat": "37.178.139",
+        "lng": "15.126.003"
     },
     {
         "id": "accademia-di-belle-arti-leg-ricon-cuneo",
@@ -341,8 +341,8 @@
         "address": "Piazza Tancredi Galimberti, 12100, Cuneo, Cn, , Italia",
         "status": "Privato",
         "website": "www.accademiabellearticuneo.it",
-        "lat": "44.3895006",
-        "lng": "7.5477909"
+        "lat": "44.389.633",
+        "lng": "75.479.007"
     },
     {
         "id": "accademia-di-belle-arti-legalmente-riconosciuta-di-milano-naba-nuova-accademia-di-belle-arti-sede-roma",
@@ -353,8 +353,8 @@
         "address": "Via Ostiense, 92 , 00154, Roma, Rm, , Italia",
         "status": "Privato",
         "website": "www.naba.it",
-        "lat": "41.8678630",
-        "lng": "12.4791773"
+        "lat": "41.867.863",
+        "lng": "124.791.773"
     },
     {
         "id": "accademia-di-belle-arti-legalmente-riconosciuta-di-roma-rome-university-of-fine-arts",
@@ -365,8 +365,8 @@
         "address": "Piazza del Campidoglio, 00120, Roma, Rm, , Italia",
         "status": "Privato",
         "website": "www.unirufa.it",
-        "lat": "41.8932408",
-        "lng": "12.4829815"
+        "lat": "418.933.203",
+        "lng": "124.829.321"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-bari",
@@ -377,8 +377,8 @@
         "address": "Via Michele Cifarelli, 26, 70124, Bari, Ba, , Italia",
         "status": "Pubblico",
         "website": "www.consba.it/",
-        "lat": "41.1157586",
-        "lng": "16.8568829"
+        "lat": "411.157.586",
+        "lng": "168.568.829"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-bologna",
@@ -389,8 +389,8 @@
         "address": "P.Zza Rossini, 2, 40126, Bologna, Bo, , Italia",
         "status": "Pubblico",
         "website": "www.consbo.it",
-        "lat": "44.4952952",
-        "lng": "11.3490593"
+        "lat": "444.952.952",
+        "lng": "113.490.593"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-carrara",
@@ -401,8 +401,8 @@
         "address": "Via Roma, 1, , Ms, 54033, Carrara, Ca, , Italia",
         "status": "Pubblico",
         "website": "www.accademiacarrara.it",
-        "lat": "44.0784425",
-        "lng": "10.0994230"
+        "lat": "440.784.425",
+        "lng": "10.099.423"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-catanzaro",
@@ -413,8 +413,8 @@
         "address": "Via Tommaso Campanella, 182 (Mater Domini), 88100, Catanzaro, Cz, , Italia",
         "status": "Pubblico",
         "website": "www.abacatanzaro.it",
-        "lat": "38.9173324",
-        "lng": "16.5688438"
+        "lat": "389.173.324",
+        "lng": "165.688.438"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-firenze",
@@ -425,8 +425,8 @@
         "address": "P.Zza Belle Arti, 2, 50122, Firenze, Fi, , Italia",
         "status": "Pubblico",
         "website": "www.consfi.it/",
-        "lat": "43.7763996",
-        "lng": "11.2583489"
+        "lat": "437.697.955",
+        "lng": "112.556.404"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-foggia",
@@ -437,8 +437,8 @@
         "address": "Piazza Negri, 13, 71100, Foggia, Fg, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriofoggia.it",
-        "lat": "41.5028106",
-        "lng": "15.4528939"
+        "lat": "415.028.106",
+        "lng": "154.528.939"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-frosinone",
@@ -449,8 +449,8 @@
         "address": "Via Marconi, 03100, Frosinone, Fr, , Italia",
         "status": "Pubblico",
         "website": "www.accademiabellearti.fr.it",
-        "lat": "41.5775271",
-        "lng": "13.6059872"
+        "lat": "415.778.608",
+        "lng": "136.063.865"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-genova",
@@ -461,8 +461,8 @@
         "address": "Largo Pertini, 4, 16121, Genova, Ge, , Italia",
         "status": "Pubblico",
         "website": "www.accademialigustica.it/",
-        "lat": "44.4076284",
-        "lng": "8.9348449"
+        "lat": "444.076.284",
+        "lng": "89.348.449"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-l-aquila",
@@ -473,8 +473,8 @@
         "address": "Via Gaglioffi, 18, 67100, L'Aquila, Aq, , Italia",
         "status": "Pubblico",
         "website": "WWW.CONSAQ.IT",
-        "lat": "42.3505221",
-        "lng": "13.3964753"
+        "lat": "423.505.221",
+        "lng": "133.964.753"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-lecce",
@@ -485,8 +485,8 @@
         "address": "Via Libertini, 3, 73100, Lecce, Le, , Italia",
         "status": "Pubblico",
         "website": "www.accademialecce.edu.it/",
-        "lat": "40.3512613",
-        "lng": "18.1646249"
+        "lat": "403.512.613",
+        "lng": "181.646.249"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-macerata",
@@ -497,8 +497,8 @@
         "address": "Via Berardi 6, 62100, Macerata, Mc, , Italia",
         "status": "Pubblico",
         "website": "www.abamc.it",
-        "lat": "43.3010295",
-        "lng": "13.4508955"
+        "lat": "433.010.295",
+        "lng": "134.508.955"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-milano-brera",
@@ -509,8 +509,8 @@
         "address": "Via Brera, 28, 20121, Milano, Mi, , Italia",
         "status": "Pubblico",
         "website": "www.accademiadibrera.milano.it",
-        "lat": "45.4722421",
-        "lng": "9.1884071"
+        "lat": "454.722.421",
+        "lng": "91.884.071"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-napoli",
@@ -521,8 +521,8 @@
         "address": "Via S.P. A Majella, 35, 80138, Napoli, Na, , Italia",
         "status": "Pubblico",
         "website": "www.sanpietroamajella.it",
-        "lat": "40.8358846",
-        "lng": "14.2487679"
+        "lat": "408.358.846",
+        "lng": "142.487.679"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-palermo",
@@ -533,8 +533,8 @@
         "address": "Via Papireto, 18/20, 90134, Palermo, Pa, , Italia",
         "status": "Pubblico",
         "website": "www.accademiadipalermo.it",
-        "lat": "38.1163595",
-        "lng": "13.3522738"
+        "lat": "381.163.595",
+        "lng": "133.522.738"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-perugia",
@@ -545,8 +545,8 @@
         "address": "Via San Francesco, 5, 06123, Perugia, Pg, , Italia",
         "status": "Pubblico",
         "website": "www.abaperugia.org",
-        "lat": "43.1130349",
-        "lng": "12.3844100"
+        "lat": "431.130.349",
+        "lng": "1.238.441"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-ravenna",
@@ -557,8 +557,8 @@
         "address": "Via delle Industrie, 76, 48122, Ravenna, Ra, , Italia",
         "status": "Pubblico",
         "website": "www.abaravenna.it",
-        "lat": "44.4262085",
-        "lng": "12.2137298"
+        "lat": "444.262.085",
+        "lng": "122.137.298"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-roma",
@@ -568,8 +568,8 @@
         "sede": "Principale",
         "address": "Via Dei Greci,18, 00187, Roma, Rm, , Italia",
         "status": "Pubblico",
-        "lat": "41.9074985",
-        "lng": "12.4788258"
+        "lat": "419.074.985",
+        "lng": "124.788.258"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-torino-albertina",
@@ -580,8 +580,8 @@
         "address": "Via Accademia Albertina, 6, 10123, Torino, To, , Italia",
         "status": "Pubblico",
         "website": "www.albertina.academy",
-        "lat": "45.0675807",
-        "lng": "7.6897297"
+        "lat": "450.675.807",
+        "lng": "76.897.297"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-urbino",
@@ -592,8 +592,8 @@
         "address": "Via Dei Maceri, 21, , Pu, 61029, Urbino, Ur, , Italia",
         "status": "Pubblico",
         "website": "www.accademiadiurbino.it",
-        "lat": "43.7275794",
-        "lng": "12.6341966"
+        "lat": "437.277.063",
+        "lng": "126.341.464"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-venezia",
@@ -604,8 +604,8 @@
         "address": "Fondamenta Zattere Allo Spirito Santo, 423, 30123 Venezia VE",
         "status": "Pubblico",
         "website": "www.accademiavenezia.it",
-        "lat": "45.4371908",
-        "lng": "12.3345898"
+        "lat": "454.323.575",
+        "lng": "123.304.966"
     },
     {
         "id": "accademia-di-belle-arti-statale-di-verona",
@@ -616,8 +616,8 @@
         "address": "Via C. Montanari, 5, 37122, Verona, Vr, , Italia",
         "status": "Pubblico",
         "website": "www.accademiabelleartiverona.it/it/",
-        "lat": "45.4989147",
-        "lng": "10.9390044"
+        "lat": "454.989.096",
+        "lng": "109.389.909"
     },
     {
         "id": "accademia-di-costume-e-moda",
@@ -628,8 +628,8 @@
         "address": "Piazza del Campidoglio, 00120, Roma, Rm, , Italia",
         "status": "Privato",
         "website": "www.accademiacostumeemoda.it",
-        "lat": "41.8932408",
-        "lng": "12.4829815"
+        "lat": "418.933.203",
+        "lng": "124.829.321"
     },
     {
         "id": "accademia-di-costume-e-moda-sede-decentrata-di-milano",
@@ -640,8 +640,8 @@
         "address": "Via Antonio Fogazzaro, 23, 20135, Milano, Mi, , Italia",
         "status": "Pubblico",
         "website": "www.accademiacostumeemoda.it",
-        "lat": "45.4576097",
-        "lng": "9.2094335"
+        "lat": "454.576.097",
+        "lng": "92.094.335"
     },
     {
         "id": "accademia-di-design-e-comunicazione-visiva-abadir",
@@ -651,8 +651,8 @@
         "sede": "Principale",
         "address": "Via Giacomo Leopardi, 8, 95030, Sant'Agata li Battiati, Sa, , Italia",
         "status": "Privato",
-        "lat": "37.5590533",
-        "lng": "15.0829428"
+        "lat": "375.590.533",
+        "lng": "150.829.428"
     },
     {
         "id": "accademia-internazionale-di-teatro",
@@ -663,8 +663,8 @@
         "address": "Via Camillo Porzio, 8, 00179, Roma, Rm, , Italia",
         "status": "Privato",
         "website": "www.scuoladiteatro.it",
-        "lat": "41.8716855",
-        "lng": "12.5166490"
+        "lat": "418.716.855",
+        "lng": "12.516.649"
     },
     {
         "id": "accademia-italiana-di-arte-moda-e-design-firenze",
@@ -675,8 +675,8 @@
         "address": "Piazza della Signoria, 21 R, 50122, Firenze, Fi, , Italia",
         "status": "Pubblico",
         "website": "www.accademiaitaliana.com",
-        "lat": "43.7700182",
-        "lng": "11.2556355"
+        "lat": "437.697.955",
+        "lng": "112.556.404"
     },
     {
         "id": "accademia-italiana-di-arte-moda-e-design-roma",
@@ -687,8 +687,8 @@
         "address": "Piazza del Campidoglio, 00120, Roma, Rm, , Italia",
         "status": "Pubblico",
         "website": "www.accademiaitaliana.com",
-        "lat": "41.8932408",
-        "lng": "12.4829815"
+        "lat": "418.933.203",
+        "lng": "124.829.321"
     },
     {
         "id": "accademia-italiana-di-moda-design-e-fotografia",
@@ -698,8 +698,8 @@
         "sede": "Principale",
         "address": "Piazza Pitti, 15, 50125, Firenze, Fi, , Italia",
         "status": "Privato",
-        "lat": "43.7655420",
-        "lng": "11.2498414"
+        "lat": "43.765.542",
+        "lng": "112.498.414"
     },
     {
         "id": "accademia-nazionale-d-arte-drammatica-silvio-d-amico",
@@ -710,8 +710,8 @@
         "address": "Via Vincenzo Bellini, 16, 00198, Roma, Rm, , Italia",
         "status": "Pubblico",
         "website": "www.accademiasilviodamico.it",
-        "lat": "41.9200518",
-        "lng": "12.4937857"
+        "lat": "419.200.518",
+        "lng": "124.937.857"
     },
     {
         "id": "accademia-nazionale-di-danza",
@@ -722,8 +722,8 @@
         "address": "Largo Arrigo Vii , 5, 00154, Roma, Rm, , Italia",
         "status": "Pubblico",
         "website": "www.accademianazionaledanza.it",
-        "lat": "41.8839516",
-        "lng": "12.4831017"
+        "lat": "418.839.516",
+        "lng": "124.831.017"
     },
     {
         "id": "accademia-siena-jazz",
@@ -734,8 +734,8 @@
         "address": "Il Campo, 53100, Siena, Si, , Italia",
         "status": "Privato",
         "website": "www.sienajazz.it/",
-        "lat": "43.3189467",
-        "lng": "11.3316569"
+        "lat": "433.185.536",
+        "lng": "113.316.533"
     },
     {
         "id": "accademia-teatro-alla-scala",
@@ -746,8 +746,8 @@
         "address": "Via Santa Marta, 18, 20123, Milano, Mi, , Italia",
         "status": "Privato",
         "website": "www.accademialascala.it",
-        "lat": "45.4617877",
-        "lng": "9.1823933"
+        "lat": "454.617.877",
+        "lng": "91.823.933"
     },
     {
         "id": "civica-scuola-cinema-luchino-visconti",
@@ -758,8 +758,8 @@
         "address": "Viale Fulvio Testi, 121, 20162, Milano",
         "status": "Pubblico",
         "website": "https://cinema.fondazionemilano.eu/",
-        "lat": "45.5135671",
-        "lng": "9.2040168"
+        "lat": "454.641.943",
+        "lng": "91.896.346"
     },
     {
         "id": "civica-scuola-di-musica-claudio-abbado",
@@ -770,8 +770,8 @@
         "address": "Via Stilicone, 36, 20154, Milano",
         "status": "Pubblico",
         "website": "https://musica.fondazionemilano.eu/",
-        "lat": "45.4911150",
-        "lng": "9.1683073"
+        "lat": "454.641.943",
+        "lng": "91.896.346"
     },
     {
         "id": "civica-scuola-teratro-paolo-grassi",
@@ -782,8 +782,8 @@
         "address": "Via Salasco, 4, 20136, Milano",
         "status": "Pubblico",
         "website": "https://teatro.fondazionemilano.eu/",
-        "lat": "45.4500411",
-        "lng": "9.1925468"
+        "lat": "454.641.943",
+        "lng": "91.896.346"
     },
     {
         "id": "civica-scuola-interpreti-traduttori-altiero-spinelli",
@@ -794,8 +794,8 @@
         "address": "Via Francesco Carchidio, 2, 20144, Milano",
         "status": "Pubblico",
         "website": "https://lingue.fondazionemilano.eu/",
-        "lat": "45.4558459",
-        "lng": "9.1719563"
+        "lat": "454.641.943",
+        "lng": "91.896.346"
     },
     {
         "id": "conservatorio-di-musica-dadria",
@@ -806,8 +806,8 @@
         "address": "Viale Maddalena,2, ADRIA, RO, 45011, Rovigo, Ro, , Italia",
         "status": "Pubblico",
         "website": "www.conservatorioadria.it",
-        "lat": "45.0591181",
-        "lng": "12.0547219"
+        "lat": "450.591.288",
+        "lng": "120.547.181"
     },
     {
         "id": "conservatorio-di-musica-di-bolzano-sez-tedesca",
@@ -818,8 +818,8 @@
         "address": "Piazza Domenicani, 19,, 39100, Bolzano - Bozen, Bz, , Italia",
         "status": "Pubblico",
         "website": "www.cons.bz.it",
-        "lat": "46.4976732",
-        "lng": "11.3515688"
+        "lat": "464.976.732",
+        "lng": "113.515.688"
     },
     {
         "id": "conservatorio-di-musica-di-brescia-sez-darfo-boario-terme",
@@ -830,8 +830,8 @@
         "address": "Piazza Benedetti Michelangeli, 1, DARFO BOARIO TERME, BS, 25121, Brescia, Bs, , Italia",
         "status": "Pubblico",
         "website": "www.consbs.it",
-        "lat": "45.5358028",
-        "lng": "10.2255838"
+        "lat": "457.795.805",
+        "lng": "10.425.873"
     },
     {
         "id": "conservatorio-di-musica-di-como",
@@ -842,8 +842,8 @@
         "address": "Via Cadorna, 4, 22100, Como, Co, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriocomo.it",
-        "lat": "45.7940756",
-        "lng": "9.1176447"
+        "lat": "457.940.756",
+        "lng": "91.176.447"
     },
     {
         "id": "conservatorio-di-musica-di-fermo",
@@ -854,8 +854,8 @@
         "address": "Via dell'Universita', 16, 63023, Fermo, Fm, , Italia",
         "status": "Pubblico",
         "website": "www.conservatorio.net",
-        "lat": "43.1617794",
-        "lng": "13.7173919"
+        "lat": "431.617.794",
+        "lng": "137.173.919"
     },
     {
         "id": "conservatorio-di-musica-di-foggia-sez-rodi-garganico",
@@ -866,8 +866,8 @@
         "address": "Via Varano, 71012, Rodi Garganico, Fg, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriofoggia.it",
-        "lat": "41.9289048",
-        "lng": "15.8802919"
+        "lat": "41.928.745",
+        "lng": "15.881.052"
     },
     {
         "id": "conservatorio-di-musica-di-frosinone",
@@ -878,8 +878,8 @@
         "address": "Viale Michelangelo, 03100, Frosinone, Fr, , Italia",
         "status": "Pubblico",
         "website": "www.conservatorio-frosinone.it",
-        "lat": "41.6285468",
-        "lng": "13.5758498"
+        "lat": "416.285.468",
+        "lng": "135.758.498"
     },
     {
         "id": "conservatorio-di-musica-di-genova",
@@ -890,8 +890,8 @@
         "address": "Via Albaro, 38, 16145, Genova, Ge, , Italia",
         "status": "Pubblico",
         "website": "www.conspaganini.it/",
-        "lat": "44.4008022",
-        "lng": "8.9581206"
+        "lat": "444.008.022",
+        "lng": "89.581.206"
     },
     {
         "id": "conservatorio-di-musica-di-lecce",
@@ -902,8 +902,8 @@
         "address": "Via A.Ciardo, 2, 73100, Lecce, Le, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriolecce.it",
-        "lat": "40.1522173",
-        "lng": "18.2260628"
+        "lat": "401.522.173",
+        "lng": "182.260.628"
     },
     {
         "id": "conservatorio-di-musica-di-lecce-sez-ceglie-messapica",
@@ -914,8 +914,8 @@
         "address": "V.Le B. Luigi Don Guanella, 2, 72013, Ceglie Messapica, Br, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriolecce.it",
-        "lat": "40.6460444",
-        "lng": "17.5170566"
+        "lat": "406.460.444",
+        "lng": "175.170.566"
     },
     {
         "id": "conservatorio-di-musica-di-lucca",
@@ -926,8 +926,8 @@
         "address": "Piazza del Suffragio, 6, 55100, Lucca, Lu, , Italia",
         "status": "Pubblico",
         "website": "www.boccherini.it",
-        "lat": "43.8428399",
-        "lng": "10.5062918"
+        "lat": "438.428.905",
+        "lng": "105.064.505"
     },
     {
         "id": "conservatorio-di-musica-di-milano",
@@ -938,8 +938,8 @@
         "address": "Via Conservatorio, 12, 20122, Milano, Mi, , Italia",
         "status": "Pubblico",
         "website": "www.consmi.it",
-        "lat": "45.4650024",
-        "lng": "9.2031994"
+        "lat": "454.650.024",
+        "lng": "92.031.994"
     },
     {
         "id": "conservatorio-di-musica-di-modena-e-carpi",
@@ -950,8 +950,8 @@
         "address": "Via Carlo Goldoni, 10, 41121, Modena, Mo, , Italia",
         "status": "Pubblico",
         "website": "www.vecchitonelli.it",
-        "lat": "44.6472046",
-        "lng": "10.9299876"
+        "lat": "446.472.046",
+        "lng": "109.299.876"
     },
     {
         "id": "conservatorio-di-musica-di-palermo",
@@ -962,8 +962,8 @@
         "address": "Via Squarcialupo,45, 90133, Palermo, Pa, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriopalermo.it",
-        "lat": "38.1213238",
-        "lng": "13.3640091"
+        "lat": "381.213.238",
+        "lng": "133.640.091"
     },
     {
         "id": "conservatorio-di-musica-di-parma",
@@ -974,8 +974,8 @@
         "address": "Via del Conservatorio,27, 43100, Parma, Pr, , Italia",
         "status": "Pubblico",
         "website": "www.conservatorio.pr.it",
-        "lat": "44.6952006",
-        "lng": "10.0979869"
+        "lat": "446.952.006",
+        "lng": "100.979.869"
     },
     {
         "id": "conservatorio-di-musica-di-pavia",
@@ -986,8 +986,8 @@
         "address": "Via Volta, 31, 27100, Pavia, Pv, , Italia",
         "status": "Pubblico",
         "website": "www.conspv.it",
-        "lat": "45.1863517",
-        "lng": "9.1621432"
+        "lat": "451.863.517",
+        "lng": "91.621.432"
     },
     {
         "id": "conservatorio-di-musica-di-perugia",
@@ -998,8 +998,8 @@
         "address": "Piazza Mariotti,2, 06123, Perugia, Pg, , Italia",
         "status": "Pubblico",
         "website": "www.conservatorioperugia.it",
-        "lat": "43.1089834",
-        "lng": "12.3850994"
+        "lat": "431.089.834",
+        "lng": "123.850.994"
     },
     {
         "id": "conservatorio-di-musica-di-ravenna",
@@ -1010,8 +1010,8 @@
         "address": "\u00a0Via di Roma, 33, 48121, Ravenna, Ra, , Italia",
         "status": "Pubblico",
         "website": "www.verdiravenna.it/",
-        "lat": "44.4150860",
-        "lng": "12.2051541"
+        "lat": "44.415.086",
+        "lng": "122.051.541"
     },
     {
         "id": "conservatorio-di-musica-di-terni",
@@ -1022,8 +1022,8 @@
         "address": "Via del Tribunale, 05100, Terni, Tr, , Italia",
         "status": "Pubblico",
         "website": "www.briccialditerni.it",
-        "lat": "42.5634291",
-        "lng": "12.6489197"
+        "lat": "425.634.291",
+        "lng": "126.489.197"
     },
     {
         "id": "conservatorio-di-musica-di-torino",
@@ -1034,8 +1034,8 @@
         "address": "Via Mazzini,11, 10123, Torino, To, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriotorino.eu",
-        "lat": "45.0629116",
-        "lng": "7.6847292"
+        "lat": "450.629.116",
+        "lng": "76.847.292"
     },
     {
         "id": "conservatorio-di-musica-di-trento-sez-riva-del-garda",
@@ -1046,8 +1046,8 @@
         "address": "Largo Guglielmo Marconi, 5, RIVA DEL GARDA, TN, 38066, Trento, Tn, , Italia",
         "status": "Pubblico",
         "website": "www.conservatorio.tn.it/",
-        "lat": "45.8888242",
-        "lng": "10.8429772"
+        "lat": "458.888.242",
+        "lng": "108.429.772"
     },
     {
         "id": "conservatorio-di-musica-di-udine",
@@ -1058,8 +1058,8 @@
         "address": "Piazza 1\u00b0 Maggio, 29, 33100, Udine, Ud, , Italia",
         "status": "Pubblico",
         "website": "www.conservatorio.udine.it",
-        "lat": "46.0651811",
-        "lng": "13.2397028"
+        "lat": "460.651.811",
+        "lng": "132.397.028"
     },
     {
         "id": "conservatorio-di-musica-di-verona",
@@ -1070,8 +1070,8 @@
         "address": "Via Massalongo,2, 37100, Verona, Vr, , Italia",
         "status": "Pubblico",
         "website": "www.conservatorioverona.it",
-        "lat": "45.4452569",
-        "lng": "10.9989845"
+        "lat": "454.452.569",
+        "lng": "109.989.845"
     },
     {
         "id": "conservatorio-statale-di-musica-adria-ro-antonio-buzzolla",
@@ -1081,8 +1081,8 @@
         "sede": "Principale",
         "address": "Viale Maddalena, 2, 45011, Adria, RO, , Italia",
         "status": "Pubblico",
-        "lat": "45.0591181",
-        "lng": "12.0547219"
+        "lat": "450.591.288",
+        "lng": "120.547.181"
     },
     {
         "id": "conservatorio-di-musica-dalessandria",
@@ -1093,8 +1093,8 @@
         "address": "Via Parma, 1, 15121, Alessandria, Al, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriovivaldi.it/",
-        "lat": "44.9124642",
-        "lng": "8.6173157"
+        "lat": "449.124.232",
+        "lng": "86.170.604"
     },
     {
         "id": "conservatorio-statale-di-musica-avellino-domenico-cimarosa",
@@ -1105,8 +1105,8 @@
         "address": "Via Circumvallazione, 156, 83100, Avellino, AV, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriocimarosa.org",
-        "lat": "40.9161793",
-        "lng": "14.8012267"
+        "lat": "409.160.686",
+        "lng": "147.889.019"
     },
     {
         "id": "conservatorio-statale-di-musica-bari-niccol-piccinni",
@@ -1116,8 +1116,8 @@
         "sede": "Principale",
         "address": "Via Cifarelli, 26, 70124, Bari, BA, , Italia",
         "status": "Pubblico",
-        "lat": "41.1157586",
-        "lng": "16.8568829"
+        "lat": "411.157.586",
+        "lng": "168.568.829"
     },
     {
         "id": "conservatorio-statale-di-musica-benevento-nicola-sala",
@@ -1128,8 +1128,8 @@
         "address": "Via Mario La Vipera, 82100, Benevento, Bn, , Italia",
         "status": "Pubblico",
         "website": "www.conservatorio.bn.it",
-        "lat": "41.1303830",
-        "lng": "14.7821165"
+        "lat": "41.130.383",
+        "lng": "147.821.165"
     },
     {
         "id": "conservatorio-statale-di-musica-bologna-giovan-battista-martini",
@@ -1140,8 +1140,8 @@
         "address": "P.Zza Rossini, 2, 40126, Bologna, Bo, , Italia",
         "status": "Pubblico",
         "website": "www.consbo.it",
-        "lat": "44.4952952",
-        "lng": "11.3490593"
+        "lat": "444.952.952",
+        "lng": "113.490.593"
     },
     {
         "id": "conservatorio-statale-di-musica-bolzano-bozen-claudio-monteverdi",
@@ -1152,8 +1152,8 @@
         "address": "P.Zza Domenicani, 19, 39100, Bolzano - Bozen, Bz, , Italia",
         "status": "Pubblico",
         "website": "www.cons.bz.it",
-        "lat": "46.4976732",
-        "lng": "11.3515688"
+        "lat": "464.976.732",
+        "lng": "113.515.688"
     },
     {
         "id": "conservatorio-statale-di-musica-brescia-luca-marenzio",
@@ -1164,8 +1164,8 @@
         "address": "Piazza Arturo Benedetti Michelangeli, 1, 25100, Brescia, Bs, , Italia",
         "status": "Pubblico",
         "website": "www.consbs.it",
-        "lat": "45.5358028",
-        "lng": "10.2255838"
+        "lat": "455.358.028",
+        "lng": "102.255.838"
     },
     {
         "id": "conservatorio-statale-di-musica-cagliari-pierluigi-da-palestrina",
@@ -1176,8 +1176,8 @@
         "address": "P.Zza E. Porrino, 1, 09100, Cagliari, Ca, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriocagliari.it",
-        "lat": "39.2171994",
-        "lng": "9.1133110"
+        "lat": "392.171.994",
+        "lng": "9.113.311"
     },
     {
         "id": "conservatorio-statale-di-musica-caltanissetta-vincenzo-bellini",
@@ -1188,8 +1188,8 @@
         "address": "Corso Umberto I\u00b0, 84, , Cl, 93100, Caltanissetta, Ca, , Italia",
         "status": "Pubblico",
         "website": "www.Issmbellini.cl.it",
-        "lat": "37.4882462",
-        "lng": "14.0628911"
+        "lat": "374.882.462",
+        "lng": "140.628.911"
     },
     {
         "id": "conservatorio-statale-di-musica-campobasso-lorenzo-perosi",
@@ -1200,8 +1200,8 @@
         "address": "Via Principe di Piemonte, 2, 86100, Campobasso, Cb, , Italia",
         "status": "Pubblico",
         "website": "www.conservatorioperosi.it",
-        "lat": "41.7113278",
-        "lng": "14.9883469"
+        "lat": "417.113.278",
+        "lng": "149.883.469"
     },
     {
         "id": "conservatorio-statale-di-musica-castelfranco-veneto-tv-agostino-steffani",
@@ -1212,8 +1212,8 @@
         "address": "Via Garibaldi, 25, 31033, Castelfranco Veneto, Tv, , Italia",
         "status": "Pubblico",
         "website": "WWW.CONSCFV.IT",
-        "lat": "45.6721161",
-        "lng": "11.9248433"
+        "lat": "456.721.161",
+        "lng": "119.248.433"
     },
     {
         "id": "conservatorio-statale-di-musica-catania-vincenzo-bellini",
@@ -1224,8 +1224,8 @@
         "address": "Via Istituto Sacro Cuore, 3, 95125, Catania, Ct, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriocatania.it",
-        "lat": "37.5203524",
-        "lng": "15.0822223"
+        "lat": "375.203.524",
+        "lng": "150.822.223"
     },
     {
         "id": "conservatorio-statale-di-musica-cesena-e-rimini-bruno-maderna-giovanni-lettimi",
@@ -1236,8 +1236,8 @@
         "address": "Corso Comandini, 1, 47521, Cesena, FC, , Italia",
         "status": "Pubblico",
         "website": "www.madernalettimi.it",
-        "lat": "44.1373292",
-        "lng": "12.2531247"
+        "lat": "44.136.107",
+        "lng": "12.250.131"
     },
     {
         "id": "conservatorio-statale-di-musica-como-giuseppe-verdi",
@@ -1247,8 +1247,8 @@
         "sede": "Principale",
         "address": "Via Luigi Cadorna, 4, 22100, Como, CO, , Italia",
         "status": "Pubblico",
-        "lat": "45.8036294",
-        "lng": "9.0853398"
+        "lat": "458.036.294",
+        "lng": "90.853.398"
     },
     {
         "id": "conservatorio-statale-di-musica-cosenza-stanislao-giacomantonio",
@@ -1259,8 +1259,8 @@
         "address": "Via Portapiana, , Cs, 87100, Cosenza, Co, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriocosenza.it",
-        "lat": "39.2840282",
-        "lng": "16.2587924"
+        "lat": "392.840.282",
+        "lng": "162.587.924"
     },
     {
         "id": "conservatorio-statale-di-musica-cremona-claudio-monteverdi",
@@ -1271,8 +1271,8 @@
         "address": "Via Realdo Colombo, 1, 26100, Cremona, Cr, , Italia",
         "status": "Pubblico",
         "website": "www.conscremona.it/",
-        "lat": "45.1311839",
-        "lng": "10.0273548"
+        "lat": "451.308.253",
+        "lng": "100.266.736"
     },
     {
         "id": "conservatorio-statale-di-musica-cuneo-giorgio-federico-ghedini",
@@ -1282,8 +1282,8 @@
         "sede": "Principale",
         "address": "Via Roma, 19, 12100, Cuneo, CN, , Italia",
         "status": "Pubblico",
-        "lat": "44.3931767",
-        "lng": "7.5517030"
+        "lat": "443.931.767",
+        "lng": "7.551.703"
     },
     {
         "id": "conservatorio-statale-di-musica-fermo-giovambattista-pergolesi",
@@ -1293,8 +1293,8 @@
         "sede": "Principale",
         "address": "Via dell'Universit\u00e0, 16, 63900, Fermo, FM, , Italia",
         "status": "Pubblico",
-        "lat": "43.1617794",
-        "lng": "13.7173919"
+        "lat": "431.617.794",
+        "lng": "137.173.919"
     },
     {
         "id": "conservatorio-statale-di-musica-ferrara-girolamo-frescobaldi",
@@ -1305,8 +1305,8 @@
         "address": "Largo Antonioni, 1, 44121, Ferrara, Fe, , Italia",
         "status": "Pubblico",
         "website": "www.conservatorioferrara.it",
-        "lat": "44.8382457",
-        "lng": "11.6220922"
+        "lat": "448.382.457",
+        "lng": "116.220.922"
     },
     {
         "id": "conservatorio-statale-di-musica-firenze-luigi-cherubini",
@@ -1317,8 +1317,8 @@
         "address": "P.Zza Belle Arti, 2, 50122, Firenze, Fi, , Italia",
         "status": "Pubblico",
         "website": "www.consfi.it/",
-        "lat": "43.7763996",
-        "lng": "11.2583489"
+        "lat": "437.697.955",
+        "lng": "112.556.404"
     },
     {
         "id": "conservatorio-statale-di-musica-foggia-umberto-giordano",
@@ -1329,8 +1329,8 @@
         "address": "Piazza Negri, 13, 71100, Foggia, Fg, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriofoggia.it",
-        "lat": "41.5028106",
-        "lng": "15.4528939"
+        "lat": "415.028.106",
+        "lng": "154.528.939"
     },
     {
         "id": "conservatorio-statale-di-musica-frosinone-licinio-refice",
@@ -1341,8 +1341,8 @@
         "address": "Via Marconi, 03100, Frosinone, Fr, , Italia",
         "status": "Pubblico",
         "website": "www.accademiabellearti.fr.it",
-        "lat": "41.5775271",
-        "lng": "13.6059872"
+        "lat": "415.778.608",
+        "lng": "136.063.865"
     },
     {
         "id": "conservatorio-statale-di-musica-gallarate-va-giacomo-puccini",
@@ -1353,8 +1353,8 @@
         "address": "Via Dante Alighieri, 11, 21013, Gallarate, Va, , Italia",
         "status": "Pubblico",
         "website": "www.issmpuccinigallarate.it/",
-        "lat": "45.6650461",
-        "lng": "8.7884805"
+        "lat": "456.650.461",
+        "lng": "87.884.805"
     },
     {
         "id": "conservatorio-statale-di-musica-genova-nicol-paganini",
@@ -1365,8 +1365,8 @@
         "address": "Largo Pertini, 4, 16121, Genova, Ge, , Italia",
         "status": "Pubblico",
         "website": "www.accademialigustica.it/",
-        "lat": "44.4076284",
-        "lng": "8.9348449"
+        "lat": "444.076.284",
+        "lng": "89.348.449"
     },
     {
         "id": "conservatorio-statale-di-musica-l-aquila-alfredo-casella",
@@ -1376,8 +1376,8 @@
         "sede": "Principale",
         "address": "Via Francesco Savini, snc, 67100, L'Aquila, AQ, , Italia",
         "status": "Pubblico",
-        "lat": "42.3552134",
-        "lng": "13.4151297"
+        "lat": "421.368.853",
+        "lng": "13.610.341"
     },
     {
         "id": "conservatorio-statale-di-musica-la-spezia-giacomo-puccini",
@@ -1388,8 +1388,8 @@
         "address": "Via XX Settembre, 34, 19100, La Spezia, Sp, , Italia",
         "status": "Pubblico",
         "website": "www.conssp.it",
-        "lat": "44.1073249",
-        "lng": "9.8261020"
+        "lat": "441.073.249",
+        "lng": "9.826.102"
     },
     {
         "id": "conservatorio-statale-di-musica-latina-ottorino-respighi",
@@ -1400,8 +1400,8 @@
         "address": "Via Ezio, , Lt, 04100, Latina, La, , Italia",
         "status": "Pubblico",
         "website": "www.conslatina.it",
-        "lat": "41.4693594",
-        "lng": "12.9172571"
+        "lat": "414.729.508",
+        "lng": "129.083.271"
     },
     {
         "id": "conservatorio-statale-di-musica-lecce-tito-schipa",
@@ -1411,8 +1411,8 @@
         "sede": "Principale",
         "address": "Via Ciardo, 2, 73100, Lecce, LE, , Italia",
         "status": "Pubblico",
-        "lat": "40.4373242",
-        "lng": "18.0273367"
+        "lat": "404.373.242",
+        "lng": "180.273.367"
     },
     {
         "id": "conservatorio-statale-di-musica-livorno-pietro-mascagni",
@@ -1423,8 +1423,8 @@
         "address": "Via Galileo Galilei, 40, 57122, Livorno, Li, , Italia",
         "status": "Pubblico",
         "website": "www.consli.it",
-        "lat": "43.5560233",
-        "lng": "10.3173904"
+        "lat": "435.545.407",
+        "lng": "103.185.302"
     },
     {
         "id": "conservatorio-statale-di-musica-lucca-luigi-boccherini",
@@ -1434,8 +1434,8 @@
         "sede": "Principale",
         "address": "Via del Suffragio, 55100, Lucca, Lu, , Italia",
         "status": "Pubblico",
-        "lat": "43.8428292",
-        "lng": "10.5057569"
+        "lat": "438.428.399",
+        "lng": "105.062.918"
     },
     {
         "id": "conservatorio-statale-di-musica-mantova-lucio-campiani",
@@ -1446,8 +1446,8 @@
         "address": "Via della Conciliazione, 33, 46100, Mantova, Mn, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriomantova.com",
-        "lat": "45.1545324",
-        "lng": "10.7840711"
+        "lat": "451.545.324",
+        "lng": "107.840.711"
     },
     {
         "id": "conservatorio-statale-di-musica-matera-egidio-romualdo-duni",
@@ -1458,8 +1458,8 @@
         "address": "P.Zza del Sedile, , Mt, 75100, Matera, Ma, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriomatera.it",
-        "lat": "40.6655731",
-        "lng": "16.6097780"
+        "lat": "406.655.731",
+        "lng": "16.609.778"
     },
     {
         "id": "conservatorio-statale-di-musica-messina-arcangelo-corelli",
@@ -1470,8 +1470,8 @@
         "address": "Via Bonino, 1, 98100, Messina, Me, , Italia",
         "status": "Pubblico",
         "website": "www.consme.it",
-        "lat": "38.1657684",
-        "lng": "15.5417453"
+        "lat": "381.656.862",
+        "lng": "155.416.707"
     },
     {
         "id": "conservatorio-statale-di-musica-milano-giuseppe-verdi",
@@ -1482,8 +1482,8 @@
         "address": "Via Conservatorio, 12 - 20122 Milano",
         "status": "Pubblico",
         "website": "www.consmi.it/",
-        "lat": "45.4650024",
-        "lng": "9.2031994"
+        "lat": "454.722.421",
+        "lng": "91.884.071"
     },
     {
         "id": "conservatorio-statale-di-musica-modena-con-sede-a-carpi-orazio-vecchi-antonio-tonelli",
@@ -1493,8 +1493,8 @@
         "sede": "Principale",
         "address": "Via San Rocco, 5, 41012, Carpi, Ca, , Italia",
         "status": "Pubblico",
-        "lat": "44.7835699",
-        "lng": "10.8854523"
+        "lat": "447.835.699",
+        "lng": "108.854.523"
     },
     {
         "id": "conservatorio-statale-di-musica-monopoli-ba-nino-rota",
@@ -1505,8 +1505,8 @@
         "address": "P.Zza S. Antonio, 27, , Ba, 70043, Monopoli, Mo, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriodimonopoli.org",
-        "lat": "40.9527986",
-        "lng": "17.2956015"
+        "lat": "409.522.369",
+        "lng": "17.299.948"
     },
     {
         "id": "conservatorio-statale-di-musica-napoli-s-pietro-a-majella",
@@ -1517,8 +1517,8 @@
         "address": "Via S.P. A Majella, 35, 80138, Napoli, Na, , Italia",
         "status": "Pubblico",
         "website": "www.sanpietroamajella.it",
-        "lat": "40.8358846",
-        "lng": "14.2487679"
+        "lat": "408.358.846",
+        "lng": "142.487.679"
     },
     {
         "id": "conservatorio-statale-di-musica-nocera-terinese-cz-pyotr-ilyich-tchaikovsky",
@@ -1529,8 +1529,8 @@
         "address": "Via Dante Alighieri, 8, , Cz, 88047, Nocera Terinese, No, , Italia",
         "status": "Pubblico",
         "website": "www.conscz.it",
-        "lat": "39.0368928",
-        "lng": "16.1607183"
+        "lat": "390.368.928",
+        "lng": "161.607.183"
     },
     {
         "id": "conservatorio-statale-di-musica-novara-guido-cantelli",
@@ -1541,8 +1541,8 @@
         "address": "Via Collegio Gallarini, 1, 28100, Novara, No, , Italia",
         "status": "Pubblico",
         "website": "www.consno.it",
-        "lat": "45.4444798",
-        "lng": "8.6202478"
+        "lat": "454.444.798",
+        "lng": "86.202.478"
     },
     {
         "id": "conservatorio-statale-di-musica-padova-cesare-pollini",
@@ -1553,8 +1553,8 @@
         "address": "Via Eremitani, 6, 35100, Padova, Pd, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriopollini.it/",
-        "lat": "45.4091816",
-        "lng": "11.8789892"
+        "lat": "454.091.816",
+        "lng": "118.789.892"
     },
     {
         "id": "conservatorio-statale-di-musica-palermo-alessandro-scarlatti",
@@ -1565,8 +1565,8 @@
         "address": "Via Papireto, 18/20, 90134, Palermo, Pa, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriopalermo.it/",
-        "lat": "38.1163595",
-        "lng": "13.3522738"
+        "lat": "381.163.595",
+        "lng": "133.522.738"
     },
     {
         "id": "conservatorio-statale-di-musica-parma-arrigo-boito",
@@ -1576,8 +1576,8 @@
         "sede": "Principale",
         "address": "Strada del Conservatorio, 27a, 43121, Parma, Pr, , Italia",
         "status": "Pubblico",
-        "lat": "44.7997093",
-        "lng": "10.3247558"
+        "lat": "447.997.093",
+        "lng": "103.247.558"
     },
     {
         "id": "conservatorio-statale-di-musica-pavia-franco-vittadini",
@@ -1587,8 +1587,8 @@
         "sede": "Principale",
         "address": "Via Alessandro Volta, 31, 27100, Pavia, PV, , Italia",
         "status": "Pubblico",
-        "lat": "45.1863517",
-        "lng": "9.1621432"
+        "lat": "451.863.517",
+        "lng": "91.621.432"
     },
     {
         "id": "conservatorio-statale-di-musica-perugia-francesco-morlacchi",
@@ -1599,8 +1599,8 @@
         "address": "Via San Francesco, 5, 06123, Perugia, Pg, , Italia",
         "status": "Pubblico",
         "website": "www.abaperugia.org",
-        "lat": "43.1130349",
-        "lng": "12.3844100"
+        "lat": "431.130.349",
+        "lng": "1.238.441"
     },
     {
         "id": "conservatorio-statale-di-musica-pesaro-gioachino-rossini",
@@ -1611,8 +1611,8 @@
         "address": "Piazza Olivieri,5, , Pu, 61100, Pesaro, Pe, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriorossini.it",
-        "lat": "43.9092100",
-        "lng": "12.9104169"
+        "lat": "43.909.169",
+        "lng": "129.104.068"
     },
     {
         "id": "conservatorio-statale-di-musica-pescara-luisa-d-annunzio",
@@ -1623,8 +1623,8 @@
         "address": "Via Caduti Sul Lavoro, 39, 65123, Pescara, Pe, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriope.it",
-        "lat": "42.4754123",
-        "lng": "14.2011306"
+        "lat": "424.754.123",
+        "lng": "142.011.306"
     },
     {
         "id": "conservatorio-statale-di-musica-piacenza-giuseppe-nicolini",
@@ -1635,8 +1635,8 @@
         "address": "Via S. Franca , 35, 29100, Piacenza, Pc, , Italia",
         "status": "Pubblico",
         "website": "www.conservatorionicolini.com",
-        "lat": "45.0490767",
-        "lng": "9.6910176"
+        "lat": "450.490.767",
+        "lng": "96.910.176"
     },
     {
         "id": "conservatorio-statale-di-musica-potenza-gesualdo-da-venosa",
@@ -1647,8 +1647,8 @@
         "address": "Via Tammone, 1, 85100, Potenza, Pz, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriopotenza.it",
-        "lat": "40.6392267",
-        "lng": "15.7922390"
+        "lat": "406.392.267",
+        "lng": "15.792.239"
     },
     {
         "id": "conservatorio-statale-di-musica-ravenna-giuseppe-verdi",
@@ -1659,8 +1659,8 @@
         "address": "Via delle Industrie, 76, 48122, Ravenna, Ra, , Italia",
         "status": "Pubblico",
         "website": "www.abaravenna.it",
-        "lat": "44.4262085",
-        "lng": "12.2137298"
+        "lat": "444.262.085",
+        "lng": "122.137.298"
     },
     {
         "id": "conservatorio-statale-di-musica-reggio-calabria-francesco-cilea",
@@ -1671,8 +1671,8 @@
         "address": "Via Giuseppe Reale, 1, 89123, Reggio Calabria, RC, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriocilea.it",
-        "lat": "38.1178928",
-        "lng": "15.6578576"
+        "lat": "381.178.928",
+        "lng": "156.578.576"
     },
     {
         "id": "conservatorio-statale-di-musica-reggio-emilia-e-castelnuovo-n-monti-achille-peri-e-claudio-merulo",
@@ -1683,8 +1683,8 @@
         "address": "Via Dante Alighieri, 11, 42121, Reggio Emilia, RE, , Italia",
         "status": "Pubblico",
         "website": "www.peri-merulo.it/",
-        "lat": "44.6989596",
-        "lng": "10.6371242"
+        "lat": "446.989.596",
+        "lng": "106.371.242"
     },
     {
         "id": "conservatorio-statale-di-musica-ribera-ag-arturo-toscanini",
@@ -1695,8 +1695,8 @@
         "address": "Corso Umberto I, 359, , Ag, 92016, Ribera, Ri, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriotoscanini.it/",
-        "lat": "37.5046950",
-        "lng": "13.2722009"
+        "lat": "37.504.695",
+        "lng": "132.722.009"
     },
     {
         "id": "conservatorio-statale-di-musica-roma-santa-cecilia",
@@ -1707,8 +1707,8 @@
         "address": "Via dei Greci, 18, 00187, Roma, RM, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriosantacecilia.it",
-        "lat": "41.9074985",
-        "lng": "12.4788258"
+        "lat": "419.074.985",
+        "lng": "124.788.258"
     },
     {
         "id": "conservatorio-statale-di-musica-rovigo-francesco-venezze",
@@ -1719,8 +1719,8 @@
         "address": "Corso del Popolo, 241, 45100, Rovigo, Ro, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriorovigo.it",
-        "lat": "45.0695569",
-        "lng": "11.7913368"
+        "lat": "450.695.569",
+        "lng": "117.913.368"
     },
     {
         "id": "conservatorio-statale-di-musica-salerno-giuseppe-martucci",
@@ -1731,8 +1731,8 @@
         "address": "Via Giuseppe Paesano N. 2, 84125, Salerno, Sa, , Italia",
         "status": "Pubblico",
         "website": "www.consalerno.it",
-        "lat": "40.6822539",
-        "lng": "14.7509898"
+        "lat": "406.822.539",
+        "lng": "147.509.898"
     },
     {
         "id": "conservatorio-statale-di-musica-sassari-luigi-canepa",
@@ -1743,8 +1743,8 @@
         "address": "Piazzale Cappuccini, 07100, Sassari, Ss, , Italia",
         "status": "Pubblico",
         "website": "www.conservatorio.sassari.it/",
-        "lat": "40.7234746",
-        "lng": "8.5612674"
+        "lat": "407.234.746",
+        "lng": "85.612.674"
     },
     {
         "id": "conservatorio-statale-di-musica-siena-rinaldo-franci",
@@ -1755,8 +1755,8 @@
         "address": "Prato Sant'Agostino, 2, 53100, Siena, Si, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriosiena.it/it",
-        "lat": "43.3145921",
-        "lng": "11.3307638"
+        "lat": "433.146.516",
+        "lng": "113.317.871"
     },
     {
         "id": "conservatorio-statale-di-musica-taranto-giovanni-paisiello",
@@ -1767,8 +1767,8 @@
         "address": "Via Duomo, 276, 74123, Taranto, Ta, , Italia",
         "status": "Pubblico",
         "website": "www.paisiello.it",
-        "lat": "40.4749097",
-        "lng": "17.2312876"
+        "lat": "404.769.793",
+        "lng": "172.268.495"
     },
     {
         "id": "conservatorio-statale-di-musica-teramo-gaetano-braga-issmc",
@@ -1778,8 +1778,8 @@
         "sede": "Principale",
         "address": "Corso S. Giorgio, 14, 64100, Teramo, Te, , Italia",
         "status": "Pubblico",
-        "lat": "42.6601486",
-        "lng": "13.7007032"
+        "lat": "426.601.486",
+        "lng": "137.007.032"
     },
     {
         "id": "conservatorio-statale-di-musica-terni-giulio-briccialdi",
@@ -1789,8 +1789,8 @@
         "sede": "Principale",
         "address": "Via del ibunale, 22, 05100, Terni, Tr, , Italia",
         "status": "Pubblico",
-        "lat": "42.6539486",
-        "lng": "12.4396528"
+        "lat": "425.634.291",
+        "lng": "126.489.197"
     },
     {
         "id": "conservatorio-statale-di-musica-torino-giuseppe-verdi",
@@ -1801,8 +1801,8 @@
         "address": "Via Accademia Albertina, 6, 10123, Torino, To, , Italia",
         "status": "Pubblico",
         "website": "www.albertina.academy",
-        "lat": "45.0675807",
-        "lng": "7.6897297"
+        "lat": "450.675.807",
+        "lng": "76.897.297"
     },
     {
         "id": "conservatorio-statale-di-musica-trapani-antonio-scontrino",
@@ -1813,8 +1813,8 @@
         "address": "Via Francesco Sceusa, 1, 91100, Trapani, Tp, , Italia",
         "status": "Pubblico",
         "website": "www.constp.it",
-        "lat": "38.0123644",
-        "lng": "12.5649772"
+        "lat": "380.123.644",
+        "lng": "125.649.772"
     },
     {
         "id": "conservatorio-statale-di-musica-trento-francesco-antonio-bonporti",
@@ -1825,8 +1825,8 @@
         "address": "Via S.Maria Maddalena, 38100, Trento, Tn, , Italia",
         "status": "Pubblico",
         "website": "www.conservatorio.tn.it/",
-        "lat": "46.0685654",
-        "lng": "11.1255906"
+        "lat": "460.685.654",
+        "lng": "111.255.906"
     },
     {
         "id": "conservatorio-statale-di-musica-trieste-giuseppe-tartini",
@@ -1837,8 +1837,8 @@
         "address": "Via Carlo Ghega, 12, 34123, Trieste, Ts, , Italia",
         "status": "Pubblico",
         "website": "www.conts.it",
-        "lat": "45.6558027",
-        "lng": "13.7750136"
+        "lat": "456.558.027",
+        "lng": "137.750.136"
     },
     {
         "id": "conservatorio-statale-di-musica-udine-jacopo-tomadini",
@@ -1848,8 +1848,8 @@
         "sede": "Principale",
         "address": "Piazza 1\u00b0 Maggio, 29, 33100, Udine, Ud, , Italia",
         "status": "Pubblico",
-        "lat": "46.0651811",
-        "lng": "13.2397028"
+        "lat": "460.651.811",
+        "lng": "132.397.028"
     },
     {
         "id": "conservatorio-statale-di-musica-venezia-benedetto-marcello",
@@ -1860,8 +1860,8 @@
         "address": "San Marco, 2810, 30124, Venezia, Ve, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriovenezia.eu",
-        "lat": "45.4323575",
-        "lng": "12.3304966"
+        "lat": "454.323.575",
+        "lng": "123.304.966"
     },
     {
         "id": "conservatorio-statale-di-musica-verona-evaristo-felice-dall-abaco",
@@ -1872,8 +1872,8 @@
         "address": "Via C. Montanari, 5, 37122, Verona, Vr, , Italia",
         "status": "Pubblico",
         "website": "www.accademiabelleartiverona.it/it/",
-        "lat": "45.4989147",
-        "lng": "10.9390044"
+        "lat": "454.989.096",
+        "lng": "109.389.909"
     },
     {
         "id": "conservatorio-statale-di-musica-vibo-valentia-fausto-torrefranca",
@@ -1884,8 +1884,8 @@
         "address": "Via Affaccio, 88018, Vibo Valentia, Vv, , Italia",
         "status": "Pubblico",
         "website": "www.consvv.it",
-        "lat": "38.6261714",
-        "lng": "15.8630754"
+        "lat": "386.262.675",
+        "lng": "158.630.475"
     },
     {
         "id": "conservatorio-statale-di-musica-vicenza-arrigo-pedrollo",
@@ -1896,8 +1896,8 @@
         "address": "Contr\u00e0.Domenico,33, 36100, Vicenza, Vi, , Italia",
         "status": "Pubblico",
         "website": "www.consvi.it/",
-        "lat": "45.5506780",
-        "lng": "11.5541860"
+        "lat": "45.550.678",
+        "lng": "11.554.186"
     },
     {
         "id": "cpm-music-institute",
@@ -1908,8 +1908,8 @@
         "address": "Via Elio Reguzzoni, 15, 20125, Milano, Mi, , Italia",
         "status": "Privato",
         "website": "www.cpm.it",
-        "lat": "45.5075340",
-        "lng": "9.2033463"
+        "lat": "45.507.534",
+        "lng": "92.033.463"
     },
     {
         "id": "isia-faenza",
@@ -1920,8 +1920,8 @@
         "address": "Corso Mazzini, 93, , Ra, 48018, Faenza, Fa, , Italia",
         "status": "Pubblico",
         "website": "www.isiafaenza.it",
-        "lat": "44.2870556",
-        "lng": "11.8801787"
+        "lat": "442.880.569",
+        "lng": "118.780.089"
     },
     {
         "id": "isia-firenze",
@@ -1932,8 +1932,8 @@
         "address": "Via Pisana, 79, 50143, Firenze, Fi, , Italia",
         "status": "Pubblico",
         "website": "www.isiadesign.fi.it/",
-        "lat": "43.7722975",
-        "lng": "11.2304322"
+        "lat": "437.722.975",
+        "lng": "112.304.322"
     },
     {
         "id": "isia-pescara",
@@ -1944,8 +1944,8 @@
         "address": "Via Cesare Battisti,198, 65123, Pescara, Pe, , Italia",
         "status": "Pubblico",
         "website": "www.isiadesign.pe.it",
-        "lat": "42.4745581",
-        "lng": "14.2035856"
+        "lat": "424.745.581",
+        "lng": "142.035.856"
     },
     {
         "id": "isia-roma",
@@ -1956,8 +1956,8 @@
         "address": "Piazza della Maddalena, 53, 00186, Roma, Rm, , Italia",
         "status": "Pubblico",
         "website": "www.isiaroma.it",
-        "lat": "41.9001808",
-        "lng": "12.4766899"
+        "lat": "419.001.808",
+        "lng": "124.766.899"
     },
     {
         "id": "isia-urbino",
@@ -1968,8 +1968,8 @@
         "address": "Via S. Chiara, 36, , Pu, 61029, Urbino, Ur, , Italia",
         "status": "Pubblico",
         "website": "www.isiaurbino.net",
-        "lat": "43.7232891",
-        "lng": "12.6375713"
+        "lat": "437.231.732",
+        "lng": "126.379.513"
     },
     {
         "id": "istituto-d-arte-applicata-e-design-iaad",
@@ -1980,8 +1980,8 @@
         "address": "Piazza San Carlo, 176, 10121, Torino, To, , Italia",
         "status": "Privato",
         "website": "www.iaad.it",
-        "lat": "45.0679702",
-        "lng": "7.6820983"
+        "lat": "450.677.551",
+        "lng": "76.824.892"
     },
     {
         "id": "istituto-del-design-matera",
@@ -1992,8 +1992,8 @@
         "address": "Via Pasquale Vena 66/C, , Mt, 75100, Matera, Ma, , Italia",
         "status": "Privato",
         "website": "www.istitutodeldesign.it",
-        "lat": "40.6601928",
-        "lng": "16.6064580"
+        "lat": "406.601.928",
+        "lng": "16.606.458"
     },
     {
         "id": "istituto-europeo-del-design-ied",
@@ -2003,8 +2003,8 @@
         "sede": "Decentrata",
         "status": "Privato",
         "website": "www.ied.it",
-        "lat": "39.2171994",
-        "lng": "9.1133110"
+        "lat": "454.641.943",
+        "lng": "91.896.346"
     },
     {
         "id": "istituto-europeo-del-design-ied",
@@ -2014,8 +2014,8 @@
         "sede": "Decentrata",
         "status": "Privato",
         "website": "www.ied.it",
-        "lat": "43.7697955",
-        "lng": "11.2556404"
+        "lat": "454.641.943",
+        "lng": "91.896.346"
     },
     {
         "id": "istituto-europeo-del-design-ied",
@@ -2025,8 +2025,8 @@
         "sede": "Principale",
         "status": "Privato",
         "website": "www.ied.it",
-        "lat": "45.4641943",
-        "lng": "9.1896346"
+        "lat": "454.641.943",
+        "lng": "91.896.346"
     },
     {
         "id": "istituto-europeo-del-design-ied",
@@ -2036,8 +2036,8 @@
         "sede": "Principale",
         "status": "Privato",
         "website": "www.ied.it",
-        "lat": "41.8933203",
-        "lng": "12.4829321"
+        "lat": "454.641.943",
+        "lng": "91.896.346"
     },
     {
         "id": "istituto-europeo-del-design-ied",
@@ -2047,8 +2047,8 @@
         "sede": "Decentrata",
         "status": "Privato",
         "website": "www.ied.it",
-        "lat": "45.0677551",
-        "lng": "7.6824892"
+        "lat": "454.641.943",
+        "lng": "91.896.346"
     },
     {
         "id": "istituto-italiano-design",
@@ -2059,8 +2059,8 @@
         "address": "Via Galeazzo Alessi 3/A, 06122, Perugia, Pg, , Italia",
         "status": "Privato",
         "website": "www.istitutoitalianodesign.it/",
-        "lat": "43.1121562",
-        "lng": "12.3907473"
+        "lat": "431.121.562",
+        "lng": "123.907.473"
     },
     {
         "id": "istituto-marangoni",
@@ -2071,8 +2071,8 @@
         "address": "Via Verri, 4, 20121, Milano, Mi, , Italia",
         "status": "Privato",
         "website": "www.istitutomarangoni.com",
-        "lat": "45.4276613",
-        "lng": "9.0495351"
+        "lat": "454.276.613",
+        "lng": "90.495.351"
     },
     {
         "id": "istituto-marangoni",
@@ -2083,8 +2083,8 @@
         "address": "Via Verri, 4, Milano, Mi, 20121, Firenze, Fi, , Italia",
         "status": "Privato",
         "website": "www.istitutomarangoni.com",
-        "lat": "43.7697955",
-        "lng": "11.2556404"
+        "lat": "454.276.613",
+        "lng": "90.495.351"
     },
     {
         "id": "istituto-modartech",
@@ -2095,8 +2095,8 @@
         "address": "Viale Rinaldo Piaggio, 7, , Pi, 56025, Pontedera, Po, , Italia",
         "status": "Privato",
         "website": "www.modartech.com",
-        "lat": "43.6614004",
-        "lng": "10.6295127"
+        "lat": "43.662.084",
+        "lng": "106.240.369"
     },
     {
         "id": "istituto-pantheon-design-technology",
@@ -2107,8 +2107,8 @@
         "address": "Piazza del Campidoglio, 00120, Roma, Rm, , Italia",
         "status": "Privato",
         "website": "www.istitutopantheon.com",
-        "lat": "41.8932408",
-        "lng": "12.4829815"
+        "lat": "418.933.203",
+        "lng": "124.829.321"
     },
     {
         "id": "istituto-parco-scientifico-e-tecnologico-galileo-scpa-scuola-italiana-design-sid",
@@ -2119,8 +2119,8 @@
         "address": "Corso Stati Uniti 14 Bis, 35127, Padova, Pd, , Italia",
         "status": "Privato",
         "website": "www.galileovd.it",
-        "lat": "45.3951622",
-        "lng": "11.9302126"
+        "lat": "453.941.683",
+        "lng": "119.347.146"
     },
     {
         "id": "istituto-poliarte-ancona",
@@ -2131,8 +2131,8 @@
         "address": "Via Miano, 41 A/B, 60125, Ancona, An, , Italia",
         "status": "Pubblico",
         "website": "www.poliarte.net",
-        "lat": "43.6066245",
-        "lng": "13.5099099"
+        "lat": "436.062.582",
+        "lng": "135.119.661"
     },
     {
         "id": "istituto-quasar-quasar-institute-for-advanced-design",
@@ -2143,8 +2143,8 @@
         "address": "Via Crescenzio, 17/A, 00193, Roma, Rm, , Italia",
         "status": "Privato",
         "website": "www.quasarinstitute.it",
-        "lat": "41.9053413",
-        "lng": "12.4675403"
+        "lat": "419.053.413",
+        "lng": "124.675.403"
     },
     {
         "id": "istituto-sae-italia-international-technology-college-milano",
@@ -2155,8 +2155,8 @@
         "address": "Via Trentacoste, 14, 20134, Milano, Mi, , Italia",
         "status": "Pubblico",
         "website": "www.sae.edu",
-        "lat": "45.4727782",
-        "lng": "9.2420901"
+        "lat": "454.727.782",
+        "lng": "92.420.901"
     },
     {
         "id": "istituto-secoli",
@@ -2167,8 +2167,8 @@
         "address": "Viale Vittorio Veneto 18/A, 00000, Milano, Mi, , Italia",
         "status": "Privato",
         "website": "www.secoli.com",
-        "lat": "45.5247729",
-        "lng": "9.3683994"
+        "lat": "455.247.729",
+        "lng": "93.683.994"
     },
     {
         "id": "istituto-superiore-di-studi-musicali-e-coreutici-di-teramo",
@@ -2179,8 +2179,8 @@
         "address": "Piazza G. Verdi, 25, 64100, Teramo, Te, , Italia",
         "status": "Pubblico",
         "website": "www.conservatoriobraga.it",
-        "lat": "42.6581180",
-        "lng": "13.6978746"
+        "lat": "42.658.118",
+        "lng": "136.978.746"
     },
     {
         "id": "istituto-superiore-per-le-industrie-artistiche-sede-decentrata-dellisia-di-roma",
@@ -2191,8 +2191,8 @@
         "address": "Pordenone",
         "status": "Pubblico",
         "website": "www.isiaroma.it/",
-        "lat": "45.9562503",
-        "lng": "12.6597197"
+        "lat": "459.562.503",
+        "lng": "126.597.197"
     },
     {
         "id": "libera-accademia-di-belle-arti-laba",
@@ -2203,8 +2203,8 @@
         "address": "Via Don Giacomo Vender, 66, 25127, Brescia, BS, , Italia",
         "status": "Privato",
         "website": "www.laba.edu",
-        "lat": "45.5593936",
-        "lng": "10.2036264"
+        "lat": "455.593.936",
+        "lng": "102.036.264"
     },
     {
         "id": "libera-accademia-di-belle-arti-di-firenze",
@@ -2215,8 +2215,8 @@
         "address": "Piazza di Badia A Ripoli 1/A, 50126, Firenze, Fi, , Italia",
         "status": "Privato",
         "website": "www.laba.biz",
-        "lat": "43.7556414",
-        "lng": "11.2985995"
+        "lat": "437.556.414",
+        "lng": "112.985.995"
     },
     {
         "id": "libera-accademia-di-belle-arti-di-rimini",
@@ -2227,8 +2227,8 @@
         "address": "Via Roma, 64B, 47921, Rimini, Rn, , Italia",
         "status": "Privato",
         "website": "www.accademia.rimini.it",
-        "lat": "44.0620718",
-        "lng": "12.5745920"
+        "lat": "440.620.718",
+        "lng": "12.574.592"
     },
     {
         "id": "nuova-accademia-di-belle-arti-naba",
@@ -2238,8 +2238,8 @@
         "sede": "Principale",
         "address": "Via Darwin, 20, 20143, Milano, Mi, , Italia",
         "status": "Privato",
-        "lat": "45.4455443",
-        "lng": "9.1743922"
+        "lat": "454.455.443",
+        "lng": "91.743.922"
     },
     {
         "id": "politecnico-delle-arti-bergamo",
@@ -2250,8 +2250,8 @@
         "address": "Don Luigi Palazzolo, 88, 24122, Bergamo, Bg, , Italia",
         "status": "Pubblico",
         "website": "www.poliartibg.it/",
-        "lat": "45.6699405",
-        "lng": "9.6309699"
+        "lat": "457.566.557",
+        "lng": "97.542.192"
     },
     {
         "id": "politecnico-delle-arti-statale-sezione-belle-arti-g-carrara",
@@ -2262,8 +2262,8 @@
         "address": "Via Roma, 1, Carrara, Ms, 54033, Bergamo, Bg, , Italia",
         "status": "Pubblico",
         "website": "www.accademiacarrara.it",
-        "lat": "45.6601869",
-        "lng": "9.6744513"
+        "lat": "440.784.425",
+        "lng": "10.099.423"
     },
     {
         "id": "politecnico-delle-arti-statale-sezione-musicale-g-donizetti",
@@ -2273,8 +2273,8 @@
         "sede": "Principale",
         "address": "Via Arena, 9, 24129, Bergamo, Bg, , Italia",
         "status": "Pubblico",
-        "lat": "45.7033389",
-        "lng": "9.6608543"
+        "lat": "457.033.389",
+        "lng": "96.608.543"
     },
     {
         "id": "raffles-milano-istituto-moda-e-design",
@@ -2285,8 +2285,8 @@
         "address": "Via Felice Casati, 16 \u2013 20124 \u2013 Milano",
         "status": "Privato",
         "website": "www.rafflesmilano.it",
-        "lat": "45.4784738",
-        "lng": "9.2044650"
+        "lat": "454.722.421",
+        "lng": "91.884.071"
     },
     {
         "id": "raffles-milano-international-design-institute",
@@ -2297,8 +2297,8 @@
         "address": "Via Felice Casati 16, 20124, Milano, Mi, , Italia",
         "status": "Pubblico",
         "website": "www.rafflesmilano.it",
-        "lat": "45.4784738",
-        "lng": "9.2044650"
+        "lat": "454.784.738",
+        "lng": "9.204.465"
     },
     {
         "id": "rome-university-of-fine-arts-rufa",
@@ -2309,8 +2309,8 @@
         "address": "Via Benaco, 2, 00199, Roma, Rm, , Italia",
         "status": "Privato",
         "website": "www.unirufa.it",
-        "lat": "41.9238813",
-        "lng": "12.5060905"
+        "lat": "419.238.813",
+        "lng": "125.060.905"
     },
     {
         "id": "rufa-rome-university-of-fine-arts-sede-decentrata",
@@ -2321,8 +2321,8 @@
         "address": "P.Le Lugano, 19, 20158, Milano, Mi, , Italia",
         "status": "Pubblico",
         "website": "www.unirufa.it/sedi/campus-milano-scalo-farini/",
-        "lat": "45.4975743",
-        "lng": "9.1657063"
+        "lat": "454.975.743",
+        "lng": "91.657.063"
     },
     {
         "id": "sae-institute-creative-media-education",
@@ -2332,8 +2332,8 @@
         "sede": "Principale",
         "address": "Via Trentacoste, 14, 20134, Milano, Mi, , Italia",
         "status": "Privato",
-        "lat": "45.4727782",
-        "lng": "9.2420901"
+        "lat": "454.731.363",
+        "lng": "92.435.739"
     },
     {
         "id": "saint-louis-college-of-music",
@@ -2342,8 +2342,8 @@
         "citta": "Milano",
         "sede": "Decentrata",
         "status": "Privato",
-        "lat": "45.4641943",
-        "lng": "9.1896346"
+        "lat": "426.384.261",
+        "lng": "12.674.297"
     },
     {
         "id": "saint-louis-college-of-music",
@@ -2352,8 +2352,8 @@
         "citta": "Roma",
         "sede": "Principale",
         "status": "Privato",
-        "lat": "41.8948917",
-        "lng": "12.4901637"
+        "lat": "426.384.261",
+        "lng": "12.674.297"
     },
     {
         "id": "saint-louis-music-center-college-of-music-di-roma",
@@ -2364,8 +2364,8 @@
         "address": "Piazza del Campidoglio, 00120, Roma, Rm, , Italia",
         "status": "Privato",
         "website": "www.slmc.it",
-        "lat": "41.8932408",
-        "lng": "12.4829815"
+        "lat": "418.933.203",
+        "lng": "124.829.321"
     },
     {
         "id": "scuola-del-teatro-musicale-stm",
@@ -2376,8 +2376,8 @@
         "address": "Piazza Martiri della Libert\u00e0 2 , 28100, Novara, No, , Italia",
         "status": "Privato",
         "website": "www.scuolateatromusicale.it",
-        "lat": "45.4452698",
-        "lng": "8.6180529"
+        "lat": "454.452.698",
+        "lng": "86.180.529"
     },
     {
         "id": "scuola-di-musica-di-fiesole",
@@ -2388,8 +2388,8 @@
         "address": "Piazza Mino da Fiesole, 32a, 50014, Fiesole, Fi, , Italia",
         "status": "Privato",
         "website": "www.scuolamusicafiesole.it",
-        "lat": "43.8064116",
-        "lng": "11.2929501"
+        "lat": "438.066.689",
+        "lng": "112.930.735"
     },
     {
         "id": "the-bernstein-school-of-musical-theater",
@@ -2400,7 +2400,7 @@
         "address": "Via Paolo Nanni Costa 12/6, 40133, Bologna, Bo, , Italia",
         "status": "Privato",
         "website": "www.bsmt.it/",
-        "lat": "44.5073503",
-        "lng": "11.3066727"
+        "lat": "445.073.503",
+        "lng": "113.066.727"
     }
 ]

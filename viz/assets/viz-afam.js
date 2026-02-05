@@ -97,6 +97,8 @@ const cityCoordinates = {
 
 // Global variables
 let allData = [];
+let markerClusterGroup;
+let currentRadius = 30;
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -108,6 +110,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const response = await fetch(basePrefix + 'data/pna-istituzioni-afam.json');
         allData = await response.json();
+
+        // Initial update for total institutions count (Global/Map view)
+        updateTotalCount(allData.length);
 
         // Init Map
         initLeafletMap(allData);
@@ -132,37 +137,93 @@ function switchView(viewName) {
     document.getElementById('view-map').style.display = viewName === 'map' ? 'block' : 'none';
     document.getElementById('view-groups').style.display = viewName === 'groups' ? 'block' : 'none';
 
-    if (viewName === 'map' && window.map) {
-        // Invalidate size to ensure tiles load correctly if div was hidden
-        setTimeout(() => {
-            window.map.invalidateSize();
-        }, 100);
+    if (viewName === 'map') {
+        updateTotalCount(allData.length);
+        if (window.map) {
+            // Invalidate size to ensure tiles load correctly if div was hidden
+            setTimeout(() => {
+                window.map.invalidateSize();
+            }, 100);
+        }
     }
 
     if (viewName === 'groups') {
+        const filteredData = allData.filter(d => d.sede === "Principale");
+        updateTotalCount(filteredData.length);
+
         const chartContainer = document.getElementById('bubble-chart');
         if (chartContainer.innerHTML === '') {
-            initBubbleChart(allData);
+            initBubbleChart(filteredData);
         }
     }
 }
 
+function updateTotalCount(count) {
+    document.querySelectorAll('.total-institutions-count').forEach(el => {
+        el.textContent = count;
+    });
+}
+
 function initLeafletMap(data) {
-    // 1. Initialize Map
-    // Center roughly on Italy
-    const map = L.map('map-container', {
-        minZoom: 1
-    }).setView([41.9028, 12.4964], 6);
-    window.map = map; // Save to global for invalidateSize
+    // 1. Initialize Map (if not already initialized)
+    if (!window.map) {
+        const map = L.map('map-container', {
+            minZoom: 1
+        }).setView([41.9028, 12.4964], 6);
+        window.map = map;
 
-    // 2. Add Light Theme Tile Layer (CartoDB Positron No Labels)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19
-    }).addTo(map);
+        // 2. Add Light Theme Tile Layer (CartoDB Positron No Labels)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+    }
 
-    // 3. Add Markers
+    const map = window.map;
+
+    // 3. Add Clusters
+    if (markerClusterGroup) {
+        map.removeLayer(markerClusterGroup);
+    }
+
+    markerClusterGroup = L.markerClusterGroup({
+        maxClusterRadius: currentRadius,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true,
+        spiderfyOnMaxZoom: true,
+        singleMarkerMode: true, // Treat all markers as clusters for reliable SVG export
+        iconCreateFunction: function (cluster) {
+            const childCount = cluster.getChildCount();
+
+            // Special style for single marker clusters
+            if (childCount === 1) {
+                const markers = cluster.getAllChildMarkers();
+                const color = (markers.length > 0 && markers[0].options.fillColor) || "#0f62fe";
+                return new L.DivIcon({
+                    html: `<div style="background-color: ${color}; border: 2px solid white; border-radius: 50%; width: 14px; height: 14px; box-shadow: 0 0 0 2px rgba(0,0,0,0.1);"></div>`,
+                    className: 'marker-cluster-single',
+                    iconSize: new L.Point(14, 14)
+                });
+            }
+
+            let c = ' marker-cluster-';
+            if (childCount < 10) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+
+            return new L.DivIcon({
+                html: `<div><span>${childCount}</span></div>`,
+                className: 'marker-cluster' + c,
+                iconSize: new L.Point(40, 40)
+            });
+        }
+    });
+
     data.forEach(item => {
         let lat, lon;
 
@@ -186,7 +247,7 @@ function initLeafletMap(data) {
             const color = getColorByStatus(item.status);
 
             // Circle Marker
-            L.circleMarker([lat, lon], {
+            const marker = L.circleMarker([lat, lon], {
                 radius: 6,
                 fillColor: color,
                 color: "#fff",
@@ -194,7 +255,6 @@ function initLeafletMap(data) {
                 opacity: 1,
                 fillOpacity: 0.8
             })
-                .addTo(map)
                 .bindTooltip(`
                 <div style="font-family: inherit;">
                     <strong>${item.istituto || item.name}</strong><br>
@@ -206,8 +266,22 @@ function initLeafletMap(data) {
                     direction: 'top',
                     className: 'custom-leaflet-tooltip'
                 });
+
+            markerClusterGroup.addLayer(marker);
         }
     });
+
+    map.addLayer(markerClusterGroup);
+}
+
+function updateClusterRadius(radius) {
+    currentRadius = parseInt(radius);
+    document.getElementById('radius-value').innerText = radius + 'px';
+
+    // Re-init clusters
+    if (allData.length > 0) {
+        initLeafletMap(allData);
+    }
 }
 
 
@@ -309,4 +383,194 @@ function showTooltip(event, data) {
 
 function hideTooltip() {
     d3.select("#tooltip").style("opacity", 0);
+}
+
+// --- Export Functionality ---
+
+function exportBubbleChartToSVG() {
+    const svgElement = document.querySelector("#bubble-chart svg");
+    if (!svgElement) return;
+
+    const svgData = new XMLSerializer().serializeToString(svgElement);
+    const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "afam-bubble-chart.svg";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+async function exportMapToSVG() {
+    if (!allData || allData.length === 0) {
+        alert("Nessun dato disponibile per l'esportazione.");
+        return;
+    }
+
+    // 1. Load Italy Background Geometry
+    let italySVGContent = "";
+    try {
+        const response = await fetch('assets/italy.svg');
+        italySVGContent = await response.text();
+    } catch (e) {
+        alert("Errore nel caricamento della mappa di base (italy.svg).");
+        return;
+    }
+
+    // Extraction of paths from italy.svg
+    const parser = new DOMParser();
+    const italyDoc = parser.parseFromString(italySVGContent, "image/svg+xml");
+    const italyPaths = italyDoc.querySelectorAll('path');
+    const italySvgTag = italyDoc.querySelector('svg');
+    const vWidth = parseFloat(italySvgTag.getAttribute('width')) || 610.30981;
+    const vHeight = parseFloat(italySvgTag.getAttribute('height')) || 792.58575;
+
+    // Calibration (matches italy.svg geoViewBox, fine-tuned for path alignment)
+    const longWest = 6.624486;
+    const longEast = 18.521301;
+    // Adjusted bounds to correct the vertical shift observed in SVG export
+    const latNorth = 47.35;
+    const latSouth = 35.75;
+
+    function project(lat, lon) {
+        const x = (lon - longWest) * (vWidth / (longEast - longWest));
+        const y = (latNorth - lat) * (vHeight / (latNorth - latSouth));
+        return { x, y };
+    }
+
+    // 2. Create Export SVG
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("width", vWidth);
+    svg.setAttribute("height", vHeight);
+    svg.setAttribute("viewBox", `0 0 ${vWidth} ${vHeight}`);
+    svg.setAttribute("xmlns", svgNS);
+    svg.style.backgroundColor = "#ffffff";
+
+    // Add Italy paths
+    const mapGroup = document.createElementNS(svgNS, "g");
+    mapGroup.setAttribute("class", "italy-map");
+    italyPaths.forEach(p => {
+        const path = document.createElementNS(svgNS, "path");
+        path.setAttribute("d", p.getAttribute('d'));
+        path.setAttribute("fill", "#f0f0f0");
+        path.setAttribute("stroke", "#dddddd");
+        path.setAttribute("stroke-width", "0.5");
+        mapGroup.appendChild(path);
+    });
+    svg.appendChild(mapGroup);
+
+    // 3. Identify Visible Markers and Clusters (Exhaustive Search)
+    // 3. Identify Exactly what is visible on the map
+    const visibleElements = new Set();
+    window.map.eachLayer(layer => {
+        // We only want markers or clusters
+        if (layer instanceof L.MarkerCluster || layer instanceof L.CircleMarker || layer instanceof L.Marker) {
+            // Check if it's within the current map container
+            if (layer.getLatLng) {
+                visibleElements.add(layer);
+            }
+        }
+    });
+
+    // 4. Draw Markers and Clusters
+    const markersGroup = document.createElementNS(svgNS, "g");
+    svg.appendChild(markersGroup);
+
+    visibleElements.forEach(el => {
+        const latlng = (el.getLatLng && typeof el.getLatLng === 'function') ? el.getLatLng() : el._latlng;
+        if (!latlng) return;
+
+        const pos = project(latlng.lat, latlng.lng);
+
+        // Clusters have getChildCount
+        if (typeof el.getChildCount === 'function') {
+            const count = el.getChildCount();
+
+            if (count === 1) {
+                // Single institution forced into a cluster - Render as PIN
+                const markers = el.getAllChildMarkers();
+                const color = (markers.length > 0 && markers[0].options.fillColor) || "#0f62fe";
+
+                const glow = document.createElementNS(svgNS, "circle");
+                glow.setAttribute("cx", pos.x);
+                glow.setAttribute("cy", pos.y);
+                glow.setAttribute("r", 9);
+                glow.setAttribute("fill", color);
+                glow.setAttribute("fill-opacity", "0.2");
+                markersGroup.appendChild(glow);
+
+                const pin = document.createElementNS(svgNS, "circle");
+                pin.setAttribute("cx", pos.x);
+                pin.setAttribute("cy", pos.y);
+                pin.setAttribute("r", 6);
+                pin.setAttribute("fill", color);
+                pin.setAttribute("stroke", "#ffffff");
+                pin.setAttribute("stroke-width", "2");
+                pin.setAttribute("fill-opacity", "1.0");
+                markersGroup.appendChild(pin);
+            } else {
+                // Collective cluster - Render as CLUSTER
+                let color = "#0f62fe";
+                if (count >= 10) color = "#8a3ffc";
+                if (count >= 100) color = "#000000";
+
+                const halo = document.createElementNS(svgNS, "circle");
+                halo.setAttribute("cx", pos.x);
+                halo.setAttribute("cy", pos.y);
+                halo.setAttribute("r", 12); // Reduced from 16
+                halo.setAttribute("fill", color);
+                halo.setAttribute("fill-opacity", "0.2");
+                markersGroup.appendChild(halo);
+
+                const circle = document.createElementNS(svgNS, "circle");
+                circle.setAttribute("cx", pos.x);
+                circle.setAttribute("cy", pos.y);
+                circle.setAttribute("r", 9); // Reduced from 13
+                circle.setAttribute("fill", color);
+                circle.setAttribute("fill-opacity", "0.95");
+                circle.setAttribute("stroke", "#ffffff");
+                circle.setAttribute("stroke-width", "2.0");
+                markersGroup.appendChild(circle);
+
+                const text = document.createElementNS(svgNS, "text");
+                text.setAttribute("x", pos.x);
+                text.setAttribute("y", pos.y + 3); // Adjusted from +4
+                text.setAttribute("text-anchor", "middle");
+                text.setAttribute("fill", "#ffffff");
+                text.setAttribute("font-size", "9px"); // Reduced from 11px
+                text.setAttribute("font-weight", "bold");
+                text.setAttribute("font-family", "Arial, sans-serif");
+                text.textContent = count;
+                markersGroup.appendChild(text);
+            }
+        } else if (el.options && el.options.fillColor) {
+            // Individual Pins (CircleMarkers not in a cluster)
+            const color = el.options.fillColor || "#0f62fe";
+
+            const pin = document.createElementNS(svgNS, "circle");
+            pin.setAttribute("cx", pos.x);
+            pin.setAttribute("cy", pos.y);
+            pin.setAttribute("r", 6);
+            pin.setAttribute("fill", color);
+            pin.setAttribute("stroke", "#ffffff");
+            pin.setAttribute("stroke-width", "2");
+            pin.setAttribute("fill-opacity", "1.0");
+            markersGroup.appendChild(pin);
+        }
+    });
+
+    // 5. Download
+    const svgData = new XMLSerializer().serializeToString(svg);
+    const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "mappa-afam-vettoriale.svg";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }

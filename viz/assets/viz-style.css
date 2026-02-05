@@ -40,6 +40,65 @@ h1 {
     color: #555;
 }
 
+.view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 15px;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.controls-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.slider-container input[type="range"] {
+    cursor: pointer;
+}
+
+#radius-value {
+    min-width: 40px;
+    display: inline-block;
+}
+
+.export-btn {
+    background-color: var(--text-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font-family);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.export-btn:hover {
+    background-color: #333;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.export-btn:active {
+    transform: translateY(0);
+}
+
 #timeline-container {
     width: 100%;
     max-width: 1400px;
@@ -277,4 +336,80 @@ h1 {
     font-size: 18px;
     fill: #333;
     opacity: 0.3;
+}
+
+/* Marker Cluster Custom Styling */
+.marker-cluster-small {
+    background-color: rgba(15, 98, 254, 0.2);
+}
+
+.marker-cluster-small div {
+    background-color: rgba(15, 98, 254, 0.6);
+    color: white;
+}
+
+.marker-cluster-medium {
+    background-color: rgba(138, 63, 252, 0.2);
+}
+
+.marker-cluster-medium div {
+    background-color: rgba(138, 63, 252, 0.6);
+    color: white;
+}
+
+.marker-cluster-large {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.marker-cluster-large div {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+}
+
+.marker-cluster {
+    background-clip: padding-box;
+    border-radius: 20px;
+}
+
+.marker-cluster div {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+    text-align: center;
+    border-radius: 15px;
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.marker-cluster span {
+    line-height: 30px;
+}
+
+.total-counter {
+    background-color: var(--text-color);
+    color: white;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 10px;
+    font-family: var(--font-family);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.total-counter .count {
+    background-color: white;
+    color: var(--text-color);
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 12px;
 }

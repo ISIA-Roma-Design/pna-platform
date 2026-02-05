@@ -21,6 +21,11 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Leaflet MarkerCluster -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 </head>
 
 <body>
@@ -38,12 +43,32 @@
         </div>
 
         <div id="view-map" class="view-container">
-            <p class="subtitle">Distribuzione territoriale delle istituzioni partecipanti.</p>
+            <div class="view-header">
+                <div style="display: flex; align-items: center;">
+                    <p class="subtitle">Distribuzione territoriale delle istituzioni partecipanti.</p>
+                    <div class="total-counter">Istituti <span class="count total-institutions-count">0</span></div>
+                </div>
+                <div class="controls-group">
+                    <div class="slider-container">
+                        <label for="cluster-radius">Sensibilità Cluster:</label>
+                        <input type="range" id="cluster-radius" min="0" max="150" value="20" step="5"
+                            oninput="updateClusterRadius(this.value)">
+                        <span id="radius-value">20</span>
+                    </div>
+                    <button class="export-btn" onclick="exportMapToSVG()">Esporta Mappa (SVG)</button>
+                </div>
+            </div>
             <div id="map-container"></div>
         </div>
 
         <div id="view-groups" class="view-container" style="display:none;">
-            <p class="subtitle">Raggruppamento per tipologia di istituto (Bubble Chart).</p>
+            <div class="view-header">
+                <div style="display: flex; align-items: center;">
+                    <p class="subtitle">Raggruppamento per tipologia di istituto (Bubble Chart).</p>
+                    <div class="total-counter">Istituti <span class="count total-institutions-count">0</span></div>
+                </div>
+                <button class="export-btn" onclick="exportBubbleChartToSVG()">Esporta Grafico (SVG)</button>
+            </div>
             <div id="bubble-chart"></div>
         </div>
 
