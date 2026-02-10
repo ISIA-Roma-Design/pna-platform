@@ -13,7 +13,7 @@
     },
     {
         "id": "accademia-abadir-santagata-li-battiati-ct",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Accademia Abadir - Sant'Agata Li Battiati (Ct)",
         "citta": "Catania",
         "sede": "Principale",
@@ -24,7 +24,7 @@
     },
     {
         "id": "accademia-del-lusso",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Accademia del Lusso",
         "citta": "Milano",
         "sede": "Principale",
@@ -36,7 +36,7 @@
     },
     {
         "id": "accademia-della-moda-milano",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Accademia della Moda - Milano",
         "citta": "Milano",
         "sede": "Principale",
@@ -48,7 +48,7 @@
     },
     {
         "id": "accademia-della-moda-napoli",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Accademia della Moda - Napoli",
         "citta": "Napoli",
         "sede": "Principale",
@@ -60,7 +60,7 @@
     },
     {
         "id": "accademia-della-moda-iuad",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Accademia della Moda (IUAD)",
         "citta": "Napoli",
         "sede": "Principale",
@@ -609,7 +609,7 @@
     },
     {
         "id": "accademia-di-costume-e-moda",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Accademia di Costume e Moda",
         "citta": "Roma",
         "sede": "Principale",
@@ -621,7 +621,7 @@
     },
     {
         "id": "accademia-di-costume-e-moda-sede-decentrata-di-milano",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Accademia di Costume e Moda - Sede Decentrata di Milano",
         "citta": "Milano",
         "sede": "Principale",
@@ -656,7 +656,7 @@
     },
     {
         "id": "accademia-italiana-di-arte-moda-e-design-firenze",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Accademia Italiana di Arte, Moda e Design - Firenze",
         "citta": "Firenze",
         "sede": "Principale",
@@ -668,7 +668,7 @@
     },
     {
         "id": "accademia-italiana-di-arte-moda-e-design-roma",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Accademia Italiana di Arte, Moda e Design - Roma",
         "citta": "Roma",
         "sede": "Principale",
@@ -680,7 +680,7 @@
     },
     {
         "id": "accademia-italiana-di-moda-design-e-fotografia",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Accademia Italiana di Moda, Design e Fotografia",
         "citta": "Firenze",
         "sede": "Principale",
@@ -751,7 +751,7 @@
     },
     {
         "id": "civica-scuola-di-musica-claudio-abbado",
-        "tipologia_istituto": "Istituti Musicali",
+        "tipologia_istituto": "Altro",
         "istituto": "Civica Scuola di Musica \"Claudio Abbado\"",
         "citta": "Milano",
         "sede": "Principale",
@@ -763,7 +763,7 @@
     },
     {
         "id": "civica-scuola-teratro-paolo-grassi",
-        "tipologia_istituto": "Istituti di Teatro e Coreutica",
+        "tipologia_istituto": "Altro",
         "istituto": "Civica Scuola di Teatro \"Paolo Grassi\"",
         "citta": "Milano",
         "sede": "Principale",
@@ -1950,7 +1950,7 @@
     },
     {
         "id": "istituto-d-arte-applicata-e-design-iaad",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto d'Arte Applicata e Design (IAAD)",
         "citta": "Torino",
         "sede": "Principale",
@@ -1962,7 +1962,7 @@
     },
     {
         "id": "istituto-del-design-matera",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto del Design Matera",
         "citta": "Matera",
         "sede": "Principale",
@@ -1974,7 +1974,7 @@
     },
     {
         "id": "istituto-europeo-del-design-ied",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto Europeo del Design (IED) - Cagliari",
         "citta": "Cagliari",
         "sede": "Decentrata",
@@ -1985,7 +1985,7 @@
     },
     {
         "id": "istituto-europeo-del-design-ied",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto Europeo del Design (IED) - Firenze",
         "citta": "Firenze",
         "sede": "Decentrata",
@@ -1996,7 +1996,7 @@
     },
     {
         "id": "istituto-europeo-del-design-ied",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto Europeo del Design (IED) - Milano",
         "citta": "Milano",
         "sede": "Principale",
@@ -2007,7 +2007,7 @@
     },
     {
         "id": "istituto-europeo-del-design-ied",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto Europeo del Design (IED) - Roma",
         "citta": "Roma",
         "sede": "Principale",
@@ -2018,7 +2018,7 @@
     },
     {
         "id": "istituto-europeo-del-design-ied",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto Europeo del Design (IED) - Torino",
         "citta": "Torino",
         "sede": "Decentrata",
@@ -2029,7 +2029,7 @@
     },
     {
         "id": "istituto-italiano-design",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto Italiano Design",
         "citta": "Perugia",
         "sede": "Principale",
@@ -2041,7 +2041,7 @@
     },
     {
         "id": "istituto-marangoni",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto Marangoni",
         "citta": "Milano",
         "sede": "Principale",
@@ -2053,7 +2053,7 @@
     },
     {
         "id": "istituto-marangoni",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto Marangoni",
         "citta": "Firenze",
         "sede": "Decentrata",
@@ -2065,7 +2065,7 @@
     },
     {
         "id": "istituto-modartech",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto Modartech",
         "citta": "Pontedera",
         "sede": "Principale",
@@ -2077,7 +2077,7 @@
     },
     {
         "id": "istituto-pantheon-design-technology",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto Pantheon Design & Technology",
         "citta": "Roma",
         "sede": "Principale",
@@ -2089,7 +2089,7 @@
     },
     {
         "id": "istituto-parco-scientifico-e-tecnologico-galileo-scpa-scuola-italiana-design-sid",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto Parco Scientifico e Tecnologico Galileo SCpA - Scuola Italiana Design (SID)",
         "citta": "Padova",
         "sede": "Principale",
@@ -2101,7 +2101,7 @@
     },
     {
         "id": "istituto-poliarte-ancona",
-        "tipologia_istituto": "Altro",
+        "tipologia_istituto": "Accademie di Belle Arti",
         "istituto": "Istituto Poliarte - Ancona",
         "citta": "Ancona",
         "sede": "Principale",
@@ -2113,7 +2113,7 @@
     },
     {
         "id": "istituto-quasar-quasar-institute-for-advanced-design",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto Quasar / Quasar Institute for Advanced Design",
         "citta": "Roma",
         "sede": "Principale",
@@ -2125,7 +2125,7 @@
     },
     {
         "id": "istituto-secoli",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Istituto Secoli",
         "citta": "Milano",
         "sede": "Principale",
@@ -2244,7 +2244,7 @@
     },
     {
         "id": "raffles-milano-istituto-moda-e-design",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "Raffles Milano - Istituto Moda e Design",
         "citta": "Milano",
         "sede": "Principale",
@@ -2292,7 +2292,7 @@
     },
     {
         "id": "sae-institute-creative-media-education",
-        "tipologia_istituto": "Istituti di Design, Moda e Belle Arti",
+        "tipologia_istituto": "Istituti di Design e Moda",
         "istituto": "SAE Institute. Creative media education",
         "citta": "Milano",
         "sede": "Principale",
@@ -2302,24 +2302,16 @@
         "lng": "9.2420901"
     },
     {
-        "id": "saint-louis-college-of-music",
-        "tipologia_istituto": "Istituti Musicali",
-        "istituto": "Saint Louis College of Music",
+        "id": "saint-louis-music-center-college-of-music-di-milano",
+        "tipologia_istituto": "Altro",
+        "istituto": "Saint Louis Music Center - College Of Music di Milano",
         "citta": "Milano",
         "sede": "Decentrata",
+        "address": "Viale L. Bodio, 37, 20158, Milano, Mi, Italia",
         "status": "Privato",
+        "website": "www.slmc.it",
         "lat": "45.4641943",
         "lng": "9.1896346"
-    },
-    {
-        "id": "saint-louis-college-of-music",
-        "tipologia_istituto": "Istituti Musicali",
-        "istituto": "Saint Louis College of Music",
-        "citta": "Roma",
-        "sede": "Principale",
-        "status": "Privato",
-        "lat": "41.8948917",
-        "lng": "12.4901637"
     },
     {
         "id": "saint-louis-music-center-college-of-music-di-roma",
