@@ -261,3 +261,47 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+
+/**
+ * Global function to export the dendrogram SVG
+ */
+function exportDendrogramToSVG() {
+    const container = document.getElementById("dendrogram-container");
+    const svgElement = container.querySelector("svg");
+
+    if (!svgElement) {
+        alert("Errore: SVG non trovato.");
+        return;
+    }
+
+    // Prepare a clone to avoid modified original
+    const clonedSvg = svgElement.cloneNode(true);
+
+    // Embed styles directly into SVG for portability
+    const styleString = `
+        .node circle { fill: #fff; stroke: #000; stroke-width: 1.5px; }
+        .visible-node { fill: #fff; stroke: #000; stroke-width: 1.5px; }
+        .node text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 500; }
+        .link { fill: none; stroke: #ccc; stroke-width: 1px; }
+        path { fill: none; stroke: #999; stroke-opacity: 0.6; stroke-width: 1.5px; }
+    `;
+
+    const styleElement = document.createElementNS("http://www.w3.org/2000/svg", "style");
+    styleElement.textContent = styleString;
+    clonedSvg.insertBefore(styleElement, clonedSvg.firstChild);
+
+    // Serialize
+    const serializer = new XMLSerializer();
+    const svgString = serializer.serializeToString(clonedSvg);
+    const blob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
+    // Download
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "pna-struttura-dendrogramma.svg";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}

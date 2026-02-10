@@ -77,8 +77,17 @@
     <script src="../components/header-loader.js"></script>
 
     <div class="main-container" style="max-width: 100%; width: 100%; padding-left: 2rem; padding-right: 2rem;">
-        <h1 class="page-title">Struttura PNA</h1>
-        <p class="page-subtitle">Visualizzazione gerarchica delle sezioni, sottosezioni e categorie (Dendrogramma).</p>
+        <div class="view-header"
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-left: 4px solid #000; padding-left: 1.5rem;">
+            <div>
+                <h1 class="page-title" style="margin:0;">Struttura PNA</h1>
+                <p class="page-subtitle" style="margin:0; opacity: 0.7;">Visualizzazione gerarchica delle sezioni,
+                    sottosezioni e categorie (Dendrogramma).</p>
+            </div>
+            <button class="export-btn" onclick="exportDendrogramToSVG()"
+                style="background: #000; color: #fff; border: none; padding: 0.75rem 1.5rem; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em;">Esporta
+                SVG</button>
+        </div>
 
         <!-- Chart Container -->
         <div id="dendrogram-container"></div>
