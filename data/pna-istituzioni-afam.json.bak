@@ -84,7 +84,7 @@
     {
         "id": "accademia-di-belle-arti-aldo-galli",
         "tipologia_istituto": "Accademie di Belle Arti",
-        "istituto": "Accademia di Belle Arti “Aldo Galli”",
+        "istituto": "Accademia di Belle Arti \u201cAldo Galli\u201d",
         "citta": "Como",
         "sede": "Principale",
         "address": "Piazza del Duomo, 9, 22100, Como, Co, , Italia",
@@ -96,7 +96,7 @@
     {
         "id": "accademia-di-belle-arti-g-b-tiepolo",
         "tipologia_istituto": "Accademie di Belle Arti",
-        "istituto": "Accademia di Belle Arti “G.B. Tiepolo”",
+        "istituto": "Accademia di Belle Arti \u201cG.B. Tiepolo\u201d",
         "citta": "Udine",
         "sede": "Principale",
         "address": "Viale Ungheria, 22, 33100, Udine, Ud, , Italia",
@@ -108,7 +108,7 @@
     {
         "id": "accademia-di-belle-arti-lorenzo-da-viterbo",
         "tipologia_istituto": "Accademie di Belle Arti",
-        "istituto": "Accademia di Belle Arti “Lorenzo da Viterbo”",
+        "istituto": "Accademia di Belle Arti \u201cLorenzo da Viterbo\u201d",
         "citta": "Viterbo",
         "sede": "Principale",
         "address": "Piazza del Plebiscito, 01100, Viterbo, Vt, , Italia",
@@ -120,7 +120,7 @@
     {
         "id": "accademia-di-belle-arti-santagiulia",
         "tipologia_istituto": "Accademie di Belle Arti",
-        "istituto": "Accademia di Belle Arti “SantaGiulia”",
+        "istituto": "Accademia di Belle Arti \u201cSantaGiulia\u201d",
         "citta": "Brescia",
         "sede": "Principale",
         "address": "Piazza della Loggia, 11, 25121, Brescia, Bs, , Italia",
@@ -132,7 +132,7 @@
     {
         "id": "accademia-di-belle-arti-trentino-art-academy",
         "tipologia_istituto": "Accademie di Belle Arti",
-        "istituto": "Accademia di Belle Arti “Trentino Art Academy”",
+        "istituto": "Accademia di Belle Arti \u201cTrentino Art Academy\u201d",
         "citta": "Trento",
         "sede": "Principale",
         "address": "Via del Brennero, 316, 38121, Trento, Tn, , Italia",
@@ -347,7 +347,7 @@
     {
         "id": "accademia-di-belle-arti-legalmente-riconosciuta-di-milano-naba-nuova-accademia-di-belle-arti-sede-roma",
         "tipologia_istituto": "Accademie di Belle Arti",
-        "istituto": "Nuova Accademia di Belle Arti (NABA)",
+        "istituto": "Accademia di Belle Arti Legalmente Riconosciuta di Milano \"Naba\" - Nuova Accademia di Belle Arti - Sede Roma",
         "citta": "Roma",
         "sede": "Principale",
         "address": "Via Ostiense, 92 , 00154, Roma, Rm, , Italia",
@@ -355,6 +355,18 @@
         "website": "www.naba.it",
         "lat": "41.8678630",
         "lng": "12.4791773"
+    },
+    {
+        "id": "accademia-di-belle-arti-legalmente-riconosciuta-di-roma-rome-university-of-fine-arts",
+        "tipologia_istituto": "Accademie di Belle Arti",
+        "istituto": "Accademia di Belle Arti Legalmente Riconosciuta di Roma \"Rome University Of Fine Arts\"",
+        "citta": "Roma",
+        "sede": "Principale",
+        "address": "Via Benaco, 2, 00199 Roma, RM, Italia",
+        "status": "Privato",
+        "website": "www.unirufa.it",
+        "lat": "",
+        "lng": ""
     },
     {
         "id": "accademia-di-belle-arti-statale-di-bari",
@@ -616,8 +628,8 @@
         "address": "Via della Rondinella, 2, 00186 Roma, RM, Italia",
         "status": "Privato",
         "website": "www.accademiacostumeemoda.it",
-        "lat": "41.9011272",
-        "lng": "12.4686260"
+        "lat": "",
+        "lng": ""
     },
     {
         "id": "accademia-di-costume-e-moda-sede-decentrata-di-milano",
@@ -626,7 +638,7 @@
         "citta": "Milano",
         "sede": "Principale",
         "address": "Via Antonio Fogazzaro, 23, 20135, Milano, Mi, , Italia",
-        "status": "Privato",
+        "status": "Pubblico",
         "website": "www.accademiacostumeemoda.it",
         "lat": "45.4576097",
         "lng": "9.2094335"
@@ -634,7 +646,7 @@
     {
         "id": "accademia-di-design-e-comunicazione-visiva-abadir",
         "tipologia_istituto": "Accademie di Belle Arti",
-        "istituto": "Accademia di Design e Comunicazione visiva “Abadir”",
+        "istituto": "Accademia di Design e Comunicazione visiva \u201cAbadir\u201d",
         "citta": "Sant'Agata li Battiati",
         "sede": "Principale",
         "address": "Via Giacomo Leopardi, 8, 95030, Sant'Agata li Battiati, Sa, , Italia",
@@ -661,7 +673,7 @@
         "citta": "Firenze",
         "sede": "Principale",
         "address": "Piazza della Signoria, 21 R, 50122, Firenze, Fi, , Italia",
-        "status": "Privato",
+        "status": "Pubblico",
         "website": "www.accademiaitaliana.com",
         "lat": "43.7700182",
         "lng": "11.2556355"
@@ -673,10 +685,10 @@
         "citta": "Roma",
         "sede": "Principale",
         "address": "Viale dello Scalo San Lorenzo, 10, 00185 Roma, RM, Italia",
-        "status": "Privato",
+        "status": "Pubblico",
         "website": "www.accademiaitaliana.com",
-        "lat": "41.8931171",
-        "lng": "12.5183989"
+        "lat": "",
+        "lng": ""
     },
     {
         "id": "accademia-italiana-di-moda-design-e-fotografia",
@@ -692,7 +704,7 @@
     {
         "id": "accademia-nazionale-d-arte-drammatica-silvio-d-amico",
         "tipologia_istituto": "Accademie Nazionali",
-        "istituto": "Accademia Nazionale d'Arte Drammatica “Silvio D'Amico”",
+        "istituto": "Accademia Nazionale d'Arte Drammatica \u201cSilvio D'Amico\u201d",
         "citta": "Roma",
         "sede": "Principale",
         "address": "Via Vincenzo Bellini, 16, 00198, Roma, Rm, , Italia",
@@ -995,7 +1007,7 @@
         "istituto": "Conservatorio di Musica di Ravenna",
         "citta": "Ravenna",
         "sede": "Principale",
-        "address": " Via di Roma, 33, 48121, Ravenna, Ra, , Italia",
+        "address": "\u00a0Via di Roma, 33, 48121, Ravenna, Ra, , Italia",
         "status": "Pubblico",
         "website": "www.verdiravenna.it/",
         "lat": "44.4150860",
@@ -1087,7 +1099,7 @@
     {
         "id": "conservatorio-statale-di-musica-bari-niccol-piccinni",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Bari \"Niccolò Piccinni\"",
+        "istituto": "Conservatorio Statale di Musica Bari \"Niccol\u00f2 Piccinni\"",
         "citta": "Bari",
         "sede": "Principale",
         "address": "Via Cifarelli, 26, 70124, Bari, BA, , Italia",
@@ -1158,10 +1170,10 @@
     {
         "id": "conservatorio-statale-di-musica-caltanissetta-vincenzo-bellini",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Caltanissetta “Vincenzo Bellini”",
+        "istituto": "Conservatorio Statale di Musica Caltanissetta \u201cVincenzo Bellini\u201d",
         "citta": "Caltanissetta",
         "sede": "Principale",
-        "address": "Corso Umberto I°, 84, , Cl, 93100, Caltanissetta, Ca, , Italia",
+        "address": "Corso Umberto I\u00b0, 84, , Cl, 93100, Caltanissetta, Ca, , Italia",
         "status": "Pubblico",
         "website": "www.Issmbellini.cl.it",
         "lat": "37.4882462",
@@ -1194,7 +1206,7 @@
     {
         "id": "conservatorio-statale-di-musica-catania-vincenzo-bellini",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Catania “Vincenzo Bellini”",
+        "istituto": "Conservatorio Statale di Musica Catania \u201cVincenzo Bellini\u201d",
         "citta": "Catania",
         "sede": "Principale",
         "address": "Via Istituto Sacro Cuore, 3, 95125, Catania, Ct, , Italia",
@@ -1229,7 +1241,7 @@
     {
         "id": "conservatorio-statale-di-musica-cosenza-stanislao-giacomantonio",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Cosenza \"Stanislao Giacomantonio”",
+        "istituto": "Conservatorio Statale di Musica Cosenza \"Stanislao Giacomantonio\u201d",
         "citta": "Cosenza",
         "sede": "Principale",
         "address": "Via Portapiana, , Cs, 87100, Cosenza, Co, , Italia",
@@ -1241,7 +1253,7 @@
     {
         "id": "conservatorio-statale-di-musica-cremona-claudio-monteverdi",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Cremona “Claudio Monteverdi”",
+        "istituto": "Conservatorio Statale di Musica Cremona \u201cClaudio Monteverdi\u201d",
         "citta": "Cremona",
         "sede": "Principale",
         "address": "Via Realdo Colombo, 1, 26100, Cremona, Cr, , Italia",
@@ -1267,7 +1279,7 @@
         "istituto": "Conservatorio Statale di Musica Fermo \"Giovambattista Pergolesi\"",
         "citta": "Fermo",
         "sede": "Principale",
-        "address": "Via dell'Università, 16, 63900, Fermo, FM, , Italia",
+        "address": "Via dell'Universit\u00e0, 16, 63900, Fermo, FM, , Italia",
         "status": "Pubblico",
         "lat": "43.1617794",
         "lng": "13.7173919"
@@ -1323,7 +1335,7 @@
     {
         "id": "conservatorio-statale-di-musica-gallarate-va-giacomo-puccini",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Gallarate (VA) “Giacomo Puccini”",
+        "istituto": "Conservatorio Statale di Musica Gallarate (VA) \u201cGiacomo Puccini\u201d",
         "citta": "Gallarate",
         "sede": "Principale",
         "address": "Via Dante Alighieri, 11, 21013, Gallarate, Va, , Italia",
@@ -1335,7 +1347,7 @@
     {
         "id": "conservatorio-statale-di-musica-genova-nicol-paganini",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Genova \"Nicolò Paganini\"",
+        "istituto": "Conservatorio Statale di Musica Genova \"Nicol\u00f2 Paganini\"",
         "citta": "Genova",
         "sede": "Principale",
         "address": "Largo Pertini, 4, 16121, Genova, Ge, , Italia",
@@ -1393,7 +1405,7 @@
     {
         "id": "conservatorio-statale-di-musica-livorno-pietro-mascagni",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Livorno “Pietro Mascagni”",
+        "istituto": "Conservatorio Statale di Musica Livorno \u201cPietro Mascagni\u201d",
         "citta": "Livorno",
         "sede": "Principale",
         "address": "Via Galileo Galilei, 40, 57122, Livorno, Li, , Italia",
@@ -1405,7 +1417,7 @@
     {
         "id": "conservatorio-statale-di-musica-lucca-luigi-boccherini",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Lucca “Luigi Boccherini”",
+        "istituto": "Conservatorio Statale di Musica Lucca \u201cLuigi Boccherini\u201d",
         "citta": "Lucca",
         "sede": "Principale",
         "address": "Via del Suffragio, 55100, Lucca, Lu, , Italia",
@@ -1464,7 +1476,7 @@
     {
         "id": "conservatorio-statale-di-musica-modena-con-sede-a-carpi-orazio-vecchi-antonio-tonelli",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Modena – con sede a Carpi - \"Orazio Vecchi-Antonio Tonelli\"",
+        "istituto": "Conservatorio Statale di Musica Modena \u2013 con sede a Carpi - \"Orazio Vecchi-Antonio Tonelli\"",
         "citta": "Carpi",
         "sede": "Principale",
         "address": "Via San Rocco, 5, 41012, Carpi, Ca, , Italia",
@@ -1499,7 +1511,7 @@
     {
         "id": "conservatorio-statale-di-musica-nocera-terinese-cz-pyotr-ilyich-tchaikovsky",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Nocera Terinese (CZ) “Pyotr Ilyich Tchaikovsky”",
+        "istituto": "Conservatorio Statale di Musica Nocera Terinese (CZ) \u201cPyotr Ilyich Tchaikovsky\u201d",
         "citta": "Nocera Terinese",
         "sede": "Principale",
         "address": "Via Dante Alighieri, 8, , Cz, 88047, Nocera Terinese, No, , Italia",
@@ -1558,7 +1570,7 @@
     {
         "id": "conservatorio-statale-di-musica-pavia-franco-vittadini",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Pavia “Franco Vittadini”",
+        "istituto": "Conservatorio Statale di Musica Pavia \u201cFranco Vittadini\u201d",
         "citta": "Pavia",
         "sede": "Principale",
         "address": "Via Alessandro Volta, 31, 27100, Pavia, PV, , Italia",
@@ -1629,7 +1641,7 @@
     {
         "id": "conservatorio-statale-di-musica-ravenna-giuseppe-verdi",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Ravenna “Giuseppe Verdi”",
+        "istituto": "Conservatorio Statale di Musica Ravenna \u201cGiuseppe Verdi\u201d",
         "citta": "Ravenna",
         "sede": "Principale",
         "address": "Via delle Industrie, 76, 48122, Ravenna, Ra, , Italia",
@@ -1653,7 +1665,7 @@
     {
         "id": "conservatorio-statale-di-musica-reggio-emilia-e-castelnuovo-n-monti-achille-peri-e-claudio-merulo",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Reggio Emilia e Castelnuovo né Monti “Achille Peri e Claudio Merulo”",
+        "istituto": "Conservatorio Statale di Musica Reggio Emilia e Castelnuovo n\u00e9 Monti \u201cAchille Peri e Claudio Merulo\u201d",
         "citta": "Reggio Emilia",
         "sede": "Principale",
         "address": "Via Dante Alighieri, 11, 42121, Reggio Emilia, RE, , Italia",
@@ -1665,7 +1677,7 @@
     {
         "id": "conservatorio-statale-di-musica-ribera-ag-arturo-toscanini",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Ribera (AG) “Arturo Toscanini”",
+        "istituto": "Conservatorio Statale di Musica Ribera (AG) \u201cArturo Toscanini\u201d",
         "citta": "Ribera",
         "sede": "Principale",
         "address": "Corso Umberto I, 359, , Ag, 92016, Ribera, Ri, , Italia",
@@ -1737,7 +1749,7 @@
     {
         "id": "conservatorio-statale-di-musica-taranto-giovanni-paisiello",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Taranto “Giovanni Paisiello”",
+        "istituto": "Conservatorio Statale di Musica Taranto \u201cGiovanni Paisiello\u201d",
         "citta": "Taranto",
         "sede": "Principale",
         "address": "Via Duomo, 276, 74123, Taranto, Ta, , Italia",
@@ -1749,19 +1761,18 @@
     {
         "id": "conservatorio-statale-di-musica-teramo-gaetano-braga-issmc",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Teramo “Gaetano Braga” (ISSMC)",
+        "istituto": "Conservatorio Statale di Musica Teramo \u201cGaetano Braga\u201d (ISSMC)",
         "citta": "Teramo",
         "sede": "Principale",
         "address": "Corso S. Giorgio, 14, 64100, Teramo, Te, , Italia",
         "status": "Pubblico",
-        "website": "www.conservatoriobraga.it",
         "lat": "42.6601486",
         "lng": "13.7007032"
     },
     {
         "id": "conservatorio-statale-di-musica-terni-giulio-briccialdi",
         "tipologia_istituto": "Conservatori di Musica e ISSM",
-        "istituto": "Conservatorio Statale di Musica Terni “Giulio Briccialdi”",
+        "istituto": "Conservatorio Statale di Musica Terni \u201cGiulio Briccialdi\u201d",
         "citta": "Terni",
         "sede": "Principale",
         "address": "Via del ibunale, 22, 05100, Terni, Tr, , Italia",
@@ -1823,7 +1834,7 @@
         "istituto": "Conservatorio Statale di Musica Udine \"Jacopo Tomadini\"",
         "citta": "Udine",
         "sede": "Principale",
-        "address": "Piazza 1° Maggio, 29, 33100, Udine, Ud, , Italia",
+        "address": "Piazza 1\u00b0 Maggio, 29, 33100, Udine, Ud, , Italia",
         "status": "Pubblico",
         "lat": "46.0651811",
         "lng": "13.2397028"
@@ -1870,7 +1881,7 @@
         "istituto": "Conservatorio Statale di Musica Vicenza \"Arrigo Pedrollo\"",
         "citta": "Vicenza",
         "sede": "Principale",
-        "address": "Contrà.Domenico,33, 36100, Vicenza, Vi, , Italia",
+        "address": "Contr\u00e0.Domenico,33, 36100, Vicenza, Vi, , Italia",
         "status": "Pubblico",
         "website": "www.consvi.it/",
         "lat": "45.5506780",
@@ -2084,8 +2095,8 @@
         "address": "Via del Pantheon, 57, 00186 Roma, RM, Italia",
         "status": "Privato",
         "website": "www.istitutopantheon.com",
-        "lat": "41.8997872",
-        "lng": "12.4768054"
+        "lat": "",
+        "lng": ""
     },
     {
         "id": "istituto-parco-scientifico-e-tecnologico-galileo-scpa-scuola-italiana-design-sid",
@@ -2106,7 +2117,7 @@
         "citta": "Ancona",
         "sede": "Principale",
         "address": "Via Miano, 41 A/B, 60125, Ancona, An, , Italia",
-        "status": "Privato",
+        "status": "Pubblico",
         "website": "www.poliarte.net",
         "lat": "43.6066245",
         "lng": "13.5099099"
@@ -2221,7 +2232,7 @@
     {
         "id": "politecnico-delle-arti-statale-sezione-belle-arti-g-carrara",
         "tipologia_istituto": "Accademie di Belle Arti",
-        "istituto": "Politecnico delle Arti Statale - Sezione Belle Arti “G. Carrara”",
+        "istituto": "Politecnico delle Arti Statale - Sezione Belle Arti \u201cG. Carrara\u201d",
         "citta": "Bergamo",
         "sede": "Principale",
         "address": "Via Roma, 1, Carrara, Ms, 54033, Bergamo, Bg, , Italia",
@@ -2238,7 +2249,6 @@
         "sede": "Principale",
         "address": "Via Arena, 9, 24129, Bergamo, Bg, , Italia",
         "status": "Pubblico",
-        "website": "www.consbg.it/",
         "lat": "45.7033389",
         "lng": "9.6608543"
     },
@@ -2248,7 +2258,7 @@
         "istituto": "Raffles Milano - Istituto Moda e Design",
         "citta": "Milano",
         "sede": "Principale",
-        "address": "Via Felice Casati, 16 – 20124 – Milano",
+        "address": "Via Felice Casati, 16 \u2013 20124 \u2013 Milano",
         "status": "Privato",
         "website": "www.rafflesmilano.it",
         "lat": "45.4784738",
@@ -2269,7 +2279,7 @@
     {
         "id": "rome-university-of-fine-arts-rufa",
         "tipologia_istituto": "Accademie di Belle Arti",
-        "istituto": "RUFA - Rome University of Fine Arts",
+        "istituto": "Rome University of Fine Arts (RUFA)",
         "citta": "Roma",
         "sede": "Principale",
         "address": "Via Benaco, 2, 00199, Roma, Rm, , Italia",
@@ -2280,12 +2290,12 @@
     },
     {
         "id": "rufa-rome-university-of-fine-arts-sede-decentrata",
-        "tipologia_istituto": "Accademie di Belle Arti",
-        "istituto": "RUFA - Rome University Of Fine Arts - Sede Decentrata",
+        "tipologia_istituto": "Altro",
+        "istituto": "Rufa - Rome University Of Fine Arts - Sede Decentrata",
         "citta": "Milano",
         "sede": "Principale",
         "address": "P.Le Lugano, 19, 20158, Milano, Mi, , Italia",
-        "status": "Privato",
+        "status": "Pubblico",
         "website": "www.unirufa.it/sedi/campus-milano-scalo-farini/",
         "lat": "45.4975743",
         "lng": "9.1657063"
@@ -2330,8 +2340,8 @@
         "address": "Via Baccina, 47, 00184 Roma, RM, Italia",
         "status": "Privato",
         "website": "www.slmc.it",
-        "lat": "41.8948917",
-        "lng": "12.4901637"
+        "lat": "",
+        "lng": ""
     },
     {
         "id": "scuola-del-teatro-musicale-stm",
@@ -2339,7 +2349,7 @@
         "istituto": "Scuola del Teatro Musicale (STM)",
         "citta": "Novara",
         "sede": "Principale",
-        "address": "Piazza Martiri della Libertà 2 , 28100, Novara, No, , Italia",
+        "address": "Piazza Martiri della Libert\u00e0 2 , 28100, Novara, No, , Italia",
         "status": "Privato",
         "website": "www.scuolateatromusicale.it",
         "lat": "45.4452698",
