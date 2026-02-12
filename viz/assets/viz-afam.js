@@ -149,7 +149,7 @@ function switchView(viewName) {
     }
 
     if (viewName === 'groups') {
-        const filteredData = allData.filter(d => d.sede === "Principale");
+        const filteredData = [...allData];
         updateTotalCount(filteredData.length);
 
         const chartContainer = document.getElementById('bubble-chart');
