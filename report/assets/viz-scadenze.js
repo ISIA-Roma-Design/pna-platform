@@ -26,12 +26,7 @@ async function initTimelines() {
     try {
         // 1. Fetch Data
         // Determine path based on location
-        const pathname = window.location.pathname;
-        const subdirectories = ["/viz/", "/prototipo/", "/docs/", "/data/"];
-        const isSubdirectory = subdirectories.some(subdir => pathname.includes(subdir));
-        const basePrefix = isSubdirectory ? "../" : "./";
-
-        const jsonPath = basePrefix + 'data/pna-scadenze.json';
+        const jsonPath = '../src/data/pna-scadenze.json';
         console.log("Fetching", jsonPath, "...");
         const response = await fetch(jsonPath);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -231,8 +226,9 @@ function renderTimeline(dataset, containerSelector, year, startMonth, endMonth) 
 
     // SVG
     const svg = container.append("svg")
-        .attr("width", width + margin.left + margin.right)
+        .attr("width", "100%")
         .attr("height", height)
+        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height}`)
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 

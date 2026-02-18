@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizzazioni - PNA</title>
+
+    <!-- Carbon Web Components (Local) -->
+    <script type="module" src="../src/libs/load-carbon.js"></script>
+
+    <!-- Custom Swiss Theme -->
+    <link rel="stylesheet" href="../src/prototipo/assets/style.css">
+    <link rel="stylesheet" href="assets/viz-style.css">
+</head>
+
+<body>
+
+    <!-- Global Header -->
+    <div id="global-header"></div>
+    <script src="../src/components/header-loader.js"></script>
+
+    <div class="main-container">
+        <div class="view-header">
+            <div>
+                <h1 class="page-title">Indice Visualizzazioni</h1>
+                <p class="page-subtitle">Raccolta delle infografiche e visualizzazioni dati del progetto.</p>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">
+
+            <!-- AFAM Institutions Map Card -->
+            <cds-tile>
+                <h3 style="margin-top:0;">Mappa Istituzioni AFAM</h3>
+                <p style="margin-bottom: 2rem; color: #555;">Mappa interattiva della distribuzione territoriale per
+                    tutte le istituzioni AFAM partecipanti.</p>
+                <cds-button href="viz-map-afam.html" style="width: 100%;">Apri Mappa</cds-button>
+            </cds-tile>
+
+            <!-- AFAM Institutions Groups Card -->
+            <cds-tile>
+                <h3 style="margin-top:0;">Tipologie Istituti AFAM</h3>
+                <p style="margin-bottom: 2rem; color: #555;">Raggruppamento gerarchico per status e tipologia delle
+                    istituzioni (Bubble Chart).</p>
+                <cds-button href="viz-tipologie-afam.html" style="width: 100%;">Apri Gruppi</cds-button>
+            </cds-tile>
+
+            <!-- PNA Structure Card -->
+            <cds-tile>
+                <h3 style="margin-top:0;">Struttura Premio</h3>
+                <p style="margin-bottom: 2rem; color: #555;">Dendrogramma gerarchico delle sezioni, sottosezioni e
+                    categorie del premio.</p>
+                <cds-button href="viz-sezioni-dendogram.html" style="width: 100%;">Apri Struttura</cds-button>
+            </cds-tile>
+
+            <!-- Timeline Card -->
+            <cds-tile>
+                <h3 style="margin-top:0;">Timeline Scadenze</h3>
+                <p style="margin-bottom: 2rem; color: #555;">Visualizzazione interattiva delle scadenze e degli eventi
+                    per le edizioni XVIII e XIX.</p>
+                <cds-button href="viz-scadenze-timeline.html" style="width: 100%;">Apri Timeline</cds-button>
+            </cds-tile>
+
+            <!-- Processo PNA Card -->
+            <cds-tile>
+                <h3 style="margin-top:0;">Diagramma di flusso Edizione - sintesi</h3>
+                <p style="margin-bottom: 2rem; color: #555;">Blueprint del ciclo di vita dell'edizione.</p>
+                <cds-button href="viz-processo-asis.html" style="width: 100%;">Apri Processo</cds-button>
+            </cds-tile>
+
+            <!-- Processo PNA normalized Card -->
+            <cds-tile>
+                <h3 style="margin-top:0;">Diagramma di flusso Edizione - dettagliato</h3>
+                <p style="margin-bottom: 2rem; color: #555;">Blueprint del ciclo di vita del progetto, visualizzato come
+                    roadmap annuale.</p>
+                <cds-button href="viz-processo-tobe.html" style="width: 100%;">Apri Processo</cds-button>
+            </cds-tile>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

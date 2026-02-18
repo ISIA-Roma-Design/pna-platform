@@ -2,12 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 1. Data Processing
     // Determine path based on location
-    const pathname = window.location.pathname;
-    const subdirectories = ["/viz/", "/prototipo/", "/docs/", "/data/"];
-    const isSubdirectory = subdirectories.some(subdir => pathname.includes(subdir));
-    const basePrefix = isSubdirectory ? "../" : "./";
-
-    fetch(basePrefix + 'data/pna-processo-tobe.json')
+    fetch('../src/data/pna-processo.json')
         .then(response => response.json())
         .then(rawData => {
 
@@ -27,21 +22,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // 2. Setup Dimensions
             const container = document.getElementById('chart-area');
+            const width = container.clientWidth;
             const laneHeight = 100; // More breathing room
             const margin = { top: 50, right: 100, bottom: 50, left: 200 }; // Left margin for attore labels
-
-            // Adjust width based on number of steps to avoid crowding
-            const stepWidth = 40; // minimum width per step
-            const width = Math.max(container.clientWidth, (data.length * stepWidth) + margin.left + margin.right);
             const height = (attores.length * laneHeight) + margin.top + margin.bottom;
 
             // 3. Creates SVG
             const svg = d3.select("#chart-area")
-                .html("") // Clear previous
                 .append("svg")
-                .attr("width", width)
+                .attr("width", "100%")
                 .attr("height", height)
-                .style("overflow", "visible");
+                .attr("viewBox", `0 0 ${width} ${height}`);
 
             const g = svg.append("g")
                 .attr("transform", `translate(${margin.left},${margin.top})`);
@@ -125,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 d3.select(element).classed('active', true);
 
                 // 1. Update Content First (so we can measure)
-                popoverTitle.textContent = `Fase ${d.fasiNumber} – ${d.attore.toUpperCase()}`;
+                popoverTitle.textContent = `fasi ${d.fasiNumber} – ${d.attore.toUpperCase()}`;
                 popoverDesc.textContent = d.dettagli;
 
                 // 2. Show initially to measure dimensions (but maybe offscreen or just assume standard flow)

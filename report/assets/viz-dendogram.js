@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let tree;
 
     // Fetch Data
-    fetch("../data/pna-sezioni.json")
+    fetch("../src/data/pna-sezioni.json")
         .then(response => response.json())
         .then(data => {
             const hierarchyData = buildHierarchy(data);
@@ -87,7 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Setup SVG
         svg = d3.select(container)
             .append("svg")
-            .attr("width", width)
+            .attr("width", "100%")
+            .attr("height", "auto")
             .style("font-family", "Helvetica Neue, sans-serif")
             .style("user-select", "none");
 

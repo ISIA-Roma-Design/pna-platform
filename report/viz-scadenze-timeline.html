@@ -7,10 +7,10 @@
     <title>PNA Timeline - Scadenze & Eventi</title>
 
     <!-- Carbon Web Components (Local) -->
-    <script type="module" src="../libs/load-carbon.js"></script>
+    <script type="module" src="../src/libs/load-carbon.js"></script>
 
     <!-- Custom Swiss Theme -->
-    <link rel="stylesheet" href="../prototipo/assets/style.css">
+    <link rel="stylesheet" href="../src/prototipo/assets/style.css">
     <link rel="stylesheet" href="assets/viz-style.css">
 
     <script src="assets/d3.v7.min.js"></script>
@@ -20,10 +20,15 @@
 
     <!-- Global Header -->
     <div id="global-header"></div>
-    <script src="../components/header-loader.js"></script>
+    <script src="../src/components/header-loader.js"></script>
 
-    <div class="main-container" style="max-width: 100%; padding-left: 2rem; padding-right: 2rem;">
-        <h1 class="page-title">Timeline Scadenze</h1>
+    <div class="main-container">
+        <div class="view-header">
+            <div>
+                <h1 class="page-title">Timeline Scadenze</h1>
+                <p class="page-subtitle">Scadenze ed eventi delle edizioni XVIII e XIX.</p>
+            </div>
+        </div>
 
         <div id="view-selector" class="view-selector">
             <button class="view-btn active" onclick="switchEdition('XIX')">Edizione XIX (2025)</button>

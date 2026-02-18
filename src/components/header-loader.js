@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const pathname = window.location.pathname;
 
     // List of known first-level directories that contain HTML pages
-    const subdirectories = ["/viz/", "/prototipo/", "/docs/", "/data/"];
+    const subdirectories = ["/report/", "/src/"];
 
     // Check if current path contains any of these
     // Use a more robust check that works if the URL ends with the directory name without trailing slash
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Special case: "components" should be reachable from root
     // But header-loader.js is likely loaded via a relative script tag in the HTML.
     // The fetch request is relative to the PAGE URL.
-    const headerPath = basePrefix + "components/header.html";
+    const headerPath = basePrefix + "src/components/header.html";
 
     fetch(headerPath)
         .then(response => {

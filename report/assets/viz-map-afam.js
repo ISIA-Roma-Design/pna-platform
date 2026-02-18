@@ -90,11 +90,6 @@ const cityCoordinates = {
     "Viterbo": [42.4167, 12.1000]
 };
 
-// SVG Map Calibration REMOVED because we are using Leaflet
-// const SVG_WIDTH = 610.30981;
-// const SVG_HEIGHT = 792.58575;
-
-
 // Global variables
 let allData = [];
 let markerClusterGroup;
@@ -102,62 +97,16 @@ let currentRadius = 30;
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        // Determine path to data based on current location
-        const pathname = window.location.pathname;
-        const subdirectories = ["/viz/", "/prototipo/", "/docs/", "/data/"];
-        const isSubdirectory = subdirectories.some(subdir => pathname.includes(subdir));
-        const basePrefix = isSubdirectory ? "../" : "./";
-
-        const response = await fetch(basePrefix + 'data/pna-istituzioni-afam.json');
+        const response = await fetch('../src/data/pna-istituzioni-afam.json');
         allData = await response.json();
 
-        // Initial update for total institutions count (Global/Map view)
         updateTotalCount(allData.length);
-
-        // Init Map
         initLeafletMap(allData);
-
-        // Pre-init chart (optional, or init on tab switch)
 
     } catch (error) {
         console.error("Error loading data:", error);
     }
 });
-
-function switchView(viewName) {
-    const buttons = document.querySelectorAll('.view-btn');
-    if (viewName === 'map') {
-        buttons[0].classList.add('active');
-        buttons[1].classList.remove('active');
-    } else {
-        buttons[0].classList.remove('active');
-        buttons[1].classList.add('active');
-    }
-
-    document.getElementById('view-map').style.display = viewName === 'map' ? 'block' : 'none';
-    document.getElementById('view-groups').style.display = viewName === 'groups' ? 'block' : 'none';
-
-    if (viewName === 'map') {
-        const filteredData = getFilteredData();
-        updateTotalCount(filteredData.length);
-        if (window.map) {
-            // Invalidate size to ensure tiles load correctly if div was hidden
-            setTimeout(() => {
-                window.map.invalidateSize();
-            }, 100);
-        }
-    }
-
-    if (viewName === 'groups') {
-        const filteredData = [...allData];
-        updateTotalCount(filteredData.length);
-
-        const chartContainer = document.getElementById('bubble-chart');
-        if (chartContainer.innerHTML === '') {
-            initBubbleChart(filteredData);
-        }
-    }
-}
 
 function updateTotalCount(count) {
     document.querySelectorAll('.total-institutions-count').forEach(el => {
@@ -173,19 +122,16 @@ function applyFilters() {
 
 function getFilteredData() {
     const selectedStatuses = Array.from(document.querySelectorAll('.status-filter:checked')).map(cb => cb.value);
-    // Note: status in JSON is "Pubblico" or "Privato"
     return allData.filter(d => selectedStatuses.includes(d.status));
 }
 
 function initLeafletMap(data) {
-    // 1. Initialize Map (if not already initialized)
     if (!window.map) {
         const map = L.map('map-container', {
             minZoom: 1
         }).setView([41.9028, 12.4964], 6);
         window.map = map;
 
-        // 2. Add Light Theme Tile Layer (CartoDB Positron No Labels)
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
@@ -195,7 +141,6 @@ function initLeafletMap(data) {
 
     const map = window.map;
 
-    // 3. Add Clusters
     if (markerClusterGroup) {
         map.removeLayer(markerClusterGroup);
     }
@@ -205,11 +150,10 @@ function initLeafletMap(data) {
         showCoverageOnHover: false,
         zoomToBoundsOnClick: true,
         spiderfyOnMaxZoom: true,
-        singleMarkerMode: true, // Treat all markers as clusters for reliable SVG export
+        singleMarkerMode: true,
         iconCreateFunction: function (cluster) {
             const childCount = cluster.getChildCount();
 
-            // Special style for single marker clusters
             if (childCount === 1) {
                 const markers = cluster.getAllChildMarkers();
                 const color = (markers.length > 0 && markers[0].options.fillColor) || "#0f62fe";
@@ -240,12 +184,10 @@ function initLeafletMap(data) {
     data.forEach(item => {
         let lat, lon;
 
-        // Use specific coordinates if available
         if (item.lat && item.lng) {
             lat = item.lat;
             lon = item.lng;
         } else {
-            // Fallback to City Coordinates
             let city = item.citta;
             if (city && city.includes('/')) city = city.split('/')[0].trim();
 
@@ -259,7 +201,6 @@ function initLeafletMap(data) {
         if (lat && lon) {
             const color = getColorByStatus(item.status);
 
-            // Circle Marker
             const marker = L.circleMarker([lat, lon], {
                 radius: 6,
                 fillColor: color,
@@ -291,129 +232,15 @@ function updateClusterRadius(radius) {
     currentRadius = parseInt(radius);
     document.getElementById('radius-value').innerText = radius + 'px';
 
-    // Re-init clusters
     if (allData.length > 0) {
         initLeafletMap(getFilteredData());
     }
 }
 
-
-function initBubbleChart(data) {
-    const width = 1200;
-    const height = 900;
-
-    // Group by Status (Public/Private) THEN Type
-    const groups = d3.group(data, d => d.status, d => d.tipologia_istituto);
-
-    // Transform to hierarchy
-    const rootData = {
-        name: "AFAM",
-        children: Array.from(groups, ([statusKey, typeMap]) => ({
-            name: statusKey,
-            children: Array.from(typeMap, ([typeKey, items]) => ({
-                name: typeKey,
-                children: items.map(v => ({ name: v.istituto, group: typeKey, status: statusKey, ...v }))
-            }))
-        }))
-    };
-
-    const color = d3.scaleOrdinal(d3.schemeCategory10);
-
-    const pack = d3.pack()
-        .size([width, height])
-        .padding(3);
-
-    const root = d3.hierarchy(rootData)
-        .sum(d => 1)
-        .sort((a, b) => b.value - a.value);
-
-    pack(root);
-
-    const svg = d3.select("#bubble-chart").append("svg")
-        .attr("viewBox", `0 0 ${width} ${height}`)
-        .attr("width", "100%")
-        .attr("height", "100%")
-        .style("font", "10px sans-serif")
-        .attr("text-anchor", "middle");
-
-    const node = svg.selectAll("g")
-        .data(root.descendants())
-        .join("g")
-        .attr("transform", d => `translate(${d.x},${d.y})`);
-
-    // Circles
-    node.append("circle")
-        .attr("r", d => d.r)
-        .attr("fill", d => {
-            if (d.depth === 0) return "#fff"; // Root
-            if (d.depth === 1) return "#f5f5f5"; // Status Group
-            if (d.depth === 2) return "#e0e0e0"; // Type Group
-            return getColorByStatus(d.data.status); // Leaf
-        })
-        .attr("stroke", d => d.children ? "#ccc" : "none")
-        .attr("stroke-width", d => d.depth === 1 ? 2 : 1)
-        .attr("class", d => d.children ? "parent-node" : "node leaf");
-
-    // Tooltip logic for leaf nodes
-    node.filter(d => !d.children)
-        .on("mouseenter", (event, d) => showTooltip(event, d.data))
-        .on("mouseleave", hideTooltip);
-
-    // Labels for groups (Status)
-    node.filter(d => d.depth === 1)
-        .append("text")
-        .attr("class", "group-label status-label")
-        .attr("dy", d => -d.r + 15)
-        .style("font-size", "14px")
-        .style("font-weight", "bold")
-        .text(d => d.data.name);
-
-    // Labels for subgroups (Type) - only if large enough
-    node.filter(d => d.depth === 2 && d.r > 30)
-        .append("text")
-        .attr("class", "group-label")
-        .attr("dy", d => -d.r + 10)
-        .style("font-size", "10px")
-        .style("fill", "#666")
-        .text(d => d.data.name.substring(0, 20) + (d.data.name.length > 20 ? "..." : ""));
-}
-
 function getColorByStatus(status) {
     if (!status) return "#999";
-    if (status.includes("Statale") || status.includes("Pubblico")) return "#0f62fe"; // Carbon Blue 60
-    return "#8a3ffc"; // Carbon Purple 60
-}
-
-function showTooltip(event, data) {
-    const tooltip = d3.select("#tooltip");
-    tooltip.style("opacity", 1)
-        .html(`<h3>${data.istituto || data.name}</h3>
-               <p>${data.citta}</p>
-               <p><i>${data.status}</i></p>`)
-        .style("left", (event.pageX + 10) + "px")
-        .style("top", (event.pageY - 10) + "px"); // Careful with SVG coords vs Page coords
-}
-
-function hideTooltip() {
-    d3.select("#tooltip").style("opacity", 0);
-}
-
-// --- Export Functionality ---
-
-function exportBubbleChartToSVG() {
-    const svgElement = document.querySelector("#bubble-chart svg");
-    if (!svgElement) return;
-
-    const svgData = new XMLSerializer().serializeToString(svgElement);
-    const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "afam-bubble-chart.svg";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    if (status.includes("Statale") || status.includes("Pubblico")) return "#0f62fe";
+    return "#8a3ffc";
 }
 
 async function exportMapToSVG() {
@@ -422,7 +249,6 @@ async function exportMapToSVG() {
         return;
     }
 
-    // 1. Load Italy Background Geometry
     let italySVGContent = "";
     try {
         const response = await fetch('assets/italy.svg');
@@ -432,7 +258,6 @@ async function exportMapToSVG() {
         return;
     }
 
-    // Extraction of paths from italy.svg
     const parser = new DOMParser();
     const italyDoc = parser.parseFromString(italySVGContent, "image/svg+xml");
     const italyPaths = italyDoc.querySelectorAll('path');
@@ -440,10 +265,8 @@ async function exportMapToSVG() {
     const vWidth = parseFloat(italySvgTag.getAttribute('width')) || 610.30981;
     const vHeight = parseFloat(italySvgTag.getAttribute('height')) || 792.58575;
 
-    // Calibration (matches italy.svg geoViewBox, fine-tuned for path alignment)
     const longWest = 6.624486;
     const longEast = 18.521301;
-    // Adjusted bounds to correct the vertical shift observed in SVG export
     const latNorth = 47.35;
     const latSouth = 35.75;
 
@@ -453,7 +276,6 @@ async function exportMapToSVG() {
         return { x, y };
     }
 
-    // 2. Create Export SVG
     const svgNS = "http://www.w3.org/2000/svg";
     const svg = document.createElementNS(svgNS, "svg");
     svg.setAttribute("width", vWidth);
@@ -462,7 +284,6 @@ async function exportMapToSVG() {
     svg.setAttribute("xmlns", svgNS);
     svg.style.backgroundColor = "#ffffff";
 
-    // Add Italy paths
     const mapGroup = document.createElementNS(svgNS, "g");
     mapGroup.setAttribute("class", "italy-map");
     italyPaths.forEach(p => {
@@ -475,18 +296,13 @@ async function exportMapToSVG() {
     });
     svg.appendChild(mapGroup);
 
-    // 3. Identify Exactly what is visible on the map (rendered as clusters or pins)
     const visibleElements = new Set();
-
     window.map.eachLayer(layer => {
-        // We only want markers (lone pins) or clusters
-        // lone pins will be CircleMarkers/Markers, clusters will be MarkerClusters
         if (layer.getLatLng && (typeof layer.getChildCount === 'function' || (layer.options && layer.options.fillColor))) {
             visibleElements.add(layer);
         }
     });
 
-    // 4. Draw Markers and Clusters
     const markersGroup = document.createElementNS(svgNS, "g");
     svg.appendChild(markersGroup);
 
@@ -499,7 +315,6 @@ async function exportMapToSVG() {
         const count = isCluster ? el.getChildCount() : 1;
 
         if (count === 1) {
-            // -- Render as PIN --
             let color = "#0f62fe";
             if (isCluster) {
                 const markers = el.getAllChildMarkers();
@@ -529,7 +344,6 @@ async function exportMapToSVG() {
             markersGroup.appendChild(pin);
 
         } else {
-            // -- Render as CLUSTER --
             let color = "#0f62fe";
             if (count >= 10) color = "#8a3ffc";
             if (count >= 100) color = "#000000";
@@ -565,7 +379,6 @@ async function exportMapToSVG() {
         }
     });
 
-    // 5. Download
     const svgData = new XMLSerializer().serializeToString(svg);
     const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
     const url = URL.createObjectURL(blob);

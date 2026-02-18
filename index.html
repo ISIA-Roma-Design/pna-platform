@@ -3,106 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PNA Project Hub</title>
-
-    <!-- Carbon Web Components (Local) -->
-    <script type="module" src="./libs/load-carbon.js"></script>
-
-    <!-- Custom Swiss Theme -->
-    <link rel="stylesheet" href="prototipo/assets/style.css">
-
-    <style>
-        /* Specific override for the hub layout if needed */
-        .hub-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        @media (max-width: 768px) {
-            .hub-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .hub-card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .number-tag {
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 1rem;
-            color: #ccc;
-        }
-    </style>
+    <meta http-equiv="refresh" content="0; url=report/index.html">
+    <title>Redirecting to PNA Report...</title>
+    <script>
+        window.location.href = "report/index.html";
+    </script>
 </head>
 
 <body>
-
-    <!-- Global Header -->
-    <!-- Global Header -->
-    <div id="global-header"></div>
-    <script src="components/header-loader.js"></script>
-
-    <div class="main-container">
-        <h1 class="page-title">PNA Project Hub</h1>
-        <p class="page-subtitle">Indice generale delle risorse del progetto Premio Nazionale delle Arti.</p>
-
-        <div class="hub-grid">
-
-            <!-- 1. Prototipo -->
-            <cds-tile class="hub-card">
-                <div>
-                    <div class="number-tag">01</div>
-                    <h3>Prototipo Piattaforma AFAM</h3>
-                    <p style="margin-bottom: 1.5rem;">Simulazione funzionale della piattaforma dedicata agli studenti,
-                        inclusa registrazione, dashboard e candidatura.</p>
-                </div>
-                <cds-button href="prototipo/index.html">Vai al Prototipo</cds-button>
-            </cds-tile>
-
-            <!-- 2. Infografiche -->
-            <cds-tile class="hub-card">
-                <div>
-                    <div class="number-tag">02</div>
-                    <h3>Infografiche</h3>
-                    <p style="margin-bottom: 1.5rem;">Visualizzazioni dati e timeline interattive relative alle scadenze
-                        e agli eventi.</p>
-                </div>
-                <cds-button href="viz/index.html" kind="secondary">Esplora Visualizzazioni</cds-button>
-            </cds-tile>
-
-            <!-- 3. Docs -->
-            <cds-tile class="hub-card">
-                <div>
-                    <div class="number-tag">03</div>
-                    <h3>Documentazione</h3>
-                    <p style="margin-bottom: 1.5rem;">Archivio della documentazione di progetto (File Markdown e risorse
-                        testuali).</p>
-                </div>
-                <cds-button href="docs/" kind="tertiary">Sfoglia Cartella Docs</cds-button>
-            </cds-tile>
-
-            <!-- 4. Data -->
-            <cds-tile class="hub-card">
-                <div>
-                    <div class="number-tag">04</div>
-                    <h3>Dati</h3>
-                    <p style="margin-bottom: 1.5rem;">Accesso diretto ai file dati JSON utilizzati dal sistema.</p>
-                </div>
-                <cds-button href="data/" kind="tertiary">Sfoglia Cartella Data</cds-button>
-            </cds-tile>
-
-        </div>
-    </div>
-
+    <p>Se non vieni reindirizzato automaticamente, <a href="report/index.html">clicca qui</a>.</p>
 </body>
 
 </html>
