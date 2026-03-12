@@ -1,37 +1,101 @@
-<cds-header aria-label="PNA Platform">
-    <cds-header-menu-button button-label-active="Close menu" button-label-inactive="Open menu"></cds-header-menu-button>
-    <cds-header-name href="index.html" prefix="PNA">Platform</cds-header-name>
-    <cds-header-nav menu-bar-label="PNA Platform">
-        <cds-header-nav-item href="report/index.html">Report</cds-header-nav-item>
-        <cds-header-nav-item href="report/infografiche.html">Infografiche</cds-header-nav-item>
-        <cds-header-nav-item href="report/credits.html">Credits</cds-header-nav-item>
-    </cds-header-nav>
+<cds-header aria-label="Report PNA">
+    <cds-header-menu-button button-label-active="Chiudi menu"
+        button-label-inactive="Apri menu"></cds-header-menu-button>
+    <cds-header-name href="index.html" prefix="Report">PNA</cds-header-name>
+    <div class="cds--header__global">
+        <!-- Global actions if needed -->
+    </div>
 </cds-header>
 
-<cds-side-nav aria-label="Mobile Menu" id="side-nav" collapse-mode="responsive">
+<cds-side-nav aria-label="Menu laterale" expanded persistent>
     <cds-side-nav-items>
-        <cds-side-nav-link href="report/index.html">Report</cds-side-nav-link>
-        <cds-side-nav-link href="report/infografiche.html">Infografiche</cds-side-nav-link>
+        <cds-side-nav-link href="report/index.html">Home</cds-side-nav-link>
+
+        <cds-side-nav-menu title="Report" expanded>
+            <cds-side-nav-menu-item href="report/pna-report.html#contesto">1. Contesto e
+                razionali</cds-side-nav-menu-item>
+            <cds-side-nav-menu-item href="report/pna-report.html#metodologia">2. Metodologia</cds-side-nav-menu-item>
+            <cds-side-nav-menu-item href="report/pna-report.html#risultati">3. Risultati e
+                cluster</cds-side-nav-menu-item>
+            <cds-side-nav-menu-item href="report/pna-report.html#tesi">4. Tesi finale</cds-side-nav-menu-item>
+            <cds-side-nav-menu-item href="report/pna-report.html#sostenibilita">5.
+                Sostenibilità</cds-side-nav-menu-item>
+            <cds-side-nav-menu-item href="report/pna-report.html#suggerimenti">6. Suggerimenti</cds-side-nav-menu-item>
+            <cds-side-nav-menu-item href="report/pna-report.html#conclusioni">7. Considerazioni
+                finali</cds-side-nav-menu-item>
+            <cds-side-nav-menu-item href="report/pna-report.html#infografiche">8. Infografiche</cds-side-nav-menu-item>
+            <cds-side-nav-menu-item href="report/pna-report.html#appendici">Appendici</cds-side-nav-menu-item>
+        </cds-side-nav-menu>
+
+        <cds-side-nav-divider></cds-side-nav-divider>
+        <cds-side-nav-link href="report/infografiche.html">Indice Infografiche</cds-side-nav-link>
+        <cds-side-nav-link href="report/viz-struttura.html">1. Struttura del premio</cds-side-nav-link>
+        <cds-side-nav-link href="report/viz-edizione-sezioni.html">2. Edizione per sezioni</cds-side-nav-link>
+        <cds-side-nav-link href="report/viz-scadenze-eventi.html">3. Scadenze ed eventi</cds-side-nav-link>
+        <cds-side-nav-link href="report/viz-tipologia-afam.html">4. Tipologia AFAM</cds-side-nav-link>
+        <cds-side-nav-link href="report/viz-distribuzione-territoriale.html">5. Distribuzione</cds-side-nav-link>
+
+        <cds-side-nav-divider></cds-side-nav-divider>
         <cds-side-nav-link href="report/credits.html">Credits</cds-side-nav-link>
     </cds-side-nav-items>
 </cds-side-nav>
 
 <style>
-    /* Desktop: Hide Side Nav, Show Header Nav */
-    @media (min-width: 1056px) {
-        #side-nav {
-            display: none;
-        }
-
-        cds-header-menu-button {
-            display: none;
-        }
+    /* Fixed Header Styling */
+    cds-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10000;
+        /* Reverting to Carbon default dark theme */
     }
 
-    /* Mobile: Show Menu Button, Hide Header Nav (Carbon does this usually, but enforcing ensure clarity) */
+    /* SideNav Customization */
+    cds-side-nav {
+        top: 3rem;
+        /* Height of the cds-header */
+        height: calc(100vh - 3rem);
+        z-index: 9000;
+        background-color: #f4f4f4;
+        border-right: 1px solid #e0e0e0;
+    }
+
+    .side-nav-section-title {
+        padding: 0.75rem 1rem 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Ensure specific font for shell components */
+    cds-header-name,
+    cds-side-nav-link {
+        font-family: 'Ministry', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+        font-weight: 500;
+    }
+
+    /* Ensure text and icons are white in the dark header */
+    cds-header-name,
+    cds-header-nav-item {
+        color: #fff !important;
+    }
+
+    cds-header-menu-button {
+        --cds-icon-01: #ffffff;
+    }
+
+    /* Mobile handling: SideNav is usually hidden by default or overlaid */
     @media (max-width: 1055px) {
-        cds-header-nav {
-            display: none;
+        cds-side-nav {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        cds-side-nav[expanded] {
+            transform: translateX(0);
         }
     }
 </style>

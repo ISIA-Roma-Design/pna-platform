@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mappa Istituzioni AFAM</title>
+    <title>8.5 Distribuzione AFAM</title>
 
     <!-- Carbon Web Components (Local) -->
     <script type="module" src="../src/libs/load-carbon.js"></script>
@@ -36,10 +36,10 @@
     <div class="main-container">
         <div class="view-header">
             <div>
-                <h1 class="page-title">Mappa Istituzioni AFAM</h1>
+                <h1 class="page-title">5. Distribuzione territoriale delle Istituzioni AFAM</h1>
                 <p class="page-subtitle">Distribuzione territoriale delle istituzioni partecipanti.</p>
             </div>
-            <div class="page-header-actions" style="display: flex; align-items: center; gap: 1rem;">
+            <div class="page-header-actions">
                 <div class="total-counter">Istituti <span class="count total-institutions-count">0</span></div>
                 <div class="filter-group">
                     <label class="filter-item">
@@ -56,7 +56,7 @@
         </div>
 
         <div id="view-map" class="view-container">
-            <div class="controls-group" style="margin-bottom: 20px;">
+            <div class="controls-group">
                 <div class="slider-container">
                     <label for="cluster-radius">Sensibilità Cluster:</label>
                     <input type="range" id="cluster-radius" min="0" max="150" value="20" step="5"
@@ -66,11 +66,22 @@
             </div>
             <div id="map-container"></div>
         </div>
+
+        <!-- Navigation Bar -->
+        <footer class="viz-nav-footer">
+            <cds-button kind="ghost" href="infografiche.html">Torna all'indice</cds-button>
+            <div class="viz-nav-links">
+                <cds-button kind="secondary" href="viz-tipologia-afam.html">Precedente: 8.4 Tipologia</cds-button>
+                <cds-button kind="primary" disabled>Successivo</cds-button>
+            </div>
+        </footer>
     </div>
+
 
     <div id="tooltip" class="tooltip"></div>
 
-    <script src="assets/viz-map-afam.js"></script>
+    <script src="assets/viz-config.js"></script>
+    <script src="assets/viz-distribuzione-territoriale.js"></script>
 
 </body>
 

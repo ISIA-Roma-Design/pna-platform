@@ -1,5 +1,33 @@
 /* SWISS WIREFRAME THEME - MINIMALIST B&W + ACCENT */
 
+@font-face {
+    font-family: 'Ministry';
+    src: url('../../fonts/Ministry-Thin.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ministry';
+    src: url('../../fonts/Ministry-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ministry';
+    src: url('../../fonts/Ministry-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ministry';
+    src: url('../../fonts/Ministry-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
 :root {
     /* PALETTE */
     --swiss-black: #000000;
@@ -37,7 +65,7 @@
     --cds-field-02: var(--swiss-white);
 
     /* TYPOGRAPHY */
-    --cds-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --cds-font-family: 'Ministry', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --cds-body-long-01-font-family: var(--cds-font-family);
 
     /* LAYOUT */

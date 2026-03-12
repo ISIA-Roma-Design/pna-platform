@@ -1,10 +1,43 @@
+@font-face {
+    font-family: 'Ministry';
+    src: url('../../src/fonts/Ministry-Thin.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ministry';
+    src: url('../../src/fonts/Ministry-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ministry';
+    src: url('../../src/fonts/Ministry-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ministry';
+    src: url('../../src/fonts/Ministry-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
 :root {
     --bg-color: #ffffff;
     --text-color: #000000;
     --accent-color: #000000;
     /* Monochrome */
     --grid-color: #cccccc;
-    --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-family: 'Ministry', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    --design: #ef476fff;
+    --arti-visive: #ffd166ff;
+    --arti-spettacolo: #06d6a0ff;
+    --interpretazione-musicale: #118ab2ff;
 }
 
 body {
@@ -17,30 +50,39 @@ body {
 }
 
 .main-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 6rem 2rem 4rem 2rem;
+    max-width: 1600px;
+    margin: 0;
+    padding: 2rem;
+    padding-top: calc(3rem + 2rem);
+    /* Header height + spacing */
     width: 100%;
     box-sizing: border-box;
+    transition: padding-left 0.3s ease;
 }
 
+@media (min-width: 1056px) {
+    .main-container {
+        padding-left: calc(256px + 2rem);
+        /* SideNav width + spacing */
+    }
+}
+
+/* Remove old header styles that conflict with Carbon */
 header {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto 40px auto;
-    border-bottom: 2px solid var(--text-color);
-    padding: 10px 20px;
-    box-sizing: border-box;
+    display: none;
 }
 
-h1, .page-title {
+
+h1,
+.page-title {
     font-weight: 700;
     font-size: 2.5rem;
     margin: 0;
     letter-spacing: -1px;
 }
 
-.page-subtitle, .subtitle {
+.page-subtitle,
+.subtitle {
     font-weight: 300;
     font-size: 1.2rem;
     margin-top: 5px;
@@ -273,7 +315,7 @@ h1, .page-title {
 /* Map Container */
 #map-container {
     width: 100%;
-    height: 800px;
+    height: 100vh;
     /* SVG controls height */
     min-height: 800px;
     background: #fdfdfd;
@@ -306,7 +348,7 @@ h1, .page-title {
 /* Bubble Chart */
 #bubble-chart {
     width: 100%;
-    height: 900px;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -325,7 +367,7 @@ h1, .page-title {
 
 .node-label {
     font-size: 10px;
-    font-family: sans-serif;
+    font-family: var(--font-family);
     text-anchor: middle;
     pointer-events: none;
     fill: #333;
@@ -440,6 +482,244 @@ h1, .page-title {
 .filter-item input {
     cursor: pointer;
 }
+
+/* --- Visualization Specific Styles --- */
+
+/* Dendrogram (8.1) */
+#dendrogram-container {
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    overflow: auto;
+    background: #fff;
+    border: 1px solid #000;
+}
+
+.node circle {
+    fill: #fff;
+    stroke: #000;
+    stroke-width: 1.5px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.node circle:hover {
+    fill: #000;
+    r: 6;
+}
+
+.node text.category-label {
+    font-weight: 400;
+    fill: #333;
+    font-style: italic;
+}
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1px;
+}
+
+/* Process Map (8.2) */
+.lane-line {
+    stroke: #e0e0e0;
+    stroke-width: 1px;
+    stroke-dasharray: 4;
+}
+
+.lane-label {
+    font-size: 14px;
+    font-weight: 600;
+    fill: #161616;
+    text-anchor: end;
+    dominant-baseline: middle;
+}
+
+.connection-path {
+    fill: none;
+    stroke: #161616;
+    stroke-width: 2px;
+    opacity: 0.6;
+}
+
+.node-circle {
+    fill: #fff;
+    stroke: #161616;
+    stroke-width: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.node-circle:hover {
+    fill: #161616;
+    r: 10;
+}
+
+.node-circle.active {
+    fill: #161616;
+    r: 10;
+    stroke: #0f62fe;
+}
+
+.node-label {
+    font-size: 11px;
+    font-weight: bold;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+    fill: #000;
+}
+
+.node-circle:hover+.node-label,
+.node-circle.active+.node-label {
+    fill: #fff;
+}
+
+.phase-divider {
+    stroke: #161616;
+    stroke-width: 1px;
+    stroke-dasharray: 2, 2;
+    opacity: 0.3;
+}
+
+.phase-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    fill: #6f6f6f;
+    font-weight: 600;
+}
+
+.section-desc {
+    margin-bottom: 2rem;
+    max-width: 800px;
+    font-size: 1.125rem;
+    color: #525252;
+}
+
+/* Popover / Tooltip Overrides */
+#dettagli-popover {
+    position: absolute;
+    z-index: 9000;
+}
+
+.popover-inner {
+    padding: 12px;
+    max-width: 220px;
+    background-color: #393939;
+    color: white;
+}
+
+.popover-title {
+    font-weight: 700;
+    margin: 0;
+    color: inherit;
+    font-size: 0.875rem;
+}
+
+.popover-desc {
+    font-size: 1rem;
+    color: inherit;
+    line-height: 1.4;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+/* --- Layout Utilities --- */
+.page-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.controls-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.nav-buttons-container {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.infographic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.content-section {
+    margin-top: 4rem;
+    max-width: 800px;
+}
+
+.intro-text {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.quote-tile {
+    margin-bottom: 2rem;
+    border-left: 4px solid #000;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.mt-0 {
+    margin-top: 0 !important;
+}
+
+.mb-1 {
+    margin-bottom: 1rem !important;
+}
+
+.mb-2 {
+    margin-bottom: 2rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 4rem !important;
+}
+
+.mt-4 {
+    margin-top: 4rem !important;
+}
+
+.list-reset {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list-item-bordered {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid #ccc;
+}
+
+.hr-credits {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-bottom: 4rem;
+}
+
+.copyright-text {
+    color: #666;
+}
+
+/* Carbon Overrides */
+cds-tabs {
+    margin-bottom: 2rem;
+}
+
 /* Align buttons to bottom of cards */
 cds-tile {
     display: flex !important;
@@ -448,7 +728,77 @@ cds-tile {
     box-sizing: border-box;
 }
 
-cds-tile cds-button {
+/* Ensure buttons in catalog tiles are full width and at bottom */
+.infographic-grid cds-tile cds-button {
     margin-top: auto;
     width: 100%;
+}
+
+.infographic-grid h3 {
+    margin-top: 0;
+}
+
+.infographic-desc {
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+/* --- Zoom Controls --- */
+.zoom-controls {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 1000;
+}
+
+.zoom-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.zoom-btn:hover {
+    background: #f4f4f4;
+    border-color: #ccc;
+}
+
+/* --- Infographic Navigation Bar --- */
+.viz-nav-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.viz-nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+#chart-area,
+.timeline-wrapper,
+#map-container,
+#bubble-chart,
+#dendrogram-container {
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    overflow: auto;
 }

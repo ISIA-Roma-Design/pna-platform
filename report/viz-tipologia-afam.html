@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipologie di Istituti AFAM</title>
+    <title>8.4 Tipologia AFAM</title>
 
     <!-- Carbon Web Components (Local) -->
     <script type="module" src="../src/libs/load-carbon.js"></script>
@@ -25,10 +25,10 @@
     <div class="main-container">
         <div class="view-header">
             <div>
-                <h1 class="page-title">Tipologie di Istituti AFAM</h1>
+                <h1 class="page-title">4. Tipologia delle Istituzioni AFAM</h1>
                 <p class="page-subtitle">Raggruppamento per tipologia di istituto (Bubble Chart).</p>
             </div>
-            <div class="page-header-actions" style="display: flex; align-items: center; gap: 1rem;">
+            <div class="page-header-actions">
                 <div class="total-counter">Istituti <span class="count total-institutions-count">0</span></div>
                 <button class="export-btn" onclick="exportBubbleChartToSVG()">Esporta Grafico (SVG)</button>
             </div>
@@ -37,11 +37,22 @@
         <div id="view-groups" class="view-container">
             <div id="bubble-chart"></div>
         </div>
+
+        <!-- Navigation Bar -->
+        <footer class="viz-nav-footer">
+            <cds-button kind="ghost" href="infografiche.html">Torna all'indice</cds-button>
+            <div class="viz-nav-links">
+                <cds-button kind="secondary" href="viz-scadenze-eventi.html">Precedente: 8.3 Timeline</cds-button>
+                <cds-button kind="primary" href="viz-distribuzione-territoriale.html">Successivo: 8.5
+                    Distribuzione</cds-button>
+            </div>
+        </footer>
     </div>
 
     <div id="tooltip" class="tooltip"></div>
 
-    <script src="assets/viz-tipologie-afam.js"></script>
+    <script src="assets/viz-config.js"></script>
+    <script src="assets/viz-tipologia-afam.js"></script>
 
 </body>
 

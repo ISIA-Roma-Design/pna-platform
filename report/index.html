@@ -12,7 +12,60 @@
     <!-- Custom Swiss Theme -->
     <link rel="stylesheet" href="../src/prototipo/assets/style.css">
     <link rel="stylesheet" href="assets/viz-style.css">
-</head>
+    <style>
+        .report-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-block {
+            margin-bottom: 5rem;
+        }
+
+        .section-block h2 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 1rem;
+            margin-bottom: 2.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .highlight-text {
+            font-size: 1.5rem;
+            line-height: 1.4;
+            font-weight: 300;
+            margin: 3rem 0;
+            color: #000;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 2rem 0;
+        }
+
+        .cluster-tile {
+            padding: 2rem;
+            border-top: 4px solid #000;
+            background: #fff;
+        }
+
+        .cluster-tile-light {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-left: 4px solid #000;
+            transition: background 0.2s;
+        }
+
+        .cluster-tile-light:hover {
+            background: #e0e0e0;
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+            font-size: 1.0625rem;
+        }
+    </style>
 
 <body>
 
@@ -20,49 +73,96 @@
     <div id="global-header"></div>
     <script src="../src/components/header-loader.js"></script>
 
-    <div class="main-container">
-        <div class="view-header">
-            <div>
-                <h1 class="page-title">Report Progetto PNA</h1>
-                <p class="page-subtitle">Analisi e sintesi dei risultati del Premio Nazionale delle Arti.</p>
-            </div>
+    <main class="main-container">
+        <div class="report-content">
+            <header class="section-block">
+                <h1 class="page-title">Talenti Italiani</h1>
+                <p class="page-subtitle">Piattaforma digitale per la valorizzazione del Premio Nazionale delle Arti e
+                    del sistema AFAM</p>
+
+                <div class="highlight-text">
+                    <p>Un progetto promosso dal MUR e coordinato da ISIA Roma Design per trasformare l'eccellenza
+                        artistica in un patrimonio digitale condiviso.</p>
+                </div>
+            </header>
+
+            <section class="section-block">
+                <h2 class="mb-4">Il Progetto</h2>
+                <p>La piattaforma "Talenti Italiani" nasce dall'esigenza di superare la natura episodica del Premio
+                    Nazionale delle Arti (PNA), trasformandolo in un sistema permanente di narrazione e valorizzazione.
+                    Il progetto si articola su due pilastri fondamentali che integrano ricerca qualitativa e analisi
+                    quantitativa.</p>
+
+                <div class="cds--grid cds--grid--narrow mt-4">
+                    <div class="cds--row">
+                        <div class="cds--col-lg-8 cds--col-md-4 mb-4">
+                            <cds-tile class="cluster-tile" style="height: 100%;">
+                                <h4 class="mb-3">1. Ricerca Qualitativa</h4>
+                                <p>Un’indagine approfondita attraverso interviste agli stakeholder del sistema AFAM per
+                                    identificare criticità, opportunità e visioni strategiche sul futuro del Premio.</p>
+                                <div class="mt-4">
+                                    <cds-button href="pna-report.html" kind="primary">Leggi il Report
+                                        Integrale</cds-button>
+                                </div>
+                            </cds-tile>
+                        </div>
+                        <div class="cds--col-lg-8 cds--col-md-4 mb-4">
+                            <cds-tile class="cluster-tile" style="height: 100%;">
+                                <h4 class="mb-3">2. Visualizzazioni Dati</h4>
+                                <p>Una mappatura interattiva dell'architettura del Premio, delle scadenze e della
+                                    distribuzione territoriale delle oltre 150 istituzioni AFAM in Italia.</p>
+                                <div class="mt-4">
+                                    <cds-button href="infografiche.html" kind="secondary">Esplora le
+                                        Infografiche</cds-button>
+                                </div>
+                            </cds-tile>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block">
+                <h2 class="mb-4">Esplora i Cluster di Ricerca</h2>
+                <p>L'indagine ha fatto emergere 7 macro-temi che definiscono lo stato attuale e le traiettorie di
+                    sviluppo del PNA:</p>
+
+                <div class="cds--grid cds--grid--narrow">
+                    <div class="cds--row">
+                        <div class="cds--col-lg-4 cds--col-md-4 mb-3">
+                            <cds-tile href="pna-report.html#risultati" class="cluster-tile-light">
+                                <strong>Cluster 1</strong><br>Autoreferenzialità
+                            </cds-tile>
+                        </div>
+                        <div class="cds--col-lg-4 cds--col-md-4 mb-3">
+                            <cds-tile href="pna-report.html#risultati" class="cluster-tile-light">
+                                <strong>Cluster 2</strong><br>Volatilità memoria
+                            </cds-tile>
+                        </div>
+                        <div class="cds--col-lg-4 cds--col-md-4 mb-3">
+                            <cds-tile href="pna-report.html#risultati" class="cluster-tile-light">
+                                <strong>Cluster 3</strong><br>Critica al formato
+                            </cds-tile>
+                        </div>
+                        <div class="cds--col-lg-4 cds--col-md-4 mb-3">
+                            <cds-tile href="pna-report.html#risultati" class="cluster-tile-light">
+                                <strong>Cluster 4</strong><br>Costi occulti
+                            </cds-tile>
+                        </div>
+                        <div class="cds--col-lg-4 cds--col-md-4 mb-3">
+                            <cds-tile href="pna-report.html#risultati" class="cluster-tile-light">
+                                <strong>Cluster 5</strong><br>Oltre la medaglia
+                            </cds-tile>
+                        </div>
+                        <div class="cds--col-lg-4 cds--col-md-4 mb-3">
+                            <cds-tile href="pna-report.html#risultati" class="cluster-tile-light">
+                                <strong>Cluster 6</strong><br>Crisi partecipazione
+                            </cds-tile>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-
-        <section style="margin-top: 4rem; max-width: 800px;">
-            <h2 style="margin-bottom: 2rem;">Introduzione</h2>
-            <p style="font-size: 1.25rem; line-height: 1.6; margin-bottom: 2rem;">
-                Il presente report documenta l'evoluzione e la struttura del Premio Nazionale delle Arti, focalizzandosi
-                sulla distribuzione territoriale delle istituzioni AFAM e sui processi di gestione delle edizioni XIX e
-                XVIII.
-            </p>
-
-            <cds-tile style="margin-bottom: 2rem; border-left: 4px solid #000;">
-                <p style="font-style: italic;">"L’iniziativa, promossa dal Ministero dell'Università e della Ricerca,
-                    mira a valorizzare l'eccellenza degli studenti iscritti alle istituzioni dell'Alta Formazione
-                    Artistica, Musicale e Coreutica."</p>
-            </cds-tile>
-
-            <h2 style="margin-top: 4rem; margin-bottom: 2rem;">Obiettivi</h2>
-            <ul style="list-style-type: none; padding: 0;">
-                <li style="margin-bottom: 1rem; padding-left: 1.5rem; border-left: 2px solid #ccc;">
-                    <strong>Mappatura:</strong> Visualizzare la presenza capillare delle istituzioni sul territorio
-                    nazionale.
-                </li>
-                <li style="margin-bottom: 1rem; padding-left: 1.5rem; border-left: 2px solid #ccc;">
-                    <strong>Analisi Strutturale:</strong> Esaminare la gerarchia delle categorie e sottosezioni del
-                    premio.
-                </li>
-                <li style="margin-bottom: 1rem; padding-left: 1.5rem; border-left: 2px solid #ccc;">
-                    <strong>Evoluzione Processuale:</strong> Confrontare il flusso delle attività tra le diverse
-                    edizioni.
-                </li>
-            </ul>
-
-            <div style="margin-top: 4rem;">
-                <cds-button href="infografiche.html">Esplora le Infografiche</cds-button>
-            </div>
-        </section>
-    </div>
+    </main>
 
 </body>
 

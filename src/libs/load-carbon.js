@@ -22,6 +22,7 @@ import './carbon/dist/popover.min.js';
 import './carbon/dist/modal.min.js';
 import './carbon/dist/search.min.js';
 import './carbon/dist/data-table.min.js';
+import './carbon/dist/tabs.min.js';
 
 // Aggiungere altri componenti se necessario
 // Add other components as needed

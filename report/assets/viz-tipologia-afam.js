@@ -45,7 +45,7 @@ function initBubbleChart(data) {
         .padding(3);
 
     const root = d3.hierarchy(rootData)
-        .sum(d => 1)
+        .sum(d => d.children ? 0 : 1)
         .sort((a, b) => b.value - a.value);
 
     pack(root);
@@ -69,7 +69,7 @@ function initBubbleChart(data) {
             if (d.depth === 0) return "#fff"; // Root
             if (d.depth === 1) return "#f5f5f5"; // Status Group
             if (d.depth === 2) return "#e0e0e0"; // Type Group
-            return getColorByStatus(d.data.status); // Leaf
+            return getColorBySection(d.data.tipologia_istituto); // Leaf
         })
         .attr("stroke", d => d.children ? "#ccc" : "none")
         .attr("stroke-width", d => d.depth === 1 ? 2 : 1)
@@ -87,7 +87,7 @@ function initBubbleChart(data) {
         .attr("dy", d => -d.r + 15)
         .style("font-size", "14px")
         .style("font-weight", "bold")
-        .text(d => d.data.name);
+        .text(d => `${d.data.name} (${d.value})`);
 
     // Labels for subgroups (Type) - only if large enough
     node.filter(d => d.depth === 2 && d.r > 30)
@@ -96,13 +96,20 @@ function initBubbleChart(data) {
         .attr("dy", d => -d.r + 10)
         .style("font-size", "10px")
         .style("fill", "#666")
-        .text(d => d.data.name.substring(0, 20) + (d.data.name.length > 20 ? "..." : ""));
+        .text(d => {
+            const shortName = d.data.name.length > 20 ? d.data.name.substring(0, 20) + "..." : d.data.name;
+            return `${shortName} (${d.value})`;
+        });
 }
 
-function getColorByStatus(status) {
-    if (!status) return "#999";
-    if (status.includes("Statale") || status.includes("Pubblico")) return "#0f62fe";
-    return "#8a3ffc";
+function getColorBySection(type) {
+    if (!type) return "#999";
+    const t = type.toLowerCase();
+    if (t.includes("conservatorio") || t.includes("musica") || t.includes("issm")) return "#118ab2"; // Musica
+    if (t.includes("belle arti")) return "#ffd166"; // Arti Visive
+    if (t.includes("danza") || t.includes("drammatica")) return "#06d6a0"; // Spettacolo
+    if (t.includes("isia")) return "#ef476f"; // Design
+    return "#999";
 }
 
 function showTooltip(event, data) {

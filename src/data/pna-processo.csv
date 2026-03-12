@@ -1,0 +1,22 @@
+step,fase,attore,descrizione
+1,Organizzazione,Ministero,Pubblicazione del bando della nuova edizione.
+2,Organizzazione,Ministero,Assegnazione delle sezioni e sottosezioni alle Istituzioni AFAM designate all'organizzazione.
+3,Organizzazione,Istituzione Organizzatrice,Pubblicazione regolamento della sezione e/o sottosezione
+4,Organizzazione,Istituzione Organizzatrice,"Definizione accordi con partner esterni (Teatri, Orchestre, Fondazioni, ecc.) per premi accessori e logistica."
+5,Organizzazione,Istituzione Organizzatrice,Proposta di commissione giudicatrice.
+6,Organizzazione,Ministero,Nomina le commissioni giudicatrici.
+7,Adesione Istituzioni,Istituzione Partecipante,Invia richiesta di adesione all'Istituzione Organizzatrice
+7,Adesione Istituzioni,Istituzione Partecipante,Pubblicazione interna del bando e avvio procedure preselettive interne.
+7,Candidatura,Studente,Produzione materiali per la preselezione nella propria Istituzione.
+8,Candidatura,Istituzione Partecipante,Selezione delle candidature e invio all'Istituzione Organizzatrice.
+10,Selezione,Commissione,Valutazione dei materiali e definizione dei finalisti.
+11,Selezione,Istituzione Organizzatrice,Pubblicazione elenco ammessi e invio convocazioni per le prove in presenza.
+12,Semifinali,Istituzione Organizzatrice,Allestimento spazi e coordinamento risorse tecniche.
+13,Semifinali e Prova Finale,Studente,Arrivo in sede e registrazione.
+14,Semifinali e Prova Finale,Commissione,Sorteggio pubblico della lettera per ordine esecuzione.
+15,Semifinali e Prova Finale,Studente,Svolgimento prove in presenza (Semifinali/Finali) o allestimento opere.
+16,Semifinali e Prova Finale,Commissione,Valutazione performance con facoltà di interruzione.
+17,Semifinali e Prova Finale,Commissione,Proclamazione vincitore unico per sottosezione (no ex-aequo).
+18,Premiazione,Istituzione Organizzatrice,"Cerimonia di premiazione, Concerto di Gala o Inaugurazione Mostra."
+19,Premiazione,Istituzione Organizzatrice,Rendicontazione spese al Ministero entro 60 giorni.
+20,Premiazione,Studente Vincitore,"Fruizione premi accessori (borse studio, concerti premio, produzioni)."

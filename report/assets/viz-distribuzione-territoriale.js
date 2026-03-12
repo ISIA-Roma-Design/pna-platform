@@ -156,7 +156,7 @@ function initLeafletMap(data) {
 
             if (childCount === 1) {
                 const markers = cluster.getAllChildMarkers();
-                const color = (markers.length > 0 && markers[0].options.fillColor) || "#0f62fe";
+                const color = (markers.length > 0 && markers[0].options.fillColor) || "#999";
                 return new L.DivIcon({
                     html: `<div style="background-color: ${color}; border: 2px solid white; border-radius: 50%; width: 14px; height: 14px; box-shadow: 0 0 0 2px rgba(0,0,0,0.1);"></div>`,
                     className: 'marker-cluster-single',
@@ -199,7 +199,7 @@ function initLeafletMap(data) {
         }
 
         if (lat && lon) {
-            const color = getColorByStatus(item.status);
+            const color = getColorBySection(item.tipologia_istituto);
 
             const marker = L.circleMarker([lat, lon], {
                 radius: 6,
@@ -237,10 +237,8 @@ function updateClusterRadius(radius) {
     }
 }
 
-function getColorByStatus(status) {
-    if (!status) return "#999";
-    if (status.includes("Statale") || status.includes("Pubblico")) return "#0f62fe";
-    return "#8a3ffc";
+function getColorBySection(type) {
+    return VIZ_CONFIG.getColorBySection(type);
 }
 
 async function exportMapToSVG() {
@@ -315,7 +313,7 @@ async function exportMapToSVG() {
         const count = isCluster ? el.getChildCount() : 1;
 
         if (count === 1) {
-            let color = "#0f62fe";
+            let color = "#999";
             if (isCluster) {
                 const markers = el.getAllChildMarkers();
                 if (markers.length > 0 && markers[0].options && markers[0].options.fillColor) {
@@ -344,9 +342,7 @@ async function exportMapToSVG() {
             markersGroup.appendChild(pin);
 
         } else {
-            let color = "#0f62fe";
-            if (count >= 10) color = "#8a3ffc";
-            if (count >= 100) color = "#000000";
+            let color = "#333";
 
             const halo = document.createElementNS(svgNS, "circle");
             halo.setAttribute("cx", pos.x);

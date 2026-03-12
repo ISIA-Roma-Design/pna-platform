@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8.1 Struttura del premio</title>
+
+    <!-- Carbon Web Components (Local) -->
+    <script type="module" src="../src/libs/load-carbon.js"></script>
+
+    <!-- D3.js -->
+    <script src="https://unpkg.com/d3@7"></script>
+
+    <!-- Custom Swiss Theme -->
+    <link rel="stylesheet" href="../src/prototipo/assets/style.css">
+    <link rel="stylesheet" href="assets/viz-style.css">
+</head>
+
+<body>
+
+    <!-- Global Header -->
+    <div id="global-header"></div>
+    <script src="../src/components/header-loader.js"></script>
+
+    <div class="main-container">
+        <div class="view-header">
+            <div>
+                <h1 class="page-title">1. Struttura del premio: sezioni, sottosezioni e categorie</h1>
+                <p class="page-subtitle">Visualizzazione gerarchica delle sezioni, sottosezioni e categorie
+                    (Dendrogramma).</p>
+            </div>
+            <button class="export-btn" onclick="exportDendrogramToSVG()">Esporta SVG</button>
+        </div>
+
+        <!-- Chart Wrapper -->
+        <div style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+            <!-- Chart Container -->
+            <div id="dendrogram-container" style="width: 100%; height: 100%;"></div>
+
+            <!-- Zoom Controls -->
+            <div class="zoom-controls">
+                <button class="zoom-btn" onclick="zoomIn()" title="Aumenta Zoom">+</button>
+                <button class="zoom-btn" onclick="zoomOut()" title="Riduci Zoom">−</button>
+                <button class="zoom-btn" onclick="resetZoom()" title="Reset Zoom">↺</button>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <footer class="viz-nav-footer">
+            <cds-button kind="ghost" href="infografiche.html">Torna all'indice</cds-button>
+            <div class="viz-nav-links">
+                <cds-button kind="secondary" disabled>Precedente</cds-button>
+                <cds-button kind="primary" href="viz-edizione-sezioni.html">Successivo: 8.2 Processo</cds-button>
+            </div>
+        </footer>
+    </div>
+
+
+    <div id="tooltip" class="tooltip"></div>
+
+    <script src="assets/viz-config.js"></script>
+    <script src="assets/viz-struttura.js"></script>
+</body>
+
+</html>

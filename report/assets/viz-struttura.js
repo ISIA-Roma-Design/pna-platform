@@ -6,14 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // Configuration
     const width = 1200;
     const duration = 500; // Transition duration
-    const dx = 40; // Vertical spacing per node (dynamic base)
-    const dy = width / 6; // Horizontal spacing
+    const dx = 42; // Vertical spacing per node
+    const dy = 420; // Increased spacing to accommodate horizontal segments
 
-    let root;
-    let svg;
-    let gLink;
-    let gNode;
     let tree;
+    let zoom;
+    let gMain;
+    function getNodeColor(d) {
+        if (d.depth === 0) return "#000"; // Root
+        if (d.depth === 1 || d.depth === 2) return "#333"; // Premio & Sezione
+        return "#666"; // Sottosezione & Categorie
+    }
 
     // Fetch Data
     fetch("../src/data/pna-sezioni.json")
@@ -88,38 +91,51 @@ document.addEventListener("DOMContentLoaded", () => {
         svg = d3.select(container)
             .append("svg")
             .attr("width", "100%")
-            .attr("height", "auto")
+            .attr("height", "100%")
             .style("font-family", "Helvetica Neue, sans-serif")
-            .style("user-select", "none");
+            .style("user-select", "none")
+            .attr("cursor", "grab");
 
-        const g = svg.append("g")
+        // Initialize Zoom
+        zoom = d3.zoom()
+            .scaleExtent([0.1, 3])
+            .on("zoom", (event) => {
+                gMain.attr("transform", event.transform);
+            });
+
+        svg.call(zoom);
+
+        gMain = svg.append("g");
+
+        const g = gMain.append("g")
             .attr("transform", `translate(${dy / 3},${dx})`);
 
         gLink = g.append("g")
             .attr("fill", "none")
             .attr("stroke", "#999")
-            .attr("stroke-opacity", 0.6)
+            .attr("stroke-opacity", 0.4)
             .attr("stroke-width", 1.5);
 
         gNode = g.append("g")
             .attr("cursor", "pointer")
             .attr("pointer-events", "all");
 
-        // Collapse after level 2 initially for cleaner view (Optional)
-        // root.children.forEach(collapse); 
-        // Not collapsing by default based on established visual style, but ready if needed.
+        // Expand up to the 2nd degree (Depth 2 = Sezioni visible, Sottosezioni collapsed)
+        root.descendants().forEach(d => {
+            if (d.depth === 2 && d.children) {
+                collapse(d);
+            }
+        });
 
         update(root);
+        // Initial fit
+        setTimeout(() => fitToView(), 300);
     }
 
     function update(source) {
         // Compute the new tree layout
         const nodes = root.descendants();
         const links = root.links();
-
-        // Calculate dynamic height
-        // tree nodeSize sets [height, width] per node in cluster terms?
-        // documentation: nodeSize([dx, dy]) means dx is vertical spacing, dy is horizontal
 
         tree(root);
 
@@ -132,11 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const height = right.x - left.x + dx * 4;
 
-        // Animate SVG height resize
-        const transition = svg.transition()
-            .duration(duration)
-            .attr("height", height)
-            .attr("viewBox", [-dy / 3, left.x - dx, width, height]);
+        // svg height is 100%, no need to animate it here
+        // No viewBox manipulation to avoid conflicts with d3.zoom
+        const transition = d3.active(svg.node()) || d3.select(svg.node()).transition().duration(duration);
 
         // --- NODES ---
         const node = gNode.selectAll("g")
@@ -168,16 +182,16 @@ document.addEventListener("DOMContentLoaded", () => {
         // 2. Visible Node Circle
         nodeEnter.append("circle")
             .attr("class", "visible-node")
-            .attr("r", 4)
-            .attr("fill", d => d._children ? "#000" : "#fff") // Black if collapsed children
-            .attr("stroke", "#000")
-            .attr("stroke-width", 1.5);
+            .attr("r", 5)
+            .attr("fill", d => d._children ? getNodeColor(d) : "#fff")
+            .attr("stroke", d => getNodeColor(d))
+            .attr("stroke-width", 2);
 
         // 3. Text
         nodeEnter.append("text")
             .attr("dy", "0.31em")
-            .attr("x", d => d.children || d._children ? -10 : 10)
-            .attr("text-anchor", d => d.children || d._children ? "end" : "start")
+            .attr("x", 12)
+            .attr("text-anchor", "start")
             .text(d => d.data.name)
             .attr("stroke-linejoin", "round")
             .attr("stroke-width", 3)
@@ -186,8 +200,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         nodeEnter.append("text")
             .attr("dy", "0.31em")
-            .attr("x", d => d.children || d._children ? -10 : 10)
-            .attr("text-anchor", d => d.children || d._children ? "end" : "start")
+            .attr("x", 12)
+            .attr("text-anchor", "start")
             .text(d => d.data.name)
             .attr("fill", "#000");
 
@@ -207,9 +221,10 @@ document.addEventListener("DOMContentLoaded", () => {
             .attr("fill-opacity", 1)
             .attr("stroke-opacity", 1);
 
-        // Update circle fill based on collapse state
+        // Update circle fill and stroke based on collapse state and section
         nodeUpdate.select(".visible-node")
-            .attr("fill", d => d._children ? "#000" : "#fff");
+            .attr("fill", d => d._children ? getNodeColor(d) : "#fff")
+            .attr("stroke", d => getNodeColor(d));
 
         // Exit
         const nodeExit = node.exit().transition(transition).remove()
@@ -230,7 +245,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Update
         link.merge(linkEnter).transition(transition)
-            .attr("d", diagonal);
+            .attr("d", diagonal)
+            .attr("stroke", d => getNodeColor(d.target))
+            .attr("stroke-opacity", d => d.target._children ? 0.8 : 0.4);
 
         // Exit
         link.exit().transition(transition).remove()
@@ -244,14 +261,66 @@ document.addEventListener("DOMContentLoaded", () => {
             d.x0 = d.x;
             d.y0 = d.y;
         });
+
+        // Trigger auto-fit after transaction
+        transition.end().then(() => {
+            fitToView();
+        }).catch(() => {
+            fitToView();
+        });
     }
 
-    // Curved line generator
+    function fitToView() {
+        if (!gMain || !svg || !container) return;
+
+        // Get the bounding box of the contents inside gMain
+        const bounds = gMain.node().getBBox();
+        if (bounds.width === 0 || bounds.height === 0) return;
+
+        // Physical dimensions of the container
+        const viewportWidth = container.clientWidth;
+        const viewportHeight = container.clientHeight;
+
+        // Add some breathing room
+        const padding = 80;
+        const w = bounds.width + padding * 2;
+        const h = bounds.height + padding * 2;
+
+        // Scale to fit
+        const scale = Math.min(viewportWidth / w, viewportHeight / h, 1);
+
+        // Calculate the center of the tree
+        const midX = bounds.x + bounds.width / 2;
+        const midY = bounds.y + bounds.height / 2;
+
+        // Center the tree center at viewport center
+        const transform = d3.zoomIdentity
+            .translate(viewportWidth / 2, viewportHeight / 2)
+            .scale(scale)
+            .translate(-midX, -midY);
+
+        svg.transition()
+            .duration(750)
+            .call(zoom.transform, transform);
+    }
+
+    // Curved line generator with horizontal segment for labels
     function diagonal({ source, target }) {
-        return `M${source.y},${source.x}
-                C${(source.y + target.y) / 2},${source.x}
-                 ${(source.y + target.y) / 2},${target.x}
-                 ${target.y},${target.x}`;
+        const labelOffset = 250; // Length of the horizontal segment to clear labels
+        const startY = source.y;
+        const startX = source.x;
+        const endY = target.y;
+        const endX = target.x;
+
+        // If child is to the right, add horizontal line then curve
+        // Using a Bezier curve starting from (startY + labelOffset, startX)
+        const bendY = startY + labelOffset;
+
+        return `M${startY},${startX}
+                L${bendY},${startX}
+                C${(bendY + endY) / 2},${startX}
+                 ${(bendY + endY) / 2},${endX}
+                 ${endY},${endX}`;
     }
 
     function collapse(d) {
@@ -261,6 +330,19 @@ document.addEventListener("DOMContentLoaded", () => {
             d.children = null;
         }
     }
+
+    // --- Global Zoom Controls ---
+    window.zoomIn = function () {
+        svg.transition().duration(300).call(zoom.scaleBy, 1.3);
+    };
+
+    window.zoomOut = function () {
+        svg.transition().duration(300).call(zoom.scaleBy, 0.7);
+    };
+
+    window.resetZoom = function () {
+        svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity);
+    };
 });
 
 /**
@@ -282,7 +364,7 @@ function exportDendrogramToSVG() {
     const styleString = `
         .node circle { fill: #fff; stroke: #000; stroke-width: 1.5px; }
         .visible-node { fill: #fff; stroke: #000; stroke-width: 1.5px; }
-        .node text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 500; }
+        .node text { font-family: 'Ministry', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 500; }
         .link { fill: none; stroke: #ccc; stroke-width: 1px; }
         path { fill: none; stroke: #999; stroke-opacity: 0.6; stroke-width: 1.5px; }
     `;

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PNA Timeline - Scadenze & Eventi</title>
+    <title>8.3 Scadenze ed eventi</title>
 
     <!-- Carbon Web Components (Local) -->
     <script type="module" src="../src/libs/load-carbon.js"></script>
@@ -25,7 +25,7 @@
     <div class="main-container">
         <div class="view-header">
             <div>
-                <h1 class="page-title">Timeline Scadenze</h1>
+                <h1 class="page-title">3. Scadenze ed eventi per sezione e sottosezione</h1>
                 <p class="page-subtitle">Scadenze ed eventi delle edizioni XVIII e XIX.</p>
             </div>
         </div>
@@ -79,9 +79,20 @@
             </div>
         </div>
 
-        <div id="tooltip" class="tooltip"></div>
+        <!-- Navigation Bar -->
+        <footer class="viz-nav-footer">
+            <cds-button kind="ghost" href="infografiche.html">Torna all'indice</cds-button>
+            <div class="viz-nav-links">
+                <cds-button kind="secondary" href="viz-edizione-sezioni.html">Precedente: 8.2 Processo</cds-button>
+                <cds-button kind="primary" href="viz-tipologia-afam.html">Successivo: 8.4 Tipologia</cds-button>
+            </div>
+        </footer>
+    </div>
 
-        <script src="assets/viz-scadenze.js"></script>
+    <div id="tooltip" class="tooltip"></div>
+
+    <script src="assets/viz-config.js"></script>
+    <script src="assets/viz-scadenze-eventi.js"></script>
 
 </body>
 

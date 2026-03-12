@@ -13,14 +13,8 @@ if (typeof d3 === 'undefined') {
     console.log("D3 loaded:", d3.version);
 }
 
-// Custom Swiss Palette
-const swissColors = {
-    "Interpretazione Musicale": "#77C424", // Dark Blue
-    "Arti dello Spettacolo": "#C0281B", // Muted Red
-    "Design": "#3378F6", // Teal
-    "Arti Visive": "#0001F6" // Green
-};
-const getColor = (cat) => swissColors[cat] || "#999";
+// Use centralized PNA colors
+const getColor = (cat) => VIZ_CONFIG.getColorBySection(cat);
 
 async function initTimelines() {
     try {

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8.2 Edizione per sezioni</title>
+
+    <!-- Carbon Web Components (Local) -->
+    <script type="module" src="../src/libs/load-carbon.js"></script>
+
+    <!-- D3.js -->
+    <script src="https://unpkg.com/d3@7"></script>
+    <script src="https://unpkg.com/d3-sankey@0.12"></script>
+
+    <!-- Custom Swiss Theme -->
+    <link rel="stylesheet" href="../src/prototipo/assets/style.css">
+    <link rel="stylesheet" href="assets/viz-style.css">
+</head>
+
+<body>
+
+    <!-- Global Header -->
+    <div id="global-header"></div>
+    <script src="../src/components/header-loader.js"></script>
+
+    <div class="main-container">
+        <div class="view-header">
+            <div>
+                <h1 class="page-title">2. Edizione per sezioni</h1>
+                <p class="page-subtitle">Visualizzazione dei flussi operativi per diverse tipologie di premio.</p>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div id="button-controls" class="nav-buttons-container">
+            <!-- Buttons will be dynamically populated -->
+        </div>
+
+        <div id="section-info">
+            <p id="section-description" class="section-desc"></p>
+        </div>
+
+        <!-- Chart Container -->
+        <div id="chart-area"></div>
+
+        <!-- Navigation Bar -->
+        <footer class="viz-nav-footer">
+            <cds-button kind="ghost" href="infografiche.html">Torna all'indice</cds-button>
+            <div class="viz-nav-links">
+                <cds-button kind="secondary" href="viz-struttura.html">Precedente: 8.1 Struttura</cds-button>
+                <cds-button kind="primary" href="viz-scadenze-eventi.html">Successivo: 8.3 Timeline</cds-button>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- Popover Container -->
+    <cds-popover id="dettagli-popover" high-contrast>
+        <cds-popover-content>
+            <div class="popover-inner">
+                <p id="popover-title" class="popover-title">
+                    fase</p>
+                <p id="popover-desc" class="popover-desc">
+                    dettagli
+                </p>
+            </div>
+        </cds-popover-content>
+    </cds-popover>
+
+    <script src="assets/viz-config.js"></script>
+    <script src="assets/viz-edizione-sezioni.js"></script>
+</body>
+
+</html>

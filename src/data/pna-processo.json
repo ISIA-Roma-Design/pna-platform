@@ -1,116 +1,127 @@
 [
     {
-        "fase": "1",
+        "step": "1",
+        "fase": "Organizzazione",
         "attore": "Ministero",
-        "descrizione": "Emanazione del decreto/bando generale con stanziamento fondi e suddivisione in macro-aree (es. Arti Visive/Design vs Arti Performative)."
+        "descrizione": "Pubblicazione del bando della nuova edizione."
     },
     {
-        "fase": "2",
+        "step": "2",
+        "fase": "Organizzazione",
         "attore": "Ministero",
-        "descrizione": "Richiesta di candidature alle Istituzioni AFAM per ospitare le singole sezioni."
+        "descrizione": "Assegnazione delle sezioni e sottosezioni alle Istituzioni AFAM designate all'organizzazione."
     },
     {
-        "fase": "3",
+        "step": "3",
+        "fase": "Organizzazione",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Pubblicazione regolamento della sezione e/o sottosezione"
+    },
+    {
+        "step": "4",
+        "fase": "Organizzazione",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Definizione accordi con partner esterni (Teatri, Orchestre, Fondazioni, ecc.) per premi accessori e logistica."
+    },
+    {
+        "step": "5",
+        "fase": "Organizzazione",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Proposta di commissione giudicatrice."
+    },
+    {
+        "step": "6",
+        "fase": "Organizzazione",
         "attore": "Ministero",
-        "descrizione": "Valutazione candidature e pubblicazione decreto di assegnazione delle sedi (Istituzioni Designate)."
+        "descrizione": "Nomina le commissioni giudicatrici."
     },
     {
-        "fase": "4",
-        "attore": "Ministero",
-        "descrizione": "Nomina con decreto delle Giurie Nazionali per ogni sottosezione, composte da esperti esterni."
-    },
-    {
-        "fase": "5",
-        "attore": "Istituzione Designata",
-        "descrizione": "Accettazione incarico e attivazione canali dedicati (PEC, email dedicata, pagina web)."
-    },
-    {
-        "fase": "6",
-        "attore": "Istituzione Designata",
-        "descrizione": "Redazione e pubblicazione del Regolamento specifico (Bando di sezione) con repertori, date e specifiche tecniche."
-    },
-    {
-        "fase": "7",
-        "attore": "Istituzione Designata",
-        "descrizione": "Definizione accordi con partner esterni (Teatri, Orchestre, Fondazioni) per premi accessori e logistica."
-    },
-    {
-        "fase": "8",
+        "step": "7",
+        "fase": "Adesione Istituzioni",
         "attore": "Istituzione Partecipante",
-        "descrizione": "Pubblicazione interna del bando e avvio procedure selettive (audizioni/valutazione portfolio)."
+        "descrizione": "Invia richiesta di adesione all'Istituzione Organizzatrice"
     },
     {
-        "fase": "9",
+        "step": "7",
+        "fase": "Adesione Istituzioni",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Pubblicazione interna del bando e avvio procedure preselettive interne."
+    },
+    {
+        "step": "7",
+        "fase": "Candidatura",
         "attore": "Studente",
-        "descrizione": "Produzione materiali per preselezione (video un-edited, dossier progetti) secondo specifiche."
+        "descrizione": "Produzione materiali per la preselezione nella propria Istituzione."
     },
     {
-        "fase": "10",
+        "step": "8",
+        "fase": "Candidatura",
         "attore": "Istituzione Partecipante",
-        "descrizione": "Verifica regolarità iscrizione e selezione dei rappresentanti (limite numerico per istituzione)."
+        "descrizione": "Selezione delle candidature e invio all'Istituzione Organizzatrice."
     },
     {
-        "fase": "11",
-        "attore": "Istituzione Partecipante",
-        "descrizione": "Invio candidature via PEC all'Istituzione Designata entro scadenza (moduli, link video, partiture)."
-    },
-    {
-        "fase": "12",
-        "attore": "Istituzione Designata",
-        "descrizione": "Verifica ammissibilità formale domande (firme, completezza file) ed eventuale richiesta regolarizzazione."
-    },
-    {
-        "fase": "13",
+        "step": "10",
+        "fase": "Selezione",
         "attore": "Commissione",
-        "descrizione": "Valutazione materiali digitali (Preselezione) e individuazione finalisti."
+        "descrizione": "Valutazione dei materiali e definizione dei finalisti."
     },
     {
-        "fase": "14",
-        "attore": "Istituzione Designata",
-        "descrizione": "Pubblicazione elenco ammessi e invio convocazioni con calendario dettagliato prove in presenza."
+        "step": "11",
+        "fase": "Selezione",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Pubblicazione elenco ammessi e invio convocazioni per le prove in presenza."
     },
     {
-        "fase": "15",
-        "attore": "Istituzione Designata",
-        "descrizione": "Allestimento spazi (aule studio, auditorium, mostre) e coordinamento risorse tecniche (pianisti, orchestra)."
+        "step": "12",
+        "fase": "Semifinali",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Allestimento spazi e coordinamento risorse tecniche."
     },
     {
-        "fase": "16",
+        "step": "13",
+        "fase": "Semifinali e Prova Finale",
         "attore": "Studente",
-        "descrizione": "Arrivo in sede (spese viaggio a carico istituzione di provenienza) e registrazione."
+        "descrizione": "Arrivo in sede e registrazione."
     },
     {
-        "fase": "17",
+        "step": "14",
+        "fase": "Semifinali e Prova Finale",
         "attore": "Commissione",
-        "descrizione": "Riunione preliminare e sorteggio pubblico della lettera per ordine esecuzione."
+        "descrizione": "Sorteggio pubblico della lettera per ordine esecuzione."
     },
     {
-        "fase": "18",
+        "step": "15",
+        "fase": "Semifinali e Prova Finale",
         "attore": "Studente",
         "descrizione": "Svolgimento prove in presenza (Semifinali/Finali) o allestimento opere."
     },
     {
-        "fase": "19",
+        "step": "16",
+        "fase": "Semifinali e Prova Finale",
         "attore": "Commissione",
         "descrizione": "Valutazione performance con facoltà di interruzione."
     },
     {
-        "fase": "20",
+        "step": "17",
+        "fase": "Semifinali e Prova Finale",
         "attore": "Commissione",
         "descrizione": "Proclamazione vincitore unico per sottosezione (no ex-aequo)."
     },
     {
-        "fase": "21",
-        "attore": "Istituzione Designata",
+        "step": "18",
+        "fase": "Premiazione",
+        "attore": "Istituzione Organizzatrice",
         "descrizione": "Cerimonia di premiazione, Concerto di Gala o Inaugurazione Mostra."
     },
     {
-        "fase": "22",
-        "attore": "Istituzione Designata",
+        "step": "19",
+        "fase": "Premiazione",
+        "attore": "Istituzione Organizzatrice",
         "descrizione": "Rendicontazione spese al Ministero entro 60 giorni."
     },
     {
-        "fase": "23",
+        "step": "20",
+        "fase": "Premiazione",
         "attore": "Studente Vincitore",
         "descrizione": "Fruizione premi accessori (borse studio, concerti premio, produzioni)."
     }

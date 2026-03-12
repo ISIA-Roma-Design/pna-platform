@@ -1,0 +1,81 @@
+journey,step_id,phase,actor,action,type
+arti_spettacolo,1,Avvio,[MIN],Pubblicazione Bando Generale e richiesta candidature sedi,common
+arti_spettacolo,2,Avvio,[MIN],Decreto di assegnazione delle sezioni alle Istituzioni designate,common
+arti_spettacolo,3,Organizzazione,[ISTO],Pubblicazione regolamento della sezione e/o sottosezione,common
+arti_spettacolo,4,Organizzazione,[ISTO],Proposta di commissione giudicatrice,common
+arti_spettacolo,5,Organizzazione,[MIN],Nomina le commissioni giudicatrici,common
+arti_spettacolo,6,Adesione,[IST],Invia richiesta di adesione all'Istituzione Organizzatrice,common
+arti_spettacolo,7,Adesione,[IST],Pubblicazione interna del bando e avvio procedure preselettive interne,common
+arti_spettacolo,8,Candidatura,[STU],Modulo di iscrizione e produzione materiale da candidare per la preselezione nella propria Istituzione,common
+arti_spettacolo,9,Candidatura,[IST],Selezione delle candidature e invio all'Istituzione Organizzatrice,common
+arti_spettacolo,10,Preselezione,[ISTO],Organizzazione delle prove selettive,common
+arti_spettacolo,11,Preselezione,[GIU],Valutazione remota video o audizione regionale,specific
+arti_spettacolo,12,Preselezione,[ISTO],Pubblicazione elenco ammessi e invio convocazioni per le prove palco e montaggio scene,specific
+arti_spettacolo,13,Selezione,[ISTO],Allestimento spazi e coordinamento risorse tecniche,common
+arti_spettacolo,14,Selezione,[STU],"Arrivo in sede, setup tecnico (luci/audio) e prove spazi",specific
+arti_spettacolo,15,Selezione,[STU],Performance live (Spettacolo) davanti alla giuria,specific
+arti_spettacolo,16,Selezione,[GIU],"Valutazione delle performance, delle esecuzioni o dei progetti",common
+arti_spettacolo,17,Selezione,[GIU],Proclamazione Vincitore Unico,common
+arti_spettacolo,18,Premiazione,[ISTO],"Cerimonia di premiazione, Concerto di Gala o Inaugurazione Mostra",common
+arti_spettacolo,19,Premiazione,[STU],"Fruizione premi accessori (borse studio, concerti premio, produzioni)",common
+arti_spettacolo,20,Chiusura,[ISTO],Rendicontazione spese al Ministero entro 60 giorni,common
+arti_visive,1,Avvio,[MIN],Pubblicazione Bando Generale e richiesta candidature sedi,common
+arti_visive,2,Avvio,[MIN],Decreto di assegnazione delle sezioni alle Istituzioni designate,common
+arti_visive,3,Organizzazione,[ISTO],Pubblicazione regolamento della sezione e/o sottosezione,common
+arti_visive,4,Organizzazione,[ISTO],Proposta di commissione giudicatrice,common
+arti_visive,5,Organizzazione,[MIN],Nomina le commissioni giudicatrici,common
+arti_visive,6,Adesione,[IST],Invia richiesta di adesione all'Istituzione Organizzatrice,common
+arti_visive,7,Adesione,[IST],Pubblicazione interna del bando e avvio procedure preselettive interne,common
+arti_visive,8,Candidatura,[STU],Modulo di iscrizione e produzione materiale da candidare per la preselezione nella propria Istituzione,common
+arti_visive,9,Candidatura,[IST],Selezione delle candidature e invio all'Istituzione Organizzatrice,common
+arti_visive,10,Selezione,[ISTO],Organizzazione delle prove selettive,common
+arti_visive,11,Selezione,[GIU],Valutazione remota delle candidature e selezione opere per la mostra,common
+arti_visive,12,Selezione,[ISTO],Pubblicazione elenco finalisti e invio istruzioni per il trasporto opere,common
+arti_visive,13,Mostra,[STU],Imballaggio e spedizione opere d'arte,specific
+arti_visive,14,Mostra,[ISTO],"Ricezione colli, curatela e allestimento espositivo",common
+arti_visive,15,Mostra,[GIU],Visita mostra e valutazione opere allestite,specific
+arti_visive,16,Selezione,[GIU],"Valutazione delle performance, delle esecuzioni o dei progetti",common
+arti_visive,17,Selezione,[GIU],Proclamazione Vincitore Unico,common
+arti_visive,18,Premiazione,[ISTO],"Cerimonia di premiazione, Concerto di Gala o Inaugurazione Mostra",common
+arti_visive,19,Premiazione,[STU],"Fruizione premi accessori (borse studio, concerti premio, produzioni)",common
+arti_visive,20,Chiusura,[ISTO],Rendicontazione spese al Ministero entro 60 giorni,common
+design,1,Avvio,[MIN],Pubblicazione Bando Generale e richiesta candidature sedi,common
+design,2,Avvio,[MIN],Decreto di assegnazione delle sezioni alle Istituzioni designate,common
+design,3,Organizzazione,[ISTO],Pubblicazione regolamento della sezione e/o sottosezione,common
+design,4,Organizzazione,[ISTO],Proposta di commissione giudicatrice,common
+design,5,Organizzazione,[MIN],Nomina le commissioni giudicatrici,common
+design,6,Adesione,[IST],Invia richiesta di adesione all'Istituzione Organizzatrice,common
+design,7,Adesione,[IST],Pubblicazione interna del bando e avvio procedure preselettive interne,common
+design,8,Candidatura,[STU],Modulo di iscrizione e produzione materiale da candidare per la preselezione nella propria Istituzione,common
+design,9,Candidatura,[IST],Selezione delle candidature e invio all'Istituzione Organizzatrice,common
+design,10,Preselezione,[ISTO],Organizzazione delle prove selettive,common
+design,11,Preselezione,[GIU],Valutazione remota delle candidature e selezione opere per la mostra,common
+design,12,Preselezione,[ISTO],Pubblicazione elenco finalisti e invio istruzioni per il trasporto opere,common
+design,13,Mostra,[STU],Imballaggio e spedizione prototipi/modelli fisici,specific
+design,14,Mostra,[ISTO],"Ricezione colli, curatela e allestimento espositivo",common
+design,15,Mostra,[GIU],Visita alla mostra,specific
+design,16,Selezione,[GIU],"Valutazione delle performance, delle esecuzioni o dei progetti in mostra",common
+design,17,Selezione,[GIU],Proclamazione Vincitore Unico,common
+design,18,Premiazione,[ISTO],"Cerimonia di premiazione, Concerto di Gala o Inaugurazione Mostra",common
+design,19,Premiazione,[STU],"Fruizione premi accessori (borse studio, concerti premio, produzioni)",common
+design,20,Chiusura,[ISTO],Rendicontazione spese al Ministero entro 60 giorni,common
+interpretazione_musicale,1,Avvio,[MIN],Pubblicazione Bando Generale e richiesta candidature sedi,common
+interpretazione_musicale,2,Avvio,[MIN],Decreto di assegnazione delle sezioni alle Istituzioni designate,common
+interpretazione_musicale,3,Organizzazione,[ISTO],Pubblicazione regolamento della sezione e/o sottosezione,common
+interpretazione_musicale,4,Organizzazione,[ISTO],Proposta di commissione giudicatrice,common
+interpretazione_musicale,5,Organizzazione,[MIN],Nomina le commissioni giudicatrici,common
+interpretazione_musicale,6,Adesione,[IST],Invia richiesta di adesione all'Istituzione Organizzatrice,common
+interpretazione_musicale,7,Adesione,[IST],Pubblicazione interna del bando e avvio procedure preselettive interne,common
+interpretazione_musicale,8,Candidatura,[STU],Modulo di iscrizione e produzione materiale da candidare per la preselezione nella propria Istituzione,common
+interpretazione_musicale,9,Candidatura,[IST],Selezione delle candidature e invio all'Istituzione Organizzatrice,common
+interpretazione_musicale,10,Preselezione,[ISTO],Organizzazione delle prove selettive,common
+interpretazione_musicale,11,Preselezione,[GIU],Valutazione remota dei video per preselezione,specific
+interpretazione_musicale,12,Preselezione,[ISTO],Pubblicazione elenco ammessi e invio convocazioni per le prove in presenza,specific
+interpretazione_musicale,13,Selezione,[ISTO],Allestimento spazi e coordinamento risorse tecniche,common
+interpretazione_musicale,14,Selezione,[STU],"Arrivo in sede, prove acustiche o con orchestra",specific
+interpretazione_musicale,15,Selezione,[STU],Sorteggio pubblico e performance live (Semifinale/Finale) davanti alla giuria,specific
+interpretazione_musicale,16,Selezione,[GIU],"Valutazione delle performance, delle esecuzioni o dei progetti in mostra",common
+interpretazione_musicale,17,Selezione,[GIU],Proclamazione Vincitore Unico,common
+interpretazione_musicale,18,Premiazione,[ISTO],"Cerimonia di premiazione, Concerto di Gala o Inaugurazione Mostra",common
+interpretazione_musicale,19,Premiazione,[STU],"Fruizione premi accessori (borse studio, concerti premio, produzioni)",common
+interpretazione_musicale,20,Chiusura,[ISTO],Rendicontazione spese al Ministero entro 60 giorni,common

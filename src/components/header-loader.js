@@ -1,35 +1,20 @@
 /**
- * Header Loader
+ * Carbon UI Shell Loader
  * Fetches components/header.html and injects it into #global-header
- * Adjusts paths based on current location depth.
+ * Manages Shell state and path adjustments
  */
 
 document.addEventListener("DOMContentLoaded", () => {
     const headerContainer = document.getElementById("global-header");
     if (!headerContainer) return;
 
-    // Determine depth based on known subdirectories
-    // This supports both local (/) and GitHub Pages (/repo-name/) paths
-    // If the path contains specific subfolders, we are 1 level deep.
-    // Otherwise, we assume we are at the root context.
-
     const pathname = window.location.pathname;
-
-    // List of known first-level directories that contain HTML pages
     const subdirectories = ["/report/", "/src/"];
-
-    // Check if current path contains any of these
-    // Use a more robust check that works if the URL ends with the directory name without trailing slash
     const isSubdirectory = subdirectories.some(subdir => {
         return pathname.includes(subdir) || pathname.endsWith(subdir.replace(/\/$/, ""));
     });
 
-    // If in subdirectory, we need to go up one level (../) to reach root resources
     const basePrefix = isSubdirectory ? "../" : "";
-
-    // Special case: "components" should be reachable from root
-    // But header-loader.js is likely loaded via a relative script tag in the HTML.
-    // The fetch request is relative to the PAGE URL.
     const headerPath = basePrefix + "src/components/header.html";
 
     fetch(headerPath)
@@ -40,13 +25,15 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(html => {
             headerContainer.innerHTML = html;
 
-            // Fix links
-            const links = headerContainer.querySelectorAll("cds-header-name, cds-header-nav-item, cds-side-nav-link");
+            const shell = headerContainer;
+            const menuButton = shell.querySelector("cds-header-menu-button");
+            const sideNav = shell.querySelector("cds-side-nav");
+
+            // 1. Path Adjustment Logic
+            const links = shell.querySelectorAll("cds-header-name, cds-header-nav-item, cds-side-nav-link, cds-side-nav-menu-item");
             links.forEach(link => {
                 const originalHref = link.getAttribute("href");
                 if (originalHref) {
-                    // Prepend prefix to all relative links
-                    // Skip absolute links (http...), root-relative links (/...), and already relative links (./ or ../)
                     const isRelative = !originalHref.startsWith("http") &&
                         !originalHref.startsWith("/") &&
                         !originalHref.startsWith("./") &&
@@ -56,8 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         const newHref = basePrefix + originalHref;
                         link.setAttribute("href", newHref);
 
-                        // Set active state if current pathname matches the link
-                        // Use a simple check: if pathname contains the original link's path
+                        // Active State
                         if (pathname.includes(originalHref)) {
                             link.setAttribute("active", "");
                         }
@@ -65,22 +51,41 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            // Initialize Menu Toggle
-            const menuButton = headerContainer.querySelector("cds-header-menu-button");
-            const sideNav = headerContainer.querySelector("cds-side-nav");
-
+            // 2. Shell Interaction Logic (Toggling SideNav on mobile)
             if (menuButton && sideNav) {
-                // Carbon Web Component emits a custom event when toggled
+                // Initial visibility for mobile
+                if (window.innerWidth < 1056) {
+                    sideNav.removeAttribute("expanded");
+                }
+
                 menuButton.addEventListener("cds-header-menu-button-toggled", (event) => {
-                    // event.detail.active contains the new state
-                    const isActive = event.detail.active;
-                    if (isActive) {
+                    const { active } = event.detail;
+                    if (active) {
                         sideNav.setAttribute("expanded", "");
                     } else {
                         sideNav.removeAttribute("expanded");
                     }
                 });
+
+                // Close SideNav when clicking a link on mobile
+                sideNav.addEventListener("click", (event) => {
+                    const target = event.target.closest("cds-side-nav-link");
+                    if (target && window.innerWidth < 1056) {
+                        sideNav.removeAttribute("expanded");
+                        menuButton.setAttribute("active", "false");
+                    }
+                });
             }
+
+            // Sync SideNav state on resize
+            window.addEventListener("resize", () => {
+                if (window.innerWidth >= 1056) {
+                    sideNav.setAttribute("expanded", "");
+                } else if (!menuButton.hasAttribute("active") || menuButton.getAttribute("active") === "false") {
+                    sideNav.removeAttribute("expanded");
+                }
+            });
+
         })
-        .catch(err => console.error("Failed to load header:", err));
+        .catch(err => console.error("Failed to load Carbon UI Shell:", err));
 });

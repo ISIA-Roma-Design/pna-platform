@@ -51,10 +51,10 @@ echo '</head><body>';
 
 // UI Shell Header
 echo '
-<cds-header aria-label="PNA Platform">
+<cds-header aria-label="Report PNA">
     <cds-header-menu-button button-label-active="Close menu" button-label-inactive="Open menu"></cds-header-menu-button>
-    <cds-header-name href="/index.html" prefix="PNA">Platform</cds-header-name>
-    <cds-header-nav menu-bar-label="PNA Platform">
+    <cds-header-name href="/index.html" prefix="Report">PNA</cds-header-name>
+    <cds-header-nav menu-bar-label="Report PNA">
         <cds-header-nav-item href="/prototipo/index.html">Prototipo</cds-header-nav-item>
         <cds-header-nav-item href="/viz/index.html">Infografiche</cds-header-nav-item>
         <cds-header-nav-item href="/docs/">Docs</cds-header-nav-item>
