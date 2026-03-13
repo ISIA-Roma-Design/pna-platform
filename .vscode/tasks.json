@@ -1,0 +1,18 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile SASS (Watch)",
+            "type": "shell",
+            "command": "./dart-sass/sass --watch src/scss/custom.scss src/prototipo/assets/bootstrap-custom.css",
+            "group": "none",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        }
+    ]
+}

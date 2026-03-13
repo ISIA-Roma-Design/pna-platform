@@ -55,10 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
         btnContainer.innerHTML = '';
 
         // Add "Tutti" button
-        const allBtn = document.createElement('cds-button');
-        allBtn.setAttribute('size', 'sm');
-        allBtn.setAttribute('kind', 'secondary');
-        allBtn.textContent = "Mostra Tutti";
+        const allBtn = document.createElement('button');
+        allBtn.className = 'btn btn-outline-dark btn-sm rounded-0 fw-bold me-2 mb-2';
+        allBtn.textContent = "MOSTRA TUTTI";
+
         allBtn.addEventListener('click', () => {
             Object.keys(journeyVisibility).forEach(k => {
                 journeyVisibility[k] = true;
@@ -69,12 +69,14 @@ document.addEventListener('DOMContentLoaded', function () {
         btnContainer.appendChild(allBtn);
 
         Object.keys(allJourneys).forEach(key => {
-            const btn = document.createElement('cds-button');
-            btn.setAttribute('size', 'sm');
-            btn.setAttribute('kind', 'primary');
+            const btn = document.createElement('button');
+            btn.className = 'btn btn-dark btn-sm rounded-0 fw-bold me-2 mb-2';
             btn.setAttribute('id', `btn-${key}`);
-            btn.textContent = JOURNEY_CONFIG[key]?.label || key;
-            btn.style.cssText = `--cds-button-primary: ${JOURNEY_CONFIG[key].color}; --cds-button-primary-hover: ${JOURNEY_CONFIG[key].color}ee;`;
+            btn.textContent = (JOURNEY_CONFIG[key]?.label || key).toUpperCase();
+            btn.style.backgroundColor = JOURNEY_CONFIG[key].color;
+            btn.style.borderColor = JOURNEY_CONFIG[key].color;
+            btn.style.color = '#fff';
+
 
             btn.addEventListener('click', () => {
                 const newState = !journeyVisibility[key];
@@ -89,13 +91,15 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateButtonState(key, isVisible) {
         const btn = document.getElementById(`btn-${key}`);
         if (!btn) return;
-        btn.setAttribute('kind', isVisible ? 'primary' : 'ghost');
-        if (!isVisible) {
-            btn.style.opacity = '0.5';
-        } else {
+        if (isVisible) {
+            btn.className = 'btn btn-dark btn-sm rounded-0 fw-bold me-2 mb-2';
             btn.style.opacity = '1';
+        } else {
+            btn.className = 'btn btn-outline-dark btn-sm rounded-0 fw-bold me-2 mb-2';
+            btn.style.opacity = '0.5';
         }
     }
+
 
     // 3. Render Chart
     function renderChart() {
@@ -329,18 +333,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         const firstStep = steps[0];
-        popoverDesc.innerHTML = `<div style="font-weight:700; margin-bottom:4px;">${firstStep.phase.toUpperCase()} - ${ACTOR_MAP[firstStep.actor] || firstStep.actor}</div><div>${firstStep.action}</div>`;
+        popoverDesc.innerHTML = `<div class="fw-bold mb-1">${firstStep.phase.toUpperCase()} — ${ACTOR_MAP[firstStep.actor] || firstStep.actor}</div><div>${firstStep.action}</div>`;
 
-        popover.open = true;
+        popover.style.display = 'block';
         const rect = element.getBoundingClientRect();
-        popover.style.top = `${rect.top + window.scrollY}px`;
-        popover.style.left = `${rect.left + window.scrollX + 25}px`;
+        popover.style.top = `${rect.top + window.scrollY - popover.offsetHeight - 10}px`;
+        popover.style.left = `${rect.left + window.scrollX - (popover.offsetWidth / 2) + 12}px`;
     }
 
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('.node-circle') && !e.target.closest('cds-popover')) {
-            popover.open = false;
+        if (!e.target.closest('.node-circle') && !e.target.closest('#dettagli-popover')) {
+            popover.style.display = 'none';
             d3.selectAll('.node-circle').classed('active', false);
         }
     });
+
 });

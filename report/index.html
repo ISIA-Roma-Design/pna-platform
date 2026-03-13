@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Report - PNA</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
 
-    <!-- Carbon Web Components (Local) -->
-    <script type="module" src="../src/libs/load-carbon.js"></script>
+    <!-- Bootstrap 5.3 (Custom Theme) -->
+    <link href="../src/prototipo/assets/bootstrap-custom.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom Swiss Theme -->
     <link rel="stylesheet" href="../src/prototipo/assets/style.css">
     <link rel="stylesheet" href="assets/viz-style.css">
+
     <style>
         .report-content {
             max-width: 900px;
@@ -20,52 +23,84 @@
         }
 
         .section-block {
-            margin-bottom: 5rem;
-        }
-
-        .section-block h2 {
-            border-bottom: 2px solid #000;
-            padding-bottom: 1rem;
-            margin-bottom: 2.5rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            margin-bottom: 6rem;
         }
 
         .highlight-text {
-            font-size: 1.5rem;
-            line-height: 1.4;
-            font-weight: 300;
+            border-left: 4px solid #000;
+            padding-left: 2rem;
             margin: 3rem 0;
-            color: #000;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            padding: 2rem 0;
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        /* Full-Width Seamless Grid */
+        .report-images-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            grid-template-rows: repeat(2, 350px);
+            gap: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        .grid-item {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .grid-item.large {
+            grid-row: span 2;
+            height: 100%;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.3s ease;
+            display: block;
+        }
+
+        .grid-item:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
         }
 
         .cluster-tile {
+            border: 2px solid #000;
             padding: 2rem;
-            border-top: 4px solid #000;
-            background: #fff;
+            height: 100%;
+            display: block;
+            text-decoration: none;
+            color: #000;
+            transition: all 0.3s ease;
         }
 
-        .cluster-tile-light {
-            background: #f4f4f4;
-            padding: 1rem;
-            border-left: 4px solid #000;
-            transition: background 0.2s;
+        .cluster-tile:hover {
+            background-color: #000;
+            color: #fff;
+            transform: translateY(-5px);
         }
 
-        .cluster-tile-light:hover {
-            background: #e0e0e0;
-        }
+        @media (max-width: 768px) {
+            .report-images-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
 
-        p {
-            margin-bottom: 1.25rem;
-            line-height: 1.7;
-            font-size: 1.0625rem;
+            .grid-item.large {
+                grid-row: span 1;
+                height: 400px;
+            }
+
+            .grid-item {
+                height: 250px;
+            }
         }
     </style>
+</head>
 
 <body>
 
@@ -73,19 +108,32 @@
     <div id="global-header"></div>
     <script src="../src/components/header-loader.js"></script>
 
-    <main class="main-container">
-        <div class="report-content">
-            <header class="section-block">
-                <h1 class="page-title">Talenti Italiani</h1>
-                <p class="page-subtitle">Piattaforma digitale per la valorizzazione del Premio Nazionale delle Arti e
-                    del sistema AFAM</p>
+    <header class="container-fluid p-0 section-block">
+        <div class="report-content pb-0">
+            <h1 class="display-4 fw-bold mb-3">Talenti Italiani</h1>
+            <p class="lead text-muted">Piattaforma digitale per la valorizzazione del Premio Nazionale delle Arti e
+                del sistema AFAM</p>
+            <div class="mb-5">
+                <p>Un progetto promosso dal MUR e coordinato da ISIA Roma Design per trasformare l'eccellenza
+                    artistica in un patrimonio digitale condiviso.</p>
+            </div>
+        </div>
 
-                <div class="highlight-text">
-                    <p>Un progetto promosso dal MUR e coordinato da ISIA Roma Design per trasformare l'eccellenza
-                        artistica in un patrimonio digitale condiviso.</p>
-                </div>
-            </header>
+        <div class="report-images-grid">
+            <div class="grid-item large">
+                <img src="images/report-00001.jpg" alt="PNA Report Main Image">
+            </div>
+            <div class="grid-item">
+                <img src="images/report-00005.jpg" alt="PNA Report Detail 1">
+            </div>
+            <div class="grid-item">
+                <img src="images/report-00007.jpg" alt="PNA Report Detail 2">
+            </div>
+        </div>
+    </header>
 
+    <main class="container">
+        <div class="report-content pt-0">
             <section class="section-block">
                 <h2 class="mb-4">Il Progetto</h2>
                 <p>La piattaforma "Talenti Italiani" nasce dall'esigenza di superare la natura episodica del Premio
@@ -93,77 +141,72 @@
                     Il progetto si articola su due pilastri fondamentali che integrano ricerca qualitativa e analisi
                     quantitativa.</p>
 
-                <div class="cds--grid cds--grid--narrow mt-4">
-                    <div class="cds--row">
-                        <div class="cds--col-lg-8 cds--col-md-4 mb-4">
-                            <cds-tile class="cluster-tile" style="height: 100%;">
-                                <h4 class="mb-3">1. Ricerca Qualitativa</h4>
-                                <p>Un’indagine approfondita attraverso interviste agli stakeholder del sistema AFAM per
-                                    identificare criticità, opportunità e visioni strategiche sul futuro del Premio.</p>
-                                <div class="mt-4">
-                                    <cds-button href="pna-report.html" kind="primary">Leggi il Report
-                                        Integrale</cds-button>
-                                </div>
-                            </cds-tile>
+                <div class="row g-4 mt-4">
+                    <div class="col-md-6">
+                        <div class="p-4 border border-dark d-flex flex-column h-100">
+                            <h4 class="fw-bold">Report di Ricerca</h4>
+                            <p class="small text-muted mb-auto">L'analisi qualitativa condotta attraverso interviste e focus group
+                                con i direttori e gli stakeholder del sistema AFAM.</p>
+                            <a href="pna-report.html" class="btn btn-dark rounded-0 mt-3 align-self-start">Leggi il Report</a>
                         </div>
-                        <div class="cds--col-lg-8 cds--col-md-4 mb-4">
-                            <cds-tile class="cluster-tile" style="height: 100%;">
-                                <h4 class="mb-3">2. Visualizzazioni Dati</h4>
-                                <p>Una mappatura interattiva dell'architettura del Premio, delle scadenze e della
-                                    distribuzione territoriale delle oltre 150 istituzioni AFAM in Italia.</p>
-                                <div class="mt-4">
-                                    <cds-button href="infografiche.html" kind="secondary">Esplora le
-                                        Infografiche</cds-button>
-                                </div>
-                            </cds-tile>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-4 border border-dark d-flex flex-column h-100">
+                            <h4 class="fw-bold">Visualizzazione Dati</h4>
+                            <p class="small text-muted mb-auto">L'integrazione dei dati quantitativi del MUR visualizzati in mappe e grafici interattivi.</p>
+                            <a href="infografiche.html" class="btn btn-dark rounded-0 mt-3 align-self-start">Esplora Dati</a>
                         </div>
                     </div>
                 </div>
             </section>
 
             <section class="section-block">
-                <h2 class="mb-4">Esplora i Cluster di Ricerca</h2>
-                <p>L'indagine ha fatto emergere 7 macro-temi che definiscono lo stato attuale e le traiettorie di
-                    sviluppo del PNA:</p>
-
-                <div class="cds--grid cds--grid--narrow">
-                    <div class="cds--row">
-                        <div class="cds--col-lg-4 cds--col-md-4 mb-3">
-                            <cds-tile href="pna-report.html#risultati" class="cluster-tile-light">
-                                <strong>Cluster 1</strong><br>Autoreferenzialità
-                            </cds-tile>
-                        </div>
-                        <div class="cds--col-lg-4 cds--col-md-4 mb-3">
-                            <cds-tile href="pna-report.html#risultati" class="cluster-tile-light">
-                                <strong>Cluster 2</strong><br>Volatilità memoria
-                            </cds-tile>
-                        </div>
-                        <div class="cds--col-lg-4 cds--col-md-4 mb-3">
-                            <cds-tile href="pna-report.html#risultati" class="cluster-tile-light">
-                                <strong>Cluster 3</strong><br>Critica al formato
-                            </cds-tile>
-                        </div>
-                        <div class="cds--col-lg-4 cds--col-md-4 mb-3">
-                            <cds-tile href="pna-report.html#risultati" class="cluster-tile-light">
-                                <strong>Cluster 4</strong><br>Costi occulti
-                            </cds-tile>
-                        </div>
-                        <div class="cds--col-lg-4 cds--col-md-4 mb-3">
-                            <cds-tile href="pna-report.html#risultati" class="cluster-tile-light">
-                                <strong>Cluster 5</strong><br>Oltre la medaglia
-                            </cds-tile>
-                        </div>
-                        <div class="cds--col-lg-4 cds--col-md-4 mb-3">
-                            <cds-tile href="pna-report.html#risultati" class="cluster-tile-light">
-                                <strong>Cluster 6</strong><br>Crisi partecipazione
-                            </cds-tile>
-                        </div>
+                <h2 class="mb-5">Esplora i Cluster di Ricerca</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <a href="pna-report.html#risultati" class="cluster-tile">
+                            <h5 class="fw-bold mb-1">Cluster 1</h5>
+                            <p class="mb-0">Autoreferenzialità</p>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="pna-report.html#risultati" class="cluster-tile">
+                            <h5 class="fw-bold mb-1">Cluster 2</h5>
+                            <p class="mb-0">Volatilità memoria</p>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="pna-report.html#risultati" class="cluster-tile">
+                            <h5 class="fw-bold mb-1">Cluster 3</h5>
+                            <p class="mb-0">Critica al formato</p>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="pna-report.html#risultati" class="cluster-tile">
+                            <h5 class="fw-bold mb-1">Cluster 4</h5>
+                            <p class="mb-0">Costi occulti</p>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="pna-report.html#risultati" class="cluster-tile">
+                            <h5 class="fw-bold mb-1">Cluster 5</h5>
+                            <p class="mb-0">Oltre la medaglia</p>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="pna-report.html#risultati" class="cluster-tile">
+                            <h5 class="fw-bold mb-1">Cluster 6</h5>
+                            <p class="mb-0">Crisi partecipazione</p>
+                        </a>
                     </div>
                 </div>
             </section>
         </div>
     </main>
 
+    <!-- Global Footer -->
+    <div id="global-footer"></div>
+    <script src="../src/components/footer-loader.js"></script>
 </body>
 
 </html>

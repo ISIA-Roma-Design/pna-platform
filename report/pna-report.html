@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report PNA</title>
+    <title>Report Premio Nazionale delle Arti - PNA</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
 
-    <!-- Carbon Web Components (Local) -->
-    <script type="module" src="../src/libs/load-carbon.js"></script>
+    <!-- Bootstrap 5.3 (Custom Theme) -->
+    <link href="../src/prototipo/assets/bootstrap-custom.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom Swiss Theme -->
     <link rel="stylesheet" href="../src/prototipo/assets/style.css">
     <link rel="stylesheet" href="assets/viz-style.css">
+
     <style>
         .report-content {
             max-width: 900px;
@@ -19,104 +22,117 @@
             padding: 4rem 2rem;
         }
 
-
         .section-block {
-            margin-bottom: 5rem;
-        }
-
-        .section-block h2 {
-            border-bottom: 2px solid #000;
-            padding-bottom: 1rem;
-            margin-bottom: 2.5rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .section-block h3 {
-            font-weight: 700;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .cluster-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .cluster-tile {
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-top: 4px solid #000;
-            background: #fff;
-        }
-
-        .evidence-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .evidence-quote {
-            font-style: italic;
-            border-left: 2px solid #ddd;
-            padding-left: 1rem;
-            margin: 0;
-            font-size: 0.9375rem;
-            color: #444;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .evidence-quote cite {
-            display: block;
-            margin-top: 1rem;
-            font-weight: 700;
-            font-style: normal;
-            font-size: 0.75rem;
-            color: #666;
-            text-transform: uppercase;
-        }
-
-        .pillar-box {
-            border-left: 6px solid #000;
-            padding-left: 2rem;
-            margin: 3rem 0;
-            background: #f8f8f8;
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-
-        .highlight-text {
-            font-size: 1.5rem;
-            line-height: 1.4;
-            font-weight: 300;
-            margin: 3rem 0;
-            color: #000;
-            border-top: 1px solid #eee;
+            padding: 4rem 0;
             border-bottom: 1px solid #eee;
-            padding: 2rem 0;
         }
 
-        p {
-            margin-bottom: 1.25rem;
-            line-height: 1.7;
-            font-size: 1.0625rem;
+        .section-block:last-child {
+            border-bottom: none;
         }
 
-        ul {
-            margin-bottom: 1.5rem;
+        .block-quote {
+            border-left: 4px solid #df101f;
+            padding-left: 2rem;
+            margin: 2.5rem 0;
+            font-style: italic;
+            color: #444;
+            position: relative;
+        }
+
+        .author-info {
+            font-weight: 700;
+            margin-top: 0.75rem;
+            display: block;
+            color: #000;
+            font-style: normal;
+        }
+
+        .cluster-number {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding-left: 0;
+            font-size: 0.9375rem;
+        }
+
+        .toc-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc-list a {
+            color: #000;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .toc-list a:hover {
+            border-color: #df101f;
+        }
+
+        .toc-sublist {
+            list-style: none;
             padding-left: 1.5rem;
+            margin-top: 0.25rem;
         }
 
-        li {
-            margin-bottom: 0.75rem;
-            line-height: 1.6;
+        .table-swiss {
+            border: 2px solid #000;
+            width: 100%;
+            margin: 2rem 0;
         }
+
+        .table-swiss th, .table-swiss td {
+            border: 1px solid #000;
+            padding: 0.75rem 1rem;
+        }
+
+        .table-swiss th {
+            background-color: #f8f9fa;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            font-weight: 800;
+        }
+
+        .download-card {
+            border: 2px solid #000;
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+            transition: all 0.2s ease;
+        }
+
+        .download-card:hover {
+            border-color: #df101f;
+            transform: translateY(-3px);
+        }
+
+        .divider-thick {
+            height: 4px;
+            background: #000;
+            margin: 4rem 0;
+            border: none;
+            opacity: 1;
+        }
+
+        h1, h2, h3, h4 { font-weight: 800; }
+        
+        /* Smooth scrolling for anchor links */
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 
@@ -126,504 +142,259 @@
     <div id="global-header"></div>
     <script src="../src/components/header-loader.js"></script>
 
-    <main class="main-container">
+    <main class="container">
         <div class="report-content">
-
-            <header class="section-block">
-                <h1 class="page-title">Report Premio Nazionale delle Arti</h1>
-                <p class="page-subtitle">Indagine qualitativa e insight dagli stakeholder AFAM per la piattaforma
-                    digitale "Talenti Italiani"</p>
-
-                <div class="highlight-text">
-                    <p>Antonello Lipori e Federico Parrella — docenti ISIA Roma Design — con la collaborazione di
-                        Valerio Pasquazi — Dottorando ISIA Roma Design / Federica Tumminello — UX-UI designer / Serena
-                        Guizzo — Studentessa in Design Sistemico per la Comunicazione — ISIA Roma Design</p>
+            <header class="section-block pt-0">
+                <h1 class="display-3 mb-4">Report Premio Nazionale delle Arti</h1>
+                <p class="h4 text-dark mb-5">Indagine qualitativa e insight dagli stakeholder AFAM per la piattaforma digitale "Talenti Italiani"</p>
+                
+                <div class="p-4 bg-light border border-dark">
+                    <h5 class="fw-bold mb-4">Sommario</h5>
+                    <ul class="toc-list">
+                        <li>1. <a href="#contesto">Contesto e razionali di progetto</a>
+                            <ul class="toc-sublist">
+                                <li>1.1 <a href="#sistema-afam">Il sistema AFAM come infrastruttura culturale</a></li>
+                                <li>1.2 <a href="#pna-strategia">Il PNA come leva strategica</a></li>
+                                <li>1.3 <a href="#principi">Principi progettuali</a></li>
+                                <li>1.4 <a href="#ricerca">Collegamento con la ricerca istituzionale</a></li>
+                            </ul>
+                        </li>
+                        <li>2. <a href="#metodologia">Metodologia della ricerca qualitativa</a></li>
+                        <li>3. <a href="#risultati">Risultati e cluster tematici emergenti</a></li>
+                        <li>4. <a href="#tesi">Tesi finale: dal rito al sistema-valore</a></li>
+                        <li>5. <a href="#sostenibilita">Sostenibilità economica</a></li>
+                        <li>6. <a href="#suggerimenti">Suggerimenti operativi</a></li>
+                        <li>7. <a href="#considerazioni">Considerazioni finali</a></li>
+                        <li>8. <a href="#infografiche-docs">Infografiche</a></li>
+                        <li><a href="#appendici">Appendici</a></li>
+                    </ul>
                 </div>
             </header>
 
-            <!-- 1. Contesto e razionali -->
+            <!-- 1. Contesto -->
             <section id="contesto" class="section-block">
-                <h2 class="mb-4">1. Contesto e razionali di progetto</h2>
-
-                <div class="mb-5">
+                <h2 class="mb-5">1. Contesto e razionali di progetto</h2>
+                
+                <div id="sistema-afam" class="mb-5">
                     <h3>1.1 Il sistema AFAM come infrastruttura culturale nazionale</h3>
-                    <p>Il sistema dell’Alta Formazione Artistica, Musicale e Coreutica (AFAM) rappresenta un unicum nel
-                        panorama internazionale: una rete capillare di eccellenze — Conservatori, Accademie di Belle
-                        Arti, Istituti Superiori per le Industrie Artistiche (ISIA), Accademia Nazionale d’Arte
-                        Drammatica e Accademia Nazionale di Danza — che costituisce la principale fucina di produzione
-                        artistica, progettuale e di ricerca del Paese.</p>
-                    <p>Il sistema AFAM si trova oggi in una fase decisiva per consolidare e comunicare in modo
-                        strutturato il proprio valore, anche alla luce dell’attivazione dei dottorati di ricerca di
-                        primo e secondo ciclo.</p>
-                    <p>Tali percorsi hanno riconosciuto pienamente l’attività di ricerca artistica, musicale e
-                        progettuale come ambito fondamentale di produzione di conoscenza. Questo passaggio segna una
-                        trasformazione profonda del sistema e ne rafforza il ruolo nello spazio nazionale e
-                        internazionale della ricerca e dell’innovazione culturale.</p>
-                    <p>Tuttavia, questa energia creativa — fatta di concerti, opere visive, performance, progetti di
-                        design e pratiche di ricerca — manca di una narrazione sistemica e di una risonanza capace di
-                        superare la temporalità dell’evento dal vivo e i confini delle singole istituzioni.</p>
+                    <p>Il sistema dell’Alta Formazione Artistica, Musicale e Coreutica (AFAM) rappresenta un unicum nel panorama internazionale: una rete capillare di eccellenze — Conservatori, Accademie di Belle Arti, Istituti Superiori per le Industrie Artistiche (ISIA), Accademia Nazionale d’Arte Drammatica e Accademia Nazionale di Danza — che costituisce la principale fucina di produzione artistica, progettuale e di ricerca del Paese.</p>
+                    <p>Il sistema AFAM si trova oggi in una fase importante per consolidare e comunicare in modo strutturato il proprio valore, anche alla luce dell’attivazione dei <strong>dottorati di ricerca di primo e secondo ciclo</strong>.</p>
+                    <p>Tali percorsi hanno riconosciuto pienamente l’attività di ricerca artistica, musicale e progettuale come ambito fondamentale di produzione di conoscenza. Questo passaggio <strong>segna una trasformazione profonda del sistema e ne rafforza il ruolo nello spazio nazionale e internazionale della ricerca e dell’innovazione culturale</strong>.</p>
+                    <p>Tuttavia, questa energia creativa — fatta di concerti, opere visive, performance, progetti di design e pratiche di ricerca — <strong>manca di una narrazione sistemica e di una risonanza capace di superare la temporalità dell’evento dal vivo</strong> e i confini delle singole istituzioni.</p>
                 </div>
 
-                <div class="mb-5">
+                <div id="pna-strategia" class="mb-5">
                     <h3>1.2 Il Premio Nazionale delle Arti come leva strategica</h3>
-                    <p>Il Premio Nazionale delle Arti (PNA) rappresenta il punto di massima eccellenza del sistema:
-                        certifica il talento che il Paese forma ed è la piattaforma privilegiata per dare visibilità
-                        sistemica all’intero AFAM.</p>
-                    <p>Il progetto “Talenti Italiani” — proposto da ISIA Roma Design e finanziato dal MUR — nasce per
-                        trasformare il PNA da evento puntuale a sistema permanente di valorizzazione, attraverso la
-                        realizzazione di una piattaforma digitale nazionale con duplice funzione:</p>
-                    <ol class="cds--list--ordered">
-                        <li><strong>Front-end (vetrina di eccellenza):</strong> hub digitale contemporaneo che proietta
-                            i talenti italiani su un palcoscenico globale, facilitando l’incontro con pubblico
-                            internazionale, mondo del lavoro e potenziali studenti esteri.</li>
-                        <li><strong>Back-end (patrimonio condiviso):</strong> archivio dinamico che documenta
-                            l’evoluzione delle arti italiane e diventa risorsa per studio, ricerca e Terza Missione.
+                    <p>Il <strong>Premio Nazionale delle Arti (PNA)</strong> rappresenta il punto di massima eccellenza del sistema: certifica il talento che il Paese forma ed è la piattaforma privilegiata per dare visibilità sistemica all’intero AFAM.</p>
+                    <p>Il progetto <strong>“Talenti Italiani”</strong> — proposto da ISIA Roma Design e finanziato dal MUR — nasce per trasformare il PNA da evento puntuale a <strong>sistema permanente di valorizzazione</strong>, attraverso la realizzazione di una <strong>piattaforma digitale nazionale</strong> con duplice funzione:</p>
+                    <ol>
+                        <li><strong>Front-end (vetrina di eccellenza):</strong> hub digitale contemporaneo che proietta i talenti italiani su un palcoscenico globale, facilitando l’incontro con pubblico internazionale, mondo del lavoro e potenziali studenti esteri.</li>
+                        <li><strong>Back-end (patrimonio condiviso):</strong> archivio dinamico che documenta l’evoluzione delle arti italiane e diventa risorsa per studio, ricerca e Terza Missione.</li>
+                    </ol>
+                </div>
+
+                <div id="principi" class="mb-5">
+                    <h3>1.3 Principi progettuali: valorizzare la complessità</h3>
+                    <p>Il progetto si fonda su tre pilastri:</p>
+                    <ol class="fw-bold">
+                        <li class="mb-3">Rispetto dei linguaggi artistici
+                            <p class="fw-normal small text-muted">Ogni disciplina deve trovare uno spazio digitale “su misura”, con standard tecnici capaci di restituire fedelmente la natura specifica delle opere (audio HD, video 4K, modelli 3D, immagini ad alta risoluzione).</p>
+                        </li>
+                        <li class="mb-3">Valorizzazione dell’autorialità
+                            <p class="fw-normal small text-muted">Modelli avanzati per la gestione dei diritti, garantendo corretta attribuzione e protezione del lavoro intellettuale.</p>
+                        </li>
+                        <li class="mb-3">Vitalità nel tempo
+                            <p class="fw-normal small text-muted">Modello di governance e design evolutivo, per garantire che la piattaforma si aggiorni con tecnologie e linguaggi dell’arte, restando sostenibile nel lungo periodo.</p>
                         </li>
                     </ol>
                 </div>
 
-                <div class="mb-5">
-                    <h3>1.3 Principi progettuali: valorizzare la complessità</h3>
-                    <p>Il progetto si fonda su tre pilastri:</p>
-                    <ol class="cds--list--ordered">
-                        <li><strong>Rispetto dei linguaggi artistici</strong>: Ogni disciplina deve trovare uno spazio
-                            digitale “su misura”, con standard tecnici capaci di restituire fedelmente la natura
-                            specifica delle opere (audio HD, video 4K, modelli 3D, immagini ad alta risoluzione).</li>
-                        <li><strong>Valorizzazione dell’autorialità</strong>: Modelli avanzati per la gestione dei
-                            diritti, garantendo corretta attribuzione e protezione del lavoro intellettuale.</li>
-                        <li><strong>Vitalità nel tempo</strong>: Modello di governance e design evolutivo, per garantire
-                            che la piattaforma si aggiorni con tecnologie e linguaggi dell’arte, restando sostenibile
-                            nel lungo periodo.</li>
-                    </ol>
-                </div>
-
-                <div class="mb-5">
+                <div id="ricerca">
                     <h3>1.4 Collegamento con la ricerca istituzionale</h3>
-                    <p>Il progetto presenta un collegamento tematico e metodologico con il Dottorato di Ricerca in
-                        “Design for Social Change” (ISIA Roma Design, in collaborazione con ISIA Faenza e ISIA Firenze).
-                    </p>
-                    <p>Il dottorato, focalizzato sul design per l’innovazione sociale e la sostenibilità, offre
-                        competenze rilevanti nello sviluppo di piattaforme digitali accessibili e inclusive, nella
-                        valorizzazione del patrimonio culturale attraverso strumenti digitali e nella progettazione di
-                        interfacce utente centrate sull’esperienza. Le tematiche del dottorato — quali l’impatto sociale
-                        del design e l’accessibilità — si riflettono negli obiettivi di ampia fruizione e valorizzazione
-                        del sistema AFAM perseguiti dalla piattaforma PNA.</p>
+                    <p>Il progetto presenta un collegamento tematico e metodologico con il <strong>Dottorato di Ricerca in “Design for Social Change”</strong> (ISIA Roma Design, in collaborazione con ISIA Faenza e ISIA Firenze).</p>
+                    <p>Il dottorato, focalizzato sul design per l’innovazione sociale e la sostenibilità, offre competenze rilevanti nello sviluppo di piattaforme digitali accessibili e inclusive, nella valorizzazione del patrimonio culturale attraverso strumenti digitali e nella progettazione di interfacce utente centrate sull’esperienza. Le tematiche del dottorato — quali l’impatto sociale del design e l’accessibilità — si riflettono negli obiettivi di ampia fruizione e valorizzazione del sistema AFAM perseguiti dalla piattaforma PNA.</p>
                 </div>
             </section>
 
             <!-- 2. Metodologia -->
             <section id="metodologia" class="section-block">
-                <h2 class="mb-4">2. Metodologia della ricerca qualitativa</h2>
-                <p>L’indagine qualitativa è stata condotta attraverso un ciclo di interviste individuali (one-to-one),
-                    realizzate in modalità telematica nell’arco temporale compreso tra ottobre e dicembre 2025. Il panel
-                    degli intervistati è stato composto da figure di rilievo afferenti ai diversi settori
-                    artistico-disciplinari dell’AFAM. La selezione dei partecipanti ha seguito un criterio strategico:
-                    sono stati coinvolti attori che, avendo partecipato attivamente alle precedenti edizioni del Premio
-                    Nazionale delle Arti con ruoli e responsabilità differenti, possiedono una memoria storica
-                    dell’evento e una visione privilegiata sulle sue criticità ed evoluzioni.</p>
-                <p>Tale campionamento mirato ha permesso di garantire una rappresentatività eterogenea, coprendo le
-                    diverse anime del sistema per restituire una fotografia fedele della complessità del PNA.</p>
+                <h2 class="mb-5">2. Metodologia della ricerca qualitativa</h2>
+                <p>L’indagine qualitativa è stata condotta attraverso un ciclo di interviste individuali (one-to-one), realizzate in modalità telematica nell’arco temporale compreso tra ottobre e dicembre 2025. Il panel degli intervistati è stato composto da figure di rilievo afferenti ai diversi settori artistico-disciplinari dell’AFAM.</p>
+                <p>La selezione dei partecipanti ha seguito un criterio strategico: sono stati coinvolti attori che, avendo partecipato attivamente alle precedenti edizioni del Premio Nazionale delle Arti con ruoli e responsabilità differenti, possiedono una memoria storica dell’evento e una visione privilegiata sulle sue criticità ed evoluzioni.</p>
 
-                <div class="mb-5">
-                    <h3>2.1 Tecnica: intervista semi-strutturata</h3>
-                    <p>È stata adottata l’intervista semi-strutturata per la capacità di coniugare flessibilità e
-                        rigore. Questa tecnica consente di:</p>
-                    <ol class="cds--list--ordered">
-                        <li>Lasciare libertà di espressione agli intervistati</li>
-                        <li>Mantenere focus sugli obiettivi di ricerca tramite una traccia predefinita</li>
-                        <li>Garantire omogeneità e comparabilità delle informazioni raccolte</li>
-                    </ol>
-                    <p>Il ruolo del conduttore è stato quello di accompagnare l’intervistato in una conversazione aperta
-                        e priva di pregiudizi, utilizzando una traccia di domande predefinita per mantenere coerenza
-                        metodologica e permettere successiva analisi comparativa.</p>
-                </div>
+                <h3 class="mt-5">2.1 Tecnica: intervista semi-strutturata</h3>
+                <p>È stata adottata l’intervista semi-strutturata per la capacità di coniugare flessibilità e rigore. Questa tecnica consente di:</p>
+                <ol>
+                    <li>Lasciare libertà di espressione agli intervistati</li>
+                    <li>Mantenere focus sugli obiettivi di ricerca tramite una traccia predefinita</li>
+                    <li>Garantire omogeneità e comparabilità delle informazioni raccolte</li>
+                </ol>
 
-                <div class="mb-5">
-                    <h3>2.2 Modalità e tempi</h3>
-                    <table class="cds--data-table cds--data-table--compact mb-4">
-                        <thead>
-                            <tr>
-                                <th>Periodo</th>
-                                <th>ottobre–dicembre 2025</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Modalità</td>
-                                <td>interviste qualitative one-to-one, condotte in remoto</td>
-                            </tr>
-                            <tr>
-                                <td>Numero interviste</td>
-                                <td>9</td>
-                            </tr>
-                            <tr>
-                                <td>Durata media</td>
-                                <td>40-70 minuti per intervista</td>
-                            </tr>
-                            <tr>
-                                <td>Privacy</td>
-                                <td>consenso informato firmato da tutti i partecipanti</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <h3 class="mt-5">2.2 Modalità e tempi</h3>
+                <table class="table-swiss">
+                    <thead>
+                        <tr>
+                            <th>Voce</th>
+                            <th>Dettaglio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Periodo</strong></td><td>ottobre–dicembre 2025</td></tr>
+                        <tr><td><strong>Modalità</strong></td><td>interviste qualitative one-to-one, condotte in remoto</td></tr>
+                        <tr><td><strong>Numero interviste</strong></td><td>9</td></tr>
+                        <tr><td><strong>Durata media</strong></td><td>40-70 minuti per intervista</td></tr>
+                        <tr><td><strong>Privacy</strong></td><td>consenso informato firmato da tutti i partecipanti</td></tr>
+                    </tbody>
+                </table>
 
-                <div class="mb-5">
-                    <h3>2.3 Obiettivi dell’indagine</h3>
-                    <p>Questa fase di ricerca è stata concepita per dare seguito operativo agli spunti iniziali del
-                        progetto, con l’obiettivo primario di:</p>
-                    <ol class="cds--list--ordered">
-                        <li>Identificare criticità attuali del Premio Nazionale delle Arti</li>
-                        <li>Validare aspettative e opportunità di progettazione</li>
-                        <li>Far emergere caratteristiche ricorrenti e pattern comuni tra i diversi interlocutori</li>
-                        <li>Mappare motivazioni e punti di attenzione degli stakeholder</li>
-                    </ol>
-                </div>
+                <h3 class="mt-5">2.3 Obiettivi dell’indagine</h3>
+                <p>Questa fase di ricerca è stata concepita per dare seguito operativo agli spunti iniziali del progetto:</p>
+                <ul class="fw-bold">
+                    <li>Identificare criticità attuali del PNA</li>
+                    <li>Validare aspettative e opportunità</li>
+                    <li>Far emergere pattern comuni</li>
+                    <li>Mappare motivazioni degli stakeholder</li>
+                </ul>
 
-                <div class="mb-5">
-                    <h3>2.4 Campione di riferimento</h3>
-                    <table class="cds--data-table cds--data-table--compact mb-4">
-                        <thead>
-                            <tr>
-                                <th>Genere</th>
-                                <th>Fascia d'età</th>
-                                <th>Settore</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Donna</td>
-                                <td>60+</td>
-                                <td>Teatro</td>
-                            </tr>
-                            <tr>
-                                <td>Uomo</td>
-                                <td>60+</td>
-                                <td>Conservatori</td>
-                            </tr>
-                            <tr>
-                                <td>Uomo</td>
-                                <td>60+</td>
-                                <td>Conservatori</td>
-                            </tr>
-                            <tr>
-                                <td>Uomo</td>
-                                <td>60+</td>
-                                <td>ISIA</td>
-                            </tr>
-                            <tr>
-                                <td>Uomo</td>
-                                <td>60+</td>
-                                <td>Conservatori</td>
-                            </tr>
-                            <tr>
-                                <td>Donna</td>
-                                <td>50-60</td>
-                                <td>Danza</td>
-                            </tr>
-                            <tr>
-                                <td>Uomo</td>
-                                <td>40-50</td>
-                                <td>ISIA</td>
-                            </tr>
-                            <tr>
-                                <td>Uomo</td>
-                                <td>40-50</td>
-                                <td>ISIA</td>
-                            </tr>
-                            <tr>
-                                <td>Uomo</td>
-                                <td>40-50</td>
-                                <td>ABA</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p>Criterio di selezione: campionamento strategico (purposive sampling) basato su attori che hanno
-                        partecipato attivamente alle precedenti edizioni del PNA con ruoli e responsabilità differenti.
-                    </p>
-                    <p>La selezione ha garantito:</p>
-                    <ul class="cds--list--unordered">
-                        <li>Memoria storica dell’evento e delle sue evoluzioni</li>
-                        <li>Visione privilegiata su criticità operative e gestionali</li>
-                        <li>Rappresentatività eterogenea dei diversi settori AFAM</li>
-                        <li>Esperienza diretta sia nella fase di candidatura che di valutazione</li>
-                    </ul>
-                    <p>Limiti del campione (riconosciuti):</p>
-                    <ul class="cds--list--unordered">
-                        <li>Sbilanciamento di genere: 6 uomini / 2 donne (75% / 25%)</li>
-                        <li>Età: forte concentrazione su fascia 60+, con due sole presenze under-50</li>
-                        <li>Settori: sovra rappresentazione di Interpretazione musicale (3), Design (3), Arti dello
-                            Spettacolo (2), bassa rappresentazione di Arti Visive (1)</li>
-                        <li>Numerosità: per un sistema così complesso, 9 interviste rappresentano una fotografia
-                            parziale, ma utile per avviare le fasi successive.</li>
-                    </ul>
-                    <p>Tuttavia, la saturazione teorica (Glaser & Strauss, 1967) su alcuni temi chiave è stata
-                        raggiunta: a partire dalla quinta-sesta intervista, le risposte hanno mostrato convergenza
-                        elevata senza far emergere nuovi pattern significativi, validando la consistenza dei cluster
-                        identificati.</p>
-                </div>
+                <h3 class="mt-5">2.4 Campione di riferimento</h3>
+                <table class="table-swiss">
+                    <thead>
+                        <tr>
+                            <th>Genere</th>
+                            <th>Fascia d'età</th>
+                            <th>Settore</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Donna</td><td>60+</td><td>Teatro</td></tr>
+                        <tr><td>Uomo</td><td>60+</td><td>Conservatori</td></tr>
+                        <tr><td>Uomo</td><td>60+</td><td>Conservatori</td></tr>
+                        <tr><td>Uomo</td><td>60+</td><td>ISIA</td></tr>
+                        <tr><td>Uomo</td><td>60+</td><td>Conservatori</td></tr>
+                        <tr><td>Donna</td><td>50-60</td><td>Danza</td></tr>
+                        <tr><td>Uomo</td><td>40-50</td><td>ISIA</td></tr>
+                        <tr><td>Uomo</td><td>40-50</td><td>ISIA</td></tr>
+                        <tr><td>Uomo</td><td>40-50</td><td>ABA</td></tr>
+                    </tbody>
+                </table>
+                <p class="small text-muted mt-3"><strong>Criterio di selezione:</strong> campionamento strategico (purposive sampling) basato su soggetti con memoria storica dell’evento e visione privilegiata sulle criticità.</p>
 
-                <div class="mb-5">
-                    <h3>2.5 Analisi dei dati</h3>
-                    <p>L’elaborazione è avvenuta attraverso un approccio metodologico integrato che ha incrociato due
-                        livelli di documentazione:</p>
-                    <p><strong>Fase 1: trascrizione e codifica</strong></p>
-                    <ul class="cds--list--unordered">
-                        <li>Trascrizione integrale verbatim delle interviste</li>
-                        <li>Prima codifica tematica (open coding) per identificare unità di significato</li>
-                        <li>Creazione di una matrice comparativa cross-case</li>
-                    </ul>
-                    <p><strong>Fase 2: analisi dei contenuti</strong></p>
-                    <ul class="cds--list--unordered">
-                        <li>Mappatura strutturata dei temi chiave per area disciplinare</li>
-                        <li>Identificazione di pattern ricorrenti attraverso confronto incrociato dei transcript</li>
-                        <li>Clusterizzazione delle convergenze in macro-temi (axial coding)</li>
-                    </ul>
-                    <p><strong>Fase 3: validazione</strong></p>
-                    <ul class="cds--list--unordered">
-                        <li>Triangolazione: confronto tra analisi tematica e citazioni letterali</li>
-                        <li>Verifica della consistenza dei cluster emersi</li>
-                        <li>Filtraggio delle opinioni soggettive per far emergere criticità e visioni condivise
-                            trasversalmente</li>
-                    </ul>
-                    <p>Questo metodo a doppio binario (analisi + validazione testuale) ha garantito rigore metodologico
-                        e ha permesso di trasformare le singole testimonianze in evidenze strutturate per orientare le
-                        scelte progettuali.</p>
+                <h3 class="mt-5">2.5 Analisi dei dati</h3>
+                <div class="row g-4 mt-2">
+                    <div class="col-md-4">
+                        <div class="p-3 border border-dark h-100">
+                            <h6 class="fw-bold">Fase 1</h6>
+                            <p class="small mb-0">Trascrizione integrale verbatim e prima codifica tematica (open coding).</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 border border-dark h-100">
+                            <h6 class="fw-bold">Fase 2</h6>
+                            <p class="small mb-0">Mappatura strutturata per area disciplinare e clusterizzazione (axial coding).</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 border border-dark h-100">
+                            <h6 class="fw-bold">Fase 3</h6>
+                            <p class="small mb-0">Triangolazione tra analisi tematica e citazioni letterali (validazione).</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!-- 3. Risultati e Cluster -->
+            <!-- 3. Risultati -->
             <section id="risultati" class="section-block">
+                <hr class="divider-thick">
                 <h2 class="mb-5">3. Risultati e cluster tematici emergenti</h2>
-                <p>Dall’analisi incrociata delle trascrizioni delle interviste condotte con i referenti e gli esperti
-                    delle istituzioni AFAM, sono emersi pattern ricorrenti che permettono di raggruppare le risposte in
-                    macro-cluster tematici. Di seguito vengono esposte le convergenze rilevate, supportate dalle parole
-                    esatte degli intervistati.</p>
+                <p class="lead mb-5">Dall’analisi incrociata delle trascrizioni sono emersi pattern ricorrenti raggruppabili in macro-cluster tematici.</p>
 
-                <div class="mb-5">
+                <div class="cluster-block mb-5">
                     <span class="cluster-number">CLUSTER 1</span>
-                    <h3 class="mt-0">Autoreferenzialità e “circuito chiuso”</h3>
-                    <p>Il PNA è percepito come un evento confinato dentro il perimetro accademico (“recinto”), incapace
-                        di conferire un valore curriculare spendibile nel mercato del lavoro reale. La mancanza di una
-                        strategia comunicativa centralizzata e di un’identità visiva coordinata tra le edizioni è
-                        identificata come causa primaria di questo isolamento.</p>
-                    <p>Questo fenomeno può essere interpretato attraverso la teoria del capitale simbolico di Pierre
-                        Bourdieu (1986): il premio genera valore solo all’interno del campo accademico AFAM, ma non
-                        riesce a convertire questo riconoscimento in capitale sociale ed economico spendibile nel campo
-                        professionale esterno.</p>
-
-                    <h4 class="mt-4">Il “Recinto AFAM” come limite identitario multiplo</h4>
-                    <p>Il termine “recinto” emerge come metafora della chiusura del sistema. Il premio non è
-                        riconosciuto dal mercato del lavoro, dai media o dalle istituzioni culturali nazionali. Rimane
-                        un evento “per addetti ai lavori” che non genera opportunità concrete post-premiazione.</p>
-                    <div class="evidence-grid">
-                        <blockquote class="evidence-quote">
-                            «Rimane un premio interessante per lo studente, ma nel curriculum non aggiunge molto, non è
-                            una pietra miliare... è una cosa interna riservata agli studenti AFAM»
-                            <cite>— Esperto 1, ambito Interpretazione Musicale</cite>
-                        </blockquote>
-                        <blockquote class="evidence-quote">
-                            «Non potremmo mai pensare di dare un premio Busoni all'interno dell'AFAM perché partiamo già
-                            perdenti. Quello è un concorso professionale di gente che già suona, pianisti affermati.»
-                            <cite>— Esperto 1, ambito Interpretazione Musicale</cite>
-                        </blockquote>
+                    <h3>Autoreferenzialità e “circuito chiuso”</h3>
+                    <p>Il PNA è percepito come evento <strong>confinato dentro il perimetro accademico</strong> (“recinto”), incapace di conferire un valore curriculare spendibile nel mercato del lavoro reale. La mancanza di strategia comunicativa centralizzata è causa primaria dell’isolamento.</p>
+                    
+                    <div class="block-quote">
+                        «Rimane un premio interessante per lo studente, ma nel curriculum non aggiunge molto, non è una pietra miliare... è una cosa interna riservata agli studenti AFAM»
+                        <span class="author-info">— Esperto 1, ambito Interpretazione Musicale</span>
                     </div>
 
-                    <h4 class="mt-4">L'esclusione delle istituzioni non statali</h4>
-                    <p>Emerge inoltre un limite strutturale legato alla partecipazione: l’esclusione <em>de facto</em> o
-                        la mancata incentivazione delle Accademie legalmente riconosciute non statali (NABA, IED, RUFA,
-                        etc.), che riduce la competitività reale del premio e lo allontana dagli standard internazionali
-                        di eccellenza artistica.</p>
-                    <blockquote class="evidence-quote mb-4">
-                        «Le Accademie legalmente riconosciute non statali avevano riscontrato problemi e si sentivano
-                        "non gradite". [...] La partecipazione effettiva è rimasta centrata sulle venticinque Accademie
-                        pubbliche.»
-                        <cite>— Esperto 4, ambito Arti Visive</cite>
-                    </blockquote>
-
-                    <h4 class="mt-4">Emerge un episodio ricorrente che cristallizza l’autoreferenzialità del sistema
-                    </h4>
-                    <p>In diverse edizioni, il verbale di giuria ha riportato la dicitura: “visto il livello dei
-                        partecipanti, la giuria decide di non assegnare il primo premio”. Questo atto, sebbene rigoroso
-                        dal punto di vista accademico, è percepito come un fallimento comunicativo: un premio che non
-                        assegna il primo premio comunica all'esterno un'immagine di mediocrità del sistema stesso.</p>
-                    <blockquote class="evidence-quote mb-4">
-                        «Se il Ministero comunica che per due anni non è stato assegnato il primo premio in una
-                        categoria, sta dicendo al mondo che le nostre scuole sono scarse. È un suicidio d'immagine.»
-                        <cite>— Esperto 5, ambito Design</cite>
-                    </blockquote>
-
-                    <h4 class="mt-4">Gli studenti non si autocandidano e la dinamica è trainata dai docenti</h4>
-                    <p>La partecipazione non nasce da un desiderio spontaneo degli studenti, ma da una spinta dei
-                        docenti. Questo trasforma il PNA da opportunità di carriera in un "adempimento accademico",
-                        svuotandolo di energia competitiva.</p>
-                    <blockquote class="evidence-quote mb-4">
-                        «Il PNA è visto come una "cosa dei professori". Gli studenti non sentono il premio come un loro
-                        palcoscenico, ma come un compito da svolgere per l'istituzione.»
-                        <cite>— Esperto 3, ambito Design</cite>
-                    </blockquote>
+                    <div class="block-quote">
+                        «La sfida principale del PNA è la sua scarsa visibilità esterna. Attualmente, è un evento a "circuito chiuso", noto internamente alle istituzioni AFAM e ai partecipanti, ma sconosciuto al grande pubblico e ai professionisti.»
+                        <span class="author-info">— Esperto 3, ambito Design</span>
+                    </div>
                 </div>
 
-                <div class="mb-5">
+                <div class="cluster-block mb-5">
                     <span class="cluster-number">CLUSTER 2</span>
-                    <h3 class="mt-0">Volatilità della memoria — la piattaforma come “volano”</h3>
-                    <p>Non esiste un archivio centralizzato e permanente del PNA. Le edizioni passate sono documentate
-                        su mini-siti istituzionali che, terminato il mandato dell’organizzatore, spesso cessano di
-                        esistere. I materiali sono dispersi, i vincitori non hanno modo di dimostrare il riconoscimento
-                        ottenuto nel tempo.</p>
-
-                    <h4 class="mt-4">L'assenza di un archivio storico istituzionale</h4>
-                    <p>La dispersione dei dati è fisica (traslochi ministeriali) e digitale (siti off-line). Questo
-                        impedisce di tracciare le carriere dei "Talenti Italiani" e di costruire una narrazione di
-                        eccellenza nel lungo periodo.</p>
-                    <div class="evidence-grid">
-                        <blockquote class="evidence-quote">
-                            «Le istituzioni usano i fondi ministeriali per costruire il premio, ma poi nel tempo viene
-                            tutto un po’ perso. È difficile reperire il materiale, non rimane grande traccia.»
-                            <cite>— Esperto 5, ambito Design</cite>
-                        </blockquote>
-                        <blockquote class="evidence-quote">
-                            «I mini-siti realizzati per il PNA sono spesso decaduti. I siti delle passate edizioni oggi
-                            non sono più reperibili.»
-                            <cite>— Esperto 4, ambito Arti Visive</cite>
-                        </blockquote>
-                        <blockquote class="evidence-quote">
-                            «Si è perso molto materiale quando si è passati dalla sede del Ministero dell’Università
-                            all’EUR all’attuale sede.»
-                            <cite>— Esperto 7, ambito Design</cite>
-                        </blockquote>
+                    <h3>Volatilità della memoria — la piattaforma come “volano”</h3>
+                    <p>Non esiste un archivio centralizzato del PNA. L’archiviazione dei materiali è in capo alle istituzioni, difficilmente reperibili e quasi mai digitalizzati. I mini-siti realizzati per le singole edizioni “sono tutti crollati”.</p>
+                    <p>La piattaforma digitale viene richiesta <strong>non come archivio statico</strong>, ma come <strong>strumento attivo</strong> per proiettare i vincitori verso l’esterno e preservare il valore dell’investimento pubblico.</p>
+                    
+                    <div class="block-quote">
+                        «Le istituzioni usano i fondi ministeriali per costruire il premio, ma poi nel tempo viene tutto un po’ perso. È difficile reperire il materiale, non rimane grande traccia.»
+                        <span class="author-info">— Esperto 5, ambito Design</span>
                     </div>
 
-                    <p class="mt-4">La piattaforma digitale è vista non solo come archivio, ma come "volano" per creare
-                        una comunità di pratica tra vincitori, istituzioni e professionisti del settore.</p>
+                    <div class="block-quote">
+                        «Valorizzarlo come punto di lancio per l’esterno, questo sì, questo si può fare molto bene secondo me.»
+                        <span class="author-info">— Esperto 1, ambito Interpretazione Musicale</span>
+                    </div>
                 </div>
 
-                <div class="mb-5">
+                <div class="cluster-block mb-5">
                     <span class="cluster-number">CLUSTER 3</span>
-                    <h3 class="mt-0">Critica al formato — benchmark impossibili e anarchia grafica</h3>
-                    <p>Il format del PNA è percepito come obsoleto e non più coerente con l’evoluzione dell’offerta
-                        formativa AFAM. In particolare, mentre nelle Accademie il 70% degli studenti studia arti
-                        applicate, le categorie del PNA restano ancorate al modello pittura-scultura.</p>
-
-                    <h4 class="mt-4">Il ritardo rispetto all'evoluzione disciplinare</h4>
-                    <p>La suddivisione tradizionale del premio non rispecchia la realtà della produzione artistica
-                        contemporanea e dei nuovi corsi di studio (Nuove tecnologie, Design, Comunicazione).</p>
-                    <div class="evidence-grid">
-                        <blockquote class="evidence-quote">
-                            «La divisione pittura, scultura e scenografia è una suddivisione fortemente superata dal
-                            mondo delle arti, che utilizza molti più modelli espressivi rispetto a quelli della
-                            tradizione.»
-                            <cite>— Esperto 7, ambito Design</cite>
-                        </blockquote>
-                        <blockquote class="evidence-quote">
-                            «In molte Accademie oggi il rapporto tra arti visive e arti applicate è stimato a 30/70, con
-                            numeri consistenti in graphic design.»
-                            <cite>— Esperto 4, ambito Arti Visive</cite>
-                        </blockquote>
+                    <h3>Critica al formato — benchmark, obsolescenza e anarchia grafica</h3>
+                    <p>Il format del PNA è percepito come <strong>obsoleto, incoerente e autoreferenziale</strong>. Nelle Accademie di Belle Arti il 70% degli studenti studia oggi arti applicate, ma le categorie del PNA restano ancorate al modello tradizionale (pittura, scultura, decorazione).</p>
+                    <p>A questo si aggiunge l’<strong>anarchia grafica</strong>: ogni edizione ha un’identità visiva diversa, spesso di bassa qualità, impedendo il consolidamento di un marchio riconoscibile.</p>
+                    
+                    <div class="block-quote">
+                        «La divisione pittura, scultura e scenografia è una suddivisione fortemente superata dal mondo delle arti, che utilizza molti più modelli espressivi rispetto a quelli della tradizione.»
+                        <span class="author-info">— Esperto 7, ambito Design</span>
                     </div>
 
-                    <h4 class="mt-4">L'assenza di un'identità visiva coordinata</h4>
-                    <p>Ogni edizione ha un logo, un nome e una grafica differente, rendendo il premio irriconoscibile
-                        come brand unitario nazionale.</p>
-                    <blockquote class="evidence-quote mb-4">
-                        «Nello stesso anno trovi 10 immagini diverse... Ognuno non ha adottato coerenza né di nome né
-                        visuale. Non è il caso di creare un marchio unico?»
-                        <cite>— Esperto 5, ambito Design</cite>
-                    </blockquote>
-
-                    <h4 class="mt-4">Il confronto con i premi professionali esterni</h4>
-                    <p>Il tentativo di imitare i grandi premi internazionali (es. Busoni per la musica) senza averne il
-                        prestigio o la dotazione finanziaria è visto come un limite auto-imposto.</p>
-                    <blockquote class="evidence-quote mb-4">
-                        «Puntare sull'eccellenza "professionale" ci mette in competizione con premi che hanno storie e
-                        risorse diverse. Noi dovremmo puntare sulla specificità della ricerca AFAM.»
-                        <cite>— Esperto 1, ambito Interpretazione Musicale</cite>
-                    </blockquote>
+                    <div class="block-quote">
+                        «Nello stesso anno trovi 10 immagini diverse, PNA danza, PNA... se nello stesso anno si fa una ricerca sul web si trova di tutto e ci si confonde facilmente.»
+                        <span class="author-info">— Esperto 5, ambito Design</span>
+                    </div>
                 </div>
 
-                <div class="mb-5">
+                <div class="cluster-block mb-5">
                     <span class="cluster-number">CLUSTER 4</span>
-                    <h3 class="mt-0">Il costo nascosto dell’organizzazione e il peso invisibile</h3>
-                    <p>Il PNA genera un carico organizzativo ed economico significativo per le istituzioni ospitanti.
-                        Spesso le risorse ministeriali sono tardive o insufficienti, costringendo gli istituti a farsi
-                        carico dei costi vivi (allestimenti, trasporti, ospitalità).</p>
-
-                    <h4 class="mt-4">La resistenza delle istituzioni a candidarsi</h4>
-                    <p>Mancando un riconoscimento di carriera per chi organizza e risorse dedicate, molte istituzioni
-                        vedono il PNA come un "peso" invece che come un'opportunità di prestigio.</p>
-                    <div class="evidence-grid">
-                        <blockquote class="evidence-quote">
-                            «Fare il PNA non è visto dagli istituti come una cosa facile e comoda, perché sei sotto i
-                            riflettori e le critiche. Quindi non c’è la corsa a farlo, ma c’è la corsa a non farlo.»
-                            <cite>— Esperto 5, ambito Design</cite>
-                        </blockquote>
+                    <h3>Il costo nascosto dell’organizzazione e il peso invisibile</h3>
+                    <p>Il PNA genera un carico organizzativo ed economico significativo per le istituzioni ospitanti, senza un riconoscimento adeguato né risorse ministeriali dedicate.</p>
+                    <div class="block-quote">
+                        «Fare il PNA non è visto dagli istituti come una cosa facile e comoda, perché sei sotto i riflettori e le critiche. Quindi non c’è la corsa a farlo, ma c’è la corsa a non farlo.»
+                        <span class="author-info">— Esperto 5, ambito Design</span>
                     </div>
-
-                    <h4 class="mt-4">Il problema del rimborso spese per studenti e giurati</h4>
-                    <p>L'assenza di borse per la partecipazione o rimborsi spese per gli studenti svantaggiati o
-                        residenti lontano dalla sede del premio limita l'inclusività e la partecipazione effettiva.</p>
                 </div>
 
-                <div class="mb-5">
+                <div class="cluster-block mb-5">
                     <span class="cluster-number">CLUSTER 5</span>
-                    <h3 class="mt-0">Oltre la medaglia — il problema dei premi simbolici</h3>
-                    <p>Il declino della partecipazione studentesca è legato anche all’assenza di riconoscimenti
-                        tangibili e spendibili professionalmente. Vincere il PNA spesso si riduce a un riconoscimento
-                        simbolico che non produce concerti, mostre o opportunità lavorative.</p>
-
-                    <h4 class="mt-4">La richiesta di premialità concrete e artistiche</h4>
-                    <p>Gli studenti sono alla ricerca di opportunità di visibilità reale e di contatti con il mondo del
-                        lavoro, non solo di diplomi o medaglie.</p>
-                    <div class="evidence-grid">
-                        <blockquote class="evidence-quote">
-                            «Non tanto i premi in denaro, ma quello che interessa poi agli studenti, cioè delle
-                            occasioni di fare concerti.»
-                            <cite>— Esperto 6, ambito Interpretazione Musicale</cite>
-                        </blockquote>
-                        <blockquote class="evidence-quote">
-                            «Uno studente che vince a 22 anni vuole suonare, vuole che il suo nome circoli. Se gli dai
-                            solo la targa, dopo una settimana è tutto finito.»
-                            <cite>— Esperto 1, ambito Interpretazione Musicale</cite>
-                        </blockquote>
+                    <h3>Oltre la medaglia il problema dei premi simbolici</h3>
+                    <p>Il declino della partecipazione studentesca è legato anche all’<strong>assenza di riconoscimenti tangibili</strong>. Vincere il PNA non produce opportunità concrete (concerti, mostre, residenze, contratti) a differenza di altri premi.</p>
+                    <div class="block-quote">
+                        «Non tanto i premi in denaro, ma [...] quello che interessa poi agli studenti, cioè delle occasioni di fare concerti.»
+                        <span class="author-info">— Esperto 6, ambito Interpretazione Musicale</span>
                     </div>
                 </div>
 
-                <div class="mb-5">
+                <div class="cluster-block mb-5">
                     <span class="cluster-number">CLUSTER 6</span>
-                    <h3 class="mt-0">La crisi della partecipazione e il disinteresse nei giovani</h3>
-                    <p>Si registra una bassa partecipazione studentesca dovuta a una mancanza di valore percepito del
-                        premio e a una certa sfiducia generazionale. Gli studenti non percepiscono il PNA come
-                        un’opportunità propria, ma come una "cosa dei professori".</p>
-
-                    <h4 class="mt-4">Il declino del prestigio percepito</h4>
-                    <p>Il premio ha perso la capacità di catalizzare l'entusiasmo delle nuove generazioni, che lo vedono
-                        come un meccanismo burocratico interno.</p>
-                    <div class="evidence-grid">
-                        <blockquote class="evidence-quote">
-                            «Il percepito degli studenti è andato un po’ in declino negli ultimi anni [...] C’è stata
-                            una certa difficoltà da parte del sistema a catalizzare.»
-                            <cite>— Esperto 6, ambito Interpretazione Musicale</cite>
-                        </blockquote>
+                    <h3>La crisi della partecipazione e il disinteresse nei giovani</h3>
+                    <p>Gli studenti non percepiscono il PNA come un’opportunità. La bassa partecipazione non è solo un problema di comunicazione, ma di <strong>mancanza di valore percepito</strong>.</p>
+                    <div class="block-quote">
+                        «Il percepito degli studenti è andato un po’ in declino negli ultimi anni rispetto al Premio Nazionale delle Arti. Questo va riconosciuto.»
+                        <span class="author-info">— Esperto 6, ambito Interpretazione Musicale</span>
                     </div>
                 </div>
 
-                <div class="mb-5">
+                <div class="cluster-block mb-5">
                     <span class="cluster-number">CLUSTER 7</span>
-                    <h3 class="mt-0">Il problema dei materiali e degli standard tecnici</h3>
-                    <p>Ogni edizione e ogni istituzione organizzatrice richiede materiali e formati diversi per le
-                        candidature, rendendo impossibile l’archiviazione coerente e la valorizzazione dei progetti su
-                        una piattaforma nazionale. Non esistono linee guida nazionali vincolanti per la produzione dei
-                        materiali di candidatura.</p>
-
-                    <h4 class="mt-4">L'urgenza di standardizzazione digitale</h4>
-                    <p>Per costruire un archivio storico efficace, è necessario definire standard tecnici comuni per
-                        tutte le edizioni.</p>
-                    <div class="evidence-grid">
-                        <blockquote class="evidence-quote">
-                            «Bisogna capire quali sono gli standard necessari per poter portare il progetto in una sorta
-                            di archivio storico.»
-                            <cite>— Esperto 7, ambito Design</cite>
-                        </blockquote>
+                    <h3>Il problema dei materiali e degli standard tecnici</h3>
+                    <p>Ogni edizione richiede materiali diversi, rendendo impossibile l’archiviazione coerente. Non esistono linee guida nazionali vincolanti.</p>
+                    <div class="block-quote">
+                        «I materiali spesso sono stati inviati via email, come schede riassuntive e poi delle tavole fisiche... Tutta questa fase è sempre stata molto scomoda.»
+                        <span class="author-info">— Esperto 5, ambito Design</span>
                     </div>
                 </div>
             </section>
@@ -631,352 +402,174 @@
             <!-- 4. Tesi Finale -->
             <section id="tesi" class="section-block">
                 <h2 class="mb-5">4. Tesi finale: dal rito interno al sistema-valore</h2>
-                <p>Dall’analisi emerge una tesi unitaria e urgente. Il PNA soffre di una profonda crisi di
-                    posizionamento identitario e comunicativo.</p>
-
-                <div class="mb-5">
-                    <h3>4.1 La diagnosi: il triplice paradosso</h3>
-                    <p>Il premio è attualmente intrappolato in tre contraddizioni strutturali che ne limitano
-                        l’efficacia:</p>
-                    <ul class="cds--list--unordered">
-                        <li><strong>Paradosso della visibilità</strong>: grande investimento organizzativo (sia pubblico
-                            che delle singole istituzioni), ma scarso ritorno reputazionale e d'immagine. Il PNA “non
-                            scalda il cuore” perché è percepito come invisibile sia all’esterno sia all’interno stesso
-                            delle istituzioni.</li>
-                        <li><strong>Paradosso della memoria</strong>: si produce eccellenza documentata (vincitori che
-                            diventano docenti, artisti affermati, professionisti di successo), ma si disperde ogni
-                            traccia appena conclusa l’edizione. Manca la narrazione longitudinale che dimostri che
-                            “vincere il PNA conta”.</li>
-                        <li><strong>Paradosso del format</strong>: si cerca di imitare la struttura dei grandi concorsi
-                            professionali (es. Busoni, Paganini, Biennale) ma senza averne le risorse, il target o
-                            l’ecosistema di opportunità concrete.</li>
-                    </ul>
+                <div class="highlight-text border-dark border-start ps-4 mb-5">
+                    <p>Il PNA soffre di una profonda crisi di posizionamento. Deve evolvere da rito burocratico annuale a infrastruttura permanente di talent management.</p>
                 </div>
 
-                <div class="mb-5">
-                    <h3>4.2 La strategia: tre pilastri per la trasformazione</h3>
-                    <p>La richiesta unanime emersa dalle interviste non è di natura tecnica, ma strategica e culturale.
-                        La piattaforma deve agire su tre fronti:</p>
+                <h3>4.1 La diagnosi: il triplice paradosso</h3>
+                <ul>
+                    <li class="mb-3"><strong>Paradosso della visibilità:</strong> Investimento pubblico invisibile all'esterno.</li>
+                    <li class="mb-3"><strong>Paradosso della memoria:</strong> Eccellenza documentata che si disperde ogni anno.</li>
+                    <li class="mb-3"><strong>Paradosso del format:</strong> Imitazione di concorsi professionali senza averne le risorse.</li>
+                </ul>
 
-                    <div class="pillar-box">
-                        <h4>Pilastro 1 — La piattaforma come “agente attivo”</h4>
-                        <p>Non deve essere un archivio statico, ma un sistema vivente che agisce come:</p>
-                        <ul class="cds--list--unordered">
-                            <li>Ufficio stampa permanente del sistema AFAM verso l'esterno</li>
-                            <li>Standardizzatore di eccellenza riconosciuto dal mercato del lavoro</li>
-                            <li>Sezione di referenza dell'eccellenza dei progetti, degli studenti e dei ricercatori nel
-                                sistema</li>
-                        </ul>
+                <h3 class="mt-5">4.2 La strategia: tre pilastri per la trasformazione</h3>
+                <div class="row g-4 mt-2">
+                    <div class="col-md-4">
+                        <div class="p-4 bg-dark text-white h-100">
+                            <h6 class="fw-bold text-uppercase">Pilastro 1</h6>
+                            <p class="small">La piattaforma come agente attivo e certificatore di eccellenza.</p>
+                        </div>
                     </div>
-
-                    <div class="pillar-box">
-                        <h4>Pilastro 2 — Visibilità integrata e multicanale</h4>
-                        <p>Come evidenzia Esperto 6: <em>«la piattaforma da sola non risolve nessuno di questi problemi
-                                [...] i social media danno un riassunto di contenuti che poi possono essere sviluppati e
-                                approfonditi.»</em> Serve un’azione di comunicazione orchestrata.</p>
+                    <div class="col-md-4">
+                        <div class="p-4 bg-dark text-white h-100">
+                            <h6 class="fw-bold text-uppercase">Pilastro 2</h6>
+                            <p class="small">Visibilità integrata tramite comunicazione multicanale orchestrata.</p>
+                        </div>
                     </div>
-
-                    <div class="pillar-box">
-                        <h4>Pilastro 3 — Valore tangibile per la carriera dello studente</h4>
-                        <p>Vincere deve significare: concerti, mostre, residenze artistiche, visibilità curricolare
-                            spendibile. La piattaforma deve documentare e amplificare queste opportunità reali.</p>
+                    <div class="col-md-4">
+                        <div class="p-4 bg-dark text-white h-100">
+                            <h6 class="fw-bold text-uppercase">Pilastro 3</h6>
+                            <p class="small">Valore tangibile per gli studenti (mostre, residenze, contratti).</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="mb-5">
-                    <h3>4.3 L’obiettivo: legittimare l’intero sistema AFAM</h3>
-                    <p>Trasformare il PNA significa legittimare il sistema AFAM come “il vertice assoluto della
-                        formazione artistica e del design italiano” (e non una copia sbiadita dei concorsi commerciali).
-                    </p>
-                    <p>La piattaforma diventa lo strumento per:</p>
-                    <ul class="cds--list--unordered">
-                        <li>Riattivare la fiducia e l'interesse degli studenti (“il percepito è andato in declino”)</li>
-                        <li>Riconoscere l’investimento e il prestigio delle istituzioni ospitanti</li>
-                        <li>Dimostrare al MiC, alle fondazioni, alle imprese che il talento AFAM esiste, è documentato
-                            ed è pronto per partnership strutturali</li>
-                    </ul>
-                </div>
-
-                <div class="mb-5">
-                    <h3>4.4 L’urgenza: dal premio-evento al sistema-piattaforma</h3>
-                    <p>L’analisi integrata di tutte le interviste converge su un punto fondamentale: il PNA non può più
-                        essere gestito come un evento isolato e artigianale gestito ogni anno da una diversa istituzione
-                        senza continuità.</p>
-                    <blockquote class="evidence-quote mb-4">
-                        «Il premio ha una preparazione di mesi. Ma poi in verità la ricaduta è all’interno di un giorno.
-                        Dal giorno dopo sparisce tutto.»
-                        <cite>— Esperto 5, ambito Design</cite>
-                    </blockquote>
-                    <p>La soluzione non è solo tecnica ma sistemica: serve una piattaforma permanente che standardizzi i
-                        processi, archivi con criteri omogenei, racconti le carriere nel tempo e connetta il sistema con
-                        le opportunità esterne.</p>
                 </div>
             </section>
 
             <!-- 5. Sostenibilità -->
             <section id="sostenibilita" class="section-block">
                 <h2 class="mb-5">5. Sostenibilità economica della piattaforma</h2>
-                <p>Un elemento cruciale riguarda la continuità nel tempo del progetto. La sostenibilità economica deve
-                    coprire non solo lo sviluppo iniziale, ma la gestione ordinaria: manutenzione tecnica, aggiornamento
-                    contenuti, comunicazione, monitoraggio e reportistica.</p>
-
-                <div class="mb-5">
-                    <h3>5.1 Sponsorizzazione tecnica e partnership strategiche</h3>
-                    <ul class="cds--list--unordered">
-                        <li><strong>Partner tecnologici</strong> (cloud provider, piattaforme CMS, hardware artistico)
-                            che supportino l'infrastruttura in cambio di visibilità nel settore</li>
-                        <li><strong>Aziende del Made in Italy</strong> che possono supportare sezioni specifiche (es.
-                            Fondazione Piaggio per il design, aziende di strumenti musicali)</li>
-                        <li><strong>Fondazioni bancarie e filantropiche</strong> per il supporto alle sezioni di teatro,
-                            danza e arti visive</li>
-                    </ul>
-                </div>
-
-                <div class="mb-5">
-                    <h3>5.2 Co-branding con istituzioni culturali nazionali</h3>
-                    <ul class="cds--list--unordered">
-                        <li><strong>RAI (Rai Cultura)</strong>: co-produzione di contenuti, dirette web delle
-                            premiazioni, visibilità sui canali tematici</li>
-                        <li><strong>MiC (Ministero della Cultura)</strong>: integrazione della piattaforma con il
-                            portale della cultura italiana e con le reti museali</li>
-                        <li><strong>ITA (Italian Trade Agency)</strong>: promozione dei vincitori e del sistema AFAM
-                            nelle fiere internazionali e negli eventi di promozione del Paese all'estero</li>
-                    </ul>
-                </div>
-
-                <div class="mb-5">
-                    <h3>5.3 Collaborazioni con università e centri di ricerca</h3>
-                    <ul class="cds--list--unordered">
-                        <li>Partnership per l'attivazione di dottorati industriali e assegni di ricerca legati allo
-                            sviluppo tecnologico e culturale della piattaforma</li>
-                        <li>Coinvolgimento di dottorandi di ricerca che possano curare sezioni specifiche o sviluppare
-                            progetti di ricerca a partire dall'archivio del PNA</li>
-                    </ul>
-                    <p>Queste partnership accrescerebbero la legittimazione esterna del premio e permetterebbero di
-                        generare valore nel tempo senza gravare esclusivamente sulle risorse ministeriali.</p>
-                </div>
+                <p>La sostenibilità deve coprire la <strong>gestione ordinaria</strong>: manutenzione, aggiornamento contenuti e comunicazione.</p>
+                
+                <h3 class="mt-4">Modelli proposti:</h3>
+                <ul class="list-group list-group-flush border-top border-dark mt-3">
+                    <li class="list-group-item px-0 py-3"><strong>Sponsorizzazione tecnica:</strong> Cloud provider e aziende creative (es. Fondazione Piaggio).</li>
+                    <li class="list-group-item px-0 py-3"><strong>Co-branding istituzionale:</strong> Collaborazioni con RAI (Rai Cultura) e MiC.</li>
+                    <li class="list-group-item px-0 py-3"><strong>Ricerca:</strong> Partnership per dottorati industriali e assegni di ricerca.</li>
+                </ul>
             </section>
 
-            <!-- 6. Suggerimenti operativi -->
+            <!-- 6. Suggerimenti -->
             <section id="suggerimenti" class="section-block">
                 <h2 class="mb-5">6. Suggerimenti operativi dagli intervistati</h2>
-
-                <div class="mb-5">
-                    <h3>6.1 Standard e processi</h3>
-                    <ul class="cds--list--unordered">
-                        <li><strong>Inversione dei tempi</strong>: lanciare il tema dell’edizione successiva
-                            contestualmente alla premiazione di quella in corso, per permettere un lavoro di ricerca
-                            accademica strutturato durante l'intero anno accademico.</li>
-                        <li><strong>Digital-first Candidacy</strong>: creare formati digitali obbligatori per le
-                            candidature con campi vincolanti e standard qualitativi elevati (audio lossless, video 4K),
-                            eliminando l’invio di materiali fisici obsoleti dove non strettamente necessari.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-5">
-                    <h3>6.2 Premialità concrete</h3>
-                    <ul class="cds--list--unordered">
-                        <li><strong>Borse di studio e residenze</strong>: trasformare il premio in denaro o medaglie in
-                            opportunità concrete di perfezionamento, stage o residenze presso istituzioni partner
-                            italiane o estere.</li>
-                        <li><strong>Circuitazione dei vincitori</strong>: stipulare convenzioni con enti (fondazioni
-                            lirico-sinfoniche, festival di design, gallerie d'arte) per garantire una serie di eventi ai
-                            vincitori dei premi.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-5">
-                    <h3>6.3 Identità e comunicazione</h3>
-                    <ul class="cds--list--unordered">
-                        <li><strong>Marchio Permanente</strong>: adottare un'identità visiva unica e riconoscibile per
-                            il PNA, declinata per le diverse edizioni ma con un cuore grafico coordinato.</li>
-                        <li><strong>Social Media Hub</strong>: gestire un piano editoriale centralizzato per raccontare
-                            non solo il premio, ma il "mentre" della vita nelle istituzioni AFAM.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-5">
-                    <h3>6.4 Governance e Piattaforma</h3>
-                    <ul class="cds--list--unordered">
-                        <li><strong>Comitato Scientifico AFAM</strong>: istituire un organo stabile per la supervisione
-                            della qualità dei contenuti e degli standard del premio.</li>
-                        <li><strong>Sezione “Follow-the-Talent”</strong>: una sezione specifica della piattaforma
-                            dedicata a mostrare dove sono arrivati i vincitori degli anni passati, per valorizzare
-                            l'efficacia del sistema.</li>
-                    </ul>
+                <div class="row g-5">
+                    <div class="col-md-6">
+                        <h4 class="mb-3">Standard e Processi</h4>
+                        <ul class="small">
+                            <li>Lanciare il tema con un anno di anticipo.</li>
+                            <li>Standardizzare i format digitali di candidatura.</li>
+                            <li>Eliminare gradualmente l'invio di tavole fisiche.</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="mb-3">Premialità Concrete</h4>
+                        <ul class="small">
+                            <li>Borse di studio per i bienni specialistici.</li>
+                            <li>Residenze artistiche e stage professionali.</li>
+                            <li>Convenzioni per mostre e concerti post-premio.</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 
-            <!-- 7. Conclusioni -->
-            <section id="conclusioni" class="section-block">
+            <!-- 7. Considerazioni Finali -->
+            <section id="considerazioni" class="section-block">
                 <h2 class="mb-5">7. Considerazioni finali: dal report al sistema</h2>
-
-                <div class="mb-5">
-                    <h3>7.1 Valore aggiunto dell’indagine qualitativa</h3>
-                    <p>Questo report rappresenta la fase qualitativa esplorativa del progetto e ha fatto emergere con
-                        chiarezza la crisi di posizionamento del PNA, fornendo evidenze strutturate grazie alla
-                        convergenza tra testimonianze di stakeholder diversi per area disciplinare e ruolo
-                        istituzionale.</p>
-                    <p>L’indagine ha permesso di identificare la leva progettuale centrale: non serve solo un “sito web”
-                        o un catalogo digitale, ma un sistema-valore che trasformi il premio da celebrazione temporanea
-                        a infrastruttura permanente di talent management e cultural branding per l'intero sistema AFAM.
-                    </p>
+                <div class="p-4 border border-dark bg-light">
+                    <p class="mb-0"><strong>La piattaforma “Talenti Italiani” deve diventare il modello di come il sistema pubblico di formazione artistica si racconta nel XXI secolo. Passando da progetto a movimento, da adempimento a identità condivisa.</strong></p>
                 </div>
-
-                <div class="mb-5">
-                    <h3>7.2 Dalla ricerca all’impatto: una responsabilità collettiva</h3>
-                    <p>Il sistema AFAM ha oggi un’opportunità storica: dotarsi di uno strumento all’altezza della
-                        qualità dei suoi contenuti e capace di parlare i linguaggi del contemporaneo. La sfida non è
-                        tecnica — la tecnologia è disponibile — ma culturale e strategica.</p>
-                    <p>Richiede visione condivisa tra Ministero e Istituzioni, investimento di energia organizzativa e
-                        il coraggio di ripensare il formato consolidato del premio per renderlo rilevante nel panorama
-                        internazionale della ricerca e della produzione artistica.</p>
-                    <p class="highlight-text">
-                        Il PNA non è solo un premio. È il volto pubblico del futuro culturale e artistico italiano.
-                    </p>
+                <div class="text-center mt-5">
+                    <p class="h4 fw-bold">Il PNA non è solo un premio.<br>È il volto pubblico del futuro culturale artistico italiano.</p>
                 </div>
             </section>
 
             <!-- 8. Infografiche -->
-            <section id="infografiche" class="section-block">
+            <section id="infografiche-docs" class="section-block">
                 <h2 class="mb-5">8. Infografiche</h2>
-                <p>L'analisi dei dati quantitativi e dei processi operativi permette di contestualizzare le criticità
-                    qualitative emerse nei capitoli precedenti, offrendo una mappatura strutturata dell'architettura del
-                    Premio.</p>
-
-                <div class="mb-5">
-                    <h3>8.1 Struttura del premio: sezioni, sottosezioni e categorie</h3>
-                    <p>L'infografica mostra la complessa articolazione del Premio Nazionale delle Arti. Le istituzioni
-                        AFAM possono partecipare ai bandi di Arti Performative o Arti Visive e Design in base alla
-                        propria specifica tipologia (Accademie di Danza, Accademie d’Arte Drammatica e Conservatori per
-                        le performative; Accademie di Belle Arti e ISIA per visive e design).</p>
-                    <p>Dall'analisi emerge una profonda diversità ontologica: mentre il comparto Design opera secondo un
-                        principio tematico legato a sfide contemporanee che mutano di edizione in edizione, tutte le
-                        altre sezioni mantengono una stabilità tipologica basata sui settori artistico-disciplinari
-                        tradizionali.</p>
-                </div>
-
-                <div class="mb-5">
-                    <h3>8.2 Edizione per sezioni e attori coinvolti</h3>
-                    <p>L'infografica mappa i flussi operativi e gli attori coinvolti (Ministero, Istituzione
-                        Organizzatrice, Istituti Partecipanti, Giurie e Studenti). I processi di Arti Performative e
-                        Arti Visive e Design differiscono nella fase di valutazione finale:</p>
-                    <ul class="cds--list--unordered">
-                        <li><strong>Arti Performative</strong>: la valutazione si basa sulla performance dal vivo in
-                            presenza, rendendo l'evento fisico il momento centrale del premio.</li>
-                        <li><strong>Arti Visive e Design</strong>: il giudizio verte sul progetto/opera fisica
-                            (veicolata da tavole o modelli), dove la mostra rappresenta il momento culminante ma non
-                            richiede necessariamente la presenza fisica costante del candidato.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-5">
-                    <h3>8.3 Scadenze ed eventi per sezione</h3>
-                    <p>L'infografica evidenzia la variabilità temporale dei bandi tratti dalle edizioni XIX e XVIII. La
-                        mancanza di sincronizzazione nazionale tra le diverse sottosezioni rende complesso comunicare il
-                        PNA come un evento unitario e ne limita la risonanza verso gli stakeholder esterni e il mercato
-                        del lavoro.</p>
-                </div>
-
-                <div class="mb-5">
-                    <h3>8.4 Tipologia delle Istituzioni AFAM</h3>
-                    <p>L'infografica illustra il bilanciamento tra istituzioni pubbliche e private. Sebbene le
-                        istituzioni private rappresentino una quota numericamente inferiore alla metà del comparto, esse
-                        costituiscono una componente vitale del sistema. Come evidenziato dall'indagine qualitativa,
-                        appare necessario ottimizzare i meccanismi di accesso e pubblicità per favorire una maggiore
-                        adesione e superare i limiti di partecipazione attualmente rilevati.</p>
-                </div>
-
-                <div class="mb-5">
-                    <h3>8.5 Distribuzione territoriale delle Istituzioni AFAM</h3>
-                    <p>L'infografica mostra la distribuzione capillare delle istituzioni AFAM sul territorio italiano.
-                        Esse costituiscono una vera "infrastruttura culturale di prossimità", con una forte presenza
-                        delle istituzioni pubbliche in quasi tutte le province e una polarizzazione delle private nei
-                        grandi centri urbani.</p>
-                    <p class="cds--label-01" style="font-size: 0.75rem; color: #666; margin-top: 2rem;">
-                        Nota: I dati relativi alle infografiche 8.4 e 8.5 riguardano tutte le sedi delle Istituzioni
-                        AFAM (principali e decentrate), conteggiate come unità singole per riflettere l'effettiva
-                        ramificazione del sistema. I dati sono stati estratti e rifiniti dal Portale dei dati
-                        dell’istruzione superiore del Ministero dell'Università e della Ricerca (<a
-                            href="https://ustat.mur.gov.it/dati/didattica/italia/afam"
-                            target="_blank">ustat.mur.gov.it</a>).
-                    </p>
-                </div>
-
+                <p>L'analisi dei dati quantitativi e dei processi operativi permette di contestualizzare le criticità qualitative emerse.</p>
+                
                 <div class="mt-4">
-                    <cds-button href="infografiche.html" kind="secondary">Visualizza le Infografiche
-                        Interattive</cds-button>
+                    <h5 id="81-struttura" class="fw-bold">8.1 Struttura del premio</h5>
+                    <p class="small">L'indagine evidenzia una profonda diversità tra le sezioni: il comparto Design opera su temi contemporanei variabili, mentre le altre sezioni mantengono una stabilità tipologica tradizionale.</p>
+                    
+                    <h5 id="82-edizione" class="fw-bold mt-4">8.2 Edizione per sezioni</h5>
+                    <p class="small">Arti Performative vs Arti Visive: le prime richiedono l'acquisizione della performance live, le seconde si basano sulla valutazione di modelli e tavole fisiche.</p>
+
+                    <h5 id="83-scadenze" class="fw-bold mt-4">8.3 Scadenze ed eventi</h5>
+                    <p class="small">Variabilità estremamente alta del calendario, priva di sincronizzazione nazionale, che limita la risonanza verso gli stakeholder esterni.</p>
+
+                    <h5 id="84-tipologia" class="fw-bold mt-4">8.4 Tipologia AFAM</h5>
+                    <p class="small">Le istituzioni private costituiscono una componente vitale che richiede meccanismi di accesso e pubblicità più fluidi.</p>
+
+                    <h5 id="85-territorio" class="fw-bold mt-4">8.5 Distribuzione territoriale</h5>
+                    <p class="small">Presenza capillare delle istituzioni pubbliche vs polarizzazione urbana delle istituzioni private.</p>
                 </div>
             </section>
 
-            <!-- 9. Appendici -->
-            <section id="appendici" class="section-block" style="border-top: 1px solid #ddd; padding-top: 4rem;">
+            <!-- Appendici -->
+            <section id="appendici" class="section-block pb-5">
+                <hr class="divider-thick">
                 <h2 class="mb-5">Appendici</h2>
+                
+                <h4 id="a1-transcript">A1. Transcript integrali</h4>
+                <p class="small text-muted">Disponibili su richiesta per finalità di ricerca in versione anonimizzata o integrale (MUR).</p>
 
-                <div class="mb-5">
-                    <h3>A1. Consenso informato e privacy</h3>
-                    <p>Tutti i partecipanti alla ricerca hanno sottoscritto consenso informato ai sensi del GDPR (Reg.
-                        UE 2016/679), autorizzando:</p>
-                    <ul class="cds--list--unordered">
-                        <li>Registrazione audio dell’intervista</li>
-                        <li>Trascrizione e analisi dei contenuti</li>
-                        <li>Uso di citazioni anonimizzate per finalità di ricerca e pubblicazione report</li>
-                    </ul>
-                    <p>I dati personali sono conservati in forma protetta e accessibili solo al team di ricerca. Le
-                        registrazioni saranno cancellate entro 24 mesi dalla conclusione del progetto.</p>
-                </div>
+                <h4 id="a2-bibliografia" class="mt-5">A2. Riferimenti bibliografici</h4>
+                <ul class="small text-muted list-unstyled">
+                    <li class="mb-2">Bourdieu, P. (1986). <em>The Forms of Capital</em>. Greenwood.</li>
+                    <li class="mb-2">Keller, K. L. (2013). <em>Strategic Brand Management</em>. Pearson.</li>
+                    <li class="mb-2">Wenger, E. (1998). <em>Communities of Practice</em>. Cambridge University Press.</li>
+                </ul>
 
-                <div class="mb-5">
-                    <h3>A2. Traccia delle domande semi-strutturate e transcript integrali</h3>
-                    <p>I transcript completi delle interviste (verbatim) sono disponibili su richiesta al team di
-                        ricerca, con livelli di accesso differenziati:</p>
-                    <ul class="cds--list--unordered">
-                        <li><strong>Versione anonimizzata</strong>: accessibile a tutti gli stakeholder del progetto
-                        </li>
-                        <li><strong>Versione integrale con attribuzioni</strong>: accessibile solo a MUR e Comitato
-                            Scientifico, previo consenso degli intervistati</li>
-                    </ul>
-                </div>
+                <h4 id="a3-privacy" class="mt-5">A3. Consenso informato e privacy</h4>
+                <p class="small text-muted">Ricerca condotta ai sensi del GDPR (Reg. UE 2016/679). Tutti i dati sono conservati in forma protetta.</p>
+            </section>
 
-                <div class="mb-5">
-                    <h3>A3. Riferimenti bibliografici</h3>
-                    <div style="font-size: 0.9375rem; color: #444;">
-                        <p><strong>Framework teorici:</strong></p>
-                        <ul class="cds--list--unordered">
-                            <li>Bourdieu, P. (1986). The Forms of Capital. Handbook of Theory and Research for the
-                                Sociology of Education. Greenwood.</li>
-                            <li>Keller, K. L. (2013). Strategic Brand Management: Building, Measuring, and Managing
-                                Brand Equity. Pearson.</li>
-                            <li>Wenger, E. (1998). Communities of Practice: Learning, Meaning, and Identity. Cambridge
-                                University Press.</li>
-                            <li>Glaser, B. G., & Strauss, A. L. (1967). The Discovery of Grounded Theory: Strategies for
-                                Qualitative Research. Aldine.</li>
-                        </ul>
-                        <p><strong>Metodologia ricerca qualitativa:</strong></p>
-                        <ul class="cds--list--unordered">
-                            <li>Flick, U. (2018). An Introduction to Qualitative Research. SAGE.</li>
-                            <li>Kvale, S., & Brinkmann, S. (2015). InterViews: Learning the Craft of Qualitative
-                                Research Interviewing. SAGE.</li>
-                        </ul>
-                        <p><strong>Brand e cultural management:</strong></p>
-                        <ul class="cds--list--unordered">
-                            <li>Hatch, M. J., & Schultz, M. (2008). Taking Brand Initiative. Jossey-Bass.</li>
-                            <li>Kotler, P., & Kotler, W. I. (2012). Museum Marketing and Strategy. Jossey-Bass.
-                                [applicabile a istituzioni culturali]</li>
-                        </ul>
+            <!-- Download Section -->
+            <section id="download" class="section-block bg-light p-5 border border-dark">
+                <h2 class="mb-5">Download</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="download-card">
+                            <div class="download-info">
+                                <h6>Report Completo</h6>
+                                <p class="small text-muted mb-0">PDF con Infografiche</p>
+                            </div>
+                            <a href="download/pna-report-A4-digitale-infovis.pdf" download class="btn btn-dark btn-sm rounded-0">
+                                <i class="bi bi-download"></i>
+                            </a>
+                        </div>
                     </div>
-                </div>
-
-                <div style="margin-top: 4rem; text-align: center; border-top: 1px solid #eee; padding-top: 2rem;">
-                    <p style="font-size: 0.875rem; color: #666;">
-                        Le informazioni contenute in questo volume sono disponibili online all'indirizzo:<br>
-                        <a href="https://isiaroma.it/link/pnareport" target="_blank">isiaroma.it/link/pnareport</a>
-                    </p>
+                    <div class="col-md-4">
+                        <div class="download-card">
+                            <div class="download-info">
+                                <h6>Report A4</h6>
+                                <p class="small text-muted mb-0">Versione Testuale</p>
+                            </div>
+                            <a href="download/pna-report-A4-digitale.pdf" download class="btn btn-dark btn-sm rounded-0">
+                                <i class="bi bi-download"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="download-card">
+                            <div class="download-info">
+                                <h6>Poster Infografiche</h6>
+                                <p class="small text-muted mb-0">A3 Singole</p>
+                            </div>
+                            <a href="download/pna-report-A3-infografiche.pdf" download class="btn btn-dark btn-sm rounded-0">
+                                <i class="bi bi-download"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
     </main>
 
+    <!-- Global Footer -->
+    <div id="global-footer"></div>
+    <script src="../src/components/footer-loader.js"></script>
 </body>
 
 </html>

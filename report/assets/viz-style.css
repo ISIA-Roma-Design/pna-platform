@@ -60,17 +60,15 @@ body {
     transition: padding-left 0.3s ease;
 }
 
-@media (min-width: 1056px) {
+@media (min-width: 992px) {
     .main-container {
-        padding-left: calc(256px + 2rem);
-        /* SideNav width + spacing */
+        padding-left: 0; /* Handled by body padding in header */
     }
 }
 
-/* Remove old header styles that conflict with Carbon */
-header {
-    display: none;
-}
+/* Global Header Spacing - handled by loader */
+
+
 
 
 h1,
@@ -388,33 +386,34 @@ h1,
     opacity: 0.3;
 }
 
-/* Marker Cluster Custom Styling */
+/* Marker Cluster Custom Styling - Swiss Style (Monochrome) */
 .marker-cluster-small {
-    background-color: rgba(15, 98, 254, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .marker-cluster-small div {
-    background-color: rgba(15, 98, 254, 0.6);
+    background-color: rgba(0, 0, 0, 0.4);
     color: white;
 }
 
 .marker-cluster-medium {
-    background-color: rgba(138, 63, 252, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .marker-cluster-medium div {
-    background-color: rgba(138, 63, 252, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
     color: white;
 }
 
 .marker-cluster-large {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .marker-cluster-large div {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.9);
     color: white;
 }
+
 
 .marker-cluster {
     background-clip: padding-box;
@@ -625,123 +624,13 @@ h1,
     margin-bottom: 0;
 }
 
-/* --- Layout Utilities --- */
+/* Layout Utilities */
 .page-header-actions {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.controls-group {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-.nav-buttons-container {
-    margin-bottom: 2rem;
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-}
-
-.infographic-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.content-section {
-    margin-top: 4rem;
-    max-width: 800px;
-}
-
-.intro-text {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-
-.quote-tile {
-    margin-bottom: 2rem;
-    border-left: 4px solid #000;
-}
-
-.italic {
-    font-style: italic;
-}
-
-.mt-0 {
-    margin-top: 0 !important;
-}
-
-.mb-1 {
-    margin-bottom: 1rem !important;
-}
-
-.mb-2 {
-    margin-bottom: 2rem !important;
-}
-
-.mb-4 {
-    margin-bottom: 4rem !important;
-}
-
-.mt-4 {
-    margin-top: 4rem !important;
-}
-
-.list-reset {
-    list-style-type: none;
-    padding: 0;
-}
-
-.list-item-bordered {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-    border-left: 2px solid #ccc;
-}
-
-.hr-credits {
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin-bottom: 4rem;
-}
-
-.copyright-text {
-    color: #666;
-}
-
-/* Carbon Overrides */
-cds-tabs {
-    margin-bottom: 2rem;
-}
-
-/* Align buttons to bottom of cards */
-cds-tile {
-    display: flex !important;
-    flex-direction: column;
-    height: 100%;
-    box-sizing: border-box;
-}
-
-/* Ensure buttons in catalog tiles are full width and at bottom */
-.infographic-grid cds-tile cds-button {
-    margin-top: auto;
-    width: 100%;
-}
-
-.infographic-grid h3 {
-    margin-top: 0;
-}
-
-.infographic-desc {
-    margin-bottom: 2rem;
-    color: #555;
-}
 
 /* --- Zoom Controls --- */
 .zoom-controls {

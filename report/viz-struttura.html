@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>8.1 Struttura del premio</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
 
-    <!-- Carbon Web Components (Local) -->
-    <script type="module" src="../src/libs/load-carbon.js"></script>
+    <!-- Bootstrap 5.3 -->
+    <link href="../src/prototipo/assets/bootstrap-custom.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- D3.js -->
     <script src="https://unpkg.com/d3@7"></script>
@@ -48,10 +50,10 @@
 
         <!-- Navigation Bar -->
         <footer class="viz-nav-footer">
-            <cds-button kind="ghost" href="infografiche.html">Torna all'indice</cds-button>
+            <a class="btn btn-outline-dark btn-sm rounded-0"  href="infografiche.html">Torna all'indice</a>
             <div class="viz-nav-links">
-                <cds-button kind="secondary" disabled>Precedente</cds-button>
-                <cds-button kind="primary" href="viz-edizione-sezioni.html">Successivo: 8.2 Processo</cds-button>
+                <a class="btn btn-outline-dark btn-sm rounded-0"  disabled>Precedente</a>
+                <a class="btn btn-outline-dark btn-sm rounded-0" style="background-color: #000; color: #fff;" href="viz-edizione-sezioni.html">Successivo: 8.2 Processo</a>
             </div>
         </footer>
     </div>
@@ -61,6 +63,10 @@
 
     <script src="assets/viz-config.js"></script>
     <script src="assets/viz-struttura.js"></script>
+
+    <!-- Global Footer -->
+    <div id="global-footer"></div>
+    <script src="../src/components/footer-loader.js"></script>
 </body>
 
 </html>

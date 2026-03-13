@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Credits - PNA</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
 
-    <!-- Carbon Web Components (Local) -->
-    <script type="module" src="../src/libs/load-carbon.js"></script>
+    <!-- Bootstrap 5.3 (Custom Theme) -->
+    <link href="../src/prototipo/assets/bootstrap-custom.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom Swiss Theme -->
     <link rel="stylesheet" href="../src/prototipo/assets/style.css">
@@ -20,29 +22,48 @@
     <div id="global-header"></div>
     <script src="../src/components/header-loader.js"></script>
 
-    <div class="main-container">
-        <h1 class="page-title">Credits</h1>
-        <p class="page-subtitle">Sviluppo e progettazione del progetto Report PNA.</p>
+    <main class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9 py-5 px-md-4">
+                <h1 class="display-4 fw-bold mb-5">Credits</h1>
 
-        <section class="content-section">
-            <div class="mb-4">
-                <h2 class="mb-1">ISIA Roma Design</h2>
-                <p><strong>Antonello Lipori</strong> - docente ISIA Roma Design</p>
-                <p><strong>Federico Parrella</strong> - docente ISIA Roma Design</p>
+                <div class="pb-5 mb-5">
+                    <h2 class="h3 fw-bold mb-4">ISIA Roma Design</h2>
+                    <div class="mb-3">
+                        <p class="mb-1"><strong>Antonello Lipori</strong></p>
+                        <p class="text-muted small">Docente ISIA Roma Design</p>
+                    </div>
+                    <div class="mb-3">
+                        <p class="mb-1"><strong>Federico Parrella</strong></p>
+                        <p class="text-muted small">Docente ISIA Roma Design</p>
+                    </div>
 
-                <p class="mt-4 mb-2">con la collaborazione di:</p>
-                <p><strong>Valerio Pasquazi</strong> – Dottorando in "Design for Social Change" - ISIA Roma Design</p>
-                <p><strong>Federica Tumminello</strong> – UX-UI designer</p>
-                <p><strong>Serena Guizzo</strong> – Studentessa in Design Sistemico per la Comunicazione - ISIA Roma
-                    Design</p>
+                    <p class="my-5 text-uppercase fw-bold small text-muted">In collaborazione con:</p>
+
+                    <div class="row g-2 mt-2">
+                        <div class="col-md-12">
+                            <p class="mb-1"><strong>Valerio Pasquazi</strong></p>
+                            <p class="text-muted small">Dottorando in "Design for Social Change" - ISIA Roma Design</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="mb-1"><strong>Federica Tumminello</strong></p>
+                            <p class="text-muted small">UX-UI Designer</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="mb-1"><strong>Serena Guizzo</strong></p>
+                            <p class="text-muted small">Studentessa in Design Sistemico per la Comunicazione - ISIA Roma
+                                Design</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+        </div>
+    </main>
 
-            <hr class="hr-credits">
-
-            <p class="copyright-text">© 2026 Report PNA </p>
-        </section>
-    </div>
-
+    <!-- Global Footer -->
+    <div id="global-footer"></div>
+    <script src="../src/components/footer-loader.js"></script>
 </body>
 
 </html>

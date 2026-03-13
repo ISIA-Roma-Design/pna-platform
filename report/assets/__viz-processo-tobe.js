@@ -120,39 +120,33 @@ document.addEventListener('DOMContentLoaded', function () {
                 d3.selectAll('.node-circle').classed('active', false);
                 d3.select(element).classed('active', true);
 
-                // 1. Update Content First (so we can measure)
+                // 1. Update Content First
                 popoverTitle.textContent = `Fase ${d.fasiNumber} – ${d.attore.toUpperCase()}`;
                 popoverDesc.textContent = d.dettagli;
 
-                // 2. Show initially to measure dimensions (but maybe offscreen or just assume standard flow)
-                popover.open = true;
+                // 2. Show
+                popover.style.display = 'block';
 
                 // 3. Get Coordinates & Dimensions
                 const rect = element.getBoundingClientRect();
                 const scrollTop = window.scrollY || document.documentElement.scrollTop;
                 const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
 
-                // Get ACTUAL rendered dimensions of the popover
-                const popRect = popover.getBoundingClientRect();
-                const popoverWidth = popRect.width;
-                const popoverHeight = popRect.height;
+                const popoverWidth = popover.offsetWidth;
+                const popoverHeight = popover.offsetHeight;
 
                 const viewportWidth = window.innerWidth;
                 const viewportHeight = window.innerHeight;
 
-                // 4. Default Position (Right-Bottom of node)
+                // 4. Default Position
                 let top = rect.top + scrollTop;
                 let left = rect.left + scrollLeft + 20;
 
                 // 5. Boundary Check
-                // If it goes off RIGHT edge, flip to Left
-                // We place it 20px to the left of the node's left edge
                 if (rect.left + popoverWidth + 20 > viewportWidth) {
                     left = rect.left + scrollLeft - popoverWidth - 20;
                 }
 
-                // If it goes off BOTTOM edge, flip to Top
-                // We place it above the node
                 if (rect.top + popoverHeight > viewportHeight + scrollTop) {
                     top = rect.top + scrollTop - popoverHeight;
                 }
@@ -163,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             function hidePopover() {
-                popover.open = false;
+                popover.style.display = 'none';
                 d3.selectAll('.node-circle').classed('active', false);
             }
 
@@ -178,10 +172,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Close on outside click
             document.addEventListener('click', (e) => {
-                if (!e.target.closest('.node-circle') && !e.target.closest('cds-popover')) {
+                if (!e.target.closest('.node-circle') && !e.target.closest('#dettagli-popover')) {
                     hidePopover();
                 }
             });
+
 
         })
         .catch(err => {

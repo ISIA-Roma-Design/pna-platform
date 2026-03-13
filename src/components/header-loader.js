@@ -1,7 +1,7 @@
 /**
- * Carbon UI Shell Loader
+ * Bootstrap UI Shell Loader
  * Fetches components/header.html and injects it into #global-header
- * Manages Shell state and path adjustments
+ * Manages path adjustments and Bootstrap component initialization
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -25,19 +25,16 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(html => {
             headerContainer.innerHTML = html;
 
-            const shell = headerContainer;
-            const menuButton = shell.querySelector("cds-header-menu-button");
-            const sideNav = shell.querySelector("cds-side-nav");
-
             // 1. Path Adjustment Logic
-            const links = shell.querySelectorAll("cds-header-name, cds-header-nav-item, cds-side-nav-link, cds-side-nav-menu-item");
+            const links = headerContainer.querySelectorAll("a.nav-link, a.navbar-brand");
             links.forEach(link => {
                 const originalHref = link.getAttribute("href");
                 if (originalHref) {
                     const isRelative = !originalHref.startsWith("http") &&
                         !originalHref.startsWith("/") &&
                         !originalHref.startsWith("./") &&
-                        !originalHref.startsWith("../");
+                        !originalHref.startsWith("../") &&
+                        !originalHref.startsWith("#");
 
                     if (isRelative) {
                         const newHref = basePrefix + originalHref;
@@ -45,47 +42,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         // Active State
                         if (pathname.includes(originalHref)) {
-                            link.setAttribute("active", "");
+                            link.classList.add("active");
                         }
                     }
                 }
             });
 
-            // 2. Shell Interaction Logic (Toggling SideNav on mobile)
-            if (menuButton && sideNav) {
-                // Initial visibility for mobile
-                if (window.innerWidth < 1056) {
-                    sideNav.removeAttribute("expanded");
-                }
-
-                menuButton.addEventListener("cds-header-menu-button-toggled", (event) => {
-                    const { active } = event.detail;
-                    if (active) {
-                        sideNav.setAttribute("expanded", "");
-                    } else {
-                        sideNav.removeAttribute("expanded");
-                    }
-                });
-
-                // Close SideNav when clicking a link on mobile
-                sideNav.addEventListener("click", (event) => {
-                    const target = event.target.closest("cds-side-nav-link");
-                    if (target && window.innerWidth < 1056) {
-                        sideNav.removeAttribute("expanded");
-                        menuButton.setAttribute("active", "false");
-                    }
+            // 2. Initialize Bootstrap Components (if needed)
+            // Bootstrap's data-api usually handles this automatically if scripts are loaded.
+            // But we might need to close offcanvas on link click for better mobile UX.
+            const offcanvasElement = document.getElementById('offcanvasNavbar');
+            if (offcanvasElement) {
+                const offcanvasLinks = offcanvasElement.querySelectorAll('.nav-link');
+                offcanvasLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+                        if (bsOffcanvas) bsOffcanvas.hide();
+                    });
                 });
             }
-
-            // Sync SideNav state on resize
-            window.addEventListener("resize", () => {
-                if (window.innerWidth >= 1056) {
-                    sideNav.setAttribute("expanded", "");
-                } else if (!menuButton.hasAttribute("active") || menuButton.getAttribute("active") === "false") {
-                    sideNav.removeAttribute("expanded");
-                }
-            });
-
         })
-        .catch(err => console.error("Failed to load Carbon UI Shell:", err));
+        .catch(err => console.error("Failed to load Bootstrap UI Shell:", err));
 });
