@@ -11,6 +11,9 @@
     <link href="../src/prototipo/assets/bootstrap-custom.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <!-- D3.js -->
     <script src="https://unpkg.com/d3@7"></script>
     <script src="https://unpkg.com/d3-sankey@0.12"></script>
@@ -34,41 +37,73 @@
             </div>
         </div>
 
-        <!-- Navigation Buttons -->
-        <div id="button-controls" class="nav-buttons-container">
-            <!-- Buttons will be dynamically populated -->
-        </div>
-
-        <div id="section-info">
-            <p id="section-description" class="section-desc"></p>
-        </div>
-
-        <!-- Chart Container -->
-        <div id="chart-area"></div>
-
-        <!-- Navigation Bar -->
-        <footer class="viz-nav-footer">
-            <a class="btn btn-outline-dark btn-sm rounded-0"  href="infografiche.html">Torna all'indice</a>
-            <div class="viz-nav-links">
-                <a class="btn btn-outline-dark btn-sm rounded-0"  href="viz-struttura.html">Precedente: 8.1 Struttura</a>
-                <a class="btn btn-outline-dark btn-sm rounded-0" style="background-color: #000; color: #fff;" href="viz-scadenze-eventi.html">Successivo: 8.3 Timeline</a>
+        <!-- Fullscreen Container -->
+        <div class="fullscreen-container" style="background-color: #fff;">
+            <!-- Standard Control Bar -->
+            <div
+                class="controls-bar d-flex flex-wrap align-items-center p-3 mb-0 bg-light border-top border-bottom border-dark">
+                <!-- Controlli Specifici -->
+                <div class="specific-controls d-flex flex-wrap align-items-center gap-3">
+                    <div id="button-controls" class="nav-buttons-container m-0 border-0 p-0">
+                        <!-- Buttons will be dynamically populated -->
+                    </div>
+                </div>
             </div>
-        </footer>
+
+            <!-- Chart Wrapper -->
+            <div id="viz-wrapper" style="position: relative; width: 100%; overflow: hidden; background-color: #fff;">
+                <!-- Overlay Toolbar -->
+                <div class="position-absolute top-0 end-0 m-3 z-3 d-flex flex-column gap-2 shadow-sm rounded p-2"
+                    style="background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px);">
+                    <button class="btn btn-dark btn-sm shadow-sm" onclick="toggleFullscreen()" title="Fullscreen">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </button>
+                    <div class="btn-group-vertical shadow-sm">
+                        <button class="btn btn-outline-dark btn-sm" onclick="zoomIn()" title="Zoom In"><i
+                                class="bi bi-zoom-in"></i></button>
+                        <button class="btn btn-outline-dark btn-sm" onclick="zoomOut()" title="Zoom Out"><i
+                                class="bi bi-zoom-out"></i></button>
+                        <button class="btn btn-outline-dark btn-sm" onclick="resetZoom()" title="Reset Zoom"><i
+                                class="bi bi-arrow-counterclockwise"></i></button>
+                        <button class="btn btn-outline-dark btn-sm" onclick="recenter()" title="Centra"><i
+                                class="bi bi-bullseye"></i></button>
+                    </div>
+                    <button class="btn btn-outline-dark btn-sm shadow-sm" onclick="exportVisualization()"
+                        title="Esporta Grafico">
+                        <i class="bi bi-download"></i>
+                    </button>
+                </div>
+                <!-- Chart Container -->
+                <div id="chart-area" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;"></div>
+            </div>
+
+            <!-- Popover Container -->
+            <cds-popover id="dettagli-popover" high-contrast>
+                <cds-popover-content>
+                    <div class="popover-inner">
+                        <p id="popover-title" class="popover-title">
+                            fase</p>
+                        <p id="popover-desc" class="popover-desc">
+                            dettagli
+                        </p>
+                    </div>
+                </cds-popover-content>
+            </cds-popover>
+
+        </div> <!-- End Chart Wrapper -->
+    </div> <!-- End Fullscreen Container -->
+
+    <!-- Navigation Bar -->
+    <footer class="viz-nav-footer">
+        <a class="btn btn-outline-dark btn-sm rounded-0" href="infografiche.html">Torna all'indice</a>
+        <div class="viz-nav-links">
+            <a class="btn btn-outline-dark btn-sm rounded-0" href="viz-struttura.html">Precedente: 8.1 Struttura</a>
+            <a class="btn btn-outline-dark btn-sm rounded-0" style="background-color: #000; color: #fff;"
+                href="viz-scadenze-eventi.html">Successivo: 8.3 Timeline</a>
+        </div>
+    </footer>
     </div>
 
-
-    <!-- Popover Container -->
-    <cds-popover id="dettagli-popover" high-contrast>
-        <cds-popover-content>
-            <div class="popover-inner">
-                <p id="popover-title" class="popover-title">
-                    fase</p>
-                <p id="popover-desc" class="popover-desc">
-                    dettagli
-                </p>
-            </div>
-        </cds-popover-content>
-    </cds-popover>
 
     <script src="assets/viz-config.js"></script>
     <script src="assets/viz-edizione-sezioni.js"></script>

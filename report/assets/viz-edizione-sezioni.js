@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Add "Tutti" button
         const allBtn = document.createElement('button');
-        allBtn.className = 'btn btn-outline-dark btn-sm rounded-0 fw-bold me-2 mb-2';
+        allBtn.className = 'btn btn-outline-dark btn-sm rounded-0 fw-bold me-2';
         allBtn.textContent = "MOSTRA TUTTI";
 
         allBtn.addEventListener('click', () => {
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         Object.keys(allJourneys).forEach(key => {
             const btn = document.createElement('button');
-            btn.className = 'btn btn-dark btn-sm rounded-0 fw-bold me-2 mb-2';
+            btn.className = 'btn btn-dark btn-sm rounded-0 fw-bold me-2';
             btn.setAttribute('id', `btn-${key}`);
             btn.textContent = (JOURNEY_CONFIG[key]?.label || key).toUpperCase();
             btn.style.backgroundColor = JOURNEY_CONFIG[key].color;
@@ -92,20 +92,21 @@ document.addEventListener('DOMContentLoaded', function () {
         const btn = document.getElementById(`btn-${key}`);
         if (!btn) return;
         if (isVisible) {
-            btn.className = 'btn btn-dark btn-sm rounded-0 fw-bold me-2 mb-2';
+            btn.className = 'btn btn-dark btn-sm rounded-0 fw-bold me-2';
             btn.style.opacity = '1';
         } else {
-            btn.className = 'btn btn-outline-dark btn-sm rounded-0 fw-bold me-2 mb-2';
+            btn.className = 'btn btn-outline-dark btn-sm rounded-0 fw-bold me-2';
             btn.style.opacity = '0.5';
         }
     }
 
 
+    let svg, gMain, zoom;
+
     // 3. Render Chart
     function renderChart() {
         const container = document.getElementById('chart-area');
         container.innerHTML = '';
-        document.getElementById('section-description').textContent = "Visualizzazione a nastro arcobaleno. 4 sezioni fuse in un unico flusso (100%), che si divide solo per le specificità.";
 
         const keys = Object.keys(allJourneys).filter(k => journeyVisibility[k]);
         if (keys.length === 0) {
@@ -145,11 +146,28 @@ document.addEventListener('DOMContentLoaded', function () {
         const yScale = d3.scaleBand().domain(attores).range([0, attores.length * laneHeight]);
         const xScale = d3.scaleLinear().domain([0, maxSteps - 1]).range([0, width - margin.left - margin.right]);
 
-        const svg = d3.select("#chart-area").append("svg")
+        svg = d3.select("#chart-area").append("svg")
             .attr("width", "100%").attr("height", height)
-            .attr("viewBox", `0 0 ${width} ${height}`);
+            .style("cursor", "grab");
 
-        const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+        // Inner container for zooming
+        gMain = svg.append("g");
+
+        // Set up zoom behavior
+        zoom = d3.zoom()
+            .scaleExtent([0.2, 4])
+            .on("zoom", (event) => {
+                gMain.attr("transform", event.transform);
+            });
+
+        svg.call(zoom).on("wheel.zoom", null);
+
+        const g = gMain.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Initial default zoom level based on container width
+        const scale = Math.min((container.clientWidth - 20) / width, 1);
+        zoom.scaleExtent([scale, 4]); // Prevent zooming out beyond initial fit
+        svg.call(zoom.transform, d3.zoomIdentity.scale(scale));
 
         // Lanes
         g.selectAll(".lane-bg").data(attores).enter().append("rect")
@@ -171,7 +189,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const nodeMap = new Map(); // key: stepId_actor
 
         // 1. Generate Unified Nodes
-        // Note: Even if it's specific, if it's in the same lane and step, the node is physically one.
         keys.forEach(key => {
             const journeySteps = allJourneys[key];
             journeySteps.forEach((s, i) => {
@@ -282,6 +299,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .attr("r", 12).attr("class", "node-circle")
             .attr("fill", "#fff").attr("stroke", "#525252")
             .attr("stroke-width", 3)
+            .style("cursor", "pointer")
             .on("mouseenter", function (e, d) { showPopover(d, this); });
 
         nodeG.append("text").attr("class", "node-label").attr("dy", 1).style("font-size", "10px").text(d => d.step_id);
@@ -347,5 +365,97 @@ document.addEventListener('DOMContentLoaded', function () {
             d3.selectAll('.node-circle').classed('active', false);
         }
     });
+
+    // --- Global Controls ---
+    window.zoomIn = function () {
+        if (!svg) return;
+        svg.transition().duration(300).call(zoom.scaleBy, 1.3);
+    };
+
+    window.zoomOut = function () {
+        if (!svg) return;
+        svg.transition().duration(300).call(zoom.scaleBy, 0.7);
+    };
+
+    window.resetZoom = function () {
+        if (!svg) return;
+        svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity.scale(1));
+    };
+
+    window.recenter = function () {
+        window.resetZoom();
+    };
+
+    window.toggleFullscreen = function () {
+        const elem = document.querySelector(".fullscreen-container") || document.documentElement;
+        if (!document.fullscreenElement) {
+            elem.style.backgroundColor = "#fff";
+            elem.style.overflow = "auto";
+            elem.requestFullscreen().catch((err) => {
+                console.error(`Error attempting to enable fullscreen: ${err.message}`);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    };
+
+    document.addEventListener('fullscreenchange', () => {
+        const elem = document.querySelector(".fullscreen-container");
+        const btn = document.querySelector('button[onclick="toggleFullscreen()"]');
+        if (document.fullscreenElement) {
+            if (btn) btn.innerHTML = '<i class="bi bi-fullscreen-exit"></i>';
+        } else {
+            if (elem) {
+                elem.style.backgroundColor = "";
+                elem.style.overflow = "";
+            }
+            if (btn) btn.innerHTML = '<i class="bi bi-arrows-fullscreen"></i>';
+        }
+    });
+
+    window.exportVisualization = function () {
+        const container = document.getElementById("chart-area");
+        const svgElement = container.querySelector("svg");
+
+        if (!svgElement) {
+            alert("Errore: SVG non trovato.");
+            return;
+        }
+
+        const clonedSvg = svgElement.cloneNode(true);
+
+        const styleString = `
+            text { font-family: 'Ministry', 'Helvetica Neue', Helvetica, Arial, sans-serif; fill: #000; }
+            .lane-label { font-weight: 700; font-size: 14px; text-anchor: end; }
+            .phase-label { font-weight: 800; font-size: 12px; fill: #666; text-transform: uppercase; }
+            .phase-divider { stroke: #999; stroke-dasharray: 4; stroke-width: 1px; }
+            .node-label { font-size: 10px; font-weight: bold; text-anchor: middle; }
+            .node-circle { fill: #fff; stroke: #525252; stroke-width: 3px; }
+            .lane-line { stroke: #e0e0e0; stroke-width: 1px; }
+        `;
+
+        const styleElement = document.createElementNS("http://www.w3.org/2000/svg", "style");
+        styleElement.textContent = styleString;
+        clonedSvg.insertBefore(styleElement, clonedSvg.firstChild);
+
+        // Reset transform on clone so export shows full graph
+        const gClonemain = clonedSvg.querySelector("g");
+        if (gClonemain) {
+            clonedSvg.setAttribute("viewBox", svgElement.getAttribute("viewBox") || ("0 0 " + svgElement.getAttribute("width") + " " + svgElement.getAttribute("height")));
+        }
+
+        const serializer = new XMLSerializer();
+        const svgString = serializer.serializeToString(clonedSvg);
+        const blob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "pna-edizione-sezioni.svg";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    };
 
 });

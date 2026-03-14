@@ -85,20 +85,30 @@ async function initTimelines() {
     }
 }
 
-function switchEdition(edition) {
-    // Update Buttons
-    document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active'); // Assumes click event
+window.toggleEdition = function(checkbox) {
+    const isXIX = checkbox.checked;
 
     // Toggle Containers
-    if (edition === 'XIX') {
+    if (isXIX) {
         document.getElementById('edition-xix').style.display = 'block';
         document.getElementById('edition-xviii').style.display = 'none';
     } else {
         document.getElementById('edition-xix').style.display = 'none';
         document.getElementById('edition-xviii').style.display = 'block';
     }
-}
+
+    // Update labels styling visually
+    const labels = checkbox.parentElement.querySelectorAll('span');
+    if (labels.length >= 2) {
+        if (isXIX) {
+            labels[0].classList.add('text-muted');
+            labels[1].classList.remove('text-muted');
+        } else {
+            labels[0].classList.remove('text-muted');
+            labels[1].classList.add('text-muted');
+        }
+    }
+};
 
 // Global Sort State
 const sortState = {
@@ -219,11 +229,23 @@ function renderTimeline(dataset, containerSelector, year, startMonth, endMonth) 
     const height = (sections.length * rowHeight) + margin.top + margin.bottom;
 
     // SVG
-    const svg = container.append("svg")
+    const svgObj = container.append("svg")
         .attr("width", "100%")
         .attr("height", height)
         .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height}`)
-        .append("g")
+        .style("cursor", "grab");
+
+    const gMain = svgObj.append("g");
+
+    const zoomObj = d3.zoom()
+        .scaleExtent([1, 4])
+        .on("zoom", (event) => {
+            gMain.attr("transform", event.transform);
+        });
+    svgObj.call(zoomObj).on("wheel.zoom", null);
+    container.node()._zoomInfo = { svg: svgObj, zoom: zoomObj };
+
+    const svg = gMain.append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
     // Scales - Fixed Interval for unified comparison
@@ -369,3 +391,95 @@ function renderTimeline(dataset, containerSelector, year, startMonth, endMonth) 
 }
 
 initTimelines();
+
+// --- Global Controls ---
+function getActiveZoomInfo() {
+    const isXIX = document.getElementById('edition-xix').style.display !== 'none';
+    const containerId = isXIX ? "#timeline-xix" : "#timeline-xviii";
+    const container = d3.select(containerId).node();
+    return container ? container._zoomInfo : null;
+}
+
+window.zoomIn = function () {
+    const info = getActiveZoomInfo();
+    if(info) info.svg.transition().duration(300).call(info.zoom.scaleBy, 1.3);
+};
+
+window.zoomOut = function () {
+    const info = getActiveZoomInfo();
+    if(info) info.svg.transition().duration(300).call(info.zoom.scaleBy, 0.7);
+};
+
+window.resetZoom = function () {
+    const info = getActiveZoomInfo();
+    if(info) info.svg.transition().duration(750).call(info.zoom.transform, d3.zoomIdentity);
+};
+
+window.recenter = function () {
+    window.resetZoom();
+};
+
+window.toggleFullscreen = function () {
+    const elem = document.querySelector(".fullscreen-container") || document.documentElement;
+    if (!document.fullscreenElement) {
+        elem.style.backgroundColor = "#fff"; 
+        elem.style.overflow = "auto";
+        elem.requestFullscreen().catch(err => console.error(err));
+    } else {
+        document.exitFullscreen();
+    }
+};
+
+document.addEventListener('fullscreenchange', () => {
+    const elem = document.querySelector(".fullscreen-container");
+    const btn = document.querySelector('button[onclick="toggleFullscreen()"]');
+    if (document.fullscreenElement) {
+        if (btn) btn.innerHTML = '<i class="bi bi-fullscreen-exit"></i>';
+    } else {
+        if (elem) {
+            elem.style.backgroundColor = "";
+            elem.style.overflow = "";
+        }
+        if (btn) btn.innerHTML = '<i class="bi bi-arrows-fullscreen"></i>';
+    }
+});
+
+window.exportVisualization = function () {
+    const isXIX = document.getElementById('edition-xix').style.display !== 'none';
+    const containerId = isXIX ? "#timeline-xix" : "#timeline-xviii";
+    const container = document.querySelector(containerId);
+    if (!container) return;
+    const svgElement = container.querySelector("svg");
+    if (!svgElement) {
+        alert("Errore: SVG non trovato.");
+        return;
+    }
+    
+    const clonedSvg = svgElement.cloneNode(true);
+    const styleString = `
+        text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        .x-axis-months text { font-weight: bold; font-size: 12px; fill: #333; }
+        .x-axis-months .tick line { stroke: #e0e0e0; }
+        .row-bg { opacity: 0.05; }
+    `;
+    const styleElement = document.createElementNS("http://www.w3.org/2000/svg", "style");
+    styleElement.textContent = styleString;
+    clonedSvg.insertBefore(styleElement, clonedSvg.firstChild);
+    
+    // Reset transform on clone so export shows full graph
+    const gClonemain = clonedSvg.querySelector("g");
+    if(gClonemain) {
+        clonedSvg.setAttribute("viewBox", svgElement.getAttribute("viewBox") || ("0 0 " + svgElement.getAttribute("width") + " " + svgElement.getAttribute("height")));
+    }
+    
+    const svgData = new XMLSerializer().serializeToString(clonedSvg);
+    const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `pna-scadenze-${isXIX ? 'XIX' : 'XVIII'}.svg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+};

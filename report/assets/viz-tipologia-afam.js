@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const response = await fetch('../src/data/pna-istituzioni-afam.json');
         allData = await response.json();
 
-        updateTotalCount(allData.length);
-        initBubbleChart(allData);
+        applyFilters();
 
     } catch (error) {
         console.error("Error loading data:", error);
@@ -19,6 +18,20 @@ function updateTotalCount(count) {
     document.querySelectorAll('.total-institutions-count').forEach(el => {
         el.textContent = count;
     });
+}
+
+function applyFilters() {
+    const soloPrincipale = document.getElementById('checkPrincipale')?.checked;
+    
+    const filteredData = allData.filter(d => {
+        return soloPrincipale ? d.sede === "Principale" : true;
+    });
+    
+    updateTotalCount(filteredData.length);
+    
+    // Clear existing chart
+    d3.select("#bubble-chart").html("");
+    initBubbleChart(filteredData);
 }
 
 function initBubbleChart(data) {
@@ -55,9 +68,20 @@ function initBubbleChart(data) {
         .attr("width", "100%")
         .attr("height", "100%")
         .style("font", "10px sans-serif")
-        .attr("text-anchor", "middle");
+        .attr("text-anchor", "middle")
+        .style("cursor", "grab");
 
-    const node = svg.selectAll("g")
+    const gMain = svg.append("g");
+
+    const zoom = d3.zoom()
+        .scaleExtent([1, 4])
+        .on("zoom", (event) => {
+            gMain.attr("transform", event.transform);
+        });
+    svg.call(zoom).on("wheel.zoom", null);
+    document.getElementById("bubble-chart")._zoomInfo = { svg, zoom };
+
+    const node = gMain.selectAll("g")
         .data(root.descendants())
         .join("g")
         .attr("transform", d => `translate(${d.x},${d.y})`);
@@ -126,11 +150,74 @@ function hideTooltip() {
     d3.select("#tooltip").style("opacity", 0);
 }
 
-function exportBubbleChartToSVG() {
-    const svgElement = document.querySelector("#bubble-chart svg");
-    if (!svgElement) return;
+window.zoomIn = function () {
+    const info = document.getElementById("bubble-chart")?._zoomInfo;
+    if(info) info.svg.transition().duration(300).call(info.zoom.scaleBy, 1.3);
+};
 
-    const svgData = new XMLSerializer().serializeToString(svgElement);
+window.zoomOut = function () {
+    const info = document.getElementById("bubble-chart")?._zoomInfo;
+    if(info) info.svg.transition().duration(300).call(info.zoom.scaleBy, 0.7);
+};
+
+window.resetZoom = function () {
+    const info = document.getElementById("bubble-chart")?._zoomInfo;
+    if(info) info.svg.transition().duration(750).call(info.zoom.transform, d3.zoomIdentity);
+};
+
+window.recenter = function () {
+    window.resetZoom();
+};
+
+window.toggleFullscreen = function () {
+    const elem = document.querySelector(".fullscreen-container") || document.documentElement;
+    if (!document.fullscreenElement) {
+        elem.style.backgroundColor = "#fff"; 
+        elem.style.overflow = "auto";
+        elem.requestFullscreen().catch(err => console.error(err));
+    } else {
+        document.exitFullscreen();
+    }
+};
+
+document.addEventListener('fullscreenchange', () => {
+    const elem = document.querySelector(".fullscreen-container");
+    const btn = document.querySelector('button[onclick="toggleFullscreen()"]');
+    if (document.fullscreenElement) {
+        if (btn) btn.innerHTML = '<i class="bi bi-fullscreen-exit"></i>';
+    } else {
+        if (elem) {
+            elem.style.backgroundColor = "";
+            elem.style.overflow = "";
+        }
+        if (btn) btn.innerHTML = '<i class="bi bi-arrows-fullscreen"></i>';
+    }
+});
+
+window.exportBubbleChartToSVG = function () {
+    const svgElement = document.querySelector("#bubble-chart svg");
+    if (!svgElement) {
+        alert("Errore: SVG non trovato.");
+        return;
+    }
+
+    const clonedSvg = svgElement.cloneNode(true);
+    const styleString = `
+        text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; }
+        .group-label.status-label { font-size: 14px; font-weight: bold; }
+        .leaf text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    `;
+    const styleElement = document.createElementNS("http://www.w3.org/2000/svg", "style");
+    styleElement.textContent = styleString;
+    clonedSvg.insertBefore(styleElement, clonedSvg.firstChild);
+
+    // Reset view bounds just in case for export stability
+    const info = document.getElementById("bubble-chart")?._zoomInfo;
+    if(info) {
+       clonedSvg.setAttribute("viewBox", `0 0 1200 900`);
+    }
+
+    const svgData = new XMLSerializer().serializeToString(clonedSvg);
     const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
     const url = URL.createObjectURL(blob);
 
@@ -140,4 +227,5 @@ function exportBubbleChartToSVG() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-}
+    URL.revokeObjectURL(url);
+};

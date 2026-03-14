@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 gMain.attr("transform", event.transform);
             });
 
-        svg.call(zoom);
+        svg.call(zoom).on("wheel.zoom", null);
 
         gMain = svg.append("g");
 
@@ -288,6 +288,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Scale to fit
         const scale = Math.min(viewportWidth / w, viewportHeight / h, 1);
+        zoom.scaleExtent([scale, 3]);
 
         // Calculate the center of the tree
         const midX = bounds.x + bounds.width / 2;
@@ -343,6 +344,39 @@ document.addEventListener("DOMContentLoaded", () => {
     window.resetZoom = function () {
         svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity);
     };
+
+    window.recenter = function () {
+        fitToView();
+    };
+
+    window.toggleFullscreen = function () {
+        const elem = document.querySelector(".fullscreen-container") || document.documentElement;
+        if (!document.fullscreenElement) {
+            // Apply a solid background before maximizing, as some browsers default to black/transparent
+            elem.style.backgroundColor = "#fff"; 
+            elem.style.overflow = "auto"; // allow scrolling if needed
+            elem.requestFullscreen().catch((err) => {
+                console.error(`Error attempting to enable fullscreen: ${err.message}`);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    };
+    
+    document.addEventListener('fullscreenchange', () => {
+        const elem = document.querySelector(".fullscreen-container");
+        const btn = document.querySelector('button[onclick="toggleFullscreen()"]');
+        
+        if (document.fullscreenElement) {
+            if (btn) btn.innerHTML = '<i class="bi bi-fullscreen-exit"></i>';
+        } else {
+            if (elem) {
+                elem.style.backgroundColor = "";
+                elem.style.overflow = "";
+            }
+            if (btn) btn.innerHTML = '<i class="bi bi-arrows-fullscreen"></i>';
+        }
+    });
 });
 
 /**

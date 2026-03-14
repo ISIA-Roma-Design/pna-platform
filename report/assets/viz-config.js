@@ -9,7 +9,7 @@ window.VIZ_CONFIG = {
         arti_visive: "#ffd166",
         arti_spettacolo: "#06d6a0",
         interpretazione_musicale: "#118ab2",
-        default: "#999"
+        default: "#000"
     },
 
     SECTION_LABELS: {

@@ -11,6 +11,9 @@
     <link href="../src/prototipo/assets/bootstrap-custom.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <!-- Custom Swiss Theme -->
     <link rel="stylesheet" href="../src/prototipo/assets/style.css">
     <link rel="stylesheet" href="assets/viz-style.css">
@@ -36,51 +39,95 @@
     <script src="../src/components/header-loader.js"></script>
 
     <div class="main-container">
-        <div class="view-header">
+        <div class="view-header pb-1 mb-2 border-0">
             <div>
                 <h1 class="page-title">5. Distribuzione territoriale delle Istituzioni AFAM</h1>
                 <p class="page-subtitle">Distribuzione territoriale delle istituzioni partecipanti.</p>
             </div>
-            <div class="page-header-actions">
-                <div class="total-counter">Istituti <span class="count total-institutions-count">0</span></div>
-                <div class="filter-group">
-                    <label class="filter-item">
-                        <input type="checkbox" class="status-filter" value="Pubblico" checked onchange="applyFilters()">
-                        Pubblico
-                    </label>
-                    <label class="filter-item">
-                        <input type="checkbox" class="status-filter" value="Privato" checked onchange="applyFilters()">
-                        Privato
-                    </label>
-                </div>
-                <button class="export-btn" onclick="exportMapToSVG()">Esporta Mappa (SVG)</button>
-            </div>
         </div>
 
-        <div id="view-map" class="view-container">
-            <div class="controls-group">
-                <div class="slider-container">
-                    <label for="cluster-radius">Sensibilità Cluster:</label>
-                    <input type="range" id="cluster-radius" min="0" max="150" value="20" step="5"
-                        oninput="updateClusterRadius(this.value)">
-                    <span id="radius-value">20</span>
-                </div>
-            </div>
-            <div id="map-container"></div>
-        </div>
+        <!-- Fullscreen Container -->
+        <div class="fullscreen-container" style="background-color: #fff;">
+            <!-- Standard Control Bar -->
+            <div
+                class="controls-bar d-flex flex-wrap align-items-center p-3 mb-0 bg-light border-top border-bottom border-dark">
+                <!-- Controlli Specifici -->
+                <div class="specific-controls d-flex flex-wrap align-items-center gap-4">
+                    <div class="d-flex align-items-center rounded bg-dark p-1">
+                        <span class="text-uppercase text-white small fw-bold px-2" style="letter-spacing: 0.5px;">Istituti</span>
+                        <span class="badge bg-light text-dark total-institutions-count fs-6 ms-1">0</span>
+                    </div>
 
-        <!-- Navigation Bar -->
-        <footer class="viz-nav-footer">
-            <a class="btn btn-outline-dark btn-sm rounded-0"  href="infografiche.html">Torna all'indice</a>
-            <div class="viz-nav-links">
-                <a class="btn btn-outline-dark btn-sm rounded-0"  href="viz-tipologia-afam.html">Precedente: 8.4 Tipologia</a>
-                <a class="btn btn-outline-dark btn-sm rounded-0" style="background-color: #000; color: #fff;" disabled>Successivo</a>
+                    <div class="filter-group m-0 d-flex gap-3">
+                        <div class="form-check form-check-inline mb-0 d-flex align-items-center gap-1">
+                            <input class="form-check-input status-filter mt-0" type="checkbox" id="checkPubblico"
+                                value="Pubblico" checked onchange="applyFilters()">
+                            <label class="form-check-label fw-bold small" for="checkPubblico">Pubblico</label>
+                        </div>
+                        <div class="form-check form-check-inline mb-0 d-flex align-items-center gap-1">
+                            <input class="form-check-input status-filter mt-0" type="checkbox" id="checkPrivato"
+                                value="Privato" checked onchange="applyFilters()">
+                            <label class="form-check-label fw-bold small" for="checkPrivato">Privato</label>
+                        </div>
+                    </div>
+
+                    <div class="form-check form-switch m-0 d-flex align-items-center gap-2">
+                        <input class="form-check-input m-0" type="checkbox" role="switch" id="checkPrincipale" onchange="applyFilters()" style="cursor: pointer;">
+                        <label class="form-check-label small fw-bold mb-0 pt-1" for="checkPrincipale" style="cursor: pointer;">Solo Sedi Principali</label>
+                    </div>
+
+                    <div class="slider-container m-0 d-flex align-items-center gap-2">
+                        <label for="cluster-radius" class="mb-0 small fw-bold">Sensibilità Cluster:</label>
+                        <input type="range" id="cluster-radius" class="form-range" style="width: 100px;" min="0"
+                            max="150" value="20" step="5" oninput="updateClusterRadius(this.value)">
+                        <span id="radius-value" class="small">20</span>
+                    </div>
+                </div> <!-- End Specific Controls -->
+            </div> <!-- End Controls Bar -->
+
+            <div id="viz-wrapper" style="position: relative; width: 100%; overflow: hidden;">
+                <!-- Overlay Toolbar z-index elevated for Leaflet -->
+                <div class="position-absolute top-0 end-0 m-3 d-flex flex-column gap-2 shadow-sm rounded p-2"
+                    style="z-index: 1000; background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px);">
+                    <button class="btn btn-dark btn-sm shadow-sm" onclick="toggleFullscreen()" title="Fullscreen">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </button>
+                    <div class="btn-group-vertical shadow-sm">
+                        <button class="btn btn-outline-dark btn-sm" onclick="zoomIn()" title="Zoom In"><i
+                                class="bi bi-zoom-in"></i></button>
+                        <button class="btn btn-outline-dark btn-sm" onclick="zoomOut()" title="Zoom Out"><i
+                                class="bi bi-zoom-out"></i></button>
+                        <button class="btn btn-outline-dark btn-sm" onclick="resetZoom()" title="Reset Zoom"><i
+                                class="bi bi-arrow-counterclockwise"></i></button>
+                        <button class="btn btn-outline-dark btn-sm" onclick="recenter()" title="Centra"><i
+                                class="bi bi-bullseye"></i></button>
+                    </div>
+                    <button class="btn btn-outline-dark btn-sm shadow-sm" onclick="exportVisualization()"
+                        title="Esporta Grafico">
+                        <i class="bi bi-download"></i>
+                    </button>
+                </div>
+                <div id="view-map" class="view-container m-0 p-0 border-0"
+                    style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+                    <div id="map-container" style="width: 100%; height: 100%;"></div>
+                </div>
+                <div id="tooltip" class="tooltip"></div>
             </div>
-        </footer>
+
+        </div> <!-- End Chart Wrapper -->
+    </div> <!-- End Fullscreen Container -->
+
+    <!-- Navigation Bar -->
+    <footer class="viz-nav-footer border-top">
+        <a class="btn btn-outline-dark btn-sm rounded-0" href="infografiche.html">Torna all'indice</a>
+        <div class="viz-nav-links">
+            <a class="btn btn-outline-dark btn-sm rounded-0" href="viz-tipologia-afam.html">Precedente: 8.4
+                Tipologia</a>
+            <a class="btn btn-outline-dark btn-sm rounded-0" style="background-color: #000; color: #fff;"
+                disabled>Successivo</a>
+        </div>
+    </footer>
     </div>
-
-
-    <div id="tooltip" class="tooltip"></div>
 
     <script src="assets/viz-config.js"></script>
     <script src="assets/viz-distribuzione-territoriale.js"></script>

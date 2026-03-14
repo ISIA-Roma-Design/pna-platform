@@ -122,13 +122,19 @@ function applyFilters() {
 
 function getFilteredData() {
     const selectedStatuses = Array.from(document.querySelectorAll('.status-filter:checked')).map(cb => cb.value);
-    return allData.filter(d => selectedStatuses.includes(d.status));
+    const soloPrincipale = document.getElementById('checkPrincipale')?.checked;
+    
+    return allData.filter(d => {
+        const matchesStatus = selectedStatuses.includes(d.status);
+        const matchesSede = soloPrincipale ? d.sede === "Principale" : true;
+        return matchesStatus && matchesSede;
+    });
 }
 
 function initLeafletMap(data) {
     if (!window.map) {
         const map = L.map('map-container', {
-            minZoom: 1
+            minZoom: 6
         }).setView([41.9028, 12.4964], 6);
         window.map = map;
 
@@ -240,6 +246,48 @@ function updateClusterRadius(radius) {
 function getColorBySection(type) {
     return VIZ_CONFIG.getColorBySection(type);
 }
+
+// --- Global Controls ---
+window.zoomIn = function () {
+    if (window.map) window.map.zoomIn();
+};
+
+window.zoomOut = function () {
+    if (window.map) window.map.zoomOut();
+};
+
+window.resetZoom = function () {
+    if (window.map) window.map.setView([41.9028, 12.4964], 6);
+};
+
+window.recenter = function () {
+    window.resetZoom();
+};
+
+window.toggleFullscreen = function () {
+    const elem = document.querySelector(".fullscreen-container") || document.documentElement;
+    if (!document.fullscreenElement) {
+        elem.style.backgroundColor = "#fff"; 
+        elem.style.overflow = "auto";
+        elem.requestFullscreen().catch((err) => console.error(err));
+    } else {
+        document.exitFullscreen();
+    }
+};
+
+document.addEventListener('fullscreenchange', () => {
+    const elem = document.querySelector(".fullscreen-container");
+    const btn = document.querySelector('button[onclick="toggleFullscreen()"]');
+    if (document.fullscreenElement) {
+        if (btn) btn.innerHTML = '<i class="bi bi-fullscreen-exit"></i>';
+    } else {
+        if (elem) {
+            elem.style.backgroundColor = "";
+            elem.style.overflow = "";
+        }
+        if (btn) btn.innerHTML = '<i class="bi bi-arrows-fullscreen"></i>';
+    }
+});
 
 async function exportMapToSVG() {
     if (!allData || allData.length === 0) {
