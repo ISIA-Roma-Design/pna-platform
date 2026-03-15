@@ -424,7 +424,11 @@ window.toggleFullscreen = function () {
     if (!document.fullscreenElement) {
         elem.style.backgroundColor = "#fff"; 
         elem.style.overflow = "auto";
-        elem.requestFullscreen().catch(err => console.error(err));
+        elem.requestFullscreen().then(() => {
+            if (screen.orientation && screen.orientation.lock) {
+                screen.orientation.lock('landscape').catch(err => console.log("Orientation lock not supported or failed:", err));
+            }
+        }).catch(err => console.error(err));
     } else {
         document.exitFullscreen();
     }
@@ -441,6 +445,9 @@ document.addEventListener('fullscreenchange', () => {
             elem.style.overflow = "";
         }
         if (btn) btn.innerHTML = '<i class="bi bi-arrows-fullscreen"></i>';
+        if (screen.orientation && screen.orientation.unlock) {
+            screen.orientation.unlock();
+        }
     }
 });
 

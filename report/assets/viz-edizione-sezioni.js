@@ -33,6 +33,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let allJourneys = {};
     let journeyVisibility = {};
 
+    // Forcibly hide popover on startup to prevent empty tooltip flash
+    const initPopover = document.getElementById('dettagli-popover');
+    if (initPopover) initPopover.style.display = 'none';
+
     // 1. Data Loading
     fetch('../src/data/pna-processo-asis.json')
         .then(response => response.json())
@@ -56,8 +60,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Add "Tutti" button
         const allBtn = document.createElement('button');
-        allBtn.className = 'btn btn-outline-dark btn-sm rounded-0 fw-bold me-2';
-        allBtn.textContent = "MOSTRA TUTTI";
+        allBtn.className = 'btn btn-outline-dark btn-sm rounded-0 fw-bold';
+        allBtn.textContent = "Reset";
 
         allBtn.addEventListener('click', () => {
             Object.keys(journeyVisibility).forEach(k => {
@@ -66,13 +70,13 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             renderChart();
         });
-        btnContainer.appendChild(allBtn);
+        //btnContainer.appendChild(allBtn);
 
         Object.keys(allJourneys).forEach(key => {
             const btn = document.createElement('button');
-            btn.className = 'btn btn-dark btn-sm rounded-0 fw-bold me-2';
+            btn.className = 'btn btn-dark btn-sm rounded-0 fw-bold';
             btn.setAttribute('id', `btn-${key}`);
-            btn.textContent = (JOURNEY_CONFIG[key]?.label || key).toUpperCase();
+            btn.textContent = (JOURNEY_CONFIG[key]?.label || key);
             btn.style.backgroundColor = JOURNEY_CONFIG[key].color;
             btn.style.borderColor = JOURNEY_CONFIG[key].color;
             btn.style.color = '#fff';
@@ -92,10 +96,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const btn = document.getElementById(`btn-${key}`);
         if (!btn) return;
         if (isVisible) {
-            btn.className = 'btn btn-dark btn-sm rounded-0 fw-bold me-2';
+            btn.className = 'btn btn-dark btn-sm rounded-0 fw-bold';
             btn.style.opacity = '1';
         } else {
-            btn.className = 'btn btn-outline-dark btn-sm rounded-0 fw-bold me-2';
+            btn.className = 'btn btn-outline-dark btn-sm rounded-0 fw-bold';
             btn.style.opacity = '0.5';
         }
     }
@@ -391,7 +395,11 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!document.fullscreenElement) {
             elem.style.backgroundColor = "#fff";
             elem.style.overflow = "auto";
-            elem.requestFullscreen().catch((err) => {
+            elem.requestFullscreen().then(() => {
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(err => console.log("Orientation lock not supported:", err));
+                }
+            }).catch((err) => {
                 console.error(`Error attempting to enable fullscreen: ${err.message}`);
             });
         } else {
@@ -410,6 +418,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 elem.style.overflow = "";
             }
             if (btn) btn.innerHTML = '<i class="bi bi-arrows-fullscreen"></i>';
+            if (screen.orientation && screen.orientation.unlock) {
+                screen.orientation.unlock();
+            }
         }
     });
 

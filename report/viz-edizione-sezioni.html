@@ -44,7 +44,7 @@
                 class="controls-bar d-flex flex-wrap align-items-center p-3 mb-0 bg-light border-top border-bottom border-dark">
                 <!-- Controlli Specifici -->
                 <div class="specific-controls d-flex flex-wrap align-items-center gap-3">
-                    <div id="button-controls" class="nav-buttons-container m-0 border-0 p-0">
+                    <div id="button-controls" class="nav-buttons-container m-0 border-0 p-0 d-flex gap-2">
                         <!-- Buttons will be dynamically populated -->
                     </div>
                 </div>
@@ -53,22 +53,22 @@
             <!-- Chart Wrapper -->
             <div id="viz-wrapper" style="position: relative; width: 100%; overflow: hidden; background-color: #fff;">
                 <!-- Overlay Toolbar -->
-                <div class="position-absolute top-0 end-0 m-3 z-3 d-flex flex-column gap-2 shadow-sm rounded p-2"
-                    style="background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px);">
-                    <button class="btn btn-dark btn-sm shadow-sm" onclick="toggleFullscreen()" title="Fullscreen">
+                <div class="position-absolute top-0 end-0 m-3 z-3 d-flex flex-column gap-2">
+                    <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="toggleFullscreen()"
+                        title="Fullscreen">
                         <i class="bi bi-arrows-fullscreen"></i>
                     </button>
                     <div class="btn-group-vertical shadow-sm">
-                        <button class="btn btn-outline-dark btn-sm" onclick="zoomIn()" title="Zoom In"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="zoomIn()" title="Zoom In"><i
                                 class="bi bi-zoom-in"></i></button>
-                        <button class="btn btn-outline-dark btn-sm" onclick="zoomOut()" title="Zoom Out"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="zoomOut()" title="Zoom Out"><i
                                 class="bi bi-zoom-out"></i></button>
-                        <button class="btn btn-outline-dark btn-sm" onclick="resetZoom()" title="Reset Zoom"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="resetZoom()" title="Reset Zoom"><i
                                 class="bi bi-arrow-counterclockwise"></i></button>
-                        <button class="btn btn-outline-dark btn-sm" onclick="recenter()" title="Centra"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="recenter()" title="Centra"><i
                                 class="bi bi-bullseye"></i></button>
                     </div>
-                    <button class="btn btn-outline-dark btn-sm shadow-sm" onclick="exportVisualization()"
+                    <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="exportVisualization()"
                         title="Esporta Grafico">
                         <i class="bi bi-download"></i>
                     </button>

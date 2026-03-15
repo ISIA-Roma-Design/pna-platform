@@ -52,11 +52,9 @@
             <div
                 class="controls-bar d-flex flex-wrap align-items-center p-3 mb-0 bg-light border-top border-bottom border-dark">
                 <!-- Controlli Specifici -->
-                <div class="specific-controls d-flex flex-wrap align-items-center gap-4">
-                    <div class="d-flex align-items-center rounded bg-dark p-1">
-                        <span class="text-uppercase text-white small fw-bold px-2" style="letter-spacing: 0.5px;">Istituti</span>
-                        <span class="badge bg-light text-dark total-institutions-count fs-6 ms-1">0</span>
-                    </div>
+                <div
+                    class="specific-controls d-flex flex-column flex-md-row flex-wrap justify-content-start align-items-start gap-2 gap-md-4">
+
 
                     <div class="filter-group m-0 d-flex gap-3">
                         <div class="form-check form-check-inline mb-0 d-flex align-items-center gap-1">
@@ -71,9 +69,11 @@
                         </div>
                     </div>
 
-                    <div class="form-check form-switch m-0 d-flex align-items-center gap-2">
-                        <input class="form-check-input m-0" type="checkbox" role="switch" id="checkPrincipale" onchange="applyFilters()" style="cursor: pointer;">
-                        <label class="form-check-label small fw-bold mb-0 pt-1" for="checkPrincipale" style="cursor: pointer;">Solo Sedi Principali</label>
+                    <div class="form-check form-switch ps-0 ps-md-3 m-0 d-flex align-items-center gap-2">
+                        <input class="form-check-input m-0" type="checkbox" role="switch" id="checkPrincipale"
+                            onchange="applyFilters()" style="cursor: pointer;">
+                        <label class="form-check-label small fw-bold mb-0 pt-1" for="checkPrincipale"
+                            style="cursor: pointer;">Solo Sedi Principali</label>
                     </div>
 
                     <div class="slider-container m-0 d-flex align-items-center gap-2">
@@ -86,23 +86,30 @@
             </div> <!-- End Controls Bar -->
 
             <div id="viz-wrapper" style="position: relative; width: 100%; overflow: hidden;">
+                <!-- Overlay Badge Top-Left -->
+                <div class="position-absolute top-0 start-0 m-3 btn btn-outline-dark btn-sm shadow-sm d-flex align-items-center gap-2" 
+                     style="z-index: 1000 !important; background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px); pointer-events: none;">
+                    <span class="text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.5px;">Istituti</span>
+                    <span class="badge bg-dark text-white total-institutions-count">0</span>
+                </div>
+
                 <!-- Overlay Toolbar z-index elevated for Leaflet -->
-                <div class="position-absolute top-0 end-0 m-3 d-flex flex-column gap-2 shadow-sm rounded p-2"
-                    style="z-index: 1000; background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px);">
-                    <button class="btn btn-dark btn-sm shadow-sm" onclick="toggleFullscreen()" title="Fullscreen">
+                <div class="position-absolute top-0 end-0 m-3 d-flex flex-column gap-2"
+                    style="z-index: 1000;">
+                    <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="toggleFullscreen()" title="Fullscreen">
                         <i class="bi bi-arrows-fullscreen"></i>
                     </button>
                     <div class="btn-group-vertical shadow-sm">
-                        <button class="btn btn-outline-dark btn-sm" onclick="zoomIn()" title="Zoom In"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="zoomIn()" title="Zoom In"><i
                                 class="bi bi-zoom-in"></i></button>
-                        <button class="btn btn-outline-dark btn-sm" onclick="zoomOut()" title="Zoom Out"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="zoomOut()" title="Zoom Out"><i
                                 class="bi bi-zoom-out"></i></button>
-                        <button class="btn btn-outline-dark btn-sm" onclick="resetZoom()" title="Reset Zoom"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="resetZoom()" title="Reset Zoom"><i
                                 class="bi bi-arrow-counterclockwise"></i></button>
-                        <button class="btn btn-outline-dark btn-sm" onclick="recenter()" title="Centra"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="recenter()" title="Centra"><i
                                 class="bi bi-bullseye"></i></button>
                     </div>
-                    <button class="btn btn-outline-dark btn-sm shadow-sm" onclick="exportVisualization()"
+                    <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="exportVisualization()"
                         title="Esporta Grafico">
                         <i class="bi bi-download"></i>
                     </button>

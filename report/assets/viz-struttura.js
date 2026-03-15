@@ -355,7 +355,11 @@ document.addEventListener("DOMContentLoaded", () => {
             // Apply a solid background before maximizing, as some browsers default to black/transparent
             elem.style.backgroundColor = "#fff"; 
             elem.style.overflow = "auto"; // allow scrolling if needed
-            elem.requestFullscreen().catch((err) => {
+            elem.requestFullscreen().then(() => {
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(err => console.log("Orientation lock not supported:", err));
+                }
+            }).catch((err) => {
                 console.error(`Error attempting to enable fullscreen: ${err.message}`);
             });
         } else {
@@ -375,6 +379,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 elem.style.overflow = "";
             }
             if (btn) btn.innerHTML = '<i class="bi bi-arrows-fullscreen"></i>';
+            if (screen.orientation && screen.orientation.unlock) {
+                screen.orientation.unlock();
+            }
         }
     });
 });
