@@ -295,6 +295,11 @@ document.addEventListener('fullscreenchange', () => {
             screen.orientation.unlock();
         }
     }
+    // Recenter after a small delay to allow for layout changes
+    setTimeout(() => {
+        if (window.recenter) window.recenter();
+        else if (window.resetZoom) window.resetZoom();
+    }, 200);
 });
 
 async function exportMapToSVG() {

@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const xScale = d3.scaleLinear().domain([0, maxSteps - 1]).range([0, width - margin.left - margin.right]);
 
         svg = d3.select("#chart-area").append("svg")
-            .attr("width", "100%").attr("height", height)
+            .attr("width", "100%").attr("height", "100%")
             .style("cursor", "grab");
 
         // Inner container for zooming
@@ -422,6 +422,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 screen.orientation.unlock();
             }
         }
+        // Recenter after a small delay to allow for layout changes
+        setTimeout(() => {
+            if (window.recenter) window.recenter();
+            else if (window.resetZoom) window.resetZoom();
+        }, 200);
     });
 
     window.exportVisualization = function () {

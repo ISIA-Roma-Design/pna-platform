@@ -85,7 +85,7 @@ async function initTimelines() {
     }
 }
 
-window.toggleEdition = function(checkbox) {
+window.toggleEdition = function (checkbox) {
     const isXIX = checkbox.checked;
 
     // Toggle Containers
@@ -231,7 +231,7 @@ function renderTimeline(dataset, containerSelector, year, startMonth, endMonth) 
     // SVG
     const svgObj = container.append("svg")
         .attr("width", "100%")
-        .attr("height", height)
+        .attr("height", "100%")
         .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height}`)
         .style("cursor", "grab");
 
@@ -402,17 +402,17 @@ function getActiveZoomInfo() {
 
 window.zoomIn = function () {
     const info = getActiveZoomInfo();
-    if(info) info.svg.transition().duration(300).call(info.zoom.scaleBy, 1.3);
+    if (info) info.svg.transition().duration(300).call(info.zoom.scaleBy, 1.3);
 };
 
 window.zoomOut = function () {
     const info = getActiveZoomInfo();
-    if(info) info.svg.transition().duration(300).call(info.zoom.scaleBy, 0.7);
+    if (info) info.svg.transition().duration(300).call(info.zoom.scaleBy, 0.7);
 };
 
 window.resetZoom = function () {
     const info = getActiveZoomInfo();
-    if(info) info.svg.transition().duration(750).call(info.zoom.transform, d3.zoomIdentity);
+    if (info) info.svg.transition().duration(750).call(info.zoom.transform, d3.zoomIdentity);
 };
 
 window.recenter = function () {
@@ -422,7 +422,7 @@ window.recenter = function () {
 window.toggleFullscreen = function () {
     const elem = document.querySelector(".fullscreen-container") || document.documentElement;
     if (!document.fullscreenElement) {
-        elem.style.backgroundColor = "#fff"; 
+        elem.style.backgroundColor = "#fff";
         elem.style.overflow = "auto";
         elem.requestFullscreen().then(() => {
             if (screen.orientation && screen.orientation.lock) {
@@ -449,6 +449,11 @@ document.addEventListener('fullscreenchange', () => {
             screen.orientation.unlock();
         }
     }
+    // Recenter after a small delay to allow for layout changes
+    setTimeout(() => {
+        if (window.recenter) window.recenter();
+        else if (window.resetZoom) window.resetZoom();
+    }, 200);
 });
 
 window.exportVisualization = function () {
@@ -461,7 +466,7 @@ window.exportVisualization = function () {
         alert("Errore: SVG non trovato.");
         return;
     }
-    
+
     const clonedSvg = svgElement.cloneNode(true);
     const styleString = `
         text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
@@ -472,13 +477,13 @@ window.exportVisualization = function () {
     const styleElement = document.createElementNS("http://www.w3.org/2000/svg", "style");
     styleElement.textContent = styleString;
     clonedSvg.insertBefore(styleElement, clonedSvg.firstChild);
-    
+
     // Reset transform on clone so export shows full graph
     const gClonemain = clonedSvg.querySelector("g");
-    if(gClonemain) {
+    if (gClonemain) {
         clonedSvg.setAttribute("viewBox", svgElement.getAttribute("viewBox") || ("0 0 " + svgElement.getAttribute("width") + " " + svgElement.getAttribute("height")));
     }
-    
+
     const svgData = new XMLSerializer().serializeToString(clonedSvg);
     const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
     const url = URL.createObjectURL(blob);

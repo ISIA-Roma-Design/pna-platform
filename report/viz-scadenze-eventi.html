@@ -55,17 +55,10 @@
             </div>
 
             <div id="viz-wrapper" style="position: relative;">
-                <!-- Mobile Placeholder -->
-                <div class="mobile-viz-placeholder">
-                    <i class="bi bi-phone-landscape display-4 mb-3 text-secondary"></i>
-                    <p class="mb-4">Per una migliore esplorazione dei dati si consiglia la visione a tutto schermo.</p>
-                    <button class="btn btn-dark" onclick="toggleFullscreen()">
-                        <i class="bi bi-arrows-fullscreen me-2"></i>Apri a tutto schermo
-                    </button>
-                </div>
                 <!-- Overlay Toolbar -->
                 <div class="position-absolute top-0 end-0 m-3 z-3 d-flex flex-column gap-2">
-                    <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="toggleFullscreen()" title="Fullscreen">
+                    <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="toggleFullscreen()"
+                        title="Fullscreen">
                         <i class="bi bi-arrows-fullscreen"></i>
                     </button>
                     <div class="btn-group-vertical shadow-sm">
@@ -84,8 +77,17 @@
                     </button>
                 </div>
                 <div id="edition-xix" class="edition-container">
-                    <h2 class="viz-heading">Edizione XIX (2025)</h2>
-                    <div id="timeline-xix" class="timeline-wrapper"></div>
+                    <h3 class="viz-heading">Edizione XIX (2025)</h3>
+                    <div id="timeline-xix" class="timeline-wrapper" style="position: relative;">
+                        <!-- Mobile Placeholder (Timeline Specific) -->
+                        <div class="mobile-viz-placeholder">
+                            <i class="bi bi-phone-landscape display-4 mb-3 text-secondary"></i>
+                            <p class="mb-4">Per una migliore esplorazione si consiglia la visione a tutto schermo.</p>
+                            <button class="btn btn-dark" onclick="toggleFullscreen()">
+                                <i class="bi bi-arrows-fullscreen me-2"></i> Fullscreen
+                            </button>
+                        </div>
+                    </div>
                     <div class="table-container">
                         <h3 class="viz-heading">Riepilogo Scadenze</h3>
                         <table id="table-xix" class="data-table">
@@ -105,24 +107,34 @@
                 </div>
 
                 <div id="edition-xviii" class="edition-container" style="display:none;">
-                    <h2 class="viz-heading">Edizione XVIII (2024)</h2>
-                    <div id="timeline-xviii" class="timeline-wrapper"></div>
-                    <div class="table-container">
-                        <h3 class="viz-heading">Riepilogo Scadenze</h3>
-                        <table id="table-xviii" class="data-table">
-                            <thead>
-                                <tr>
-                                    <th onclick="sortTable('xviii', 'date')">Data &#8597;</th>
-                                    <th onclick="sortTable('xviii', 'category')">Categoria &#8597;</th>
-                                    <th onclick="sortTable('xviii', 'section')">Sezione &#8597;</th>
-                                    <th onclick="sortTable('xviii', 'institution')">Istituzione &#8597;</th>
-                                    <th onclick="sortTable('xviii', 'event_type')">Tipo &#8597;</th>
-                                    <th>Dettagli</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
+                    <h3 class="viz-heading">Edizione XVIII (2024)</h2>
+                        <div id="timeline-xviii" class="timeline-wrapper" style="position: relative;">
+                            <!-- Mobile Placeholder (Timeline Specific) -->
+                            <div class="mobile-viz-placeholder">
+                                <i class="bi bi-phone-landscape display-4 mb-3 text-secondary"></i>
+                                <p class="mb-4">Per una migliore esplorazione si consiglia la visione a tutto schermo.
+                                </p>
+                                <button class="btn btn-dark" onclick="toggleFullscreen()">
+                                    <i class="bi bi-arrows-fullscreen me-2"></i> Fullscreen
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <h3 class="viz-heading">Riepilogo Scadenze</h3>
+                            <table id="table-xviii" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th onclick="sortTable('xviii', 'date')">Data &#8597;</th>
+                                        <th onclick="sortTable('xviii', 'category')">Categoria &#8597;</th>
+                                        <th onclick="sortTable('xviii', 'section')">Sezione &#8597;</th>
+                                        <th onclick="sortTable('xviii', 'institution')">Istituzione &#8597;</th>
+                                        <th onclick="sortTable('xviii', 'event_type')">Tipo &#8597;</th>
+                                        <th>Dettagli</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
                 </div>
 
                 <div id="tooltip" class="tooltip"></div>

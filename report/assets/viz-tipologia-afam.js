@@ -22,13 +22,13 @@ function updateTotalCount(count) {
 
 function applyFilters() {
     const soloPrincipale = document.getElementById('checkPrincipale')?.checked;
-    
+
     const filteredData = allData.filter(d => {
         return soloPrincipale ? d.sede === "Principale" : true;
     });
-    
+
     updateTotalCount(filteredData.length);
-    
+
     // Clear existing chart
     d3.select("#bubble-chart").html("");
     initBubbleChart(filteredData);
@@ -152,17 +152,17 @@ function hideTooltip() {
 
 window.zoomIn = function () {
     const info = document.getElementById("bubble-chart")?._zoomInfo;
-    if(info) info.svg.transition().duration(300).call(info.zoom.scaleBy, 1.3);
+    if (info) info.svg.transition().duration(300).call(info.zoom.scaleBy, 1.3);
 };
 
 window.zoomOut = function () {
     const info = document.getElementById("bubble-chart")?._zoomInfo;
-    if(info) info.svg.transition().duration(300).call(info.zoom.scaleBy, 0.7);
+    if (info) info.svg.transition().duration(300).call(info.zoom.scaleBy, 0.7);
 };
 
 window.resetZoom = function () {
     const info = document.getElementById("bubble-chart")?._zoomInfo;
-    if(info) info.svg.transition().duration(750).call(info.zoom.transform, d3.zoomIdentity);
+    if (info) info.svg.transition().duration(750).call(info.zoom.transform, d3.zoomIdentity);
 };
 
 window.recenter = function () {
@@ -172,7 +172,7 @@ window.recenter = function () {
 window.toggleFullscreen = function () {
     const elem = document.querySelector(".fullscreen-container") || document.documentElement;
     if (!document.fullscreenElement) {
-        elem.style.backgroundColor = "#fff"; 
+        elem.style.backgroundColor = "#fff";
         elem.style.overflow = "auto";
         elem.requestFullscreen().then(() => {
             if (screen.orientation && screen.orientation.lock) {
@@ -199,6 +199,11 @@ document.addEventListener('fullscreenchange', () => {
             screen.orientation.unlock();
         }
     }
+    // Recenter after a small delay to allow for layout changes
+    setTimeout(() => {
+        if (window.recenter) window.recenter();
+        else if (window.resetZoom) window.resetZoom();
+    }, 200);
 });
 
 window.exportBubbleChartToSVG = function () {
@@ -220,8 +225,8 @@ window.exportBubbleChartToSVG = function () {
 
     // Reset view bounds just in case for export stability
     const info = document.getElementById("bubble-chart")?._zoomInfo;
-    if(info) {
-       clonedSvg.setAttribute("viewBox", `0 0 1200 900`);
+    if (info) {
+        clonedSvg.setAttribute("viewBox", `0 0 1200 900`);
     }
 
     const svgData = new XMLSerializer().serializeToString(clonedSvg);
