@@ -53,6 +53,14 @@
             <!-- Chart Wrapper -->
             <div id="viz-wrapper"
                 style="position: relative; width: 100%; overflow: hidden; border-bottom: 1px solid #000; background-color: #fcfcfc;">
+                <!-- Mobile Placeholder -->
+                <div class="mobile-viz-placeholder">
+                    <i class="bi bi-phone-landscape display-4 mb-3 text-secondary"></i>
+                    <p class="mb-4">Per una migliore esplorazione dei dati si consiglia la visione a tutto schermo.</p>
+                    <button class="btn btn-dark" onclick="toggleFullscreen()">
+                        <i class="bi bi-arrows-fullscreen me-2"></i>Apri a tutto schermo
+                    </button>
+                </div>
                 <!-- Overlay Badge Top-Left -->
                 <div class="position-absolute top-0 start-0 m-3 btn btn-outline-dark btn-sm shadow-sm d-flex align-items-center gap-2" 
                      style="z-index: 1000 !important; background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px); pointer-events: none;">

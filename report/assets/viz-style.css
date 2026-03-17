@@ -634,3 +634,26 @@ h1,
 cds-popover#dettagli-popover {
     display: none;
 }
+
+/* Placeholder for mobile visualization */
+.mobile-viz-placeholder {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f8f9fa;
+    z-index: 2000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+@media (max-width: 991.98px) {
+    .fullscreen-container:not(:fullscreen) .mobile-viz-placeholder {
+        display: flex;
+    }
+}

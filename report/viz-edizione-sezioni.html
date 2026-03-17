@@ -52,6 +52,14 @@
 
             <!-- Chart Wrapper -->
             <div id="viz-wrapper" style="position: relative; width: 100%; overflow: hidden; background-color: #fff;">
+                <!-- Mobile Placeholder -->
+                <div class="mobile-viz-placeholder">
+                    <i class="bi bi-phone-landscape display-4 mb-3 text-secondary"></i>
+                    <p class="mb-4">Per una migliore esplorazione dei dati si consiglia la visione a tutto schermo.</p>
+                    <button class="btn btn-dark" onclick="toggleFullscreen()">
+                        <i class="bi bi-arrows-fullscreen me-2"></i>Apri a tutto schermo
+                    </button>
+                </div>
                 <!-- Overlay Toolbar -->
                 <div class="position-absolute top-0 end-0 m-3 z-3 d-flex flex-column gap-2">
                     <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="toggleFullscreen()"
