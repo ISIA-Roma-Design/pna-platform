@@ -1,5 +1,29 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@font-face {
+  font-family: "Ministry";
+  src: url("../fonts/Ministry-Thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Ministry";
+  src: url("../fonts/Ministry-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Ministry";
+  src: url("../fonts/Ministry-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Ministry";
+  src: url("../fonts/Ministry-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -12705,7 +12729,13 @@ textarea.form-control-lg {
   opacity: 1;
 }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+h1, .h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
   font-weight: 800;
 }
 
@@ -12765,7 +12795,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   width: 100%;
   margin: 2rem 0;
 }
-.table-swiss th, .table-swiss td {
+.table-swiss th,
+.table-swiss td {
   border: 1px solid #000;
   padding: 0.75rem 1rem;
 }
@@ -12887,6 +12918,58 @@ html {
   scroll-behavior: smooth;
 }
 
+@view-transition {
+  navigation: auto;
+}
+.page-transitioning {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+body {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+
+body.fade-out {
+  opacity: 0;
+}
+
+/* --- Persistent Desktop Sidebar Layout --- */
+@media (min-width: 992px) {
+  :root {
+    --sidebar-width: 280px;
+  }
+  .offcanvas-lg {
+    display: flex !important;
+    flex-direction: column;
+    width: var(--sidebar-width) !important;
+    transform: none !important;
+    visibility: visible !important;
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: 10000 !important;
+    height: 100vh !important;
+    background-color: #fff !important;
+    border-right: 1px solid #dee2e6 !important;
+  }
+  body {
+    padding-left: var(--sidebar-width) !important;
+  }
+  /* If navbar is shown on desktop, align it to account for sidebar */
+  .main-navbar {
+    left: var(--sidebar-width) !important;
+    width: calc(100% - var(--sidebar-width)) !important;
+    z-index: 10001 !important;
+  }
+  /* Shift fixed containers to the right */
+  .fixed-top:not(.main-navbar) {
+    left: var(--sidebar-width) !important;
+    width: calc(100% - var(--sidebar-width)) !important;
+  }
+}
 .fullscreen-container {
   background-color: #fff;
   position: relative;
@@ -12921,6 +13004,7 @@ html {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   padding: 1rem;
   margin-bottom: 0;
   background-color: #f8f9fa;
@@ -12977,4 +13061,4 @@ html {
   pointer-events: none;
 }
 
-/*# sourceMappingURL=bootstrap-custom.css.map */
+/*# sourceMappingURL=report.css.map */

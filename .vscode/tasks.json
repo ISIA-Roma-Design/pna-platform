@@ -4,7 +4,7 @@
         {
             "label": "Compile SASS (Watch)",
             "type": "shell",
-            "command": "./dart-sass/sass --watch src/scss/custom.scss src/prototipo/assets/bootstrap-custom.css",
+            "command": "./dart-sass/sass --watch report/assets/scss/report.scss report/assets/report.css",
             "group": "none",
             "presentation": {
                 "reveal": "always",

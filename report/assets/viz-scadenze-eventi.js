@@ -331,24 +331,33 @@ function renderTimeline(dataset, containerSelector, year, startMonth, endMonth) 
         .style("fill", d => getColor(sectionToCategory[d]));
 
     // Tooltip Logic
-    const tooltip = d3.select("#tooltip");
     const showTooltip = (event, d) => {
         const dateStr = d.type === 'range'
             ? `${d.start.toLocaleDateString()} - ${d.end.toLocaleDateString()}`
             : d.start.toLocaleDateString();
 
-        tooltip.style("opacity", 1)
-            .html(`
-                 <h3>${d.section}</h3>
-                 <strong>${d.institution}</strong><br>
-                 <span style="color:#666; font-size:12px">${dateStr}</span><br>
-                 <em>${d.event_type}</em><br>
-                 <p style="margin-top:5px; border-top:1px solid #eee; padding-top:5px">${d.details}</p>
-             `)
-            .style("left", (event.pageX + 15) + "px")
-            .style("top", (event.pageY - 10) + "px");
+        const content = `
+                 <h6 class="fw-bold mb-1">${d.section}</h6>
+                 <div class="small fw-semibold text-muted mb-1">${d.institution}</div>
+                 <div style="color:#666; font-size:11px" class="mb-1">${dateStr}</div>
+                 <div class="small italic text-accent fw-bold mb-1">${d.event_type}</div>
+                 <div style="margin-top:5px; border-top:1px solid #eee; padding-top:5px; font-size:12px">${d.details}</div>
+             `;
+             
+        const popover = bootstrap.Popover.getOrCreateInstance(event.currentTarget, {
+            content: content,
+            html: true,
+            trigger: 'manual',
+            placement: 'top',
+            container: 'body',
+            customClass: 'pna-popover'
+        });
+        popover.show();
     };
-    const hideTooltip = () => tooltip.style("opacity", 0);
+    const hideTooltip = (event) => {
+        const popover = bootstrap.Popover.getInstance(event.currentTarget);
+        if (popover) popover.hide();
+    };
 
     // Draw Data - Ranges
     svg.selectAll(".range-bar")
@@ -363,8 +372,7 @@ function renderTimeline(dataset, containerSelector, year, startMonth, endMonth) 
         .attr("rx", 3)
         .attr("fill", d => getColor(d.category))
         .attr("opacity", 0.8)
-        .on("mouseover", showTooltip)
-        .on("mousemove", showTooltip)
+        .on("mouseenter", showTooltip)
         .on("mouseleave", hideTooltip);
 
     // Draw Data - Points
@@ -379,14 +387,13 @@ function renderTimeline(dataset, containerSelector, year, startMonth, endMonth) 
         .attr("fill", "#fff")
         .attr("stroke", d => getColor(d.category))
         .attr("stroke-width", 3)
-        .on("mouseover", function (event, d) {
-            d3.select(this).attr("r", 9);
+        .on("mouseenter", function (event, d) {
+            d3.select(this).transition().duration(200).attr("r", 9);
             showTooltip(event, d);
         })
-        .on("mousemove", showTooltip)
-        .on("mouseleave", function () {
-            d3.select(this).attr("r", 6);
-            hideTooltip();
+        .on("mouseleave", function (event) {
+            d3.select(this).transition().duration(200).attr("r", 6);
+            hideTooltip(event);
         });
 }
 

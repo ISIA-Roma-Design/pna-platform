@@ -7,15 +7,14 @@
     <title>8.4 Tipologia AFAM</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
 
-    <!-- Bootstrap 5.3 -->
-    <link href="../src/prototipo/assets/bootstrap-custom.css" rel="stylesheet">
+    <!-- Bootstrap 5.3 (Report Theme) -->
+    <link href="assets/report.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- Custom Swiss Theme -->
-    <link rel="stylesheet" href="../src/prototipo/assets/style.css">
+    <!-- VIZ Styles -->
     <link rel="stylesheet" href="assets/viz-style.css">
 
     <script src="assets/d3.v7.min.js"></script>
@@ -25,36 +24,47 @@
 
     <!-- Global Header -->
     <div id="global-header"></div>
-    <script src="../src/components/header-loader.js"></script>
+    <script src="components/header-loader.js"></script>
 
-    <div class="main-container">
-        <div class="view-header pb-1 mb-2 border-0">
-            <div>
-                <h1 class="page-title">4. Tipologia delle Istituzioni AFAM</h1>
-                <p class="page-subtitle">Raggruppamento per tipologia di istituto (Bubble Chart).</p>
+    <div class="container-md mt-6">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9 px-lg-4">
+                <div class="view-header pb-1 mb-2 border-0">
+                    <div>
+                        <h1 class="page-title">4. Tipologia delle Istituzioni AFAM</h1>
+                        <p>
+                            L'infografica illustra la distribuzione tra istituzioni pubbliche e private all'interno
+                            dell'ecosistema nazionale. Sebbene le istituzioni private rappresentino \una quota
+                            numericamente inferiore alla metà del comparto, esse costituiscono una componente vitale del
+                            sistema. Come evidenziato dall'indagine qualitativa, appare necessario ottimizzare i
+                            meccanismi di accesso e pubblicità per favorire una maggiore adesione e superare i limiti di
+                            partecipazione attualmente rilevati.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- Fullscreen Container -->
-        <div class="fullscreen-container" style="background-color: #fff;">
+    <!-- Fullscreen Container (Full Width) -->
+    <div class="container-fluid px-0">
+        <div class="fullscreen-container">
             <!-- Standard Control Bar -->
-            <div
-                class="controls-bar d-flex flex-wrap align-items-center p-3 mb-0 bg-light border-top border-bottom border-dark">
+            <div class="viz-controls-bar">
                 <!-- Controlli Specifici -->
                 <div class="specific-controls d-flex flex-wrap align-items-center gap-3">
 
                     <div class="form-check form-switch m-0 d-flex align-items-center gap-2">
                         <input class="form-check-input m-0" type="checkbox" role="switch" id="checkPrincipale"
-                            onchange="applyFilters()" style="cursor: pointer;">
-                        <label class="form-check-label small fw-bold mb-0 pt-1" for="checkPrincipale"
-                            style="cursor: pointer;">Solo Sedi Principali</label>
+                            onchange="applyFilters()">
+                        <label class="form-check-label small fw-bold mb-0 pt-1" for="checkPrincipale">Solo Sedi
+                            Principali</label>
                     </div>
                 </div>
             </div>
 
             <!-- Chart Wrapper -->
-            <div id="viz-wrapper"
-                style="position: relative; width: 100%; overflow: hidden; border-bottom: 1px solid #000; background-color: #fcfcfc;">
+            <div id="viz-wrapper" class="viz-chart-wrapper">
                 <!-- Mobile Placeholder -->
                 <div class="mobile-viz-placeholder">
                     <i class="bi bi-phone-landscape display-4 mb-3 text-secondary"></i>
@@ -64,10 +74,8 @@
                     </button>
                 </div>
                 <!-- Overlay Badge Top-Left -->
-                <div class="position-absolute top-0 start-0 m-3 btn btn-outline-dark btn-sm shadow-sm d-flex align-items-center gap-2"
-                    style="z-index: 1000 !important; background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px); pointer-events: none;">
-                    <span class="text-uppercase fw-bold"
-                        style="font-size: 0.75rem; letter-spacing: 0.5px;">Istituti</span>
+                <div class="viz-overlay-badge viz-overlay-badge-alt">
+                    <span>Istituti</span>
                     <span class="badge bg-dark text-white total-institutions-count">0</span>
                 </div>
 
@@ -92,36 +100,39 @@
                         <i class="bi bi-download"></i>
                     </button>
                 </div>
-                <div id="view-groups" class="view-container m-0 p-0 border-0"
-                    style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+                <div id="view-groups" class="viz-container-absolute m-0 p-0 border-0">
                     <div id="bubble-chart" style="width: 100%; height: 100%;"></div>
                 </div>
-                <div id="tooltip" class="tooltip"></div>
             </div>
 
-        </div> <!-- End Chart Wrapper -->
-    </div> <!-- End Fullscreen Container -->
+        </div> <!-- End container-fluid for visualization -->
 
-    <!-- Navigation Bar -->
-    <footer class="viz-nav-footer">
-        <a class="btn btn-outline-dark btn-sm rounded-0" href="infografiche.html">Torna all'indice</a>
-        <div class="viz-nav-links">
-            <a class="btn btn-outline-dark btn-sm rounded-0" href="viz-scadenze-eventi.html">Precedente: 8.3
-                Timeline</a>
-            <a class="btn btn-outline-dark btn-sm rounded-0" style="background-color: #000; color: #fff;"
-                href="viz-distribuzione-territoriale.html">Successivo: 8.5
-                Distribuzione</a>
+        <!-- Navigation Bar -->
+        <div class="container-md mb-4">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-9 px-lg-4">
+                    <footer class="viz-nav-footer">
+                        <a class="btn btn-outline-dark btn-sm rounded-0" href="infografiche.html">Torna all'indice</a>
+                        <div class="viz-nav-links">
+                            <a class="btn btn-outline-dark btn-sm rounded-0" href="viz-scadenze-eventi.html">Precedente:
+                                8.3
+                                Timeline</a>
+                            <a class="btn btn-outline-dark btn-sm rounded-0 btn-viz-next"
+                                href="viz-distribuzione-territoriale.html">Successivo: 8.5
+                                Distribuzione</a>
+                        </div>
+                    </footer>
+                </div>
+            </div>
         </div>
-    </footer>
-    </div>
 
-    <script src="assets/viz-config.js"></script>
-    <script src="assets/viz-tipologia-afam.js"></script>
+        <script src="assets/viz-config.js"></script>
+        <script src="assets/viz-tipologia-afam.js"></script>
 
 
-    <!-- Global Footer -->
-    <div id="global-footer"></div>
-    <script src="../src/components/footer-loader.js"></script>
+        <!-- Global Footer -->
+        <div id="global-footer"></div>
+        <script src="components/footer-loader.js"></script>
 </body>
 
 </html>

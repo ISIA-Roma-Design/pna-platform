@@ -215,18 +215,36 @@ function initLeafletMap(data) {
                 weight: 1,
                 opacity: 1,
                 fillOpacity: 0.8
-            })
-                .bindTooltip(`
-                <div style="font-family: inherit;">
-                    <strong>${item.istituto || item.name}</strong><br>
-                    ${item.address ? `${item.address}<br>` : ''}
-                    ${item.citta}<br>
-                    <span style="font-size:0.9em; opacity:0.8">${item.status}</span>
-                </div>
-            `, {
-                    direction: 'top',
-                    className: 'custom-leaflet-tooltip'
-                });
+            });
+            marker.on('mouseover', function(e) {
+                const el = e.target.getElement();
+                if (el) {
+                    const content = `
+                        <div style="font-family: inherit;">
+                            <h6 class="fw-bold mb-1">${item.istituto || item.name}</h6>
+                            <div class="small mb-1">${item.address ? `${item.address}, ` : ''}${item.citta}</div>
+                            <div class="small text-muted italic">${item.status}</div>
+                        </div>
+                    `;
+                    const popover = bootstrap.Popover.getOrCreateInstance(el, {
+                        content: content,
+                        html: true,
+                        trigger: 'manual',
+                        placement: 'top',
+                        container: 'body',
+                        customClass: 'pna-popover'
+                    });
+                    popover.show();
+                }
+            });
+
+            marker.on('mouseout', function(e) {
+                const el = e.target.getElement();
+                if (el) {
+                    const popover = bootstrap.Popover.getInstance(el);
+                    if (popover) popover.hide();
+                }
+            });
 
             markerClusterGroup.addLayer(marker);
         }

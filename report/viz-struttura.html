@@ -8,7 +8,8 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
 
     <!-- Bootstrap 5.3 -->
-    <link href="../src/prototipo/assets/bootstrap-custom.css" rel="stylesheet">
+    <!-- Bootstrap 5.3 (Report Theme) -->
+    <link href="assets/report.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap Icons -->
@@ -17,8 +18,7 @@
     <!-- D3.js -->
     <script src="https://unpkg.com/d3@7"></script>
 
-    <!-- Custom Swiss Theme -->
-    <link rel="stylesheet" href="../src/prototipo/assets/style.css">
+    <!-- VIZ Styles -->
     <link rel="stylesheet" href="assets/viz-style.css">
 </head>
 
@@ -26,23 +26,38 @@
 
     <!-- Global Header -->
     <div id="global-header"></div>
-    <script src="../src/components/header-loader.js"></script>
+    <script src="components/header-loader.js"></script>
 
-    <div class="main-container">
-        <div class="view-header">
-            <div>
-                <h1 class="page-title">1. Struttura del premio: sezioni, sottosezioni e categorie</h1>
-                <p class="page-subtitle">Visualizzazione gerarchica delle sezioni, sottosezioni e categorie
-                    (Dendrogramma).</p>
+    <div class="container-md mt-6">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9 px-lg-4">
+                <div class="view-header">
+                    <div>
+                        <h1 class="page-title">1. Struttura del premio: sezioni, sottosezioni e categorie</h1>
+                        <p>L'infografica mostra la struttura del Premio Nazionale delle Arti. Le istituzioni AFAM
+                            possono partecipare ai bandi di Arti Performative o Arti Visive e Design in base alla
+                            tipologia di istituzione. Nello specifico, l'area delle Arti Performative afferisce ad
+                            Accademie di Danza, Accademie d'Arte Drammatica e Conservatori di Musica , mentre le Arti
+                            Visive e Design coinvolgono le Accademie di Belle Arti e gli ISIA.</p>
+                        <p>Dall'analisi emerge una profonda diversità ontologica tra le sezioni: il comparto Design
+                            opera secondo un principio tematico legato a sfide contemporanee (es. Pressione climatica,
+                            Instabilità politica internazionale, Bassa natalità, Intelligenza Artificiale) che mutano di
+                            edizione in edizione. Al contrario, tutte le altre sezioni (es. Danza classica, Regia, Canto
+                            lirico, Pittura, Fotografia) mantengono una stabilità nel tempo operando su un principio
+                            tipologico basato sui settori artistico-disciplinari tradizionali.</p>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- Fullscreen Container -->
-        <div class="fullscreen-container" style="background-color: #fff;">
+    <!-- Fullscreen Container (Full Width) -->
+    <div class="container-fluid px-0">
+        <div class="fullscreen-container">
 
 
             <!-- Chart Wrapper -->
-            <div id="viz-wrapper" style="position: relative; width: 100%; overflow: hidden; background-color: #fff;">
+            <div id="viz-wrapper" class="viz-chart-wrapper">
                 <!-- Mobile Placeholder -->
                 <div class="mobile-viz-placeholder">
                     <i class="bi bi-phone-landscape display-4 mb-3 text-secondary"></i>
@@ -53,7 +68,8 @@
                 </div>
                 <!-- Overlay Toolbar -->
                 <div class="position-absolute top-0 end-0 m-3 z-3 d-flex flex-column gap-2">
-                    <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="toggleFullscreen()" title="Fullscreen">
+                    <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="toggleFullscreen()"
+                        title="Fullscreen">
                         <i class="bi bi-arrows-fullscreen"></i>
                     </button>
                     <div class="btn-group-vertical shadow-sm">
@@ -72,32 +88,35 @@
                     </button>
                 </div>
                 <!-- Chart Container -->
-                <div id="dendrogram-container" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;"></div>
+                <div id="dendrogram-container" class="viz-container-absolute"></div>
             </div>
 
-            <div id="tooltip" class="tooltip"></div>
 
-        </div> <!-- End Chart Wrapper -->
-    </div> <!-- End Fullscreen Container -->
+        </div> <!-- End container-fluid for visualization -->
 
-    <!-- Navigation Bar -->
-    <footer class="viz-nav-footer">
-        <a class="btn btn-outline-dark btn-sm rounded-0" href="infografiche.html">Torna all'indice</a>
-        <div class="viz-nav-links">
-            <a class="btn btn-outline-dark btn-sm rounded-0" disabled>Precedente</a>
-            <a class="btn btn-outline-dark btn-sm rounded-0" style="background-color: #000; color: #fff;"
-                href="viz-edizione-sezioni.html">Successivo: 8.2 Processo</a>
+        <!-- Navigation Bar -->
+        <div class="container-md mb-4">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-9 px-lg-4">
+                    <footer class="viz-nav-footer">
+                        <a class="btn btn-outline-dark btn-sm rounded-0" href="infografiche.html">Torna all'indice</a>
+                        <div class="viz-nav-links">
+                            <a class="btn btn-outline-dark btn-sm rounded-0" disabled>Precedente</a>
+                            <a class="btn btn-outline-dark btn-sm rounded-0 btn-viz-next"
+                                href="viz-edizione-sezioni.html">Successivo: 8.2 Processo</a>
+                        </div>
+                    </footer>
+                </div>
+            </div>
         </div>
-    </footer>
-    </div>
 
 
-    <script src="assets/viz-config.js"></script>
-    <script src="assets/viz-struttura.js"></script>
+        <script src="assets/viz-config.js"></script>
+        <script src="assets/viz-struttura.js"></script>
 
-    <!-- Global Footer -->
-    <div id="global-footer"></div>
-    <script src="../src/components/footer-loader.js"></script>
+        <!-- Global Footer -->
+        <div id="global-footer"></div>
+        <script src="components/footer-loader.js"></script>
 </body>
 
 </html>

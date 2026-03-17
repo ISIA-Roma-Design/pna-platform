@@ -33,9 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let allJourneys = {};
     let journeyVisibility = {};
 
-    // Forcibly hide popover on startup to prevent empty tooltip flash
-    const initPopover = document.getElementById('dettagli-popover');
-    if (initPopover) initPopover.style.display = 'none';
 
     // 1. Data Loading
     fetch('../src/data/pna-processo-asis.json')
@@ -304,7 +301,13 @@ document.addEventListener('DOMContentLoaded', function () {
             .attr("fill", "#fff").attr("stroke", "#525252")
             .attr("stroke-width", 3)
             .style("cursor", "pointer")
-            .on("mouseenter", function (e, d) { showPopover(d, this); });
+            .on("mouseenter", function (e, d) { 
+                showPopover(d, this); 
+            })
+            .on("mouseleave", function (e, d) {
+                const popover = bootstrap.Popover.getInstance(this);
+                if (popover) popover.hide();
+            });
 
         nodeG.append("text").attr("class", "node-label").attr("dy", 1).style("font-size", "10px").text(d => d.step_id);
 
@@ -329,43 +332,50 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    const popover = document.getElementById('dettagli-popover');
-    const popoverTitle = document.getElementById('popover-title');
-    const popoverDesc = document.getElementById('popover-desc');
-
     function showPopover(node, element) {
         d3.selectAll('.node-circle').classed('active', false);
         d3.select(element).classed('active', true);
 
         const stepNum = String(node.step_id).padStart(2, '0');
-
-        // Find if all steps are common or if there's diversity
         const steps = Object.values(node.stepsData);
         const isAllCommon = steps.every(s => s.type === "common");
 
+        let titleContent = "";
+        let titleColor = "#525252";
         if (isAllCommon) {
-            popoverTitle.style.color = "#525252";
-            popoverTitle.textContent = `step ${stepNum} - comune`;
+            titleContent = `step ${stepNum} - comune`;
         } else {
-            // Pick first non-common label or generic if multiple
             const specificStep = steps.find(s => s.type === "specific") || steps[0];
             const journeyKey = Object.keys(node.stepsData).find(k => node.stepsData[k] === specificStep);
-            popoverTitle.style.color = JOURNEY_CONFIG[journeyKey].color;
-            popoverTitle.textContent = `step ${stepNum} - ${JOURNEY_CONFIG[journeyKey].label.toLowerCase()}`;
+            titleColor = JOURNEY_CONFIG[journeyKey].color;
+            titleContent = `step ${stepNum} - ${JOURNEY_CONFIG[journeyKey].label.toLowerCase()}`;
         }
 
         const firstStep = steps[0];
-        popoverDesc.innerHTML = `<div class="fw-bold mb-1">${firstStep.phase.toUpperCase()} — ${ACTOR_MAP[firstStep.actor] || firstStep.actor}</div><div>${firstStep.action}</div>`;
+        const bodyContent = `
+            <div class="fw-bold mb-1" style="color: ${titleColor}">${titleContent.toUpperCase()}</div>
+            <div class="fw-bold small mb-1">${firstStep.phase.toUpperCase()} — ${ACTOR_MAP[firstStep.actor] || firstStep.actor}</div>
+            <div class="small">${firstStep.action}</div>
+        `;
 
-        popover.style.display = 'block';
-        const rect = element.getBoundingClientRect();
-        popover.style.top = `${rect.top + window.scrollY - popover.offsetHeight - 10}px`;
-        popover.style.left = `${rect.left + window.scrollX - (popover.offsetWidth / 2) + 12}px`;
+        const popover = bootstrap.Popover.getOrCreateInstance(element, {
+            content: bodyContent,
+            html: true,
+            trigger: 'manual',
+            placement: 'top',
+            container: 'body',
+            customClass: 'pna-popover'
+        });
+        popover.show();
     }
 
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('.node-circle') && !e.target.closest('#dettagli-popover')) {
-            popover.style.display = 'none';
+        if (!e.target.closest('.node-circle')) {
+            // Close all popovers on outside click
+            document.querySelectorAll('.node-circle').forEach(el => {
+                const popover = bootstrap.Popover.getInstance(el);
+                if (popover) popover.hide();
+            });
             d3.selectAll('.node-circle').classed('active', false);
         }
     });

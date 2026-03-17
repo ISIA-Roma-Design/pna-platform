@@ -137,17 +137,25 @@ function getColorBySection(type) {
 }
 
 function showTooltip(event, data) {
-    const tooltip = d3.select("#tooltip");
-    tooltip.style("opacity", 1)
-        .html(`<h3>${data.istituto || data.name}</h3>
-               <p>${data.citta}</p>
-               <p><i>${data.status}</i></p>`)
-        .style("left", (event.pageX + 10) + "px")
-        .style("top", (event.pageY - 10) + "px");
+    const content = `
+        <h6 class="fw-bold mb-1">${data.istituto || data.name}</h6>
+        <div class="small mb-1">${data.citta}</div>
+        <div class="small italic text-muted">${data.status}</div>
+    `;
+    const popover = bootstrap.Popover.getOrCreateInstance(event.currentTarget, {
+        content: content,
+        html: true,
+        trigger: 'manual',
+        placement: 'top',
+        container: 'body',
+        customClass: 'pna-popover'
+    });
+    popover.show();
 }
 
-function hideTooltip() {
-    d3.select("#tooltip").style("opacity", 0);
+function hideTooltip(event) {
+    const popover = bootstrap.Popover.getInstance(event.currentTarget);
+    if (popover) popover.hide();
 }
 
 window.zoomIn = function () {

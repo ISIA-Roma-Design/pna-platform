@@ -1,0 +1,10 @@
+div[class*=test-button-] {
+  margin-block-end: 4rem;
+  /* stylelint-disable */
+}
+div[class*=test-button-] > * {
+  margin-inline-end: 2rem;
+}
+div[class*=test-button-] {
+  /* stylelint-enable */
+}/*# sourceMappingURL=chat-button-story.css.map */

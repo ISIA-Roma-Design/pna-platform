@@ -7,15 +7,14 @@
     <title>8.5 Distribuzione AFAM</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
 
-    <!-- Bootstrap 5.3 -->
-    <link href="../src/prototipo/assets/bootstrap-custom.css" rel="stylesheet">
+    <!-- Bootstrap 5.3 (Report Theme) -->
+    <link href="assets/report.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- Custom Swiss Theme -->
-    <link rel="stylesheet" href="../src/prototipo/assets/style.css">
+    <!-- VIZ Styles -->
     <link rel="stylesheet" href="assets/viz-style.css">
 
     <!-- Leaflet CSS -->
@@ -36,21 +35,33 @@
 
     <!-- Global Header -->
     <div id="global-header"></div>
-    <script src="../src/components/header-loader.js"></script>
+    <script src="components/header-loader.js"></script>
 
-    <div class="main-container">
-        <div class="view-header pb-1 mb-2 border-0">
-            <div>
-                <h1 class="page-title">5. Distribuzione territoriale delle Istituzioni AFAM</h1>
-                <p class="page-subtitle">Distribuzione territoriale delle istituzioni partecipanti.</p>
+    <div class="container-md mt-6">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9 px-lg-4">
+                <div class="view-header pb-1 mb-2 border-0">
+                    <div>
+                        <h1 class="page-title">5. Distribuzione territoriale delle Istituzioni AFAM</h1>
+                        <p>L'infografica mostra la distribuzione sul territorio italiano delle istituzioni AFAM.
+                            Si rileva una presenza capillare delle istituzioni pubbliche, diffuse su tutto il territorio
+                            nazionale come infrastruttura culturale di prossimità. Le istituzioni private, di contro,
+                            manifestano una forte polarizzazione, concentrandosi prevalentemente nelle grandi città o in
+                            specifici poli attrattivi.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- Fullscreen Container -->
-        <div class="fullscreen-container" style="background-color: #fff;">
+
+
+    <!-- Fullscreen Container (Full Width) -->
+    <div class="container-fluid px-0">
+        <div class="fullscreen-container">
             <!-- Standard Control Bar -->
-            <div
-                class="controls-bar d-flex flex-wrap align-items-center p-3 mb-0 bg-light border-top border-bottom border-dark">
+            <div class="viz-controls-bar">
                 <!-- Controlli Specifici -->
                 <div
                     class="specific-controls d-flex flex-column flex-md-row flex-wrap justify-content-start align-items-start gap-2 gap-md-4">
@@ -71,9 +82,9 @@
 
                     <div class="form-check form-switch ps-0 ps-md-3 m-0 d-flex align-items-center gap-2">
                         <input class="form-check-input m-0" type="checkbox" role="switch" id="checkPrincipale"
-                            onchange="applyFilters()" style="cursor: pointer;">
-                        <label class="form-check-label small fw-bold mb-0 pt-1" for="checkPrincipale"
-                            style="cursor: pointer;">Solo Sedi Principali</label>
+                            onchange="applyFilters()">
+                        <label class="form-check-label small fw-bold mb-0 pt-1" for="checkPrincipale">Solo Sedi
+                            Principali</label>
                     </div>
 
                     <div class="slider-container m-0 d-flex align-items-center gap-2">
@@ -85,7 +96,7 @@
                 </div> <!-- End Specific Controls -->
             </div> <!-- End Controls Bar -->
 
-            <div id="viz-wrapper" style="position: relative; width: 100%; overflow: hidden;">
+            <div id="viz-wrapper" class="viz-chart-wrapper viz-chart-wrapper-std">
                 <!-- Mobile Placeholder -->
                 <div class="mobile-viz-placeholder">
                     <i class="bi bi-phone-landscape display-4 mb-3 text-secondary"></i>
@@ -95,16 +106,15 @@
                     </button>
                 </div>
                 <!-- Overlay Badge Top-Left -->
-                <div class="position-absolute top-0 start-0 m-3 btn btn-outline-dark btn-sm shadow-sm d-flex align-items-center gap-2" 
-                     style="z-index: 1000 !important; background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px); pointer-events: none;">
-                    <span class="text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.5px;">Istituti</span>
+                <div class="viz-overlay-badge viz-overlay-badge-alt">
+                    <span>Istituti</span>
                     <span class="badge bg-dark text-white total-institutions-count">0</span>
                 </div>
 
                 <!-- Overlay Toolbar z-index elevated for Leaflet -->
-                <div class="position-absolute top-0 end-0 m-3 d-flex flex-column gap-2"
-                    style="z-index: 1000;">
-                    <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="toggleFullscreen()" title="Fullscreen">
+                <div class="position-absolute top-0 end-0 m-3 d-flex flex-column gap-2" style="z-index: 1000;">
+                    <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="toggleFullscreen()"
+                        title="Fullscreen">
                         <i class="bi bi-arrows-fullscreen"></i>
                     </button>
                     <div class="btn-group-vertical shadow-sm">
@@ -122,26 +132,28 @@
                         <i class="bi bi-download"></i>
                     </button>
                 </div>
-                <div id="view-map" class="view-container m-0 p-0 border-0"
-                    style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+                <div id="view-map" class="viz-container-absolute m-0 p-0 border-0">
                     <div id="map-container" style="width: 100%; height: 100%;"></div>
                 </div>
-                <div id="tooltip" class="tooltip"></div>
             </div>
 
-        </div> <!-- End Chart Wrapper -->
-    </div> <!-- End Fullscreen Container -->
+        </div> <!-- End container-fluid for visualization -->
 
-    <!-- Navigation Bar -->
-    <footer class="viz-nav-footer border-top">
-        <a class="btn btn-outline-dark btn-sm rounded-0" href="infografiche.html">Torna all'indice</a>
-        <div class="viz-nav-links">
-            <a class="btn btn-outline-dark btn-sm rounded-0" href="viz-tipologia-afam.html">Precedente: 8.4
-                Tipologia</a>
-            <a class="btn btn-outline-dark btn-sm rounded-0" style="background-color: #000; color: #fff;"
-                disabled>Successivo</a>
+        <!-- Navigation Bar -->
+        <div class="container-md">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-9 px-lg-4">
+                    <footer class="viz-nav-footer">
+                        <a class="btn btn-outline-dark btn-sm rounded-0" href="infografiche.html">Torna all'indice</a>
+                        <div class="viz-nav-links">
+                            <a class="btn btn-outline-dark btn-sm rounded-0" href="viz-tipologia-afam.html">Precedente:
+                                8.4
+                                Tipologia</a>
+                        </div>
+                    </footer>
+                </div>
+            </div>
         </div>
-    </footer>
     </div>
 
     <script src="assets/viz-config.js"></script>
@@ -150,7 +162,7 @@
 
     <!-- Global Footer -->
     <div id="global-footer"></div>
-    <script src="../src/components/footer-loader.js"></script>
+    <script src="components/footer-loader.js"></script>
 </body>
 
 </html>

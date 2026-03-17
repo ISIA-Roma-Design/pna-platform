@@ -1,7 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("dendrogram-container");
-    const tooltip = document.getElementById("tooltip");
 
     // Configuration
     const width = 1200;
@@ -206,13 +205,24 @@ document.addEventListener("DOMContentLoaded", () => {
             .attr("fill", "#000");
 
         // Tooltip interaction
-        nodeEnter.on("mouseover", (event, d) => {
-            tooltip.style.opacity = 1;
-            tooltip.innerHTML = `<strong>${d.data.name}</strong><br>${d.ancestors().map(a => a.data.name).reverse().join(" > ")}`;
-            tooltip.style.left = (event.pageX + 10) + "px";
-            tooltip.style.top = (event.pageY - 28) + "px";
-        }).on("mouseout", () => {
-            tooltip.style.opacity = 0;
+        nodeEnter.on("mouseenter", (event, d) => {
+            const content = `<strong>${d.data.name}</strong><br>${d.ancestors().map(a => a.data.name).reverse().join(" > ")}`;
+            const popover = bootstrap.Popover.getOrCreateInstance(event.currentTarget, {
+                content: content,
+                html: true,
+                trigger: 'manual',
+                placement: 'top',
+                container: 'body',
+                customClass: 'pna-popover'
+            });
+            popover.show();
+        }).on("mouseleave", (event) => {
+            const popover = bootstrap.Popover.getInstance(event.currentTarget);
+            if (popover) {
+                popover.hide();
+                // Optional: dispose to keep DOM clean if nodes are many
+                // popover.dispose(); 
+            }
         });
 
         // Update

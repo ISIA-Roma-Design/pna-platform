@@ -1,31 +1,3 @@
-@font-face {
-    font-family: 'Ministry';
-    src: url('../../src/fonts/Ministry-Thin.otf') format('opentype');
-    font-weight: 100;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Ministry';
-    src: url('../../src/fonts/Ministry-Light.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Ministry';
-    src: url('../../src/fonts/Ministry-Medium.otf') format('opentype');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Ministry';
-    src: url('../../src/fonts/Ministry-Bold.otf') format('opentype');
-    font-weight: 700;
-    font-style: normal;
-}
-
 :root {
     --bg-color: #ffffff;
     --text-color: #000000;
@@ -34,20 +6,10 @@
     --grid-color: #cccccc;
     --font-family: 'Ministry', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-    --design: #ef476fff;
-    --arti-visive: #ffd166ff;
-    --arti-spettacolo: #06d6a0ff;
-    --interpretazione-musicale: #118ab2ff;
-}
-
-body {
-    font-family: var(--font-family);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    /* Prevent horizontal scrollbar due to 100vw */
+    --design: #8338ec;
+    --arti-visive: #ff006e;
+    --arti-spettacolo: #fb5607;
+    --interpretazione-musicale: #3a86ff;
 }
 
 .main-container {
@@ -91,39 +53,6 @@ body {
     padding-bottom: 1rem !important;
 }
 
-/* Global Header Spacing - handled by loader */
-
-
-
-
-h1,
-.page-title {
-    font-weight: 700;
-    font-size: 2.5rem;
-    margin: 0;
-    letter-spacing: -1px;
-}
-
-.page-subtitle,
-.subtitle {
-    font-weight: 300;
-    font-size: 1.2rem;
-    margin-top: 5px;
-    margin-bottom: 0;
-    color: #555;
-}
-
-.view-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    border-left: 4px solid var(--accent-color);
-    padding-left: 15px;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
 .controls-group {
     display: flex;
     align-items: center;
@@ -155,30 +84,27 @@ h1,
     box-sizing: border-box;
 }
 
-.tooltip {
-    position: absolute;
-    text-align: left;
-    padding: 12px;
-    font-size: 14px;
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid var(--text-color);
+/* Standardized PNA Popover Theme (Bootstrap 5) */
+.pna-popover {
+    --bs-popover-bg: #fff;
+    --bs-popover-border-color: #000;
+    --bs-popover-header-bg: #000;
+    --bs-popover-header-color: #fff;
+    --bs-popover-body-padding-x: 1rem;
+    --bs-popover-body-padding-y: 0.75rem;
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 0;
     pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s;
-    max-width: 300px;
-    z-index: 1000;
 }
 
-.tooltip h3 {
-    margin: 0 0 5px 0;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.tooltip p {
-    margin: 0;
+.pna-popover .popover-body {
+    font-family: var(--font-family);
+    color: #333;
     line-height: 1.4;
+}
+
+.pna-popover .popover-arrow::after {
+    border-top-color: #000 !important;
 }
 
 .event-circle {
@@ -302,6 +228,13 @@ h1,
     r: 6;
     stroke-width: 2px;
     stroke: #000;
+}
+
+.marker-cluster-medium,
+.marker-cluster-medium div,
+.marker-cluster-small,
+.marker-cluster-small div {
+    background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Bubble Chart */
@@ -518,32 +451,6 @@ h1,
 }
 
 /* Popover / Tooltip Overrides */
-#dettagli-popover {
-    position: absolute;
-    z-index: 9000;
-}
-
-.popover-inner {
-    padding: 12px;
-    max-width: 220px;
-    background-color: #393939;
-    color: white;
-}
-
-.popover-title {
-    font-weight: 700;
-    margin: 0;
-    color: inherit;
-    font-size: 0.875rem;
-}
-
-.popover-desc {
-    font-size: 1rem;
-    color: inherit;
-    line-height: 1.4;
-    font-weight: 300;
-    margin-bottom: 0;
-}
 
 /* Layout Utilities */
 .page-header-actions {
@@ -593,7 +500,6 @@ h1,
     justify-content: space-between;
     align-items: center;
     padding: 2rem 0;
-    border-top: 1px solid #000;
 }
 
 .viz-nav-links {
@@ -614,6 +520,7 @@ h1,
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - 3rem);
+    border-bottom: 1px solid #000;
     /* Altezza viewport meno l'header Carbon di 48px */
 }
 
@@ -630,10 +537,6 @@ h1,
     width: 100%;
 }
 
-/* Nasconde di default il popover dei dettagli fino all'interazione */
-cds-popover#dettagli-popover {
-    display: none;
-}
 
 /* Placeholder for mobile visualization */
 .mobile-viz-placeholder {
@@ -644,7 +547,7 @@ cds-popover#dettagli-popover {
     width: 100%;
     height: 100%;
     background-color: #f8f9fa;
-    z-index: 2000;
+    z-index: 1000;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -665,11 +568,13 @@ cds-popover#dettagli-popover {
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    z-index: 9999 !important;
+    z-index: 5000 !important;
     background-color: #fff !important;
     overflow: auto !important;
 }
 
 .ios-fullscreen-fallback .mobile-viz-placeholder {
     display: none !important;
+}
+
 }

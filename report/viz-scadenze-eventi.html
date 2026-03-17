@@ -7,15 +7,14 @@
     <title>8.3 Scadenze ed eventi</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
 
-    <!-- Bootstrap 5.3 -->
-    <link href="../src/prototipo/assets/bootstrap-custom.css" rel="stylesheet">
+    <!-- Bootstrap 5.3 (Report Theme) -->
+    <link href="assets/report.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- Custom Swiss Theme -->
-    <link rel="stylesheet" href="../src/prototipo/assets/style.css">
+    <!-- VIZ Styles -->
     <link rel="stylesheet" href="assets/viz-style.css">
 
     <script src="assets/d3.v7.min.js"></script>
@@ -25,36 +24,46 @@
 
     <!-- Global Header -->
     <div id="global-header"></div>
-    <script src="../src/components/header-loader.js"></script>
+    <script src="components/header-loader.js"></script>
 
-    <div class="main-container">
-        <div class="view-header">
-            <div>
-                <h1 class="page-title">3. Scadenze ed eventi per sezione e sottosezione</h1>
-                <p class="page-subtitle">Scadenze ed eventi delle edizioni XVIII e XIX.</p>
+    <div class="container-md mt-6">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9 px-lg-4">
+                <div class="view-header">
+                    <div>
+                        <h1 class="page-title">3. Scadenze ed eventi per sezione e sottosezione</h1>
+                        <p>L'infografica mostra gli eventi e le scadenze estratti dai regolamenti della XIX e XVIII
+                            edizione. È possibile notare come il calendario delle candidature presenti una variabilità
+                            estremamente alta, derivante dalle specifiche esigenze organizzative delle singole
+                            istituzioni designate. Tale frammentazione temporale, priva di una sincronizzazione
+                            nazionale, rende complesso comunicare il Premio come un evento unitario e ne limita la
+                            risonanza verso gli stakeholder esterni.</p>
+
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- Fullscreen Container -->
-        <div class="fullscreen-container" style="background-color: #fff;">
+    <!-- Fullscreen Container (Full Width) -->
+    <div class="container-fluid px-0">
+        <div class="fullscreen-container">
             <!-- Standard Control Bar -->
-            <div
-                class="controls-bar d-flex flex-wrap align-items-center p-3 mb-0 bg-light border-top border-bottom border-dark">
+            <div class="viz-controls-bar">
                 <!-- Controlli Specifici -->
                 <div class="specific-controls d-flex flex-wrap align-items-center gap-4">
                     <div id="view-selector" class="form-check form-switch d-flex align-items-center gap-2 m-0 p-0">
-                        <span class="small fw-bold text-muted" style="transition: color 0.3s ease;">Ed. XVIII
-                            (2024)</span>
-                        <input class="form-check-input m-0" type="checkbox" role="switch" id="editionToggle"
-                            onchange="toggleEdition(this)" style="width: 2.5em; height: 1.25em; cursor: pointer;"
-                            checked title="Passa tra Edizione XIX e XVIII">
-                        <span class="small fw-bold" style="transition: color 0.3s ease;">Ed. XIX (2025)</span>
+                        <span class="small fw-bold text-muted">Ed. XVIII (2024)</span>
+                        <input class="form-check-input m-0 viz-edition-toggle" type="checkbox" role="switch"
+                            id="editionToggle" onchange="toggleEdition(this)" checked
+                            title="Passa tra Edizione XIX e XVIII">
+                        <span class="small fw-bold">Ed. XIX (2025)</span>
                     </div>
-                    <div id="legend" class="legend m-0 p-0 border-0 bg-transparent"></div>
+                    <div id="legend" class="viz-legend d-flex gap-2"></div>
                 </div>
             </div>
 
-            <div id="viz-wrapper" style="position: relative;">
+            <div id="viz-wrapper" class="viz-chart-wrapper">
                 <!-- Overlay Toolbar -->
                 <div class="position-absolute top-0 end-0 m-3 z-3 d-flex flex-column gap-2">
                     <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="toggleFullscreen()"
@@ -137,20 +146,28 @@
                         </div>
                 </div>
 
-                <div id="tooltip" class="tooltip"></div>
 
             </div> <!-- End viz-wrapper -->
         </div> <!-- End Fullscreen Container -->
+    </div> <!-- End container-fluid for visualization -->
 
-        <footer class="viz-nav-footer">
-            <a class="btn btn-outline-dark btn-sm rounded-0" href="infografiche.html">Torna all'indice</a>
-            <div class="viz-nav-links">
-                <a class="btn btn-outline-dark btn-sm rounded-0" href="viz-edizione-sezioni.html">Precedente: 8.2
-                    Processo</a>
-                <a class="btn btn-outline-dark btn-sm rounded-0" style="background-color: #000; color: #fff;"
-                    href="viz-tipologia-afam.html">Successivo: 8.4 Tipologia</a>
+    <!-- Navigation Bar -->
+    <div class="container-md mb-4">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9 px-lg-4">
+                <footer class="viz-nav-footer">
+                    <a class="btn btn-outline-dark btn-sm rounded-0" href="infografiche.html">Torna all'indice</a>
+                    <div class="viz-nav-links">
+                        <a class="btn btn-outline-dark btn-sm rounded-0" href="viz-edizione-sezioni.html">Precedente:
+                            8.2
+                            Processo</a>
+                        <a class="btn btn-outline-dark btn-sm rounded-0 btn-viz-next"
+                            href="viz-tipologia-afam.html">Successivo: 8.4 Tipologia</a>
+                    </div>
+                </footer>
             </div>
-        </footer>
+        </div>
+    </div>
     </div>
 
     <script src="assets/viz-config.js"></script>
@@ -159,7 +176,7 @@
 
     <!-- Global Footer -->
     <div id="global-footer"></div>
-    <script src="../src/components/footer-loader.js"></script>
+    <script src="components/footer-loader.js"></script>
 </body>
 
 </html>

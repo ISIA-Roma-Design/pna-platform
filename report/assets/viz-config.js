@@ -5,10 +5,10 @@
 
 window.VIZ_CONFIG = {
     COLORS: {
-        design: "#ef476f",
-        arti_visive: "#ffd166",
-        arti_spettacolo: "#06d6a0",
-        interpretazione_musicale: "#118ab2",
+        design: "#8338ec",
+        arti_visive: "#ff006e",
+        arti_spettacolo: "#fb5607",
+        interpretazione_musicale: "#3a86ff",
         default: "#000"
     },
 
