@@ -43,6 +43,13 @@
             <div>
                 <h1 class="page-title">5. Distribuzione territoriale delle Istituzioni AFAM</h1>
                 <p class="page-subtitle">Distribuzione territoriale delle istituzioni partecipanti.</p>
+                <p>L'infografica mostra la distribuzione sul territorio italiano delle istituzioni AFAM.
+                    Si rileva una presenza capillare delle istituzioni pubbliche, diffuse su tutto il territorio
+                    nazionale come infrastruttura culturale di prossimità. Le istituzioni private, di contro,
+                    manifestano una forte polarizzazione, concentrandosi prevalentemente nelle grandi città o in
+                    specifici poli attrattivi.
+
+                </p>
             </div>
         </div>
 
@@ -91,20 +98,21 @@
                     <i class="bi bi-phone-landscape display-4 mb-3 text-secondary"></i>
                     <p class="mb-4">Per una migliore esplorazione dei dati si consiglia la visione a tutto schermo.</p>
                     <button class="btn btn-dark" onclick="toggleFullscreen()">
-                        <i class="bi bi-arrows-fullscreen me-2"></i>Apri a tutto schermo
+                        <i class="bi bi-arrows-fullscreen me-2"></i>Fullscreen
                     </button>
                 </div>
                 <!-- Overlay Badge Top-Left -->
-                <div class="position-absolute top-0 start-0 m-3 btn btn-outline-dark btn-sm shadow-sm d-flex align-items-center gap-2" 
-                     style="z-index: 1000 !important; background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px); pointer-events: none;">
-                    <span class="text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.5px;">Istituti</span>
+                <div class="position-absolute top-0 start-0 m-3 btn btn-outline-dark btn-sm shadow-sm d-flex align-items-center gap-2"
+                    style="z-index: 1000 !important; background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px); pointer-events: none;">
+                    <span class="text-uppercase fw-bold"
+                        style="font-size: 0.75rem; letter-spacing: 0.5px;">Istituti</span>
                     <span class="badge bg-dark text-white total-institutions-count">0</span>
                 </div>
 
                 <!-- Overlay Toolbar z-index elevated for Leaflet -->
-                <div class="position-absolute top-0 end-0 m-3 d-flex flex-column gap-2"
-                    style="z-index: 1000;">
-                    <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="toggleFullscreen()" title="Fullscreen">
+                <div class="position-absolute top-0 end-0 m-3 d-flex flex-column gap-2" style="z-index: 1000;">
+                    <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="toggleFullscreen()"
+                        title="Fullscreen">
                         <i class="bi bi-arrows-fullscreen"></i>
                     </button>
                     <div class="btn-group-vertical shadow-sm">
