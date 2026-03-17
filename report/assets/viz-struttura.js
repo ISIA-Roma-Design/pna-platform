@@ -351,19 +351,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.toggleFullscreen = function () {
         const elem = document.querySelector(".fullscreen-container") || document.documentElement;
-        if (!document.fullscreenElement) {
-            // Apply a solid background before maximizing, as some browsers default to black/transparent
-            elem.style.backgroundColor = "#fff"; 
-            elem.style.overflow = "auto"; // allow scrolling if needed
-            elem.requestFullscreen().then(() => {
-                if (screen.orientation && screen.orientation.lock) {
-                    screen.orientation.lock('landscape').catch(err => console.log("Orientation lock not supported:", err));
-                }
-            }).catch((err) => {
-                console.error(`Error attempting to enable fullscreen: ${err.message}`);
-            });
+        const isFullscreen = !!document.fullscreenElement || elem.classList.contains('ios-fullscreen-fallback');
+
+        if (!isFullscreen) {
+            if (elem.requestFullscreen) {
+                // Apply a solid background before maximizing, as some browsers default to black/transparent
+                elem.style.backgroundColor = "#fff";
+                elem.style.overflow = "auto"; // allow scrolling if needed
+                elem.requestFullscreen().then(() => {
+                    if (screen.orientation && screen.orientation.lock) {
+                        screen.orientation.lock('landscape').catch(err => console.log("Orientation lock not supported:", err));
+                    }
+                }).catch((err) => {
+                    console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                // Fallback per iOS/iPhone
+                elem.classList.add('ios-fullscreen-fallback');
+                const btn = document.querySelector('button[onclick="toggleFullscreen()"]');
+                if (btn) btn.innerHTML = '<i class="bi bi-fullscreen-exit"></i>';
+                setTimeout(() => { if (window.recenter) window.recenter(); else if (window.resetZoom) window.resetZoom(); }, 200);
+            }
         } else {
-            document.exitFullscreen();
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else {
+                // Fallback per iOS/iPhone
+                elem.classList.remove('ios-fullscreen-fallback');
+                const btn = document.querySelector('button[onclick="toggleFullscreen()"]');
+                if (btn) btn.innerHTML = '<i class="bi bi-arrows-fullscreen"></i>';
+                setTimeout(() => { if (window.recenter) window.recenter(); else if (window.resetZoom) window.resetZoom(); }, 200);
+            }
         }
     };
     
