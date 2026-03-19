@@ -161,6 +161,11 @@ $headings-font-weight: 700;
 
     &:hover {
         background-color: #000;
+        color: #FFF;
+    }
+
+    &.bg-white:hover {
+        background-color: #000;
         color: $primary;
     }
 }

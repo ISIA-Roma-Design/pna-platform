@@ -12695,6 +12695,10 @@ textarea.form-control-lg {
 }
 .btn-outline-dark:hover {
   background-color: #000;
+  color: #FFF;
+}
+.btn-outline-dark.bg-white:hover {
+  background-color: #000;
   color: #df101f;
 }
 
