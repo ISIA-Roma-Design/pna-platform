@@ -37,7 +37,7 @@
     <div id="global-header"></div>
     <script src="components/header-loader.js"></script>
 
-    <div class="container-md mt-6">
+    <div id="main-content" class="container-md mt-6">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-9 px-lg-4">
                 <div class="view-header pb-1 mb-2 border-0">
@@ -67,17 +67,8 @@
                     class="specific-controls d-flex flex-column flex-md-row flex-wrap justify-content-start align-items-start gap-2 gap-md-4">
 
 
-                    <div class="filter-group m-0 d-flex gap-3">
-                        <div class="form-check form-check-inline mb-0 d-flex align-items-center gap-1">
-                            <input class="form-check-input status-filter mt-0" type="checkbox" id="checkPubblico"
-                                value="Pubblico" checked onchange="applyFilters()">
-                            <label class="form-check-label fw-bold small" for="checkPubblico">Pubblico</label>
-                        </div>
-                        <div class="form-check form-check-inline mb-0 d-flex align-items-center gap-1">
-                            <input class="form-check-input status-filter mt-0" type="checkbox" id="checkPrivato"
-                                value="Privato" checked onchange="applyFilters()">
-                            <label class="form-check-label fw-bold small" for="checkPrivato">Privato</label>
-                        </div>
+                    <div id="status-button-controls" class="nav-buttons-container d-flex gap-2 m-0 border-0 p-0">
+                        <!-- Buttons will be dynamically populated -->
                     </div>
 
                     <div class="form-check form-switch ps-0 ps-md-3 m-0 d-flex align-items-center gap-2">
@@ -115,28 +106,29 @@
                 <!-- Overlay Toolbar z-index elevated for Leaflet -->
                 <div class="position-absolute top-0 end-0 m-3 d-flex flex-column gap-2" style="z-index: 1000;">
                     <button class="btn btn-fullscreen btn-dark btn-sm shadow-sm" onclick="toggleFullscreen()"
-                        title="Fullscreen">
+                        title="Fullscreen" aria-label="Attiva Schermo Intero">
                         <i class="bi bi-arrows-fullscreen"></i>
                         <span class="btn-text d-none">Fullscreen</span>
                     </button>
                     <div class="btn-group-vertical shadow-sm">
-                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="zoomIn()" title="Zoom In"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="zoomIn()" title="Zoom In" aria-label="Ingrandisci"><i
                                 class="bi bi-zoom-in"></i></button>
-                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="zoomOut()" title="Zoom Out"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="zoomOut()" title="Zoom Out" aria-label="Rimpicciolisci"><i
                                 class="bi bi-zoom-out"></i></button>
-                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="resetZoom()" title="Reset Zoom"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="resetZoom()" title="Reset Zoom" aria-label="Reset Zoom"><i
                                 class="bi bi-arrow-counterclockwise"></i></button>
-                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="recenter()" title="Centra"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="recenter()" title="Centra" aria-label="Ricentra la mappa"><i
                                 class="bi bi-bullseye"></i></button>
                     </div>
                     <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="exportVisualization()"
-                        title="Esporta Grafico">
+                        title="Esporta Grafico" aria-label="Esporta Grafico come Immagine">
                         <i class="bi bi-download"></i>
                     </button>
                 </div>
 
                 <div id="view-map" class="viz-container-absolute m-0 p-0 border-0">
-                    <div id="map-container" style="width: 100%; height: 100%;"></div>
+                    <div id="map-container" style="width: 100%; height: 100%;" role="application"
+                        aria-label="Mappa interattiva della distribuzione territoriale AFAM"></div>
                 </div>
 
             </div> <!-- End container-fluid for visualization -->

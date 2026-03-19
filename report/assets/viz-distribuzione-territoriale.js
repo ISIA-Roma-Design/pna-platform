@@ -95,12 +95,29 @@ let allData = [];
 let markerClusterGroup;
 let currentRadius = 30;
 
+const STATUS_CONFIG = {
+    "Pubblico": {
+        label: "Pubblico",
+        color: "#525252" // Standard dark color for buttons
+    },
+    "Privato": {
+        label: "Privato",
+        color: "#525252"
+    }
+};
+
+let statusVisibility = {
+    "Pubblico": true,
+    "Privato": true
+};
+
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const response = await fetch('../src/data/pna-istituzioni-afam.json');
         allData = await response.json();
 
         updateTotalCount(allData.length);
+        initStatusButtons();
         initLeafletMap(allData);
 
     } catch (error) {
@@ -120,8 +137,42 @@ function applyFilters() {
     initLeafletMap(filteredData);
 }
 
+function initStatusButtons() {
+    const btnContainer = document.getElementById('status-button-controls');
+    if (!btnContainer) return;
+
+    btnContainer.innerHTML = '';
+
+    Object.keys(STATUS_CONFIG).forEach(key => {
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-dark btn-sm rounded-0 fw-bold';
+        btn.setAttribute('id', `btn-status-${key}`);
+        btn.textContent = STATUS_CONFIG[key].label;
+
+        btn.addEventListener('click', () => {
+            const newState = !statusVisibility[key];
+            statusVisibility[key] = newState;
+            updateButtonState(key, newState);
+            applyFilters();
+        });
+        btnContainer.appendChild(btn);
+    });
+}
+
+function updateButtonState(key, isVisible) {
+    const btn = document.getElementById(`btn-status-${key}`);
+    if (!btn) return;
+    if (isVisible) {
+        btn.className = 'btn btn-dark btn-sm rounded-0 fw-bold';
+        btn.style.opacity = '1';
+    } else {
+        btn.className = 'btn btn-outline-dark btn-sm rounded-0 fw-bold';
+        btn.style.opacity = '0.5';
+    }
+}
+
 function getFilteredData() {
-    const selectedStatuses = Array.from(document.querySelectorAll('.status-filter:checked')).map(cb => cb.value);
+    const selectedStatuses = Object.keys(statusVisibility).filter(k => statusVisibility[k]);
     const soloPrincipale = document.getElementById('checkPrincipale')?.checked;
     
     return allData.filter(d => {
@@ -135,9 +186,17 @@ function initLeafletMap(data) {
     if (!window.map) {
         const map = L.map('map-container', {
             minZoom: 6,
-            zoomControl: false
+            zoomControl: false,
+            keyboard: true
         }).setView([41.9028, 12.4964], 6);
         window.map = map;
+
+        // Accessibility for map container
+        const mapEl = document.getElementById('map-container');
+        if (mapEl) {
+            mapEl.setAttribute('role', 'application');
+            mapEl.setAttribute('aria-label', 'Mappa interattiva della distribuzione territoriale AFAM');
+        }
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -214,7 +273,31 @@ function initLeafletMap(data) {
                 color: "#fff",
                 weight: 1,
                 opacity: 1,
-                fillOpacity: 0.8
+                fillOpacity: 0.8,
+                interactive: true,
+                className: 'viz-marker'
+            });
+
+            marker.on('add', function(e) {
+                const el = e.target.getElement();
+                if (el) {
+                    el.setAttribute('role', 'button');
+                    el.setAttribute('tabindex', '0');
+                    el.setAttribute('aria-label', `${item.istituto || item.name}, ${item.citta}`);
+
+                    // Keyboard interaction
+                    el.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            const popover = bootstrap.Popover.getOrCreateInstance(el);
+                            popover.show();
+                        }
+                    });
+                    el.addEventListener('blur', () => {
+                        const popover = bootstrap.Popover.getInstance(el);
+                        if (popover) popover.hide();
+                    });
+                }
             });
             marker.on('mouseover', function(e) {
                 const el = e.target.getElement();

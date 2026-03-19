@@ -104,9 +104,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let svg, gMain, zoom;
 
+    // Debounce function to limit re-renders
+    function debounce(func, wait) {
+        let timeout;
+        return function () {
+            const context = this, args = arguments;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+        };
+    }
+
+    const debouncedRender = debounce(() => {
+        renderChart();
+    }, 250);
+
+    window.addEventListener('resize', debouncedRender);
+    window.addEventListener('orientationchange', debouncedRender);
+
     // 3. Render Chart
     function renderChart() {
         const container = document.getElementById('chart-area');
+        if (!container) return;
         container.innerHTML = '';
 
         const keys = Object.keys(allJourneys).filter(k => journeyVisibility[k]);
@@ -139,9 +157,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         const maxSteps = Math.max(...Object.keys(allJourneys).map(k => allJourneys[k].length));
-        const width = container.clientWidth || 1000;
-        const laneHeight = 110;
+        
+        // Dynamic Dimensions
         const margin = { top: 80, right: 100, bottom: 40, left: 220 };
+        
+        // Get container dimensions
+        const containerWidth = container.clientWidth || 1000;
+        const containerHeight = Math.max(container.clientHeight, 600);
+        
+        // Dynamic row height: use available height or a minimum
+        const minLaneHeight = 90;
+        const availableHeight = containerHeight - margin.top - margin.bottom;
+        const laneHeight = Math.max(minLaneHeight, availableHeight / (attores.length || 1));
+        
+        const width = containerWidth;
         const height = (attores.length * laneHeight) + margin.top + margin.bottom;
 
         const yScale = d3.scaleBand().domain(attores).range([0, attores.length * laneHeight]);
@@ -149,6 +178,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         svg = d3.select("#chart-area").append("svg")
             .attr("width", "100%").attr("height", "100%")
+            .attr("role", "application")
+            .attr("aria-label", "Diagramma di flusso dei processi delle sezioni del Premio")
+            .attr("tabindex", "0")
             .style("cursor", "grab");
 
         // Inner container for zooming
@@ -226,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const sankey = d3.sankey()
             .nodeWidth(10).nodePadding(0) // No padding between links within nodes
-            .extent([[0, 0], [width - margin.left - margin.right, height]]);
+            .extent([[0, 0], [width - margin.left - margin.right, height - margin.top - margin.bottom]]);
 
         const graph = sankey({
             nodes: nodes.map(d => Object.assign({}, d)),
@@ -301,6 +333,17 @@ document.addEventListener('DOMContentLoaded', function () {
             .attr("fill", "#fff").attr("stroke", "#525252")
             .attr("stroke-width", 3)
             .style("cursor", "pointer")
+            .attr("tabindex", "0")
+            .attr("role", "button")
+            .attr("aria-label", d => {
+                const step = JOURNEY_CONFIG[d.journeyKey]?.label || d.journeyKey;
+                return `Passaggio ${d.idInJourney + 1}: ${d.label} (${step})`;
+            })
+            .on("keydown", (event, d) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    showPopover(d, event.currentTarget);
+                }
+            })
             .on("mouseenter", function (e, d) { 
                 showPopover(d, this); 
             })
@@ -461,8 +504,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 screen.orientation.unlock();
             }
         }
-        // Recenter after a small delay to allow for layout changes
+        // Recenter and re-render after a small delay to allow for layout changes
         setTimeout(() => {
+            renderChart();
             if (window.recenter) window.recenter();
             else if (window.resetZoom) window.resetZoom();
         }, 200);

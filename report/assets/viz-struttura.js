@@ -91,6 +91,9 @@ document.addEventListener("DOMContentLoaded", () => {
             .append("svg")
             .attr("width", "100%")
             .attr("height", "100%")
+            .attr("role", "application")
+            .attr("aria-label", "Dendrogramma della struttura del Premio Nazionale delle Arti")
+            .attr("tabindex", "0")
             .style("font-family", "Helvetica Neue, sans-serif")
             .style("user-select", "none")
             .attr("cursor", "grab");
@@ -160,6 +163,10 @@ document.addEventListener("DOMContentLoaded", () => {
             .attr("transform", d => `translate(${source.y0},${source.x0})`)
             .attr("fill-opacity", 0)
             .attr("stroke-opacity", 0)
+            .attr("tabindex", "0")
+            .attr("role", "treeitem")
+            .attr("aria-expanded", d => d._children ? "false" : (d.children ? "true" : null))
+            .attr("aria-label", d => `${d.data.name}${d.children || d._children ? ', clicca per espandere o contrarre' : ''}`)
             .on("click", (event, d) => {
                 // Toggle children
                 if (d.children) {
@@ -170,6 +177,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     d._children = null;
                 }
                 update(d);
+            })
+            .on("keydown", (event, d) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    // Toggle children
+                    if (d.children) {
+                        d._children = d.children;
+                        d.children = null;
+                    } else {
+                        d.children = d._children;
+                        d._children = null;
+                    }
+                    update(d);
+                }
             });
 
         // 1. Touch Target (Invisible Circle 44px)
@@ -407,13 +427,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-    
+
     document.addEventListener('fullscreenchange', () => {
         const elem = document.querySelector(".fullscreen-container");
         const isFullscreen = !!document.fullscreenElement;
-        
+
         updateFullscreenButtons(isFullscreen);
-        
+
         if (!isFullscreen && elem) {
             elem.style.backgroundColor = "";
             elem.style.overflow = "";

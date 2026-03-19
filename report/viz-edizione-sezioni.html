@@ -29,7 +29,7 @@
     <div id="global-header"></div>
     <script src="components/header-loader.js"></script>
 
-    <div class="container-md mt-5">
+    <div id="main-content" class="container-md mt-5">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-9 px-lg-4">
                 <div class="view-header">
@@ -86,22 +86,22 @@
                 <!-- Overlay Toolbar -->
                 <div class="position-absolute top-0 end-0 m-3 z-3 d-flex flex-column gap-2">
                     <button class="btn btn-fullscreen btn-dark btn-sm shadow-sm" onclick="toggleFullscreen()"
-                        title="Fullscreen">
+                        title="Fullscreen" aria-label="Attiva Schermo Intero">
                         <i class="bi bi-arrows-fullscreen"></i>
                         <span class="btn-text d-none">Fullscreen</span>
                     </button>
                     <div class="btn-group-vertical shadow-sm">
-                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="zoomIn()" title="Zoom In"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="zoomIn()" title="Zoom In" aria-label="Ingrandisci"><i
                                 class="bi bi-zoom-in"></i></button>
-                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="zoomOut()" title="Zoom Out"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="zoomOut()" title="Zoom Out" aria-label="Rimpicciolisci"><i
                                 class="bi bi-zoom-out"></i></button>
-                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="resetZoom()" title="Reset Zoom"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="resetZoom()" title="Reset Zoom" aria-label="Reset Zoom"><i
                                 class="bi bi-arrow-counterclockwise"></i></button>
-                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="recenter()" title="Centra"><i
+                        <button class="btn btn-outline-dark bg-white btn-sm" onclick="recenter()" title="Centra" aria-label="Ricentra il grafico"><i
                                 class="bi bi-bullseye"></i></button>
                     </div>
                     <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="exportVisualization()"
-                        title="Esporta Grafico">
+                        title="Esporta Grafico" aria-label="Esporta Grafico come Immagine">
                         <i class="bi bi-download"></i>
                     </button>
                 </div>

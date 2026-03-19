@@ -233,6 +233,9 @@ function renderTimeline(dataset, containerSelector, year, startMonth, endMonth) 
         .attr("width", "100%")
         .attr("height", "100%")
         .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height}`)
+        .attr("role", "application")
+        .attr("aria-label", "Timeline delle scadenze ed eventi del Premio")
+        .attr("tabindex", "0")
         .style("cursor", "grab");
 
     const gMain = svgObj.append("g");
@@ -371,6 +374,9 @@ function renderTimeline(dataset, containerSelector, year, startMonth, endMonth) 
         .attr("height", y.bandwidth() * 0.5)
         .attr("rx", 3)
         .attr("fill", d => getColor(d.category))
+        .attr("tabindex", "0")
+        .attr("role", "listitem")
+        .attr("aria-label", d => `Evento: ${d.label || d.section}, Categoria: ${d.category}`)
         .attr("opacity", 0.8)
         .on("mouseenter", showTooltip)
         .on("mouseleave", hideTooltip);

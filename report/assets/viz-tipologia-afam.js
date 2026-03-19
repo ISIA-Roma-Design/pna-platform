@@ -67,9 +67,12 @@ function initBubbleChart(data) {
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("width", "100%")
         .attr("height", "100%")
+        .attr("role", "application")
+        .attr("aria-label", "Mappa a bolle delle tipologie di istituzioni AFAM")
         .style("font", "10px sans-serif")
         .attr("text-anchor", "middle")
-        .style("cursor", "grab");
+        .style("cursor", "grab")
+        .attr("tabindex", "0");
 
     const gMain = svg.append("g");
 
@@ -93,11 +96,16 @@ function initBubbleChart(data) {
             if (d.depth === 0) return "#fff"; // Root
             if (d.depth === 1) return "#f5f5f5"; // Status Group
             if (d.depth === 2) return "#e0e0e0"; // Type Group
-            return getColorBySection(d.data.tipologia_istituto); // Leaf
+            return VIZ_CONFIG.getColorBySection(d.data.tipologia_istituto); // Leaf
         })
-        .attr("stroke", d => d.children ? "#ccc" : "none")
         .attr("stroke-width", d => d.depth === 1 ? 2 : 1)
-        .attr("class", d => d.children ? "parent-node" : "node leaf");
+        .attr("class", d => d.children ? "parent-node" : "node leaf")
+        .attr("tabindex", d => d.children ? "-1" : "0")
+        .attr("role", d => d.children ? null : "listitem")
+        .attr("aria-label", d => {
+            if (d.data.children) return null;
+            return `${d.data.name}, ${d.data.group} (${d.data.status})`;
+        });
 
     // Tooltip logic for leaf nodes
     node.filter(d => !d.children)
@@ -126,15 +134,6 @@ function initBubbleChart(data) {
         });
 }
 
-function getColorBySection(type) {
-    if (!type) return "#999";
-    const t = type.toLowerCase();
-    if (t.includes("conservatorio") || t.includes("musica") || t.includes("issm")) return "#118ab2"; // Musica
-    if (t.includes("belle arti")) return "#ffd166"; // Arti Visive
-    if (t.includes("danza") || t.includes("drammatica")) return "#06d6a0"; // Spettacolo
-    if (t.includes("isia")) return "#ef476f"; // Design
-    return "#999";
-}
 
 function showTooltip(event, data) {
     const content = `
