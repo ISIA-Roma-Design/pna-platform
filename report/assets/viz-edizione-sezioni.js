@@ -418,8 +418,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 // Fallback per iOS/iPhone
                 elem.classList.add('ios-fullscreen-fallback');
-                const btn = document.querySelector('button[onclick="toggleFullscreen()"]');
-                if (btn) btn.innerHTML = '<i class="bi bi-fullscreen-exit"></i>';
+                updateFullscreenButtons(true);
                 setTimeout(() => { if (window.recenter) window.recenter(); else if (window.resetZoom) window.resetZoom(); }, 200);
             }
         } else {
@@ -428,24 +427,36 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 // Fallback per iOS/iPhone
                 elem.classList.remove('ios-fullscreen-fallback');
-                const btn = document.querySelector('button[onclick="toggleFullscreen()"]');
-                if (btn) btn.innerHTML = '<i class="bi bi-arrows-fullscreen"></i>';
+                updateFullscreenButtons(false);
                 setTimeout(() => { if (window.recenter) window.recenter(); else if (window.resetZoom) window.resetZoom(); }, 200);
             }
         }
     };
 
+    function updateFullscreenButtons(isFullscreen) {
+        const buttons = document.querySelectorAll('button[onclick="toggleFullscreen()"]');
+        buttons.forEach(btn => {
+            const icon = btn.querySelector('i');
+            const text = btn.querySelector('.btn-text');
+            if (isFullscreen) {
+                if (icon) icon.className = 'bi bi-fullscreen-exit';
+                if (text) text.textContent = 'Esci';
+            } else {
+                if (icon) icon.className = 'bi bi-arrows-fullscreen';
+                if (text) text.textContent = 'Fullscreen';
+            }
+        });
+    }
+
     document.addEventListener('fullscreenchange', () => {
         const elem = document.querySelector(".fullscreen-container");
-        const btn = document.querySelector('button[onclick="toggleFullscreen()"]');
-        if (document.fullscreenElement) {
-            if (btn) btn.innerHTML = '<i class="bi bi-fullscreen-exit"></i>';
-        } else {
-            if (elem) {
-                elem.style.backgroundColor = "";
-                elem.style.overflow = "";
-            }
-            if (btn) btn.innerHTML = '<i class="bi bi-arrows-fullscreen"></i>';
+        const isFullscreen = !!document.fullscreenElement;
+        
+        updateFullscreenButtons(isFullscreen);
+        
+        if (!isFullscreen && elem) {
+            elem.style.backgroundColor = "";
+            elem.style.overflow = "";
             if (screen.orientation && screen.orientation.unlock) {
                 screen.orientation.unlock();
             }

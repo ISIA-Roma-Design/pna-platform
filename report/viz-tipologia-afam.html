@@ -69,8 +69,9 @@
                 <div class="mobile-viz-placeholder">
                     <i class="bi bi-phone-landscape display-4 mb-3 text-secondary"></i>
                     <p class="mb-4">Per una migliore esplorazione dei dati si consiglia la visione a tutto schermo.</p>
-                    <button class="btn btn-dark" onclick="toggleFullscreen()">
-                        <i class="bi bi-arrows-fullscreen me-2"></i>Fullscreen
+                    <button class="btn btn-fullscreen" onclick="toggleFullscreen()">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                        <span class="btn-text">Fullscreen</span>
                     </button>
                 </div>
                 <!-- Overlay Badge Top-Left -->
@@ -81,9 +82,10 @@
 
                 <!-- Overlay Toolbar -->
                 <div class="position-absolute top-0 end-0 m-3 z-3 d-flex flex-column gap-2">
-                    <button class="btn btn-outline-dark bg-white btn-sm shadow-sm" onclick="toggleFullscreen()"
+                    <button class="btn btn-fullscreen btn-dark btn-sm shadow-sm" onclick="toggleFullscreen()"
                         title="Fullscreen">
                         <i class="bi bi-arrows-fullscreen"></i>
+                        <span class="btn-text d-none">Fullscreen</span>
                     </button>
                     <div class="btn-group-vertical shadow-sm">
                         <button class="btn btn-outline-dark bg-white btn-sm" onclick="zoomIn()" title="Zoom In"><i
