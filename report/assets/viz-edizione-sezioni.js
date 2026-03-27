@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // 1. Data Loading
-    fetch('../src/data/pna-processo-asis.json')
+    fetch('data/pna-processo-asis.json')
         .then(response => response.json())
         .then(data => {
             allJourneys = data.journeys;

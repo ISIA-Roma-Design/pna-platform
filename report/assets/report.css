@@ -2,25 +2,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 @font-face {
   font-family: "Ministry";
-  src: url("../fonts/Ministry-Thin.otf") format("opentype");
+  src: url("../assets/fonts/Ministry-Thin.otf") format("opentype");
   font-weight: 100;
   font-style: normal;
 }
 @font-face {
   font-family: "Ministry";
-  src: url("../fonts/Ministry-Light.otf") format("opentype");
+  src: url("../assets/fonts/Ministry-Light.otf") format("opentype");
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: "Ministry";
-  src: url("../fonts/Ministry-Medium.otf") format("opentype");
+  src: url("../assets/fonts/Ministry-Medium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: "Ministry";
-  src: url("../fonts/Ministry-Bold.otf") format("opentype");
+  src: url("../assets/fonts/Ministry-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }

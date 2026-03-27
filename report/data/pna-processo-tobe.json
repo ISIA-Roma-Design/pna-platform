@@ -1,0 +1,282 @@
+[
+    {
+        "step": "1",
+        "attore": "Ministero",
+        "descrizione": "Pubblicazione bando per la nuova edizione"
+    },
+    {
+        "step": "2",
+        "attore": "Ministero",
+        "descrizione": "Assegnazione delle sezioni e sottosezioni alle Istituzioni AFAM designate all'organizzazione."
+    },
+    {
+        "step": "3",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Pubblicazione regolamento della sezione e/o sottosezione"
+    },
+    {
+        "step": "4",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Definizione accordi con partner esterni (Teatri, Orchestre, Fondazioni, ecc.) per premi accessori e logistica."
+    },
+    {
+        "step": "5",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Registrazione e associazione istituto"
+    },
+    {
+        "step": "6",
+        "attore": "Piattaforma",
+        "descrizione": "Convalida account referente"
+    },
+    {
+        "step": "7",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Invia richiesta di adesione dell'istituto all'istituto designato"
+    },
+    {
+        "step": "8",
+        "attore": "Studente",
+        "descrizione": "Effettua la registrazione"
+    },
+    {
+        "step": "9",
+        "attore": "Piattaforma",
+        "descrizione": "Prima della scadenza del bando invia mail di notifica a [STU]"
+    },
+    {
+        "step": "10",
+        "attore": "Studente",
+        "descrizione": "Crea nuova candidatura, Compila dati amministrativi e accademici per la candidatura, Associa uno o più studenti (coautori) e uno o più docenti, Seleziona premio/sezione/sottosezione/categoria e compila dei relativi campi, Invia candidatura"
+    },
+    {
+        "step": "11",
+        "attore": "Studente",
+        "descrizione": "Richiesta pianista accompagnatore (se previsto dal regolamento)"
+    },
+    {
+        "step": "12",
+        "attore": "Piattaforma",
+        "descrizione": "Invia notifica al [REF] ad ogni candidatura completata"
+    },
+    {
+        "step": "13",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Pubblicazione e gestione Proroga termini (se necessaria)"
+    },
+    {
+        "step": "14",
+        "attore": "Piattaforma",
+        "descrizione": "Invia notifica al [REF] per la convalida di candidature pendenti"
+    },
+    {
+        "step": "15",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Convalida candidatura"
+    },
+    {
+        "step": "16",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Nomina commissione interna di preselezione"
+    },
+    {
+        "step": "17",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Svolgimento audizioni interne e caricamento verbale di selezione"
+    },
+    {
+        "step": "18",
+        "attore": "Piattaforma",
+        "descrizione": "Genera elenco candidature"
+    },
+    {
+        "step": "19",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Propone la giuria"
+    },
+    {
+        "step": "20",
+        "attore": "Ministero",
+        "descrizione": "Nomina la giuria"
+    },
+    {
+        "step": "21",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Pubblicazione decreto nomina giuria all'Albo Pretorio"
+    },
+    {
+        "step": "22",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail invito per i membri della giura [GIU]"
+    },
+    {
+        "step": "23",
+        "attore": "Commissione",
+        "descrizione": "Attiva account e visiona candidature"
+    },
+    {
+        "step": "24",
+        "attore": "Commissione",
+        "descrizione": "Stabilisce [STU] selezionati"
+    },
+    {
+        "step": "25",
+        "attore": "Commissione",
+        "descrizione": "Tra [STU] selezionati stabilisce [STU] vincitori (Solo per sottosezioni senza prove live)"
+    },
+    {
+        "step": "26",
+        "attore": "Piattaforma",
+        "descrizione": "Genera Elenco selezionati"
+    },
+    {
+        "step": "27",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Sorteggio pubblico lettera alfabetica per ordine di esecuzione"
+    },
+    {
+        "step": "28",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail a [STU] e [REF] per le opere preselezionate/finaliste"
+    },
+    {
+        "step": "29",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail calendario prove e prova finale"
+    },
+    {
+        "step": "30",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail calendario semifinale"
+    },
+    {
+        "step": "31",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Sorteggia esecuzione delle prova semifinale"
+    },
+    {
+        "step": "32",
+        "attore": "Studente",
+        "descrizione": "Esecuzione della prova (programma)"
+    },
+    {
+        "step": "33",
+        "attore": "Commissione",
+        "descrizione": "Stabilisce [STU] finalisti"
+    },
+    {
+        "step": "34",
+        "attore": "Piattaforma",
+        "descrizione": "Genera Elenco finalisti"
+    },
+    {
+        "step": "35",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail a [STU] e [REF] per opere finaliste"
+    },
+    {
+        "step": "36",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail calendario prova finale"
+    },
+    {
+        "step": "37",
+        "attore": "Piattaforma",
+        "descrizione": "Invia notifica a [STU] per il caricamento dei brani/tecniche prima delle prove"
+    },
+    {
+        "step": "38",
+        "attore": "Studente",
+        "descrizione": "Carica brani per la prova (USB o in piattaforma)"
+    },
+    {
+        "step": "39",
+        "attore": "Studente",
+        "descrizione": "Partecipa prove obbligatorie (con pianista ove richiesto)"
+    },
+    {
+        "step": "40",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Sorteggia esecuzione delle prova finale"
+    },
+    {
+        "step": "41",
+        "attore": "Studente",
+        "descrizione": "Esecuzione della prova finale"
+    },
+    {
+        "step": "42",
+        "attore": "Commissione",
+        "descrizione": "Stabilisce [STU] vincitori"
+    },
+    {
+        "step": "43",
+        "attore": "Piattaforma",
+        "descrizione": "Genera Elenco vincitori"
+    },
+    {
+        "step": "44",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail a [STU] e [REF] per opere vincitrici"
+    },
+    {
+        "step": "45",
+        "attore": "Piattaforma",
+        "descrizione": "Invia mail calendario cerimonia di premiazione"
+    },
+    {
+        "step": "46",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Organizzazione evento/mostra/concerto finale"
+    },
+    {
+        "step": "47",
+        "attore": "Studente",
+        "descrizione": "Colleziona materiali fisici per la mostra"
+    },
+    {
+        "step": "48",
+        "attore": "Istituzione Partecipante",
+        "descrizione": "Verifica i materiali e li invia a [ISTO]"
+    },
+    {
+        "step": "49",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Riceve i materiali per la mostra"
+    },
+    {
+        "step": "50",
+        "attore": "Studente",
+        "descrizione": "Concerto/esibizione pubblica"
+    },
+    {
+        "step": "51",
+        "attore": "Commissione",
+        "descrizione": "Nomina e proclamazione vincitori"
+    },
+    {
+        "step": "52",
+        "attore": "Piattaforma",
+        "descrizione": "Pubblica elenco vincitori (Sito e Albo Pretorio)"
+    },
+    {
+        "step": "53",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Cerimonia di premiazione"
+    },
+    {
+        "step": "54",
+        "attore": "Ministero",
+        "descrizione": "Pubblicazione e promozione risultati"
+    },
+    {
+        "step": "55",
+        "attore": "Istituzione Organizzatrice",
+        "descrizione": "Rendicontazione delle spese sostenute (entro 60gg)"
+    },
+    {
+        "step": "56",
+        "attore": "Ministero",
+        "descrizione": "Verifica rendiconto e liquidazione fondi/rimborsi"
+    }
+]

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 1. Data Processing
     // Determine path based on location
-    fetch('../src/data/pna-processo-tobe.json')
+    fetch('data/pna-processo-tobe.json')
         .then(response => response.json())
         .then(rawData => {
 

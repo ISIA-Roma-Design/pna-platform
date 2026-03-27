@@ -20,7 +20,7 @@ async function initTimelines() {
     try {
         // 1. Fetch Data
         // Determine path based on location
-        const jsonPath = '../src/data/pna-scadenze.json';
+        const jsonPath = 'data/pna-scadenze.json';
         console.log("Fetching", jsonPath, "...");
         const response = await fetch(jsonPath);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);

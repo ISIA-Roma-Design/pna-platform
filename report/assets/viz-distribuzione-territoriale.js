@@ -113,7 +113,7 @@ let statusVisibility = {
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch('../src/data/pna-istituzioni-afam.json');
+        const response = await fetch('data/pna-istituzioni-afam.json');
         allData = await response.json();
 
         updateTotalCount(allData.length);
@@ -432,7 +432,7 @@ document.addEventListener('fullscreenchange', () => {
     }, 200);
 });
 
-async function exportMapToSVG() {
+async function exportVisualization() {
     if (!allData || allData.length === 0) {
         alert("Nessun dato disponibile per l'esportazione.");
         return;

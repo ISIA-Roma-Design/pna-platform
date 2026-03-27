@@ -1,0 +1,573 @@
+{
+    "system_name": "PNA_ASIS_System",
+    "journeys": {
+        "arti_spettacolo": [
+            {
+                "step_id": 1,
+                "phase": "Avvio",
+                "actor": "[MIN]",
+                "action": "Pubblicazione Bando Generale e richiesta candidature sedi",
+                "type": "common"
+            },
+            {
+                "step_id": 2,
+                "phase": "Avvio",
+                "actor": "[MIN]",
+                "action": "Decreto di assegnazione delle sezioni alle Istituzioni designate",
+                "type": "common"
+            },
+            {
+                "step_id": 3,
+                "phase": "Organizzazione",
+                "actor": "[ISTO]",
+                "action": "Pubblicazione regolamento della sezione e/o sottosezione",
+                "type": "common"
+            },
+            {
+                "step_id": 4,
+                "phase": "Organizzazione",
+                "actor": "[ISTO]",
+                "action": "Proposta di nominativi per commissione giudicatrice",
+                "type": "common"
+            },
+            {
+                "step_id": 5,
+                "phase": "Organizzazione",
+                "actor": "[MIN]",
+                "action": "Nomina delle commissioni giudicatrici",
+                "type": "common"
+            },
+            {
+                "step_id": 6,
+                "phase": "Adesione",
+                "actor": "[IST]",
+                "action": "Invia richiesta di adesione all'Istituzione Organizzatrice",
+                "type": "common"
+            },
+            {
+                "step_id": 7,
+                "phase": "Adesione",
+                "actor": "[IST]",
+                "action": "Pubblicazione interna del bando e avvio procedure preselettive interne",
+                "type": "common"
+            },
+            {
+                "step_id": 8,
+                "phase": "Candidatura",
+                "actor": "[STU]",
+                "action": "Modulo di iscrizione e produzione materiale da candidare per la preselezione nella propria Istituzione",
+                "type": "common"
+            },
+            {
+                "step_id": 9,
+                "phase": "Candidatura",
+                "actor": "[IST]",
+                "action": "Selezione delle candidature e invio all'Istituzione Organizzatrice",
+                "type": "common"
+            },
+            {
+                "step_id": 10,
+                "phase": "Preselezione",
+                "actor": "[ISTO]",
+                "action": "Organizzazione delle prove selettive",
+                "type": "common"
+            },
+            {
+                "step_id": 11,
+                "phase": "Preselezione",
+                "actor": "[GIU]",
+                "action": "Valutazione remota video o audizione regionale",
+                "type": "specific"
+            },
+            {
+                "step_id": 12,
+                "phase": "Preselezione",
+                "actor": "[ISTO]",
+                "action": "Pubblicazione elenco ammessi e invio convocazioni per le prove palco e montaggio scene",
+                "type": "specific"
+            },
+            {
+                "step_id": 13,
+                "phase": "Selezione",
+                "actor": "[ISTO]",
+                "action": "Allestimento spazi e coordinamento risorse tecniche",
+                "type": "common"
+            },
+            {
+                "step_id": 14,
+                "phase": "Selezione",
+                "actor": "[STU]",
+                "action": "Arrivo in sede, setup tecnico (luci/audio) e prove spazi",
+                "type": "specific"
+            },
+            {
+                "step_id": 15,
+                "phase": "Selezione",
+                "actor": "[STU]",
+                "action": "Performance live (Spettacolo) davanti alla giuria",
+                "type": "specific"
+            },
+            {
+                "step_id": 16,
+                "phase": "Selezione",
+                "actor": "[GIU]",
+                "action": "Valutazione delle performance, delle esecuzioni o dei progetti",
+                "type": "common"
+            },
+            {
+                "step_id": 17,
+                "phase": "Selezione",
+                "actor": "[GIU]",
+                "action": "Proclamazione Vincitore Unico",
+                "type": "common"
+            },
+            {
+                "step_id": 18,
+                "phase": "Premiazione",
+                "actor": "[ISTO]",
+                "action": "Cerimonia di premiazione, Concerto di Gala o Inaugurazione Mostra",
+                "type": "common"
+            },
+            {
+                "step_id": 19,
+                "phase": "Premiazione",
+                "actor": "[STU]",
+                "action": "Fruizione premi accessori (borse studio, concerti premio, produzioni)",
+                "type": "common"
+            },
+            {
+                "step_id": 20,
+                "phase": "Chiusura",
+                "actor": "[ISTO]",
+                "action": "Rendicontazione spese al Ministero entro 60 giorni",
+                "type": "common"
+            }
+        ],
+        "arti_visive": [
+            {
+                "step_id": 1,
+                "phase": "Avvio",
+                "actor": "[MIN]",
+                "action": "Pubblicazione Bando Generale e richiesta candidature sedi",
+                "type": "common"
+            },
+            {
+                "step_id": 2,
+                "phase": "Avvio",
+                "actor": "[MIN]",
+                "action": "Decreto di assegnazione delle sezioni alle Istituzioni designate",
+                "type": "common"
+            },
+            {
+                "step_id": 3,
+                "phase": "Organizzazione",
+                "actor": "[ISTO]",
+                "action": "Pubblicazione regolamento della sezione e/o sottosezione",
+                "type": "common"
+            },
+            {
+                "step_id": 4,
+                "phase": "Organizzazione",
+                "actor": "[ISTO]",
+                "action": "Proposta di nominativi per commissione giudicatrice",
+                "type": "common"
+            },
+            {
+                "step_id": 5,
+                "phase": "Organizzazione",
+                "actor": "[MIN]",
+                "action": "Nomina delle commissioni giudicatrici",
+                "type": "common"
+            },
+            {
+                "step_id": 6,
+                "phase": "Adesione",
+                "actor": "[IST]",
+                "action": "Invia richiesta di adesione all'Istituzione Organizzatrice",
+                "type": "common"
+            },
+            {
+                "step_id": 7,
+                "phase": "Adesione",
+                "actor": "[IST]",
+                "action": "Pubblicazione interna del bando e avvio procedure preselettive interne",
+                "type": "common"
+            },
+            {
+                "step_id": 8,
+                "phase": "Candidatura",
+                "actor": "[STU]",
+                "action": "Modulo di iscrizione e produzione materiale da candidare per la preselezione nella propria Istituzione",
+                "type": "common"
+            },
+            {
+                "step_id": 9,
+                "phase": "Candidatura",
+                "actor": "[IST]",
+                "action": "Selezione delle candidature e invio all'Istituzione Organizzatrice",
+                "type": "common"
+            },
+            {
+                "step_id": 10,
+                "phase": "Selezione",
+                "actor": "[ISTO]",
+                "action": "Organizzazione delle prove selettive",
+                "type": "common"
+            },
+            {
+                "step_id": 11,
+                "phase": "Selezione",
+                "actor": "[GIU]",
+                "action": "Valutazione remota delle candidature e selezione opere per la mostra",
+                "type": "common"
+            },
+            {
+                "step_id": 12,
+                "phase": "Selezione",
+                "actor": "[ISTO]",
+                "action": "Pubblicazione elenco finalisti e invio istruzioni per il trasporto opere",
+                "type": "common"
+            },
+            {
+                "step_id": 13,
+                "phase": "Mostra",
+                "actor": "[STU]",
+                "action": "Imballaggio e spedizione opere d'arte",
+                "type": "specific"
+            },
+            {
+                "step_id": 14,
+                "phase": "Mostra",
+                "actor": "[ISTO]",
+                "action": "Ricezione colli, curatela e allestimento espositivo",
+                "type": "common"
+            },
+            {
+                "step_id": 15,
+                "phase": "Mostra",
+                "actor": "[GIU]",
+                "action": "Visita alla mostra e valutazione delle tavole e dei modelli",
+                "type": "specific"
+            },
+            {
+                "step_id": 16,
+                "phase": "Selezione",
+                "actor": "[GIU]",
+                "action": "Valutazione delle performance, delle esecuzioni o dei progetti",
+                "type": "common"
+            },
+            {
+                "step_id": 17,
+                "phase": "Selezione",
+                "actor": "[GIU]",
+                "action": "Proclamazione Vincitore Unico",
+                "type": "common"
+            },
+            {
+                "step_id": 18,
+                "phase": "Premiazione",
+                "actor": "[ISTO]",
+                "action": "Cerimonia di premiazione, Concerto di Gala o Inaugurazione Mostra",
+                "type": "common"
+            },
+            {
+                "step_id": 19,
+                "phase": "Premiazione",
+                "actor": "[STU]",
+                "action": "Fruizione premi accessori (borse studio, concerti premio, produzioni)",
+                "type": "common"
+            },
+            {
+                "step_id": 20,
+                "phase": "Chiusura",
+                "actor": "[ISTO]",
+                "action": "Rendicontazione spese al Ministero entro 60 giorni",
+                "type": "common"
+            }
+        ],
+        "design": [
+            {
+                "step_id": 1,
+                "phase": "Avvio",
+                "actor": "[MIN]",
+                "action": "Pubblicazione Bando Generale e richiesta candidature sedi",
+                "type": "common"
+            },
+            {
+                "step_id": 2,
+                "phase": "Avvio",
+                "actor": "[MIN]",
+                "action": "Decreto di assegnazione delle sezioni alle Istituzioni designate",
+                "type": "common"
+            },
+            {
+                "step_id": 3,
+                "phase": "Organizzazione",
+                "actor": "[ISTO]",
+                "action": "Pubblicazione regolamento della sezione e/o sottosezione",
+                "type": "common"
+            },
+            {
+                "step_id": 4,
+                "phase": "Organizzazione",
+                "actor": "[ISTO]",
+                "action": "Proposta di nominativi per commissione giudicatrice",
+                "type": "common"
+            },
+            {
+                "step_id": 5,
+                "phase": "Organizzazione",
+                "actor": "[MIN]",
+                "action": "Nomina delle commissioni giudicatrici",
+                "type": "common"
+            },
+            {
+                "step_id": 6,
+                "phase": "Adesione",
+                "actor": "[IST]",
+                "action": "Invia richiesta di adesione all'Istituzione Organizzatrice",
+                "type": "common"
+            },
+            {
+                "step_id": 7,
+                "phase": "Adesione",
+                "actor": "[IST]",
+                "action": "Pubblicazione interna del bando e avvio procedure preselettive interne",
+                "type": "common"
+            },
+            {
+                "step_id": 8,
+                "phase": "Candidatura",
+                "actor": "[STU]",
+                "action": "Modulo di iscrizione e produzione materiale da candidare per la preselezione nella propria Istituzione",
+                "type": "common"
+            },
+            {
+                "step_id": 9,
+                "phase": "Candidatura",
+                "actor": "[IST]",
+                "action": "Selezione delle candidature e invio all'Istituzione Organizzatrice",
+                "type": "common"
+            },
+            {
+                "step_id": 10,
+                "phase": "Preselezione",
+                "actor": "[ISTO]",
+                "action": "Organizzazione delle prove selettive",
+                "type": "common"
+            },
+            {
+                "step_id": 11,
+                "phase": "Preselezione",
+                "actor": "[GIU]",
+                "action": "Valutazione remota delle candidature e selezione opere per la mostra",
+                "type": "common"
+            },
+            {
+                "step_id": 12,
+                "phase": "Preselezione",
+                "actor": "[ISTO]",
+                "action": "Pubblicazione elenco finalisti e invio istruzioni per il trasporto opere",
+                "type": "common"
+            },
+            {
+                "step_id": 13,
+                "phase": "Mostra",
+                "actor": "[STU]",
+                "action": "Imballaggio e spedizione prototipi/modelli fisici",
+                "type": "specific"
+            },
+            {
+                "step_id": 14,
+                "phase": "Mostra",
+                "actor": "[ISTO]",
+                "action": "Ricezione colli, curatela e allestimento espositivo",
+                "type": "common"
+            },
+            {
+                "step_id": 15,
+                "phase": "Mostra",
+                "actor": "[GIU]",
+                "action": "Visita alla mostra e valutazione delle tavole e dei modelli",
+                "type": "specific"
+            },
+            {
+                "step_id": 16,
+                "phase": "Selezione",
+                "actor": "[GIU]",
+                "action": "Valutazione delle performance, delle esecuzioni o dei progetti in mostra",
+                "type": "common"
+            },
+            {
+                "step_id": 17,
+                "phase": "Selezione",
+                "actor": "[GIU]",
+                "action": "Proclamazione Vincitore Unico",
+                "type": "common"
+            },
+            {
+                "step_id": 18,
+                "phase": "Premiazione",
+                "actor": "[ISTO]",
+                "action": "Cerimonia di premiazione, Concerto di Gala o Inaugurazione Mostra",
+                "type": "common"
+            },
+            {
+                "step_id": 19,
+                "phase": "Premiazione",
+                "actor": "[STU]",
+                "action": "Fruizione premi accessori (borse studio, concerti premio, produzioni)",
+                "type": "common"
+            },
+            {
+                "step_id": 20,
+                "phase": "Chiusura",
+                "actor": "[ISTO]",
+                "action": "Rendicontazione spese al Ministero entro 60 giorni",
+                "type": "common"
+            }
+        ],
+        "interpretazione_musicale": [
+            {
+                "step_id": 1,
+                "phase": "Avvio",
+                "actor": "[MIN]",
+                "action": "Pubblicazione Bando Generale e richiesta candidature sedi",
+                "type": "common"
+            },
+            {
+                "step_id": 2,
+                "phase": "Avvio",
+                "actor": "[MIN]",
+                "action": "Decreto di assegnazione delle sezioni alle Istituzioni designate",
+                "type": "common"
+            },
+            {
+                "step_id": 3,
+                "phase": "Organizzazione",
+                "actor": "[ISTO]",
+                "action": "Pubblicazione regolamento della sezione e/o sottosezione",
+                "type": "common"
+            },
+            {
+                "step_id": 4,
+                "phase": "Organizzazione",
+                "actor": "[ISTO]",
+                "action": "Proposta di nominativi per commissione giudicatrice",
+                "type": "common"
+            },
+            {
+                "step_id": 5,
+                "phase": "Organizzazione",
+                "actor": "[MIN]",
+                "action": "Nomina delle commissioni giudicatrici",
+                "type": "common"
+            },
+            {
+                "step_id": 6,
+                "phase": "Adesione",
+                "actor": "[IST]",
+                "action": "Invia richiesta di adesione all'Istituzione Organizzatrice",
+                "type": "common"
+            },
+            {
+                "step_id": 7,
+                "phase": "Adesione",
+                "actor": "[IST]",
+                "action": "Pubblicazione interna del bando e avvio procedure preselettive interne",
+                "type": "common"
+            },
+            {
+                "step_id": 8,
+                "phase": "Candidatura",
+                "actor": "[STU]",
+                "action": "Modulo di iscrizione e produzione materiale da candidare per la preselezione nella propria Istituzione",
+                "type": "common"
+            },
+            {
+                "step_id": 9,
+                "phase": "Candidatura",
+                "actor": "[IST]",
+                "action": "Selezione delle candidature e invio all'Istituzione Organizzatrice",
+                "type": "common"
+            },
+            {
+                "step_id": 10,
+                "phase": "Preselezione",
+                "actor": "[ISTO]",
+                "action": "Organizzazione delle prove selettive",
+                "type": "common"
+            },
+            {
+                "step_id": 11,
+                "phase": "Preselezione",
+                "actor": "[GIU]",
+                "action": "Valutazione remota dei video per la preselezione",
+                "type": "specific"
+            },
+            {
+                "step_id": 12,
+                "phase": "Preselezione",
+                "actor": "[ISTO]",
+                "action": "Pubblicazione elenco ammessi e invio convocazioni per le prove in presenza",
+                "type": "specific"
+            },
+            {
+                "step_id": 13,
+                "phase": "Selezione",
+                "actor": "[ISTO]",
+                "action": "Allestimento spazi e coordinamento risorse tecniche",
+                "type": "common"
+            },
+            {
+                "step_id": 14,
+                "phase": "Selezione",
+                "actor": "[STU]",
+                "action": "Arrivo in sede, prove acustiche o con orchestra",
+                "type": "specific"
+            },
+            {
+                "step_id": 15,
+                "phase": "Selezione",
+                "actor": "[STU]",
+                "action": "Sorteggio pubblico e performance dal vivo (semifinale/finale)",
+                "type": "specific"
+            },
+            {
+                "step_id": 16,
+                "phase": "Selezione",
+                "actor": "[GIU]",
+                "action": "Valutazione delle performance, delle esecuzioni o dei progetti in mostra",
+                "type": "common"
+            },
+            {
+                "step_id": 17,
+                "phase": "Selezione",
+                "actor": "[GIU]",
+                "action": "Proclamazione Vincitore Unico",
+                "type": "common"
+            },
+            {
+                "step_id": 18,
+                "phase": "Premiazione",
+                "actor": "[ISTO]",
+                "action": "Cerimonia di premiazione, Concerto di Gala o Inaugurazione Mostra",
+                "type": "common"
+            },
+            {
+                "step_id": 19,
+                "phase": "Premiazione",
+                "actor": "[STU]",
+                "action": "Fruizione premi accessori (borse studio, concerti premio, produzioni)",
+                "type": "common"
+            },
+            {
+                "step_id": 20,
+                "phase": "Chiusura",
+                "actor": "[ISTO]",
+                "action": "Rendicontazione spese al Ministero entro 60 giorni",
+                "type": "common"
+            }
+        ]
+    }
+}

@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Fetch Data
-    fetch("../src/data/pna-sezioni.json")
+    fetch("data/pna-sezioni.json")
         .then(response => response.json())
         .then(data => {
             const hierarchyData = buildHierarchy(data);
@@ -452,7 +452,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /**
  * Global function to export the dendrogram SVG
  */
-function exportDendrogramToSVG() {
+function exportVisualization() {
     const container = document.getElementById("dendrogram-container");
     const svgElement = container.querySelector("svg");
 

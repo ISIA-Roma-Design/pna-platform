@@ -4,7 +4,7 @@ let allData = [];
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch('../src/data/pna-istituzioni-afam.json');
+        const response = await fetch('data/pna-istituzioni-afam.json');
         allData = await response.json();
 
         applyFilters();
@@ -242,7 +242,7 @@ document.addEventListener('fullscreenchange', () => {
     }, 200);
 });
 
-window.exportBubbleChartToSVG = function () {
+window.exportVisualization = function () {
     const svgElement = document.querySelector("#bubble-chart svg");
     if (!svgElement) {
         alert("Errore: SVG non trovato.");
