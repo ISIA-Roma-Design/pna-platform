@@ -4,6 +4,8 @@
  */
 
 window.VIZ_CONFIG = {
+    CARTO_API_KEY: "cb1_3p1z_1_226fd5e4d38d3637f3c89c48",
+
     COLORS: {
         design: "#8338ec",
         arti_visive: "#ff006e",

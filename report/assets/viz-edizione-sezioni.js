@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function () {
             html: true,
             trigger: 'manual',
             placement: 'top',
-            container: 'body',
+            container: '.fullscreen-container',
             customClass: 'pna-popover'
         });
         popover.show();

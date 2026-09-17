@@ -198,7 +198,8 @@ function initLeafletMap(data) {
             mapEl.setAttribute('aria-label', 'Mappa interattiva della distribuzione territoriale AFAM');
         }
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+        const cartoKey = (window.VIZ_CONFIG && window.VIZ_CONFIG.CARTO_API_KEY) || 'cb1_3p1z_1_226fd5e4d38d3637f3c89c48';
+        L.tileLayer(`https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png?key=${cartoKey}`, {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
             maxZoom: 19
@@ -314,7 +315,7 @@ function initLeafletMap(data) {
                         html: true,
                         trigger: 'manual',
                         placement: 'top',
-                        container: 'body',
+                        container: '.fullscreen-container',
                         customClass: 'pna-popover'
                     });
                     popover.show();
